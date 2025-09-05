@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -8,7 +8,8 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { MapPin, Phone, Globe, Mail, Star, Clock, ExternalLink } from "lucide-react";
+import { MapPin, Phone, Globe, Mail, Star, Clock, ExternalLink, Image as ImageIcon } from "lucide-react";
+import mosquePlaceholder from "@/assets/mosque-placeholder.jpg";
 
 interface Mosque {
   id: string;
@@ -20,6 +21,7 @@ interface Mosque {
   phone?: string;
   website?: string;
   email?: string;
+  photoUrl?: string;
 }
 
 interface MosqueDetailsModalProps {
@@ -33,6 +35,8 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
   onClose,
   mosque,
 }) => {
+  const [imageError, setImageError] = useState(false);
+
   if (!mosque) return null;
 
   const InfoRow = ({ 
@@ -112,6 +116,31 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
         </DialogHeader>
 
         <div className="space-y-6">
+          {/* Mosque Photo */}
+          <div className="relative w-full h-64 rounded-xl overflow-hidden bg-muted">
+            {mosque.photoUrl && !imageError ? (
+              <img
+                src={mosque.photoUrl}
+                alt={`Photo of ${mosque.name}`}
+                className="w-full h-full object-cover transition-opacity duration-300"
+                onError={() => setImageError(true)}
+                onLoad={() => setImageError(false)}
+              />
+            ) : (
+              <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-islamic-green/5 to-islamic-green/10">
+                <img
+                  src={mosquePlaceholder}
+                  alt="Mosque placeholder"
+                  className="w-full h-full object-cover opacity-60"
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/20">
+                  <ImageIcon className="w-12 h-12 text-white/80 mb-2" />
+                  <p className="text-white/80 font-body text-sm">Photo not available</p>
+                </div>
+              </div>
+            )}
+          </div>
+
           {/* Mosque Name */}
           <div className="text-center py-4">
             <h2 className="font-elegant text-3xl font-bold text-islamic-navy leading-tight">

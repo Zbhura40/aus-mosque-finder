@@ -24,6 +24,7 @@ interface Mosque {
   phone?: string;
   website?: string;
   email?: string;
+  photoUrl?: string;
 }
 
 const MosqueLocator = () => {

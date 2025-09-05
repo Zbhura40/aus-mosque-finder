@@ -51,7 +51,7 @@ serve(async (req) => {
       headers: {
         'Content-Type': 'application/json',
         'X-Goog-Api-Key': apiKey,
-        'X-Goog-FieldMask': 'places.id,places.displayName,places.formattedAddress,places.location,places.rating,places.currentOpeningHours,places.nationalPhoneNumber,places.websiteUri,places.editorialSummary'
+        'X-Goog-FieldMask': 'places.id,places.displayName,places.formattedAddress,places.location,places.rating,places.currentOpeningHours,places.nationalPhoneNumber,places.websiteUri,places.editorialSummary,places.photos'
       },
       body: JSON.stringify(requestBody)
     });
@@ -79,6 +79,15 @@ serve(async (req) => {
       // Try to get more detailed information including website
       let website = place.websiteUri;
       let email = undefined;
+      let photoUrl = undefined;
+
+      // Get photo URL from Google Places Photos API
+      if (place.photos && place.photos.length > 0) {
+        const photoReference = place.photos[0].name;
+        // Construct photo URL using Places API
+        photoUrl = `https://places.googleapis.com/v1/${photoReference}/media?maxHeightPx=400&maxWidthPx=600&key=${apiKey}`;
+        console.log(`Found photo for ${place.displayName?.text}: ${photoUrl}`);
+      }
 
       // If no website from searchNearby, try Place Details API
       if (!website && place.id) {
@@ -88,7 +97,7 @@ serve(async (req) => {
           const detailsResponse = await fetch(detailsUrl, {
             headers: {
               'X-Goog-Api-Key': apiKey,
-              'X-Goog-FieldMask': 'websiteUri,editorialSummary,internationalPhoneNumber'
+              'X-Goog-FieldMask': 'websiteUri,editorialSummary,internationalPhoneNumber,photos'
             }
           });
           
@@ -96,6 +105,13 @@ serve(async (req) => {
             const detailsData = await detailsResponse.json();
             console.log(`Details API response for ${place.displayName?.text}:`, JSON.stringify(detailsData, null, 2));
             website = detailsData.websiteUri || website;
+            
+            // Get photo from details if not found in search
+            if (!photoUrl && detailsData.photos && detailsData.photos.length > 0) {
+              const photoReference = detailsData.photos[0].name;
+              photoUrl = `https://places.googleapis.com/v1/${photoReference}/media?maxHeightPx=400&maxWidthPx=600&key=${apiKey}`;
+              console.log(`Found photo from details for ${place.displayName?.text}: ${photoUrl}`);
+            }
           } else {
             console.log(`Details API failed with status: ${detailsResponse.status}`);
           }
@@ -121,6 +137,7 @@ serve(async (req) => {
         phone: place.nationalPhoneNumber || undefined,
         website: website || undefined,
         email: email || undefined,
+        photoUrl: photoUrl || undefined,
         latitude: place.location.latitude,
         longitude: place.location.longitude
       };
