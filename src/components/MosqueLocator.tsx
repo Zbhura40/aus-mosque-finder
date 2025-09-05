@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { MapPin, Search, Navigation, Clock } from "lucide-react";
+import { MapPin, Search, Navigation, Clock, MessageSquare } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import mosqueHero from "@/assets/mosque-hero.png";
 import DirectionsModal from "./DirectionsModal";
@@ -28,6 +29,7 @@ interface Mosque {
 }
 
 const MosqueLocator = () => {
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useState<SearchParams>({
     radius: '',
     locationType: null,
@@ -265,6 +267,19 @@ const MosqueLocator = () => {
               <p className="font-body text-xl lg:text-2xl text-white/90 mb-8 max-w-2xl leading-relaxed">
                 A new, free platform created for the community to easily find mosques across Australia
               </p>
+              
+              {/* User Feedback Button */}
+              <div className="flex justify-center lg:justify-start">
+                <Button
+                  onClick={() => navigate("/feedback")}
+                  variant="outline"
+                  size="lg"
+                  className="font-body text-lg font-medium bg-white/10 border-2 border-white/30 text-white hover:bg-white/20 hover:border-white/50 rounded-xl backdrop-blur-sm transition-all duration-300"
+                >
+                  <MessageSquare className="w-5 h-5 mr-3" />
+                  Share Your Feedback
+                </Button>
+              </div>
             </div>
             <div className="flex-1 max-w-md">
               <div className="relative">
