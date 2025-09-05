@@ -4,6 +4,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -105,6 +106,9 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
             </div>
             Mosque Details
           </DialogTitle>
+          <DialogDescription className="sr-only">
+            Detailed information about the selected mosque including contact details and location.
+          </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-6">

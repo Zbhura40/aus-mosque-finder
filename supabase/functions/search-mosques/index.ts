@@ -49,7 +49,7 @@ serve(async (req) => {
       headers: {
         'Content-Type': 'application/json',
         'X-Goog-Api-Key': apiKey,
-        'X-Goog-FieldMask': 'places.id,places.displayName,places.formattedAddress,places.location,places.rating,places.currentOpeningHours,places.nationalPhoneNumber'
+        'X-Goog-FieldMask': 'places.id,places.displayName,places.formattedAddress,places.location,places.rating,places.currentOpeningHours,places.nationalPhoneNumber,places.websiteUri,places.editorialSummary'
       },
       body: JSON.stringify(requestBody)
     });
@@ -62,13 +62,37 @@ serve(async (req) => {
     }
 
     // Calculate distances and format results
-    const mosques = (data.places || []).map((place: any) => {
+    const mosques = await Promise.all((data.places || []).map(async (place: any) => {
       const distance = calculateDistance(
         latitude, 
         longitude, 
         place.location.latitude, 
         place.location.longitude
       );
+
+      // Try to get more detailed information including website
+      let website = place.websiteUri;
+      let email = undefined;
+
+      // If no website from searchNearby, try Place Details API
+      if (!website && place.id) {
+        try {
+          const detailsUrl = `https://places.googleapis.com/v1/places/${place.id}`;
+          const detailsResponse = await fetch(detailsUrl, {
+            headers: {
+              'X-Goog-Api-Key': apiKey,
+              'X-Goog-FieldMask': 'websiteUri,editorialSummary'
+            }
+          });
+          
+          if (detailsResponse.ok) {
+            const detailsData = await detailsResponse.json();
+            website = detailsData.websiteUri || website;
+          }
+        } catch (error) {
+          console.log(`Could not fetch details for ${place.displayName?.text}:`, error);
+        }
+      }
 
       return {
         id: place.id,
@@ -78,10 +102,12 @@ serve(async (req) => {
         rating: place.rating || undefined,
         isOpen: place.currentOpeningHours?.openNow,
         phone: place.nationalPhoneNumber || undefined,
+        website: website || undefined,
+        email: email || undefined,
         latitude: place.location.latitude,
         longitude: place.location.longitude
       };
-    });
+    }));
 
     // Sort by distance
     mosques.sort((a, b) => parseFloat(a.distance) - parseFloat(b.distance));
