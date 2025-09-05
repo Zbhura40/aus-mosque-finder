@@ -1,0 +1,120 @@
+import "https://deno.land/x/xhr@0.1.0/mod.ts";
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+};
+
+interface SearchRequest {
+  latitude: number;
+  longitude: number;
+  radius: number; // in meters
+}
+
+serve(async (req) => {
+  if (req.method === 'OPTIONS') {
+    return new Response(null, { headers: corsHeaders });
+  }
+
+  try {
+    const { latitude, longitude, radius }: SearchRequest = await req.json();
+    const apiKey = Deno.env.get('GOOGLE_PLACES_API_KEY');
+
+    if (!apiKey) {
+      throw new Error('Google Places API key not configured');
+    }
+
+    // Use Google Places API (New) to search for mosques
+    const placesUrl = `https://places.googleapis.com/v1/places:searchNearby`;
+    
+    const requestBody = {
+      includedTypes: ["mosque"],
+      maxResultCount: 20,
+      locationRestriction: {
+        circle: {
+          center: {
+            latitude,
+            longitude
+          },
+          radius
+        }
+      },
+      regionCode: "AU", // Restrict to Australia
+      languageCode: "en"
+    };
+
+    const response = await fetch(placesUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Goog-Api-Key': apiKey,
+        'X-Goog-FieldMask': 'places.id,places.displayName,places.formattedAddress,places.location,places.rating,places.currentOpeningHours,places.nationalPhoneNumber'
+      },
+      body: JSON.stringify(requestBody)
+    });
+
+    const data = await response.json();
+    
+    if (!response.ok) {
+      console.error('Google Places API error:', data);
+      throw new Error(`Google Places API error: ${data.error?.message || 'Unknown error'}`);
+    }
+
+    // Calculate distances and format results
+    const mosques = (data.places || []).map((place: any) => {
+      const distance = calculateDistance(
+        latitude, 
+        longitude, 
+        place.location.latitude, 
+        place.location.longitude
+      );
+
+      return {
+        id: place.id,
+        name: place.displayName?.text || 'Unknown Mosque',
+        address: place.formattedAddress || 'Address not available',
+        distance: `${distance.toFixed(1)}km`,
+        rating: place.rating || undefined,
+        isOpen: place.currentOpeningHours?.openNow,
+        phone: place.nationalPhoneNumber || undefined,
+        latitude: place.location.latitude,
+        longitude: place.location.longitude
+      };
+    });
+
+    // Sort by distance
+    mosques.sort((a, b) => parseFloat(a.distance) - parseFloat(b.distance));
+
+    return new Response(JSON.stringify({ mosques }), {
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    });
+
+  } catch (error) {
+    console.error('Error in search-mosques function:', error);
+    return new Response(
+      JSON.stringify({ 
+        error: error.message,
+        mosques: []
+      }), 
+      {
+        status: 500,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      }
+    );
+  }
+});
+
+// Helper function to calculate distance between two coordinates
+function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
+  const R = 6371; // Radius of the Earth in kilometers
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  const distance = R * c;
+  return distance;
+}

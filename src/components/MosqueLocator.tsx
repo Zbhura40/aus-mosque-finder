@@ -54,20 +54,28 @@ const MosqueLocator = () => {
     }
   };
 
-  const handlePostcodeChange = (value: string) => {
+  const handlePostcodeChange = async (value: string) => {
     setSearchParams(prev => ({ ...prev, postcode: value }));
     
-    // Simulate postcode to location name conversion
-    // In real implementation, this would use Google Geocoding API
+    // Get location name from postcode using Google Geocoding API
     if (value.length >= 4) {
-      const mockLocations: Record<string, string> = {
-        '4103': 'South Brisbane, QLD',
-        '2000': 'Sydney CBD, NSW',
-        '3000': 'Melbourne CBD, VIC',
-        '6000': 'Perth CBD, WA',
-        '5000': 'Adelaide CBD, SA'
-      };
-      setPostcodeDisplay(mockLocations[value] || `Postcode ${value}`);
+      try {
+        const { supabase } = await import("@/integrations/supabase/client");
+        const { data, error } = await supabase.functions.invoke('geocode-postcode', {
+          body: { postcode: value }
+        });
+        
+        if (error) throw error;
+        
+        if (data && data.locationName) {
+          setPostcodeDisplay(data.locationName);
+        } else {
+          setPostcodeDisplay(`Postcode ${value}`);
+        }
+      } catch (error) {
+        console.error('Error geocoding postcode:', error);
+        setPostcodeDisplay(`Postcode ${value}`);
+      }
     } else {
       setPostcodeDisplay('');
     }
@@ -116,42 +124,93 @@ const MosqueLocator = () => {
     setIsSearching(true);
     setHasSearched(true);
 
-    // Simulate API call - replace with actual Google Places API integration
-    setTimeout(() => {
-      const mockMosques: Mosque[] = [
-        {
-          id: '1',
-          name: 'Islamic Centre of Brisbane',
-          address: '123 Islamic Way, South Brisbane QLD 4103',
-          distance: '2.3km',
-          rating: 4.8,
-          isOpen: true,
-        },
-        {
-          id: '2',
-          name: 'Al-Noor Mosque',
-          address: '456 Crescent Street, West End QLD 4101',
-          distance: '3.7km',
-          rating: 4.6,
-          isOpen: true,
-        },
-        {
-          id: '3',
-          name: 'Masjid As-Salam',
-          address: '789 Prayer Avenue, Woolloongabba QLD 4102',
-          distance: '4.1km',
-          rating: 4.9,
-          isOpen: false,
-        },
-      ];
+    try {
+      let latitude: number;
+      let longitude: number;
 
-      setMosques(mockMosques);
-      setIsSearching(false);
+      if (searchParams.locationType === 'current') {
+        // Get current location
+        const position = await new Promise<GeolocationPosition>((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(resolve, reject, {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 300000
+          });
+        });
+        
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+      } else {
+        // Geocode postcode to get coordinates
+        const { supabase } = await import("@/integrations/supabase/client");
+        const { data: geocodeData, error: geocodeError } = await supabase.functions.invoke('geocode-postcode', {
+          body: { postcode: searchParams.postcode }
+        });
+        
+        if (geocodeError) throw geocodeError;
+        if (!geocodeData || !geocodeData.latitude || !geocodeData.longitude) {
+          throw new Error('Unable to find location for this postcode');
+        }
+        
+        latitude = geocodeData.latitude;
+        longitude = geocodeData.longitude;
+      }
+
+      // Convert radius to meters (Google Places API uses meters)
+      let radiusInMeters: number;
+      switch (searchParams.radius) {
+        case '3':
+          radiusInMeters = 3000;
+          break;
+        case '10':
+          radiusInMeters = 10000;
+          break;
+        case '25':
+          radiusInMeters = 50000; // 25-50km range, using 50km
+          break;
+        default:
+          radiusInMeters = 10000;
+      }
+
+      // Search for mosques using Google Places API
+      const { supabase } = await import("@/integrations/supabase/client");
+      const { data: searchData, error: searchError } = await supabase.functions.invoke('search-mosques', {
+        body: {
+          latitude,
+          longitude,
+          radius: radiusInMeters
+        }
+      });
+
+      if (searchError) throw searchError;
+
+      const foundMosques = searchData?.mosques || [];
+      setMosques(foundMosques);
+      
       toast({
         title: "Search complete",
-        description: `Found ${mockMosques.length} mosques within ${searchParams.radius}km`,
+        description: `Found ${foundMosques.length} mosques within ${searchParams.radius}km`,
       });
-    }, 1500);
+
+    } catch (error: any) {
+      console.error('Search error:', error);
+      setMosques([]);
+      
+      let errorMessage = 'An error occurred while searching for mosques.';
+      if (error.message?.includes('location')) {
+        errorMessage = 'Unable to determine your location. Please check your location settings or try using a postcode.';
+      } else if (error.message?.includes('postcode')) {
+        errorMessage = 'Unable to find the specified postcode. Please check and try again.';
+      }
+      
+      toast({
+        variant: "destructive",
+        title: "Search failed",
+        description: errorMessage,
+      });
+    } finally {
+      setIsSearching(false);
+    }
   };
 
   const isSearchDisabled = !searchParams.radius || !searchParams.locationType || 
