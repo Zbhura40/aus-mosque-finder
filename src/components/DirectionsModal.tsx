@@ -36,10 +36,14 @@ const DirectionsModal = ({
   const [directionsRenderer, setDirectionsRenderer] = useState<google.maps.DirectionsRenderer | null>(null);
 
   useEffect(() => {
-    if (!isOpen || !mapRef.current) return;
+    if (!isOpen || !mapRef.current) {
+      console.log('DirectionsModal: Not opening - isOpen:', isOpen, 'mapRef.current:', mapRef.current);
+      return;
+    }
 
     const initializeMap = async () => {
       try {
+        console.log('DirectionsModal: Starting map initialization');
         setIsLoading(true);
         
         const loader = new Loader({
@@ -48,7 +52,9 @@ const DirectionsModal = ({
           libraries: ['places', 'geometry']
         });
 
+        console.log('DirectionsModal: Loading Google Maps API');
         await loader.load();
+        console.log('DirectionsModal: Google Maps API loaded successfully');
 
         const mapInstance = new google.maps.Map(mapRef.current!, {
           zoom: 13,
@@ -70,6 +76,8 @@ const DirectionsModal = ({
           ]
         });
 
+        console.log('DirectionsModal: Map instance created', mapInstance);
+
         const directionsServiceInstance = new google.maps.DirectionsService();
         const directionsRendererInstance = new google.maps.DirectionsRenderer({
           suppressMarkers: false,
@@ -80,18 +88,22 @@ const DirectionsModal = ({
           }
         });
 
+        console.log('DirectionsModal: Directions service and renderer created');
+
         directionsRendererInstance.setMap(mapInstance);
 
         setMap(mapInstance);
         setDirectionsService(directionsServiceInstance);
         setDirectionsRenderer(directionsRendererInstance);
 
+        console.log('DirectionsModal: Starting route calculation');
         // Calculate and display route
         await calculateRoute(directionsServiceInstance, directionsRendererInstance);
         
+        console.log('DirectionsModal: Map initialization complete');
         setIsLoading(false);
       } catch (error) {
-        console.error('Error initializing map:', error);
+        console.error('DirectionsModal: Error initializing map:', error);
         toast({
           variant: 'destructive',
           title: 'Map Error',
@@ -109,12 +121,15 @@ const DirectionsModal = ({
     directionsRenderer: google.maps.DirectionsRenderer
   ) => {
     try {
+      console.log('DirectionsModal: Starting route calculation with userLocation:', userLocation, 'userPostcode:', userPostcode);
       let origin: string | google.maps.LatLng;
 
       if (userLocation) {
         origin = new google.maps.LatLng(userLocation.latitude, userLocation.longitude);
+        console.log('DirectionsModal: Using user location as origin:', origin);
       } else if (userPostcode) {
         origin = `${userPostcode}, Australia`;
+        console.log('DirectionsModal: Using postcode as origin:', origin);
       } else {
         throw new Error('No origin location available');
       }
@@ -122,6 +137,8 @@ const DirectionsModal = ({
       const destination = mosque.latitude && mosque.longitude
         ? new google.maps.LatLng(mosque.latitude, mosque.longitude)
         : mosque.address;
+      
+      console.log('DirectionsModal: Destination:', destination);
 
       const request: google.maps.DirectionsRequest = {
         origin,
@@ -131,7 +148,9 @@ const DirectionsModal = ({
         region: 'AU'
       };
 
+      console.log('DirectionsModal: Making directions request:', request);
       const result = await directionsService.route(request);
+      console.log('DirectionsModal: Directions result:', result);
       directionsRenderer.setDirections(result);
 
       // Add custom markers
@@ -173,7 +192,7 @@ const DirectionsModal = ({
       }
 
     } catch (error) {
-      console.error('Error calculating route:', error);
+      console.error('DirectionsModal: Error calculating route:', error);
       toast({
         variant: 'destructive',
         title: 'Route Error',
