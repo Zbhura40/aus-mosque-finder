@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { MapPin, Navigation, X, Loader2 } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
@@ -34,20 +34,40 @@ const DirectionsModal = ({
   const [map, setMap] = useState<google.maps.Map | null>(null);
   const [directionsService, setDirectionsService] = useState<google.maps.DirectionsService | null>(null);
   const [directionsRenderer, setDirectionsRenderer] = useState<google.maps.DirectionsRenderer | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!isOpen || !mapRef.current) {
-      console.log('DirectionsModal: Not opening - isOpen:', isOpen, 'mapRef.current:', mapRef.current);
+    if (!isOpen) {
+      console.log('DirectionsModal: Modal not open');
       return;
     }
+
+    // Reset error state when modal opens
+    setError(null);
+
+    // Wait for DOM to be ready
+    const initializeMapWithDelay = () => {
+      if (!mapRef.current) {
+        console.log('DirectionsModal: Map container not ready, retrying...');
+        setTimeout(initializeMapWithDelay, 100);
+        return;
+      }
+      initializeMap();
+    };
 
     const initializeMap = async () => {
       try {
         console.log('DirectionsModal: Starting map initialization');
         setIsLoading(true);
         
+        // Validate API key
+        const apiKey = 'AIzaSyCZK5ztF6qOSQ_4kKW6fnLYloj0VqfuFdg';
+        if (!apiKey) {
+          throw new Error('Google Maps API key is missing');
+        }
+        
         const loader = new Loader({
-          apiKey: 'AIzaSyCZK5ztF6qOSQ_4kKW6fnLYloj0VqfuFdg',
+          apiKey,
           version: 'weekly',
           libraries: ['places', 'geometry']
         });
@@ -55,6 +75,11 @@ const DirectionsModal = ({
         console.log('DirectionsModal: Loading Google Maps API');
         await loader.load();
         console.log('DirectionsModal: Google Maps API loaded successfully');
+        
+        // Ensure google.maps is available
+        if (!window.google || !window.google.maps) {
+          throw new Error('Google Maps API failed to load properly');
+        }
 
         const mapInstance = new google.maps.Map(mapRef.current!, {
           zoom: 13,
@@ -104,6 +129,7 @@ const DirectionsModal = ({
         setIsLoading(false);
       } catch (error) {
         console.error('DirectionsModal: Error initializing map:', error);
+        setError(error instanceof Error ? error.message : 'Failed to load Google Maps');
         toast({
           variant: 'destructive',
           title: 'Map Error',
@@ -112,8 +138,9 @@ const DirectionsModal = ({
         setIsLoading(false);
       }
     };
-
-    initializeMap();
+    
+    // Start initialization with delay
+    initializeMapWithDelay();
   }, [isOpen, mosque, userLocation, userPostcode]);
 
   const calculateRoute = async (
@@ -280,9 +307,9 @@ const DirectionsModal = ({
                 <DialogTitle className="font-elegant text-2xl text-islamic-navy">
                   Directions to {mosque.name}
                 </DialogTitle>
-                <p className="font-body text-sm text-muted-foreground mt-1">
+                <DialogDescription className="font-body text-sm text-muted-foreground mt-1">
                   {mosque.address}
-                </p>
+                </DialogDescription>
               </div>
             </div>
             <Button
@@ -296,8 +323,8 @@ const DirectionsModal = ({
           </div>
         </DialogHeader>
 
-        <div className="flex-1 relative">
-          {isLoading && (
+        <div className="flex-1 relative min-h-[400px] h-full">
+          {isLoading && !error && (
             <div className="absolute inset-0 bg-background/80 backdrop-blur-sm z-10 flex items-center justify-center">
               <div className="text-center">
                 <Loader2 className="w-8 h-8 animate-spin text-islamic-green mx-auto mb-3" />
@@ -306,7 +333,34 @@ const DirectionsModal = ({
             </div>
           )}
           
-          <div ref={mapRef} className="w-full h-full" />
+          {error && (
+            <div className="absolute inset-0 bg-background/90 backdrop-blur-sm z-10 flex items-center justify-center">
+              <div className="text-center p-6">
+                <div className="w-12 h-12 bg-destructive/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <X className="w-6 h-6 text-destructive" />
+                </div>
+                <h3 className="font-elegant text-lg text-foreground mb-2">Map Loading Failed</h3>
+                <p className="font-body text-sm text-muted-foreground mb-4 max-w-sm">{error}</p>
+                <Button 
+                  onClick={() => {
+                    setError(null);
+                    setIsLoading(true);
+                    // Retry initialization
+                    if (mapRef.current) {
+                      const initializeMap = async () => {
+                        // ... existing initialization logic
+                      };
+                    }
+                  }}
+                  className="bg-islamic-green hover:bg-islamic-green-dark text-white font-body"
+                >
+                  Try Again
+                </Button>
+              </div>
+            </div>
+          )}
+          
+          <div ref={mapRef} className="w-full h-full min-h-[400px]" />
           
           <div className="absolute bottom-4 left-4 right-4 flex gap-3 justify-center">
             <Button
