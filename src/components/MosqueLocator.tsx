@@ -6,6 +6,7 @@ import { MapPin, Search, Navigation, Clock } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import mosqueHero from "@/assets/mosque-hero.png";
 import DirectionsModal from "./DirectionsModal";
+import MosqueDetailsModal from "./MosqueDetailsModal";
 
 interface SearchParams {
   radius: string;
@@ -20,6 +21,9 @@ interface Mosque {
   distance: string;
   rating?: number;
   isOpen?: boolean;
+  phone?: string;
+  website?: string;
+  email?: string;
 }
 
 const MosqueLocator = () => {
@@ -33,6 +37,10 @@ const MosqueLocator = () => {
   const [mosques, setMosques] = useState<Mosque[]>([]);
   const [hasSearched, setHasSearched] = useState(false);
   const [directionsModal, setDirectionsModal] = useState<{
+    isOpen: boolean;
+    mosque: Mosque | null;
+  }>({ isOpen: false, mosque: null });
+  const [detailsModal, setDetailsModal] = useState<{
     isOpen: boolean;
     mosque: Mosque | null;
   }>({ isOpen: false, mosque: null });
@@ -229,6 +237,14 @@ const MosqueLocator = () => {
 
   const closeDirectionsModal = () => {
     setDirectionsModal({ isOpen: false, mosque: null });
+  };
+
+  const handleDetails = (mosque: Mosque) => {
+    setDetailsModal({ isOpen: true, mosque });
+  };
+
+  const closeDetailsModal = () => {
+    setDetailsModal({ isOpen: false, mosque: null });
   };
 
   const isSearchDisabled = !searchParams.radius || !searchParams.locationType || 
@@ -434,7 +450,12 @@ const MosqueLocator = () => {
                           <Navigation className="w-4 h-4 mr-2" />
                           Directions
                         </Button>
-                        <Button variant="default" size="lg" className="font-body bg-islamic-green hover:bg-islamic-green-dark rounded-xl">
+                        <Button 
+                          variant="default" 
+                          size="lg" 
+                          className="font-body bg-islamic-green hover:bg-islamic-green-dark rounded-xl"
+                          onClick={() => handleDetails(mosque)}
+                        >
                           Details
                         </Button>
                       </div>
@@ -469,6 +490,13 @@ const MosqueLocator = () => {
           userPostcode={searchParams.locationType === 'postcode' ? searchParams.postcode : undefined}
         />
       )}
+
+      {/* Details Modal */}
+      <MosqueDetailsModal
+        isOpen={detailsModal.isOpen}
+        onClose={closeDetailsModal}
+        mosque={detailsModal.mosque}
+      />
     </div>
   );
 };
