@@ -224,12 +224,11 @@ const MosqueLocator = () => {
         <div className="relative container mx-auto px-4 py-20">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="flex-1 text-center lg:text-left">
-              <h1 className="font-elegant text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                Find Mosques Near You
+              <h1 className="font-elegant text-5xl lg:text-7xl font-bold text-white mb-8 leading-tight">
+                Find my mosque
               </h1>
-              <p className="font-body text-xl text-white/90 mb-8 max-w-2xl leading-relaxed">
-                Discover nearby mosques across Australia with precise location search
-                and detailed information to help you find your place of worship.
+              <p className="font-body text-xl lg:text-2xl text-white/90 mb-8 max-w-2xl leading-relaxed">
+                A new, free platform created for the community to easily find mosques across Australia
               </p>
             </div>
             <div className="flex-1 max-w-md">
