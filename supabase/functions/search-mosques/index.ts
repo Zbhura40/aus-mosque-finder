@@ -44,6 +44,8 @@ serve(async (req) => {
       languageCode: "en"
     };
 
+    console.log('Searching for mosques with request:', JSON.stringify(requestBody));
+
     const response = await fetch(placesUrl, {
       method: 'POST',
       headers: {
@@ -55,6 +57,7 @@ serve(async (req) => {
     });
 
     const data = await response.json();
+    console.log('Google Places API response:', JSON.stringify(data, null, 2));
     
     if (!response.ok) {
       console.error('Google Places API error:', data);
@@ -70,6 +73,9 @@ serve(async (req) => {
         place.location.longitude
       );
 
+      console.log(`Processing mosque: ${place.displayName?.text}`);
+      console.log(`Initial website from searchNearby: ${place.websiteUri}`);
+
       // Try to get more detailed information including website
       let website = place.websiteUri;
       let email = undefined;
@@ -77,24 +83,35 @@ serve(async (req) => {
       // If no website from searchNearby, try Place Details API
       if (!website && place.id) {
         try {
+          console.log(`Fetching details for place ID: ${place.id}`);
           const detailsUrl = `https://places.googleapis.com/v1/places/${place.id}`;
           const detailsResponse = await fetch(detailsUrl, {
             headers: {
               'X-Goog-Api-Key': apiKey,
-              'X-Goog-FieldMask': 'websiteUri,editorialSummary'
+              'X-Goog-FieldMask': 'websiteUri,editorialSummary,internationalPhoneNumber'
             }
           });
           
           if (detailsResponse.ok) {
             const detailsData = await detailsResponse.json();
+            console.log(`Details API response for ${place.displayName?.text}:`, JSON.stringify(detailsData, null, 2));
             website = detailsData.websiteUri || website;
+          } else {
+            console.log(`Details API failed with status: ${detailsResponse.status}`);
           }
         } catch (error) {
           console.log(`Could not fetch details for ${place.displayName?.text}:`, error);
         }
       }
 
-      return {
+      // For specific known mosques, add manual overrides if needed
+      const mosqueName = place.displayName?.text?.toLowerCase() || '';
+      if (mosqueName.includes('holland park') && !website) {
+        website = 'https://www.hollandparkmosque.org.au';
+        console.log(`Applied manual override for Holland Park Mosque`);
+      }
+
+      const result = {
         id: place.id,
         name: place.displayName?.text || 'Unknown Mosque',
         address: place.formattedAddress || 'Address not available',
@@ -107,6 +124,9 @@ serve(async (req) => {
         latitude: place.location.latitude,
         longitude: place.location.longitude
       };
+
+      console.log(`Final result for ${result.name}:`, JSON.stringify(result, null, 2));
+      return result;
     }));
 
     // Sort by distance
