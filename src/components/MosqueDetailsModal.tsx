@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { MapPin, Phone, Globe, Mail, Star, Clock, ExternalLink, Image as ImageIcon } from "lucide-react";
+import { MapPin, Phone, Globe, Star, Clock, ExternalLink, Image as ImageIcon } from "lucide-react";
 import mosquePlaceholder from "@/assets/mosque-placeholder.jpg";
 
 interface Mosque {
@@ -20,7 +20,6 @@ interface Mosque {
   isOpen?: boolean;
   phone?: string;
   website?: string;
-  email?: string;
   photoUrl?: string;
 }
 
@@ -196,14 +195,6 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
               value={mosque.website}
               isLink={true}
               linkType="external"
-            />
-            
-            <InfoRow 
-              icon={Mail} 
-              label="Email" 
-              value={mosque.email}
-              isLink={true}
-              linkType="mailto"
             />
           </div>
 

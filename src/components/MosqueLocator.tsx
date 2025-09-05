@@ -24,7 +24,6 @@ interface Mosque {
   isOpen?: boolean;
   phone?: string;
   website?: string;
-  email?: string;
   photoUrl?: string;
 }
 
