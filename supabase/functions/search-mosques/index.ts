@@ -83,10 +83,17 @@ serve(async (req) => {
 
       // Get photo URL from Google Places Photos API
       if (place.photos && place.photos.length > 0) {
+        // Log the photo data structure to debug
+        console.log(`Photo data for ${place.displayName?.text}:`, JSON.stringify(place.photos[0], null, 2));
+        
         const photoReference = place.photos[0].name;
-        // Construct photo URL using Places API
-        photoUrl = `https://places.googleapis.com/v1/${photoReference}/media?maxHeightPx=400&maxWidthPx=600&key=${apiKey}`;
-        console.log(`Found photo for ${place.displayName?.text}: ${photoUrl}`);
+        if (photoReference) {
+          // Use the correct format for Google Places API v1 photos
+          photoUrl = `https://places.googleapis.com/v1/${photoReference}/media?maxHeightPx=400&maxWidthPx=600&key=${apiKey}`;
+          console.log(`Constructed photo URL for ${place.displayName?.text}: ${photoUrl}`);
+        }
+      } else {
+        console.log(`No photos found for ${place.displayName?.text}`);
       }
 
       // If no website from searchNearby, try Place Details API
@@ -108,9 +115,13 @@ serve(async (req) => {
             
             // Get photo from details if not found in search
             if (!photoUrl && detailsData.photos && detailsData.photos.length > 0) {
+              console.log(`Photo details data:`, JSON.stringify(detailsData.photos[0], null, 2));
+              
               const photoReference = detailsData.photos[0].name;
-              photoUrl = `https://places.googleapis.com/v1/${photoReference}/media?maxHeightPx=400&maxWidthPx=600&key=${apiKey}`;
-              console.log(`Found photo from details for ${place.displayName?.text}: ${photoUrl}`);
+              if (photoReference) {
+                photoUrl = `https://places.googleapis.com/v1/${photoReference}/media?maxHeightPx=400&maxWidthPx=600&key=${apiKey}`;
+                console.log(`Constructed photo URL from details for ${place.displayName?.text}: ${photoUrl}`);
+              }
             }
           } else {
             console.log(`Details API failed with status: ${detailsResponse.status}`);
