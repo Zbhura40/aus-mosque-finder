@@ -217,27 +217,30 @@ const MosqueLocator = () => {
     (searchParams.locationType === 'postcode' && !searchParams.postcode);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background elegant-texture">
       {/* Hero Section */}
       <div className="relative hero-gradient overflow-hidden">
-        <div className="absolute inset-0 mosque-pattern"></div>
+        <div className="absolute inset-0 elegant-texture opacity-30"></div>
         <div className="relative container mx-auto px-4 py-20">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="flex-1 text-center lg:text-left">
-              <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6">
+              <h1 className="font-elegant text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                 Find Mosques Near You
               </h1>
-              <p className="text-xl text-white/90 mb-8 max-w-2xl">
+              <p className="font-body text-xl text-white/90 mb-8 max-w-2xl leading-relaxed">
                 Discover nearby mosques across Australia with precise location search
                 and detailed information to help you find your place of worship.
               </p>
             </div>
             <div className="flex-1 max-w-md">
-              <img 
-                src={mosqueHero} 
-                alt="Beautiful mosque illustration" 
-                className="w-full h-auto rounded-lg shadow-2xl"
-              />
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-3xl transform rotate-3"></div>
+                <img 
+                  src={mosqueHero} 
+                  alt="Beautiful mosque illustration" 
+                  className="relative w-full h-auto rounded-2xl shadow-2xl border-4 border-white/20"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -245,26 +248,28 @@ const MosqueLocator = () => {
 
       {/* Search Section */}
       <div className="container mx-auto px-4 -mt-16 relative z-10">
-        <Card className="card-gradient shadow-2xl border-0">
-          <CardHeader className="text-center pb-6">
-            <CardTitle className="text-2xl font-bold text-primary flex items-center justify-center gap-2">
-              <MapPin className="w-6 h-6 text-sacred-green" />
+        <Card className="card-gradient shadow-2xl border border-border/50 rounded-2xl overflow-hidden">
+          <CardHeader className="text-center pb-6 relative">
+            <CardTitle className="font-elegant text-3xl font-semibold text-islamic-navy flex items-center justify-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-islamic-green/20 flex items-center justify-center">
+                <MapPin className="w-5 h-5 text-islamic-green" />
+              </div>
               Search for Mosques
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-8">
             {/* Radius Selection */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-foreground">Search Radius</h3>
+            <div className="space-y-6">
+              <h3 className="font-elegant text-xl font-semibold text-islamic-navy">Search Radius</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {radiusOptions.map((option) => (
                   <Button
                     key={option.value}
                     variant={searchParams.radius === option.value ? "default" : "outline"}
-                    className={`h-14 text-lg font-medium transition-all duration-200 ${
+                    className={`h-16 font-body text-lg font-medium transition-all duration-300 rounded-xl ${
                       searchParams.radius === option.value 
-                        ? "bg-sacred-green hover:bg-sacred-green-dark text-white shadow-lg scale-105" 
-                        : "hover:bg-sacred-green/10 hover:border-sacred-green hover:text-sacred-green"
+                        ? "bg-islamic-green hover:bg-islamic-green-dark text-white shadow-lg scale-105 border-islamic-green" 
+                        : "hover:bg-islamic-green/10 hover:border-islamic-green hover:text-islamic-green border-2 border-muted"
                     }`}
                     onClick={() => handleRadiusSelect(option.value)}
                   >
@@ -275,49 +280,50 @@ const MosqueLocator = () => {
             </div>
 
             {/* Location Type Selection */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-foreground">Location</h3>
+            <div className="space-y-6">
+              <h3 className="font-elegant text-xl font-semibold text-islamic-navy">Location</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {/* Current Location */}
                 <Button
                   variant={searchParams.locationType === 'current' ? "default" : "outline"}
-                  className={`h-16 text-lg font-medium transition-all duration-200 ${
+                  className={`h-18 font-body text-lg font-medium transition-all duration-300 rounded-xl ${
                     searchParams.locationType === 'current'
-                      ? "bg-gold hover:bg-gold-dark text-white shadow-lg" 
-                      : "hover:bg-gold/10 hover:border-gold hover:text-gold"
+                      ? "bg-islamic-navy hover:bg-islamic-navy-light text-white shadow-lg border-islamic-navy" 
+                      : "hover:bg-islamic-navy/10 hover:border-islamic-navy hover:text-islamic-navy border-2 border-muted"
                   }`}
                   onClick={handleCurrentLocation}
                 >
-                  <Navigation className="w-5 h-5 mr-2" />
+                  <Navigation className="w-5 h-5 mr-3" />
                   Use Current Location
                 </Button>
 
                 {/* Postcode */}
-                <div className="space-y-2">
+                <div className="space-y-3">
                   <Button
                     variant={searchParams.locationType === 'postcode' ? "default" : "outline"}
-                    className={`w-full h-16 text-lg font-medium transition-all duration-200 ${
+                    className={`w-full h-18 font-body text-lg font-medium transition-all duration-300 rounded-xl ${
                       searchParams.locationType === 'postcode'
-                        ? "bg-gold hover:bg-gold-dark text-white shadow-lg" 
-                        : "hover:bg-gold/10 hover:border-gold hover:text-gold"
+                        ? "bg-islamic-navy hover:bg-islamic-navy-light text-white shadow-lg border-islamic-navy" 
+                        : "hover:bg-islamic-navy/10 hover:border-islamic-navy hover:text-islamic-navy border-2 border-muted"
                     }`}
                     onClick={() => handleLocationTypeSelect('postcode')}
                   >
-                    <MapPin className="w-5 h-5 mr-2" />
+                    <MapPin className="w-5 h-5 mr-3" />
                     Enter Postcode
                   </Button>
                   
                   {searchParams.locationType === 'postcode' && (
-                    <div className="space-y-2">
+                    <div className="space-y-3">
                       <Input
                         placeholder="Enter postcode (e.g., 4103)"
                         value={searchParams.postcode}
                         onChange={(e) => handlePostcodeChange(e.target.value)}
-                        className="h-12 text-lg"
+                        className="h-14 font-body text-lg rounded-xl border-2 border-muted focus:border-islamic-green"
                       />
                       {postcodeDisplay && (
-                        <p className="text-sm text-muted-foreground font-medium">
-                          📍 {postcodeDisplay}
+                        <p className="font-body text-sm text-islamic-green font-medium flex items-center gap-2">
+                          <span className="w-2 h-2 bg-islamic-green rounded-full"></span>
+                          {postcodeDisplay}
                         </p>
                       )}
                     </div>
@@ -330,16 +336,16 @@ const MosqueLocator = () => {
             <Button
               onClick={handleSearch}
               disabled={isSearchDisabled || isSearching}
-              className="w-full h-16 text-lg font-semibold bg-primary hover:bg-primary-soft transition-all duration-200 disabled:opacity-50"
+              className="w-full h-18 font-elegant text-xl font-semibold bg-islamic-green hover:bg-islamic-green-dark text-white shadow-lg transition-all duration-300 disabled:opacity-50 rounded-xl"
             >
               {isSearching ? (
                 <>
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-3"></div>
                   Searching...
                 </>
               ) : (
                 <>
-                  <Search className="w-5 h-5 mr-2" />
+                  <Search className="w-6 h-6 mr-3" />
                   Find Mosques
                 </>
               )}
@@ -351,10 +357,10 @@ const MosqueLocator = () => {
       {/* Results Section */}
       {hasSearched && (
         <div className="container mx-auto px-4 py-16">
-          <h2 className="text-3xl font-bold text-center mb-12 text-primary">
+          <h2 className="font-elegant text-4xl font-bold text-center mb-12 text-islamic-navy">
             Search Results
             {!isSearching && mosques.length > 0 && (
-              <span className="text-lg font-normal text-muted-foreground ml-2">
+              <span className="font-body text-xl font-normal text-muted-foreground ml-3 block mt-2">
                 ({mosques.length} mosques found)
               </span>
             )}
@@ -362,34 +368,36 @@ const MosqueLocator = () => {
           
           {isSearching ? (
             <div className="flex justify-center items-center py-20">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-sacred-green"></div>
+              <div className="animate-spin rounded-full h-16 w-16 border-b-3 border-islamic-green"></div>
             </div>
           ) : (
-            <div className="grid gap-6 md:gap-8">
+            <div className="grid gap-8">
               {mosques.map((mosque) => (
-                <Card key={mosque.id} className="hover:shadow-lg transition-all duration-200 border-l-4 border-l-sacred-green">
-                  <CardContent className="p-6">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <Card key={mosque.id} className="hover:shadow-xl transition-all duration-300 border-l-6 border-l-islamic-green rounded-2xl overflow-hidden elegant-texture">
+                  <CardContent className="p-8">
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                       <div className="flex-1">
-                        <div className="flex items-start gap-3">
-                          <div className="bg-sacred-green/10 p-2 rounded-full">
-                            <MapPin className="w-5 h-5 text-sacred-green" />
+                        <div className="flex items-start gap-4">
+                          <div className="bg-islamic-green/15 p-3 rounded-2xl">
+                            <MapPin className="w-6 h-6 text-islamic-green" />
                           </div>
                           <div>
-                            <h3 className="text-xl font-semibold text-foreground mb-1">
+                            <h3 className="font-elegant text-2xl font-semibold text-islamic-navy mb-2">
                               {mosque.name}
                             </h3>
-                            <p className="text-muted-foreground mb-2">{mosque.address}</p>
-                            <div className="flex items-center gap-4 text-sm">
-                              <span className="font-medium text-primary">{mosque.distance}</span>
+                            <p className="font-body text-lg text-muted-foreground mb-3 leading-relaxed">{mosque.address}</p>
+                            <div className="flex items-center gap-6 font-body text-base">
+                              <span className="font-medium text-islamic-green bg-islamic-green/10 px-3 py-1 rounded-full">
+                                {mosque.distance}
+                              </span>
                               {mosque.rating && (
-                                <span className="flex items-center gap-1">
-                                  ⭐ {mosque.rating}
+                                <span className="flex items-center gap-2 text-amber-600">
+                                  ⭐ <span className="font-medium">{mosque.rating}</span>
                                 </span>
                               )}
                               {mosque.isOpen !== undefined && (
-                                <span className={`flex items-center gap-1 ${
-                                  mosque.isOpen ? 'text-sacred-green' : 'text-red-500'
+                                <span className={`flex items-center gap-2 font-medium ${
+                                  mosque.isOpen ? 'text-islamic-green' : 'text-red-500'
                                 }`}>
                                   <Clock className="w-4 h-4" />
                                   {mosque.isOpen ? 'Open' : 'Closed'}
@@ -399,11 +407,11 @@ const MosqueLocator = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="flex gap-2">
-                        <Button variant="outline" size="sm">
+                      <div className="flex gap-3">
+                        <Button variant="outline" size="lg" className="font-body border-2 border-islamic-navy text-islamic-navy hover:bg-islamic-navy/10 rounded-xl">
                           Directions
                         </Button>
-                        <Button variant="default" size="sm" className="bg-sacred-green hover:bg-sacred-green-dark">
+                        <Button variant="default" size="lg" className="font-body bg-islamic-green hover:bg-islamic-green-dark rounded-xl">
                           Details
                         </Button>
                       </div>
@@ -416,11 +424,11 @@ const MosqueLocator = () => {
 
           {!isSearching && mosques.length === 0 && (
             <div className="text-center py-20">
-              <div className="bg-muted/50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
-                <MapPin className="w-10 h-10 text-muted-foreground" />
+              <div className="bg-islamic-green/10 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-8">
+                <MapPin className="w-12 h-12 text-islamic-green" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">No mosques found</h3>
-              <p className="text-muted-foreground max-w-md mx-auto">
+              <h3 className="font-elegant text-2xl font-semibold mb-4 text-islamic-navy">No mosques found</h3>
+              <p className="font-body text-lg text-muted-foreground max-w-lg mx-auto leading-relaxed">
                 No mosques were found within the selected radius. Try expanding your search radius or checking your location.
               </p>
             </div>

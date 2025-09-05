@@ -19,8 +19,10 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Inter', 'system-ui', 'sans-serif'],
-				display: ['Playfair Display', 'serif'],
+				sans: ['Crimson Text', 'serif'],
+				serif: ['Playfair Display', 'serif'],
+				elegant: ['Playfair Display', 'serif'],
+				body: ['Crimson Text', 'serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -57,16 +59,16 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				'sacred-green': {
-					DEFAULT: 'hsl(var(--sacred-green))',
-					light: 'hsl(var(--sacred-green-light))',
-					dark: 'hsl(var(--sacred-green-dark))'
+				'islamic-green': {
+					DEFAULT: 'hsl(var(--islamic-green))',
+					light: 'hsl(var(--islamic-green-light))',
+					dark: 'hsl(var(--islamic-green-dark))'
 				},
-				gold: {
-					DEFAULT: 'hsl(var(--gold))',
-					light: 'hsl(var(--gold-light))',
-					dark: 'hsl(var(--gold-dark))'
-				},
+				'islamic-navy': 'hsl(var(--primary))',
+				'islamic-navy-light': 'hsl(var(--primary-soft))',
+				'cream': 'hsl(var(--cream))',
+				'cream-dark': 'hsl(var(--cream-dark))',
+				'text-elegant': 'hsl(var(--text-elegant))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',

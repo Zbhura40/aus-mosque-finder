@@ -8,100 +8,99 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Mosque Locator Design System - Inspired by Islamic Architecture */
-    --background: 0 0% 100%;
-    --foreground: 215 25% 27%;
+    /* Elegant Islamic Design System - Inspired by the Screenshot */
+    --background: 45 25% 92%;
+    --foreground: 220 25% 25%;
     
     /* Islamic Navy Blue - Main Brand Color */
-    --primary: 215 30% 25%;
-    --primary-foreground: 0 0% 100%;
-    --primary-soft: 215 20% 35%;
+    --primary: 220 50% 25%;
+    --primary-foreground: 45 25% 92%;
+    --primary-soft: 220 40% 35%;
     
-    /* Sacred Green - Islamic Color */
-    --sacred-green: 88 50% 45%;
-    --sacred-green-light: 88 40% 55%;
-    --sacred-green-dark: 88 60% 35%;
+    /* Islamic Green - Sacred Color */
+    --islamic-green: 160 60% 45%;
+    --islamic-green-light: 160 50% 55%;
+    --islamic-green-dark: 160 60% 35%;
     
-    /* Golden Accent - Mosque Dome Inspiration */
-    --gold: 43 96% 56%;
-    --gold-light: 43 88% 65%;
-    --gold-dark: 43 100% 45%;
+    /* Cream/Beige - Background Colors */
+    --cream: 45 25% 92%;
+    --cream-dark: 45 20% 88%;
+    --text-elegant: 220 25% 25%;
     
-    --card: 0 0% 100%;
-    --card-foreground: 215 25% 27%;
+    --card: 45 35% 96%;
+    --card-foreground: 220 25% 25%;
     
-    --secondary: 210 20% 96%;
-    --secondary-foreground: 215 25% 27%;
+    --secondary: 45 20% 85%;
+    --secondary-foreground: 220 25% 25%;
     
-    --muted: 210 20% 96%;
-    --muted-foreground: 215 15% 55%;
+    --muted: 45 20% 88%;
+    --muted-foreground: 220 20% 45%;
     
-    --accent: 88 50% 45%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 160 60% 45%;
+    --accent-foreground: 45 35% 96%;
     
-    --border: 210 20% 90%;
-    --input: 210 20% 95%;
-    --ring: 88 50% 45%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 45 35% 96%;
+    
+    --border: 45 20% 82%;
+    --input: 45 20% 88%;
+    --ring: 160 60% 45%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 45 25% 90%;
+    --sidebar-foreground: 220 25% 25%;
+    --sidebar-primary: 220 50% 25%;
+    --sidebar-primary-foreground: 45 25% 92%;
+    --sidebar-accent: 45 20% 85%;
+    --sidebar-accent-foreground: 220 25% 25%;
+    --sidebar-border: 45 20% 82%;
+    --sidebar-ring: 160 60% 45%;
   }
 
   .dark {
-    --background: 215 30% 8%;
-    --foreground: 0 0% 95%;
+    --background: 220 25% 12%;
+    --foreground: 45 25% 88%;
     
-    --primary: 88 50% 45%;
-    --primary-foreground: 0 0% 100%;
-    --primary-soft: 88 40% 35%;
+    --primary: 220 40% 70%;
+    --primary-foreground: 220 25% 12%;
+    --primary-soft: 220 35% 60%;
     
-    --sacred-green: 88 45% 50%;
-    --sacred-green-light: 88 35% 60%;
-    --sacred-green-dark: 88 55% 40%;
+    --islamic-green: 160 50% 55%;
+    --islamic-green-light: 160 45% 65%;
+    --islamic-green-dark: 160 50% 45%;
     
-    --gold: 43 90% 60%;
-    --gold-light: 43 85% 70%;
-    --gold-dark: 43 95% 50%;
+    --cream: 220 25% 12%;
+    --cream-dark: 220 20% 18%;
+    --text-elegant: 45 25% 88%;
     
-    --card: 215 25% 12%;
-    --card-foreground: 0 0% 95%;
+    --card: 220 25% 15%;
+    --card-foreground: 45 25% 88%;
     
-    --secondary: 215 20% 15%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 220 20% 20%;
+    --secondary-foreground: 45 20% 80%;
     
-    --muted: 215 20% 15%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 220 20% 20%;
+    --muted-foreground: 45 15% 60%;
     
-    --accent: 88 50% 45%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 160 50% 55%;
+    --accent-foreground: 220 25% 15%;
     
-    --border: 215 20% 20%;
-    --input: 215 20% 15%;
-    --ring: 88 50% 45%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 45 25% 88%;
     
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 220 20% 25%;
+    --input: 220 20% 25%;
+    --ring: 160 50% 55%;
+    
+    --sidebar-background: 220 25% 10%;
+    --sidebar-foreground: 45 25% 85%;
+    --sidebar-primary: 220 40% 70%;
+    --sidebar-primary-foreground: 220 25% 10%;
+    --sidebar-accent: 220 20% 18%;
+    --sidebar-accent-foreground: 45 25% 85%;
+    --sidebar-border: 220 20% 25%;
+    --sidebar-ring: 160 50% 55%;
   }
 }
 
@@ -113,28 +112,49 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Crimson Text', serif;
   }
   
-  /* Islamic Geometric Patterns */
-  .mosque-pattern {
-    background-image: radial-gradient(circle at 25% 25%, hsl(var(--sacred-green)) 0%, transparent 50%),
-                      radial-gradient(circle at 75% 75%, hsl(var(--gold)) 0%, transparent 50%);
-    background-size: 100px 100px;
-    opacity: 0.05;
+  /* Elegant Textured Backgrounds */
+  .elegant-texture {
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsl(var(--islamic-green) / 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, hsl(var(--primary) / 0.05) 0%, transparent 50%),
+      repeating-linear-gradient(
+        30deg,
+        transparent,
+        transparent 2px,
+        hsl(var(--islamic-green) / 0.02) 2px,
+        hsl(var(--islamic-green) / 0.02) 4px
+      );
   }
   
   /* Gradient Backgrounds */
   .hero-gradient {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-soft)) 50%, hsl(var(--sacred-green-dark)) 100%);
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-soft)) 50%, hsl(var(--islamic-green-dark)) 100%);
   }
   
   .card-gradient {
-    background: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--secondary)) 100%);
+    background: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(var(--cream-dark)) 100%);
+    position: relative;
   }
-  
-  /* Islamic Arch Shape */
-  .islamic-arch {
-    clip-path: polygon(0% 100%, 0% 20%, 20% 0%, 80% 0%, 100% 20%, 100% 100%);
+
+  .card-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 20%, hsl(var(--islamic-green) / 0.05) 0%, transparent 30%),
+      radial-gradient(circle at 80% 80%, hsl(var(--primary) / 0.03) 0%, transparent 40%),
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 1px,
+        hsl(var(--islamic-green) / 0.02) 1px,
+        hsl(var(--islamic-green) / 0.02) 2px
+      );
+    border-radius: inherit;
+    pointer-events: none;
   }
   
   /* Custom Scrollbar */
@@ -147,11 +167,11 @@ All colors MUST be HSL.
   }
   
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--sacred-green));
+    background: hsl(var(--islamic-green));
     border-radius: 4px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--sacred-green-dark));
+    background: hsl(var(--islamic-green-dark));
   }
 }
