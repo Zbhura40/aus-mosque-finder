@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin, Search, Navigation, Clock } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import mosqueHero from "@/assets/mosque-hero.png";
+import DirectionsModal from "./DirectionsModal";
 
 interface SearchParams {
   radius: string;
@@ -31,6 +32,14 @@ const MosqueLocator = () => {
   const [isSearching, setIsSearching] = useState(false);
   const [mosques, setMosques] = useState<Mosque[]>([]);
   const [hasSearched, setHasSearched] = useState(false);
+  const [directionsModal, setDirectionsModal] = useState<{
+    isOpen: boolean;
+    mosque: Mosque | null;
+  }>({ isOpen: false, mosque: null });
+  const [userCoordinates, setUserCoordinates] = useState<{
+    latitude: number;
+    longitude: number;
+  } | null>(null);
 
   const radiusOptions = [
     { value: '3', label: '3km' },
@@ -140,6 +149,7 @@ const MosqueLocator = () => {
         
         latitude = position.coords.latitude;
         longitude = position.coords.longitude;
+        setUserCoordinates({ latitude, longitude });
       } else {
         // Geocode postcode to get coordinates
         const { supabase } = await import("@/integrations/supabase/client");
@@ -211,6 +221,14 @@ const MosqueLocator = () => {
     } finally {
       setIsSearching(false);
     }
+  };
+
+  const handleDirections = (mosque: Mosque) => {
+    setDirectionsModal({ isOpen: true, mosque });
+  };
+
+  const closeDirectionsModal = () => {
+    setDirectionsModal({ isOpen: false, mosque: null });
   };
 
   const isSearchDisabled = !searchParams.radius || !searchParams.locationType || 
@@ -407,7 +425,13 @@ const MosqueLocator = () => {
                         </div>
                       </div>
                       <div className="flex gap-3">
-                        <Button variant="outline" size="lg" className="font-body border-2 border-islamic-navy text-islamic-navy hover:bg-islamic-navy/10 rounded-xl">
+                        <Button 
+                          variant="outline" 
+                          size="lg" 
+                          className="font-body border-2 border-islamic-navy text-islamic-navy hover:bg-islamic-navy/10 rounded-xl"
+                          onClick={() => handleDirections(mosque)}
+                        >
+                          <Navigation className="w-4 h-4 mr-2" />
                           Directions
                         </Button>
                         <Button variant="default" size="lg" className="font-body bg-islamic-green hover:bg-islamic-green-dark rounded-xl">
@@ -433,6 +457,17 @@ const MosqueLocator = () => {
             </div>
           )}
         </div>
+      )}
+
+      {/* Directions Modal */}
+      {directionsModal.mosque && (
+        <DirectionsModal
+          isOpen={directionsModal.isOpen}
+          onClose={closeDirectionsModal}
+          mosque={directionsModal.mosque}
+          userLocation={userCoordinates}
+          userPostcode={searchParams.locationType === 'postcode' ? searchParams.postcode : undefined}
+        />
       )}
     </div>
   );
