@@ -75,9 +75,6 @@ const FAQ = () => {
               <h1 className="font-elegant text-5xl lg:text-6xl font-bold leading-tight mb-4">
                 Frequently Asked Questions
               </h1>
-              <p className="font-body text-xl text-white/90">
-                Common Questions about Mosques - By the Lado Group
-              </p>
             </div>
           </div>
         </div>
