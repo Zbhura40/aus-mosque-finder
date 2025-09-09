@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,6 +8,8 @@ import { toast } from "@/hooks/use-toast";
 import mosqueHero from "@/assets/mosque-hero.png";
 import DirectionsModal from "./DirectionsModal";
 import MosqueDetailsModal from "./MosqueDetailsModal";
+import { generateLandingPageSchema } from "@/lib/json-ld-schema";
+import { useJsonLdSchema } from "@/hooks/useJsonLdSchema";
 
 interface SearchParams {
   radius: string;
@@ -25,10 +27,17 @@ interface Mosque {
   phone?: string;
   website?: string;
   photoUrl?: string;
+  latitude?: number;
+  longitude?: number;
 }
 
 const MosqueLocator = () => {
   const navigate = useNavigate();
+  
+  // Generate landing page JSON-LD schema
+  const landingPageSchema = generateLandingPageSchema();
+  useJsonLdSchema(landingPageSchema);
+  
   const [searchParams, setSearchParams] = useState<SearchParams>({
     radius: '',
     locationType: null,

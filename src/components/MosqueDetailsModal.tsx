@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Dialog,
   DialogContent,
@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { MapPin, Phone, Globe, Star, Clock, ExternalLink, Image as ImageIcon } from "lucide-react";
 import mosquePlaceholder from "@/assets/mosque-placeholder.jpg";
+import { generateMosqueSchema } from "@/lib/json-ld-schema";
+import { useJsonLdSchema } from "@/hooks/useJsonLdSchema";
 
 interface Mosque {
   id: string;
@@ -21,6 +23,8 @@ interface Mosque {
   phone?: string;
   website?: string;
   photoUrl?: string;
+  latitude?: number;
+  longitude?: number;
 }
 
 interface MosqueDetailsModalProps {
@@ -35,6 +39,10 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
   mosque,
 }) => {
   const [imageError, setImageError] = useState(false);
+
+  // Generate JSON-LD schema for the mosque when modal is open
+  const mosqueSchema = mosque && isOpen ? generateMosqueSchema(mosque, window.location.href) : null;
+  useJsonLdSchema(mosqueSchema);
 
   if (!mosque) return null;
 
