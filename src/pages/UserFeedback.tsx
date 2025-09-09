@@ -69,7 +69,7 @@ const UserFeedback = () => {
               variant="ghost"
               size="sm"
               onClick={() => navigate("/")}
-              className="text-white hover:bg-white/10 rounded-xl transition-colors duration-200"
+              className="text-white hover:bg-white/10 rounded-xl transition-colors duration-200 cursor-pointer z-10 relative"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Home
