@@ -8,10 +8,13 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { MapPin, Phone, Globe, Star, Clock, ExternalLink, Image as ImageIcon } from "lucide-react";
+import { MapPin, Phone, Globe, Star, Clock, ExternalLink, Image as ImageIcon, Users, AccessibilityIcon } from "lucide-react";
 import mosquePlaceholder from "@/assets/mosque-placeholder.jpg";
 import { generateMosqueSchema } from "@/lib/json-ld-schema";
 import { useJsonLdSchema } from "@/hooks/useJsonLdSchema";
+import { SEOUtils } from "@/lib/seo-utils";
+import { useSEO } from "@/hooks/useSEO";
+import { useMosqueURL } from "@/hooks/useMosqueURL";
 
 interface Mosque {
   id: string;
@@ -40,7 +43,9 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
 }) => {
   const [imageError, setImageError] = useState(false);
 
-  // Generate JSON-LD schema for the mosque when modal is open
+  // SEO, URL management and JSON-LD schema for the mosque when modal is open
+  useSEO('mosque', mosque && isOpen ? mosque : null);
+  useMosqueURL(mosque, isOpen);
   const mosqueSchema = mosque && isOpen ? generateMosqueSchema(mosque, window.location.href) : null;
   useJsonLdSchema(mosqueSchema);
 
@@ -128,18 +133,18 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
             {mosque.photoUrl && !imageError ? (
               <img
                 src={mosque.photoUrl}
-                alt={`Photo of ${mosque.name}`}
+                alt={SEOUtils.generateImageAltText(mosque, 'exterior')}
                 className="w-full h-full object-cover transition-opacity duration-300"
                 onError={() => setImageError(true)}
                 onLoad={() => setImageError(false)}
               />
             ) : (
               <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-islamic-green/5 to-islamic-green/10">
-                <img
-                  src={mosquePlaceholder}
-                  alt="Mosque placeholder"
-                  className="w-full h-full object-cover opacity-60"
-                />
+                  <img
+                    src={mosquePlaceholder}
+                    alt={SEOUtils.generateImageAltText(mosque, 'exterior')}
+                    className="w-full h-full object-cover opacity-60"
+                  />
                 <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/20">
                   <ImageIcon className="w-12 h-12 text-white/80 mb-2" />
                   <p className="text-white/80 font-body text-sm">Photo not available</p>
@@ -148,11 +153,11 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
             )}
           </div>
 
-          {/* Mosque Name */}
-          <div className="text-center py-4">
-            <h2 className="font-elegant text-3xl font-bold text-islamic-navy leading-tight">
+          {/* Mosque Name and Title */}
+          <header className="text-center py-4">
+            <h1 className="font-elegant text-3xl font-bold text-islamic-navy leading-tight">
               {mosque.name}
-            </h2>
+            </h1>
             {(mosque.rating || mosque.isOpen !== undefined) && (
               <div className="flex items-center justify-center gap-4 mt-3">
                 {mosque.rating && (
@@ -177,7 +182,7 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
                 )}
               </div>
             )}
-          </div>
+          </header>
 
           <Separator />
 
@@ -205,6 +210,64 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
               linkType="external"
             />
           </div>
+
+          <Separator />
+
+          {/* Mosque Description */}
+          <section className="space-y-4">
+            <h2 className="font-elegant text-xl font-semibold text-islamic-navy flex items-center gap-3">
+              <div className="w-8 h-8 rounded-full bg-islamic-green/20 flex items-center justify-center">
+                <Users className="w-4 h-4 text-islamic-green" />
+              </div>
+              About {mosque.name}
+            </h2>
+            <p className="font-body text-base text-foreground leading-relaxed">
+              {SEOUtils.generateMosqueDescription(mosque)}
+            </p>
+          </section>
+
+          <Separator />
+
+          {/* Location Context */}
+          <section className="space-y-4">
+            <h3 className="font-elegant text-lg font-semibold text-islamic-navy">Location & Accessibility</h3>
+            <p className="font-body text-base text-foreground leading-relaxed">
+              {SEOUtils.getLocationContext(mosque)}
+            </p>
+          </section>
+
+          <Separator />
+
+          {/* Amenities */}
+          <section className="space-y-4">
+            <h3 className="font-elegant text-lg font-semibold text-islamic-navy">Facilities & Amenities</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {SEOUtils.getMosqueAmenities(mosque).map((amenity, index) => (
+                <div key={index} className="flex items-center gap-2 font-body text-sm text-foreground">
+                  <div className="w-2 h-2 bg-islamic-green rounded-full"></div>
+                  {amenity}
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <Separator />
+
+          {/* Accessibility Information */}
+          <section className="space-y-4">
+            <h3 className="font-elegant text-lg font-semibold text-islamic-navy flex items-center gap-2">
+              <AccessibilityIcon className="w-5 h-5 text-islamic-green" />
+              Accessibility Features
+            </h3>
+            <div className="space-y-2">
+              {SEOUtils.generateAccessibilityInfo(mosque).map((feature, index) => (
+                <div key={index} className="flex items-start gap-3 font-body text-sm text-foreground">
+                  <div className="w-1.5 h-1.5 bg-islamic-green rounded-full mt-2 flex-shrink-0"></div>
+                  {feature}
+                </div>
+              ))}
+            </div>
+          </section>
 
           <Separator />
 

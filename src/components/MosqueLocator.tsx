@@ -10,6 +10,7 @@ import DirectionsModal from "./DirectionsModal";
 import MosqueDetailsModal from "./MosqueDetailsModal";
 import { generateLandingPageSchema } from "@/lib/json-ld-schema";
 import { useJsonLdSchema } from "@/hooks/useJsonLdSchema";
+import { useSEO } from "@/hooks/useSEO";
 
 interface SearchParams {
   radius: string;
@@ -34,7 +35,8 @@ interface Mosque {
 const MosqueLocator = () => {
   const navigate = useNavigate();
   
-  // Generate landing page JSON-LD schema
+  // SEO and JSON-LD for landing page
+  useSEO('landing');
   const landingPageSchema = generateLandingPageSchema();
   useJsonLdSchema(landingPageSchema);
   
@@ -264,16 +266,16 @@ const MosqueLocator = () => {
   return (
     <div className="min-h-screen bg-background elegant-texture">
       {/* Hero Section */}
-      <div className="relative hero-gradient overflow-hidden">
+      <header className="relative hero-gradient overflow-hidden">
         <div className="absolute inset-0 elegant-texture opacity-30"></div>
         <div className="relative container mx-auto px-4 py-20">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="flex-1 text-center lg:text-left">
               <h1 className="font-elegant text-5xl lg:text-7xl font-bold text-white mb-8 leading-tight">
-                Find my mosque
+                Find My Mosque Australia
               </h1>
               <p className="font-body text-xl lg:text-2xl text-white/90 mb-8 max-w-2xl leading-relaxed">
-                A new, free platform created for the community to easily find mosques across Australia
+                Australia's most comprehensive mosque directory. Discover prayer times, facilities, and directions to Islamic centers nationwide.
               </p>
               
               {/* User Feedback Button */}
@@ -294,26 +296,28 @@ const MosqueLocator = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-3xl transform rotate-3"></div>
                 <img 
                   src={mosqueHero} 
-                  alt="Beautiful mosque illustration" 
+                  alt="Beautiful Islamic mosque with traditional architecture and minaret, representing Find My Mosque Australia platform for discovering prayer facilities across the country" 
                   className="relative w-full h-auto rounded-2xl shadow-2xl border-4 border-white/20"
                 />
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </header>
 
-      {/* Search Section */}
-      <div className="container mx-auto px-4 -mt-16 relative z-10">
-        <Card className="card-gradient shadow-2xl border border-border/50 rounded-2xl overflow-hidden">
-          <CardHeader className="text-center pb-6 relative">
-            <CardTitle className="font-elegant text-3xl font-semibold text-islamic-navy flex items-center justify-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-islamic-green/20 flex items-center justify-center">
-                <MapPin className="w-5 h-5 text-islamic-green" />
-              </div>
-              Search for Mosques
-            </CardTitle>
-          </CardHeader>
+      {/* Main Content */}
+      <main>
+        {/* Search Section */}
+        <section className="container mx-auto px-4 -mt-16 relative z-10">
+          <Card className="card-gradient shadow-2xl border border-border/50 rounded-2xl overflow-hidden">
+            <CardHeader className="text-center pb-6 relative">
+              <h2 className="font-elegant text-3xl font-semibold text-islamic-navy flex items-center justify-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-islamic-green/20 flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-islamic-green" />
+                </div>
+                Search for Mosques Near You
+              </h2>
+            </CardHeader>
           <CardContent className="space-y-8">
             {/* Radius Selection */}
             <div className="space-y-6">
@@ -336,9 +340,9 @@ const MosqueLocator = () => {
               </div>
             </div>
 
-            {/* Location Type Selection */}
-            <div className="space-y-6">
-              <h3 className="font-elegant text-xl font-semibold text-islamic-navy">Location</h3>
+              {/* Location Type Selection */}
+              <div className="space-y-6">
+                <h3 className="font-elegant text-xl font-semibold text-islamic-navy">Choose Your Location Method</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {/* Current Location */}
                 <Button
@@ -409,13 +413,13 @@ const MosqueLocator = () => {
             </Button>
           </CardContent>
         </Card>
-      </div>
+        </section>
 
-      {/* Results Section */}
-      {hasSearched && (
-        <div className="container mx-auto px-4 py-16">
-          <h2 className="font-elegant text-4xl font-bold text-center mb-12 text-islamic-navy">
-            Search Results
+        {/* Results Section */}
+        {hasSearched && (
+          <section className="container mx-auto px-4 py-16">
+            <h2 className="font-elegant text-4xl font-bold text-center mb-12 text-islamic-navy">
+              Nearby Mosques & Islamic Centers
             {!isSearching && mosques.length > 0 && (
               <span className="font-body text-xl font-normal text-muted-foreground ml-3 block mt-2">
                 ({mosques.length} mosques found)
@@ -501,10 +505,11 @@ const MosqueLocator = () => {
               </p>
             </div>
           )}
-        </div>
-      )}
+          </section>
+        )}
+      </main>
 
-      {/* Directions Modal */}
+      {/* Modals */}
       {directionsModal.mosque && (
         <DirectionsModal
           isOpen={directionsModal.isOpen}
