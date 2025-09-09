@@ -214,37 +214,37 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
           <Separator />
 
           {/* Mosque Description */}
-          <section className="space-y-4 bg-sky-gray/15 p-6 rounded-xl border border-marble-warm/40">
-            <h2 className="font-elegant text-xl font-semibold text-architectural-shadow flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-rose-dome/25 flex items-center justify-center shadow-sm">
-                <Users className="w-4 h-4 text-architectural-shadow" />
+          <section className="space-y-4 bg-warm-ivory/60 p-6 rounded-xl border border-golden-beige/40 shadow-sm">
+            <h2 className="font-elegant text-xl font-semibold text-archway-black flex items-center gap-3">
+              <div className="w-8 h-8 rounded-full bg-burnt-ochre/20 flex items-center justify-center shadow-sm">
+                <Users className="w-4 h-4 text-burnt-ochre" />
               </div>
               About {mosque.name}
             </h2>
-            <p className="font-body text-base text-architectural-shadow/80 leading-relaxed">
+            <p className="font-body text-base text-slate-blue leading-relaxed">
               {SEOUtils.generateMosqueDescription(mosque)}
             </p>
           </section>
 
-          <Separator />
+          <Separator className="bg-stone-grey/40" />
 
           {/* Location Context */}
-          <section className="space-y-4 bg-marble-warm/20 p-5 rounded-xl border border-golden-amber/20">
-            <h3 className="font-elegant text-lg font-semibold text-architectural-shadow">Location & Accessibility</h3>
-            <p className="font-body text-base text-architectural-shadow/80 leading-relaxed">
+          <section className="space-y-4 bg-golden-beige/25 p-5 rounded-xl border border-burnt-ochre/30 shadow-sm">
+            <h3 className="font-elegant text-lg font-semibold text-archway-black">Location & Accessibility</h3>
+            <p className="font-body text-base text-slate-blue leading-relaxed">
               {SEOUtils.getLocationContext(mosque)}
             </p>
           </section>
 
-          <Separator className="bg-rose-dome/30" />
+          <Separator className="bg-stone-grey/40" />
 
           {/* Amenities */}
-          <section className="space-y-4 bg-rose-dome/15 p-5 rounded-xl border border-sky-gray/30">
-            <h3 className="font-elegant text-lg font-semibold text-architectural-shadow">Facilities & Amenities</h3>
+          <section className="space-y-4 bg-olive-green/15 p-5 rounded-xl border border-olive-green/30 shadow-sm">
+            <h3 className="font-elegant text-lg font-semibold text-archway-black">Facilities & Amenities</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {SEOUtils.getMosqueAmenities(mosque).map((amenity, index) => (
-                <div key={index} className="flex items-center gap-2 font-body text-sm text-architectural-shadow/80">
-                  <div className="w-2 h-2 bg-golden-amber rounded-full shadow-sm"></div>
+                <div key={index} className="flex items-center gap-2 font-body text-sm text-slate-blue">
+                  <div className="w-2 h-2 bg-burnt-ochre rounded-full shadow-sm"></div>
                   {amenity}
                 </div>
               ))}
@@ -254,32 +254,32 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
           <Separator />
 
           {/* Accessibility Information */}
-          <section className="space-y-4">
-            <h3 className="font-elegant text-lg font-semibold text-islamic-navy flex items-center gap-2">
-              <AccessibilityIcon className="w-5 h-5 text-islamic-green" />
+          <section className="space-y-4 bg-stone-grey/20 p-5 rounded-xl border border-stone-grey/40 shadow-sm">
+            <h3 className="font-elegant text-lg font-semibold text-archway-black flex items-center gap-2">
+              <AccessibilityIcon className="w-5 h-5 text-olive-green" />
               Accessibility Features
             </h3>
             <div className="space-y-2">
               {SEOUtils.generateAccessibilityInfo(mosque).map((feature, index) => (
-                <div key={index} className="flex items-start gap-3 font-body text-sm text-foreground">
-                  <div className="w-1.5 h-1.5 bg-islamic-green rounded-full mt-2 flex-shrink-0"></div>
+                <div key={index} className="flex items-start gap-3 font-body text-sm text-slate-blue">
+                  <div className="w-1.5 h-1.5 bg-olive-green rounded-full mt-2 flex-shrink-0"></div>
                   {feature}
                 </div>
               ))}
             </div>
           </section>
 
-          <Separator />
+          <Separator className="bg-stone-grey/40" />
 
           {/* Distance Info */}
-          <div className="bg-golden-amber/15 rounded-xl p-6 border border-golden-amber/25 shadow-sm">
+          <div className="bg-burnt-ochre/20 rounded-xl p-6 border border-burnt-ochre/40 shadow-sm">
             <div className="flex items-center justify-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-architectural-shadow/15 flex items-center justify-center shadow-sm">
-                <MapPin className="w-5 h-5 text-architectural-shadow" />
+              <div className="w-10 h-10 rounded-full bg-warm-ivory/80 flex items-center justify-center shadow-sm">
+                <MapPin className="w-5 h-5 text-burnt-ochre" />
               </div>
               <div className="text-center">
-                <p className="font-body text-sm text-architectural-shadow/70">Distance from your location</p>
-                <p className="font-elegant text-xl font-semibold text-architectural-shadow">
+                <p className="font-body text-sm text-slate-blue">Distance from your location</p>
+                <p className="font-elegant text-xl font-semibold text-archway-black">
                   {mosque.distance}
                 </p>
               </div>

@@ -77,6 +77,13 @@ export default {
 				'rose-dome': 'hsl(var(--rose-dome))',
 				'sky-gray': 'hsl(var(--sky-gray))',
 				'architectural-shadow': 'hsl(var(--architectural-shadow))',
+				'warm-ivory': 'hsl(var(--warm-ivory))',
+				'stone-grey': 'hsl(var(--stone-grey))',
+				'golden-beige': 'hsl(var(--golden-beige))',
+				'burnt-ochre': 'hsl(var(--burnt-ochre))',
+				'olive-green': 'hsl(var(--olive-green))',
+				'slate-blue': 'hsl(var(--slate-blue))',
+				'archway-black': 'hsl(var(--archway-black))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',

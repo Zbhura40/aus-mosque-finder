@@ -33,6 +33,15 @@ All colors MUST be HSL.
     --cream-dark: 43 18% 90%;
     --text-elegant: 25 15% 25%;
     
+    /* Extracted color palette from provided mosque image */
+    --warm-ivory: 45 33% 95%;
+    --stone-grey: 36 5% 71%;
+    --golden-beige: 38 67% 74%;
+    --burnt-ochre: 34 54% 53%;
+    --olive-green: 72 34% 40%;
+    --slate-blue: 225 10% 40%;
+    --archway-black: 240 2% 8%;
+    
     --card: 42 35% 96%;
     --card-foreground: 25 15% 25%;
     
