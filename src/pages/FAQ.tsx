@@ -52,7 +52,21 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background elegant-texture">
+    <div 
+      className="min-h-screen bg-background elegant-texture relative"
+      style={{
+        backgroundImage: `url('/lovable-uploads/697d6062-ecca-408f-98bc-1fddaadef6c2.png')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed'
+      }}
+    >
+      {/* Background overlay for better text readability */}
+      <div className="absolute inset-0 bg-background/80 backdrop-blur-[1px]"></div>
+      
+      {/* Content wrapper */}
+      <div className="relative z-10">
       {/* Header */}
       <div className="bg-olive-green text-white py-12">
         <div className="container mx-auto px-4">
@@ -159,6 +173,7 @@ const FAQ = () => {
             </CardContent>
           </Card>
         </div>
+      </div>
       </div>
     </div>
   );
