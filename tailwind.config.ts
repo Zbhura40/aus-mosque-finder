@@ -69,6 +69,14 @@ export default {
 				'cream': 'hsl(var(--cream))',
 				'cream-dark': 'hsl(var(--cream-dark))',
 				'text-elegant': 'hsl(var(--text-elegant))',
+				'marble': {
+					DEFAULT: 'hsl(var(--marble-cream))',
+					warm: 'hsl(var(--marble-warm))'
+				},
+				'golden-amber': 'hsl(var(--golden-amber))',
+				'rose-dome': 'hsl(var(--rose-dome))',
+				'sky-gray': 'hsl(var(--sky-gray))',
+				'architectural-shadow': 'hsl(var(--architectural-shadow))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',

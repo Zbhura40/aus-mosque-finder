@@ -8,45 +8,51 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Elegant Islamic Design System - Inspired by the Screenshot */
-    --background: 45 25% 92%;
-    --foreground: 220 25% 25%;
+    /* Extracted from the stunning mosque image - warm marble and golden tones */
+    --background: 45 25% 98%;
+    --foreground: 25 15% 25%;
     
-    /* Islamic Navy Blue - Main Brand Color */
-    --primary: 220 50% 25%;
-    --primary-foreground: 45 25% 92%;
-    --primary-soft: 220 40% 35%;
+    /* Primary: Deep architectural blue-gray from shadows */
+    --primary: 220 25% 35%;
+    --primary-foreground: 45 25% 98%;
+    --primary-soft: 220 15% 65%;
     
-    /* Islamic Green - Sacred Color */
+    /* Islamic Green - Enhanced */
     --islamic-green: 160 60% 45%;
     --islamic-green-light: 160 50% 55%;
     --islamic-green-dark: 160 60% 35%;
     
-    /* Cream/Beige - Background Colors */
-    --cream: 45 25% 92%;
-    --cream-dark: 45 20% 88%;
-    --text-elegant: 220 25% 25%;
+    /* New palette from mosque image */
+    --marble-cream: 42 35% 96%;
+    --marble-warm: 40 30% 88%;
+    --golden-amber: 35 45% 75%;
+    --rose-dome: 15 35% 85%;
+    --sky-gray: 210 15% 80%;
+    --architectural-shadow: 220 25% 35%;
+    --cream: 45 25% 97%;
+    --cream-dark: 43 18% 90%;
+    --text-elegant: 25 15% 25%;
     
-    --card: 45 35% 96%;
-    --card-foreground: 220 25% 25%;
+    --card: 42 35% 96%;
+    --card-foreground: 25 15% 25%;
     
-    --secondary: 45 20% 85%;
-    --secondary-foreground: 220 25% 25%;
+    --secondary: 42 25% 92%;
+    --secondary-foreground: 25 15% 25%;
     
-    --muted: 45 20% 88%;
-    --muted-foreground: 220 20% 45%;
+    --muted: 210 20% 94%;
+    --muted-foreground: 220 15% 50%;
     
-    --accent: 160 60% 45%;
-    --accent-foreground: 45 35% 96%;
+    --accent: 35 45% 75%;
+    --accent-foreground: 25 15% 25%;
     
     --destructive: 0 84% 60%;
-    --destructive-foreground: 45 35% 96%;
+    --destructive-foreground: 45 25% 98%;
     
-    --border: 45 20% 82%;
-    --input: 45 20% 88%;
-    --ring: 160 60% 45%;
+    --border: 42 20% 88%;
+    --input: 42 20% 88%;
+    --ring: 35 45% 65%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 45 25% 90%;
     --sidebar-foreground: 220 25% 25%;
@@ -129,7 +135,37 @@ All colors MUST be HSL.
       );
   }
   
-  /* Gradient Backgrounds */
+  /* Hero with stunning mosque background */
+  .hero-with-mosque {
+    background-image: url('/lovable-uploads/e780112e-79e7-4334-94e6-9a433ccc3a71.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+  }
+
+  /* Mobile optimization for background attachment */
+  @media (max-width: 768px) {
+    .hero-with-mosque {
+      background-attachment: scroll;
+    }
+  }
+
+  .hero-with-mosque::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--architectural-shadow) / 0.7) 0%,
+      hsl(var(--architectural-shadow) / 0.5) 30%,
+      hsl(var(--golden-amber) / 0.3) 60%,
+      hsl(var(--rose-dome) / 0.4) 100%
+    );
+  }
+  
+  /* Gradient Backgrounds - Updated */
   .hero-gradient {
     background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-soft)) 50%, hsl(var(--islamic-green-dark)) 100%);
   }

@@ -265,42 +265,36 @@ const MosqueLocator = () => {
 
   return (
     <div className="min-h-screen bg-background elegant-texture">
-      {/* Hero Section */}
-      <header className="relative hero-gradient overflow-hidden">
-        <div className="absolute inset-0 elegant-texture opacity-30"></div>
-        <div className="relative container mx-auto px-4 py-20">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <div className="flex-1 text-center lg:text-left">
-              <h1 className="font-elegant text-5xl lg:text-7xl font-bold text-white mb-8 leading-tight">
-                Find My Mosque Australia
-              </h1>
-              <p className="font-body text-xl lg:text-2xl text-white/90 mb-8 max-w-2xl leading-relaxed">
-                Australia's most comprehensive mosque directory. Discover prayer times, facilities, and directions to Islamic centers nationwide.
-              </p>
-              
-              {/* User Feedback Button */}
-              <div className="flex justify-center lg:justify-start">
-                <Button
-                  onClick={() => navigate("/feedback")}
-                  variant="outline"
-                  size="lg"
-                  className="font-body text-lg font-medium bg-white/10 border-2 border-white/30 text-white hover:bg-white/20 hover:border-white/50 rounded-xl backdrop-blur-sm transition-all duration-300"
-                >
-                  <MessageSquare className="w-5 h-5 mr-3" />
-                  Share Your Feedback
-                </Button>
-              </div>
+      {/* Hero Section with Stunning Background */}
+      <header className="relative hero-with-mosque overflow-hidden min-h-screen flex items-center">
+        <div className="relative container mx-auto px-4 py-20 z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="font-elegant text-6xl lg:text-8xl font-bold text-white mb-8 leading-tight drop-shadow-2xl">
+              Find My Mosque Australia
+            </h1>
+            <p className="font-body text-2xl lg:text-3xl text-white/95 mb-12 max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
+              Australia's most comprehensive mosque directory. Discover prayer times, facilities, and directions to Islamic centers nationwide.
+            </p>
+            
+            {/* User Feedback Button */}
+            <div className="flex justify-center">
+              <Button
+                onClick={() => navigate("/feedback")}
+                variant="outline"
+                size="lg"
+                className="font-body text-xl font-medium bg-marble/20 border-2 border-white/40 text-white hover:bg-marble/30 hover:border-golden-amber hover:text-golden-amber rounded-2xl backdrop-blur-md transition-all duration-300 px-8 py-4 shadow-2xl"
+              >
+                <MessageSquare className="w-6 h-6 mr-3" />
+                Share Your Feedback
+              </Button>
             </div>
-            <div className="flex-1 max-w-md">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-3xl transform rotate-3"></div>
-                <img 
-                  src={mosqueHero} 
-                  alt="Beautiful Islamic mosque with traditional architecture and minaret, representing Find My Mosque Australia platform for discovering prayer facilities across the country" 
-                  className="relative w-full h-auto rounded-2xl shadow-2xl border-4 border-white/20"
-                />
-              </div>
-            </div>
+          </div>
+        </div>
+        
+        {/* Elegant scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
           </div>
         </div>
       </header>
@@ -308,12 +302,12 @@ const MosqueLocator = () => {
       {/* Main Content */}
       <main>
         {/* Search Section */}
-        <section className="container mx-auto px-4 -mt-16 relative z-10">
-          <Card className="card-gradient shadow-2xl border border-border/50 rounded-2xl overflow-hidden">
-            <CardHeader className="text-center pb-6 relative">
-              <h2 className="font-elegant text-3xl font-semibold text-islamic-navy flex items-center justify-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-islamic-green/20 flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-islamic-green" />
+        <section className="container mx-auto px-4 -mt-32 relative z-20">
+          <Card className="bg-marble border-2 border-golden-amber/30 shadow-2xl rounded-3xl overflow-hidden backdrop-blur-sm">
+            <CardHeader className="text-center pb-6 relative bg-gradient-to-br from-marble to-marble-warm">
+              <h2 className="font-elegant text-4xl font-semibold text-architectural-shadow flex items-center justify-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-golden-amber/30 flex items-center justify-center border-2 border-golden-amber/50">
+                  <MapPin className="w-6 h-6 text-architectural-shadow" />
                 </div>
                 Search for Mosques Near You
               </h2>
@@ -321,7 +315,7 @@ const MosqueLocator = () => {
           <CardContent className="space-y-8">
             {/* Radius Selection */}
             <div className="space-y-6">
-              <h3 className="font-elegant text-xl font-semibold text-islamic-navy">Search Radius</h3>
+              <h3 className="font-elegant text-2xl font-semibold text-architectural-shadow mb-4">Search Radius</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {radiusOptions.map((option) => (
                   <Button
@@ -329,8 +323,8 @@ const MosqueLocator = () => {
                     variant={searchParams.radius === option.value ? "default" : "outline"}
                     className={`h-16 font-body text-lg font-medium transition-all duration-300 rounded-xl ${
                       searchParams.radius === option.value 
-                        ? "bg-islamic-green hover:bg-islamic-green-dark text-white shadow-lg scale-105 border-islamic-green" 
-                        : "hover:bg-islamic-green/10 hover:border-islamic-green hover:text-islamic-green border-2 border-muted"
+                        ? "bg-golden-amber hover:bg-golden-amber/80 text-architectural-shadow shadow-lg scale-105 border-golden-amber" 
+                        : "hover:bg-golden-amber/10 hover:border-golden-amber hover:text-architectural-shadow border-2 border-muted"
                     }`}
                     onClick={() => handleRadiusSelect(option.value)}
                   >
@@ -342,15 +336,15 @@ const MosqueLocator = () => {
 
               {/* Location Type Selection */}
               <div className="space-y-6">
-                <h3 className="font-elegant text-xl font-semibold text-islamic-navy">Choose Your Location Method</h3>
+                <h3 className="font-elegant text-2xl font-semibold text-architectural-shadow mb-4">Choose Your Location Method</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {/* Current Location */}
                 <Button
                   variant={searchParams.locationType === 'current' ? "default" : "outline"}
                   className={`h-18 font-body text-lg font-medium transition-all duration-300 rounded-xl ${
                     searchParams.locationType === 'current'
-                      ? "bg-islamic-navy hover:bg-islamic-navy-light text-white shadow-lg border-islamic-navy" 
-                      : "hover:bg-islamic-navy/10 hover:border-islamic-navy hover:text-islamic-navy border-2 border-muted"
+                      ? "bg-architectural-shadow hover:bg-architectural-shadow/80 text-white shadow-lg border-architectural-shadow" 
+                      : "hover:bg-architectural-shadow/10 hover:border-architectural-shadow hover:text-architectural-shadow border-2 border-muted"
                   }`}
                   onClick={handleCurrentLocation}
                 >
@@ -364,8 +358,8 @@ const MosqueLocator = () => {
                     variant={searchParams.locationType === 'postcode' ? "default" : "outline"}
                     className={`w-full h-18 font-body text-lg font-medium transition-all duration-300 rounded-xl ${
                       searchParams.locationType === 'postcode'
-                        ? "bg-islamic-navy hover:bg-islamic-navy-light text-white shadow-lg border-islamic-navy" 
-                        : "hover:bg-islamic-navy/10 hover:border-islamic-navy hover:text-islamic-navy border-2 border-muted"
+                        ? "bg-architectural-shadow hover:bg-architectural-shadow/80 text-white shadow-lg border-architectural-shadow" 
+                        : "hover:bg-architectural-shadow/10 hover:border-architectural-shadow hover:text-architectural-shadow border-2 border-muted"
                     }`}
                     onClick={() => handleLocationTypeSelect('postcode')}
                   >
@@ -379,11 +373,11 @@ const MosqueLocator = () => {
                         placeholder="Enter postcode (e.g., 4103)"
                         value={searchParams.postcode}
                         onChange={(e) => handlePostcodeChange(e.target.value)}
-                        className="h-14 font-body text-lg rounded-xl border-2 border-muted focus:border-islamic-green"
+                        className="h-14 font-body text-lg rounded-xl border-2 border-muted focus:border-golden-amber"
                       />
                       {postcodeDisplay && (
-                        <p className="font-body text-sm text-islamic-green font-medium flex items-center gap-2">
-                          <span className="w-2 h-2 bg-islamic-green rounded-full"></span>
+                        <p className="font-body text-sm text-golden-amber font-medium flex items-center gap-2">
+                          <span className="w-2 h-2 bg-golden-amber rounded-full"></span>
                           {postcodeDisplay}
                         </p>
                       )}
