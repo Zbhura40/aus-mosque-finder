@@ -69,7 +69,7 @@ const UserFeedback = () => {
               variant="ghost"
               size="sm"
               onClick={() => navigate("/")}
-              className="text-white hover:bg-white/10 rounded-xl"
+              className="text-white hover:bg-white/10 rounded-xl transition-colors duration-200"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Home
@@ -94,26 +94,26 @@ const UserFeedback = () => {
       {/* Main Content */}
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
-          <Card className="card-gradient shadow-xl border border-border/50 rounded-2xl overflow-hidden">
-            <CardHeader className="text-center pb-8">
-              <CardTitle className="font-elegant text-2xl font-semibold text-islamic-navy">
+          <Card className="bg-warm-ivory border-2 border-golden-beige/60 shadow-xl rounded-2xl overflow-hidden">
+            <CardHeader className="text-center pb-8 bg-warm-ivory">
+              <CardTitle className="font-elegant text-3xl font-bold text-archway-black">
                 Share Your Thoughts
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-8">
+            <CardContent className="space-y-8 bg-warm-ivory">
               {/* Feedback Message */}
-              <div className="bg-islamic-green/5 rounded-xl p-6 border border-islamic-green/20">
-                <p className="font-body text-lg text-foreground leading-relaxed">
+              <div className="bg-olive-green/10 rounded-xl p-6 border-2 border-golden-beige/40">
+                <p className="font-body text-lg text-slate-blue leading-relaxed">
                   We value your feedback! Please share your thoughts, suggestions, or report any issues you've encountered while using our platform. If you would like to see more features or would like additional information on mosques, please let us know.
                 </p>
               </div>
 
               {/* Feedback Form */}
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <label 
                     htmlFor="feedback" 
-                    className="font-body text-lg font-medium text-islamic-navy block"
+                    className="font-body text-xl font-semibold text-archway-black block"
                   >
                     Your Feedback
                   </label>
@@ -122,22 +122,22 @@ const UserFeedback = () => {
                     value={feedback}
                     onChange={(e) => setFeedback(e.target.value)}
                     placeholder="Please type your feedback here..."
-                    className="min-h-48 font-body text-base rounded-xl border-2 border-muted focus:border-islamic-green resize-none"
+                    className="min-h-48 font-body text-lg rounded-xl border-2 border-golden-beige/60 focus:border-burnt-ochre bg-warm-ivory text-slate-blue resize-none p-4"
                     maxLength={MAX_CHARACTERS}
                   />
                   
                   {/* Character Counter */}
-                  <div className="flex justify-between items-center text-sm">
-                    <span className="font-body text-muted-foreground">
+                  <div className="flex justify-between items-center text-base">
+                    <span className="font-body text-slate-blue">
                       Share your thoughts in detail
                     </span>
                     <span 
-                      className={`font-body font-medium ${
+                      className={`font-body font-medium text-base ${
                         remainingCharacters < 100 
                           ? remainingCharacters < 0 
                             ? 'text-destructive' 
                             : 'text-amber-600'
-                          : 'text-muted-foreground'
+                          : 'text-slate-blue'
                       }`}
                     >
                       {remainingCharacters} characters remaining
@@ -146,18 +146,18 @@ const UserFeedback = () => {
                   
                   {/* Error message for character limit */}
                   {remainingCharacters < 0 && (
-                    <p className="text-destructive text-sm font-body">
+                    <p className="text-destructive text-base font-body">
                       Your feedback exceeds the {MAX_CHARACTERS} character limit. Please shorten it.
                     </p>
                   )}
                 </div>
 
                 {/* Submit Button */}
-                <div className="pt-4">
+                <div className="pt-6">
                   <Button
                     type="submit"
                     disabled={isSubmitting || remainingCharacters < 0 || !feedback.trim()}
-                    className="w-full h-16 font-body text-lg font-semibold bg-islamic-green hover:bg-islamic-green-dark text-white shadow-lg transition-all duration-300 disabled:opacity-50 rounded-xl"
+                    className="w-full h-16 font-body text-xl font-semibold bg-burnt-ochre hover:bg-burnt-ochre/80 text-white shadow-lg transition-all duration-300 disabled:opacity-50 rounded-xl border-2 border-golden-beige/40"
                   >
                     {isSubmitting ? (
                       <>
@@ -175,14 +175,14 @@ const UserFeedback = () => {
               </form>
 
               {/* Additional Info */}
-              <div className="bg-muted/30 rounded-xl p-6 border border-muted">
-                <div className="flex items-start gap-3">
-                  <MessageSquare className="w-6 h-6 text-islamic-green mt-1 flex-shrink-0" />
-                  <div className="space-y-2">
-                    <h3 className="font-body text-base font-semibold text-islamic-navy">
+              <div className="bg-golden-beige/20 rounded-xl p-6 border-2 border-golden-beige/50">
+                <div className="flex items-start gap-4">
+                  <MessageSquare className="w-6 h-6 text-burnt-ochre mt-1 flex-shrink-0" />
+                  <div className="space-y-3">
+                    <h3 className="font-body text-lg font-semibold text-archway-black">
                       Thank you for helping us improve!
                     </h3>
-                    <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                    <p className="font-body text-base text-slate-blue leading-relaxed">
                       Your feedback is valuable to us. We read every submission and use your input to enhance our platform. 
                       While we may not be able to respond to every message individually, we appreciate your time and effort in helping us serve the community better.
                     </p>

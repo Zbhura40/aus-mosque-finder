@@ -276,18 +276,7 @@ const MosqueLocator = () => {
               Australia's most comprehensive mosque directory. Discover prayer times, facilities, and directions to Islamic centers nationwide.
             </p>
             
-            {/* User Feedback Button */}
-            <div className="flex justify-center">
-              <Button
-                onClick={() => navigate("/feedback")}
-                variant="outline"
-                size="lg"
-                className="font-body text-xl font-medium bg-marble/20 border-2 border-white/40 text-white hover:bg-marble/30 hover:border-golden-amber hover:text-golden-amber rounded-2xl backdrop-blur-md transition-all duration-300 px-8 py-4 shadow-2xl"
-              >
-                <MessageSquare className="w-6 h-6 mr-3" />
-                Share Your Feedback
-              </Button>
-            </div>
+            {/* User Feedback Button - Removed */}
           </div>
         </div>
         
@@ -303,11 +292,11 @@ const MosqueLocator = () => {
       <main>
         {/* Search Section */}
         <section className="container mx-auto px-4 -mt-32 relative z-20">
-          <Card className="bg-marble border-2 border-golden-amber/30 shadow-2xl rounded-3xl overflow-hidden backdrop-blur-sm">
-            <CardHeader className="text-center pb-6 relative bg-gradient-to-br from-marble to-marble-warm">
-              <h2 className="font-elegant text-4xl font-semibold text-architectural-shadow flex items-center justify-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-golden-amber/30 flex items-center justify-center border-2 border-golden-amber/50">
-                  <MapPin className="w-6 h-6 text-architectural-shadow" />
+          <Card className="bg-warm-ivory border-2 border-golden-beige/60 shadow-2xl rounded-3xl overflow-hidden backdrop-blur-sm">
+            <CardHeader className="text-center pb-6 relative bg-warm-ivory border-b border-golden-beige/40">
+              <h2 className="font-elegant text-4xl font-semibold text-archway-black flex items-center justify-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-burnt-ochre/20 flex items-center justify-center border-2 border-burnt-ochre/40">
+                  <MapPin className="w-6 h-6 text-burnt-ochre" />
                 </div>
                 Search for Mosques Near You
               </h2>
@@ -477,7 +466,7 @@ const MosqueLocator = () => {
                 const cardStyle = cardColors[index % cardColors.length];
                 
                 return (
-                  <Card key={mosque.id} className={`hover:shadow-xl transition-all duration-300 border-l-6 ${cardStyle.border} ${cardStyle.bg} rounded-2xl overflow-hidden backdrop-blur-sm`}>
+                  <Card key={mosque.id} className={`hover:shadow-xl transition-all duration-300 border-l-6 ${cardStyle.border} ${cardStyle.bg} border-2 border-golden-beige/60 rounded-2xl overflow-hidden backdrop-blur-sm shadow-lg`}>
                     <CardContent className="p-8">
                       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                         <div className="flex-1">
@@ -489,13 +478,13 @@ const MosqueLocator = () => {
                               <h3 className={`font-elegant text-2xl font-semibold ${cardStyle.title} mb-2`}>
                                 {mosque.name}
                               </h3>
-                              <p className="font-body text-lg text-architectural-shadow/70 mb-3 leading-relaxed">{mosque.address}</p>
+                              <p className="font-body text-lg text-slate-blue mb-3 leading-relaxed">{mosque.address}</p>
                               <div className="flex items-center gap-6 font-body text-base">
                                 <span className={`font-medium ${cardStyle.distanceText} ${cardStyle.distanceBg} px-4 py-2 rounded-full shadow-sm`}>
                                   {mosque.distance}
                                 </span>
                                 {mosque.rating && (
-                                  <span className="flex items-center gap-2 bg-golden-amber/20 px-3 py-1 rounded-full text-architectural-shadow">
+                                  <span className="flex items-center gap-2 bg-burnt-ochre/20 px-3 py-1 rounded-full text-archway-black">
                                     ⭐ <span className="font-medium">{mosque.rating}</span>
                                   </span>
                                 )}
