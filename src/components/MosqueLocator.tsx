@@ -427,64 +427,114 @@ const MosqueLocator = () => {
             </div>
           ) : (
             <div className="grid gap-8">
-              {mosques.map((mosque) => (
-                <Card key={mosque.id} className="hover:shadow-xl transition-all duration-300 border-l-6 border-l-islamic-green rounded-2xl overflow-hidden elegant-texture">
-                  <CardContent className="p-8">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                      <div className="flex-1">
-                        <div className="flex items-start gap-4">
-                          <div className="bg-islamic-green/15 p-3 rounded-2xl">
-                            <MapPin className="w-6 h-6 text-islamic-green" />
-                          </div>
-                          <div>
-                            <h3 className="font-elegant text-2xl font-semibold text-islamic-navy mb-2">
-                              {mosque.name}
-                            </h3>
-                            <p className="font-body text-lg text-muted-foreground mb-3 leading-relaxed">{mosque.address}</p>
-                            <div className="flex items-center gap-6 font-body text-base">
-                              <span className="font-medium text-islamic-green bg-islamic-green/10 px-3 py-1 rounded-full">
-                                {mosque.distance}
-                              </span>
-                              {mosque.rating && (
-                                <span className="flex items-center gap-2 text-amber-600">
-                                  ⭐ <span className="font-medium">{mosque.rating}</span>
+              {mosques.map((mosque, index) => {
+                // Create attractive color variations using the mosque photo palette
+                const cardColors = [
+                  {
+                    bg: "bg-rose-dome/30",
+                    border: "border-l-rose-dome/60", 
+                    iconBg: "bg-golden-amber/20",
+                    iconColor: "text-architectural-shadow",
+                    title: "text-architectural-shadow",
+                    distanceBg: "bg-architectural-shadow/10",
+                    distanceText: "text-architectural-shadow",
+                    directionsBorder: "border-architectural-shadow",
+                    directionsText: "text-architectural-shadow",
+                    directionsHover: "hover:bg-architectural-shadow/10",
+                    detailsBg: "bg-golden-amber",
+                    detailsHover: "hover:bg-golden-amber/80"
+                  },
+                  {
+                    bg: "bg-marble-warm/40",
+                    border: "border-l-golden-amber",
+                    iconBg: "bg-rose-dome/25",
+                    iconColor: "text-architectural-shadow",
+                    title: "text-architectural-shadow",
+                    distanceBg: "bg-golden-amber/15",
+                    distanceText: "text-architectural-shadow",
+                    directionsBorder: "border-rose-dome",
+                    directionsText: "text-rose-dome",
+                    directionsHover: "hover:bg-rose-dome/10",
+                    detailsBg: "bg-architectural-shadow",
+                    detailsHover: "hover:bg-architectural-shadow/80"
+                  },
+                  {
+                    bg: "bg-sky-gray/25",
+                    border: "border-l-architectural-shadow",
+                    iconBg: "bg-marble-warm/30",
+                    iconColor: "text-golden-amber",
+                    title: "text-architectural-shadow",
+                    distanceBg: "bg-rose-dome/15",
+                    distanceText: "text-architectural-shadow",
+                    directionsBorder: "border-golden-amber",
+                    directionsText: "text-golden-amber",
+                    directionsHover: "hover:bg-golden-amber/10",
+                    detailsBg: "bg-rose-dome",
+                    detailsHover: "hover:bg-rose-dome/80"
+                  }
+                ];
+                
+                const cardStyle = cardColors[index % cardColors.length];
+                
+                return (
+                  <Card key={mosque.id} className={`hover:shadow-xl transition-all duration-300 border-l-6 ${cardStyle.border} ${cardStyle.bg} rounded-2xl overflow-hidden backdrop-blur-sm`}>
+                    <CardContent className="p-8">
+                      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                        <div className="flex-1">
+                          <div className="flex items-start gap-4">
+                            <div className={`${cardStyle.iconBg} p-3 rounded-2xl shadow-sm`}>
+                              <MapPin className={`w-6 h-6 ${cardStyle.iconColor}`} />
+                            </div>
+                            <div>
+                              <h3 className={`font-elegant text-2xl font-semibold ${cardStyle.title} mb-2`}>
+                                {mosque.name}
+                              </h3>
+                              <p className="font-body text-lg text-architectural-shadow/70 mb-3 leading-relaxed">{mosque.address}</p>
+                              <div className="flex items-center gap-6 font-body text-base">
+                                <span className={`font-medium ${cardStyle.distanceText} ${cardStyle.distanceBg} px-4 py-2 rounded-full shadow-sm`}>
+                                  {mosque.distance}
                                 </span>
-                              )}
-                              {mosque.isOpen !== undefined && (
-                                <span className={`flex items-center gap-2 font-medium ${
-                                  mosque.isOpen ? 'text-islamic-green' : 'text-red-500'
-                                }`}>
-                                  <Clock className="w-4 h-4" />
-                                  {mosque.isOpen ? 'Open' : 'Closed'}
-                                </span>
-                              )}
+                                {mosque.rating && (
+                                  <span className="flex items-center gap-2 bg-golden-amber/20 px-3 py-1 rounded-full text-architectural-shadow">
+                                    ⭐ <span className="font-medium">{mosque.rating}</span>
+                                  </span>
+                                )}
+                                {mosque.isOpen !== undefined && (
+                                  <span className={`flex items-center gap-2 font-medium px-3 py-1 rounded-full ${
+                                    mosque.isOpen ? 'text-islamic-green bg-islamic-green/15' : 'text-red-600 bg-red-100'
+                                  }`}>
+                                    <Clock className="w-4 h-4" />
+                                    {mosque.isOpen ? 'Open' : 'Closed'}
+                                  </span>
+                                )}
+                              </div>
                             </div>
                           </div>
                         </div>
+                        <div className="flex gap-3">
+                          <Button 
+                            variant="outline" 
+                            size="lg" 
+                            className={`font-body border-2 ${cardStyle.directionsBorder} ${cardStyle.directionsText} ${cardStyle.directionsHover} rounded-xl shadow-sm`}
+                            onClick={() => handleDirections(mosque)}
+                          >
+                            <Navigation className="w-4 h-4 mr-2" />
+                            Directions
+                          </Button>
+                          <Button 
+                            variant="default" 
+                            size="lg" 
+                            className={`font-body ${cardStyle.detailsBg} ${cardStyle.detailsHover} text-white rounded-xl shadow-sm`}
+                            onClick={() => handleDetails(mosque)}
+                          >
+                            Details
+                          </Button>
+                        </div>
                       </div>
-                      <div className="flex gap-3">
-                        <Button 
-                          variant="outline" 
-                          size="lg" 
-                          className="font-body border-2 border-islamic-navy text-islamic-navy hover:bg-islamic-navy/10 rounded-xl"
-                          onClick={() => handleDirections(mosque)}
-                        >
-                          <Navigation className="w-4 h-4 mr-2" />
-                          Directions
-                        </Button>
-                        <Button 
-                          variant="default" 
-                          size="lg" 
-                          className="font-body bg-islamic-green hover:bg-islamic-green-dark rounded-xl"
-                          onClick={() => handleDetails(mosque)}
-                        >
-                          Details
-                        </Button>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
           )}
 
