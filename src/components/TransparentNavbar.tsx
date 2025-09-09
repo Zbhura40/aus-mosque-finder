@@ -10,10 +10,7 @@ const TransparentNavbar: React.FC = () => {
       <div className="flex justify-end items-center gap-6 max-w-7xl mx-auto">
         {/* FAQ Button */}
         <button
-          onClick={() => {
-            // TODO: Implement FAQ functionality
-            console.log("FAQ clicked");
-          }}
+          onClick={() => navigate("/faq")}
           className="group relative flex items-center gap-2 px-4 py-2 rounded-lg bg-transparent hover:bg-burnt-ochre/20 transition-all duration-300 ease-out"
           aria-label="Frequently Asked Questions"
         >
