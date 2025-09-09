@@ -11,43 +11,43 @@ const FAQ = () => {
   const faqItems = [
     {
       question: "What is a mosque?",
-      answer: "A mosque is a public place of worship used by Muslims. The English word \"mosque\" is derived from its Arabic equivalent, masjid, which means \"place of prostration.\" Suitably termed, because the Islamic prayer, or salat, includes prostrating oneself before God."
+      answer: "A mosque is a Muslim place of worship, open to the public. The term \"mosque\" comes from the Arabic word \"masjid,\" which means \"place of prostration,\" reflecting the prayer posture central to Islamic worship."
     },
     {
       question: "How is a mosque used?",
-      answer: "The Mosque plays a central role in the Muslim community primarily because it functions as the place where we may congregate to perform the required five daily prayers as well as the Friday Communal Prayers. In the United States, mosques may also accommodate fulltime and weekend Islamic schools, day care centers, adult and youth study groups, Qur'anic instruction, and Arabic classes. Community social events, weddings, dinners during Ramadan (the month of fasting), Eid holiday prayers and celebrations, youth activities, and funeral services are all hosted in mosques throughout the United States."
+      answer: "The mosque is the heart of the Muslim community, serving as the location for daily prayers and the Friday congregation. In places like Australia, mosques may also host Islamic classes, community celebrations, weddings, Ramadan dinners, youth activities, and funeral services."
     },
     {
-      question: "Is a mosque a holy place?",
-      answer: "A mosque is a place that is primarily dedicated for prayer. However, nothing is sacred about the building or the place itself. We may pray in our homes, offices, schools, or anywhere we find a clean surface."
+      question: "Is a mosque considered holy?",
+      answer: "While mosques are intended primarily for prayers and religious activities, the building itself is not regarded as inherently sacred. Muslims may also pray in their homes, workplaces, schools, or any clean area."
     },
     {
       question: "Do mosques welcome visitors?",
-      answer: "Yes, mosques in the United States welcome visitors. Tours and educational seminars can be arranged at most facilities. It is always best to call mosque administrators to arrange a tour, before arrival, because they want to make sure your visit is informative and enjoyable."
+      answer: "Yes, mosques generally encourage visitors. Arranging a tour ahead of time with mosque staff is recommended, ensuring that the visit is informative and respectful."
     },
     {
-      question: "What are the distinctive features of a mosque?",
-      answer: "The prayer hall in each mosque is oriented in the direction of Mecca, toward which Muslims worldwide face during prayers. In most cities in the United States, worshippers face northeast. Prayer halls are spacious and unfurnished in order to accommodate lines of worshippers standing, bowing, and prostrating in unison. Pews, chairs, altars or pulpits are not typical or permanent fixtures in the prayer hall. Members of the congregation usually sit on the floor, but chairs are available for those who want them. Mosques may accommodate men and women in the same prayer hall, but most mosques have two separate areas for men and women. Mosques vary in size from tiny storefronts serving a handful of worshippers to large Islamic community centers that can accommodate thousands."
+      question: "What are common features of mosques?",
+      answer: "The main prayer area is aligned toward Mecca, allowing worshippers to pray in the same direction. These spaces are open and have minimal furnishings. Men and women may have separate or shared areas. Mosques range from small storefronts to vast centers serving thousands."
     },
     {
-      question: "What else is in the prayer area?",
-      answer: "All mosques have a niche that indicates the direction for prayer. Some mosques also have a pulpit to the right of the niche, which is used by the imam to deliver the Friday sermon."
+      question: "What can be found in the prayer hall?",
+      answer: "Every mosque includes a niche showing the direction of prayer. Some also have a pulpit for sermons. Seating is typically on the floor, but chairs are available for those who need them."
     },
     {
-      question: "What about children in the prayer area?",
-      answer: "Children are often present during prayers, whether participating, watching, or imitating the movements of older Muslims. Their presence continues the tradition of the Prophet Muhammad, who always demonstrated tenderness and affection towards children and stressed the need to make them an integral part of the community."
+      question: "Are children allowed in the mosque?",
+      answer: "Children often join prayers, watch, or mimic adults, reflecting the Prophet Muhammad's (peace be upon him) tradition of including children in communal worship and fostering their connection to the community."
     },
     {
-      question: "What might I hear during my visit?",
-      answer: "You might hear us Muslims exchanging the Islamic greeting, \"as-salaamu alaykum,\" which is an Arabic phrase meaning, \"peace be with you\" and responding with, \"wa alaykum as-salaam\" meaning, \"and with you be peace.\" You might also hear the call to prayer or adhan, which is recited in Arabic and can be interpreted as follows:\n\nGod is most great.\nI bear witness that nothing is worthy of worship but God.\nI bear witness that Muhammad is a messenger of God.\nCome to prayer. Come to success. God is most great.*\nThere is no deity worthy of worship but God.\n\n*The preceding phrases are repeated more than once.\n\nYou might also hear the opening verses of the Qur'an, which constitute the most frequently recited chapter of the Qur'an. During the Islamic prayers we recite chapters or verses from the Holy Qur'an along with other phrases in Arabic. The Opening, or Al-Fatihah, can be interpreted as follows:\n\nIn the name of God, Most Compassionate, Most Merciful.\nPraise be to God, Lord of the Worlds.\nThe Most Compassionate, the Most Merciful. Master of the Day of Judgment.\nYou Alone we worship, and You Alone we ask for help.\nShow us the straight path.\nThe path of those whom You have favored,\nnot of those who earn Your anger, nor those who go astray."
+      question: "What sounds might I hear inside a mosque?",
+      answer: "You'll likely hear greetings in Arabic such as \"as-salaamu alaykum\" (peace be with you), the call to prayer (adhan), and passages from the Qur'an—including the commonly recited opening chapter, Al-Fatihah—during worship."
     },
     {
-      question: "What about the rest of the building?",
-      answer: "Many mosques have a minaret, the large tower used to recite the call to prayer five times each day. In the United States, the minaret is mainly decorative.\n\nFacilities to perform ablution, or wudu, can be found in all mosques. Before we approach God in prayer we perform ablution by washing our hands, face, and feet. This serves as a way for us to purify and prepare ourselves to stand in prayer, both physically and psychologically. Wudu facilities range from washbasins to specially designed areas with built-in benches, floor drains and faucets.\n\nLibraries are found in most mosques. Reading selections include various literature on theology, law, philosophy, as well as collections of the traditions and sayings of the Prophet Muhammad. Copies of the Qur'an, Islam's revealed text, are always available to worshippers.\n\nWorks of Arabic calligraphy, mainly quotations from the Holy Qur'an, are used to decorate nearly every mosque and to incite contemplation of the revealed Word of God. Other common features found in the mosque are clocks or schedules displaying the times of the five daily prayers and large rugs or carpets covering the prayer hall floor."
+      question: "What else is part of a mosque building?",
+      answer: "Many mosques have a minaret, primarily decorative in Western countries. Ablution facilities are provided for ritual washing prior to prayer. Libraries, Qur'an copies, Islamic writings, Arabic calligraphy, clocks for prayer times, and carpets or rugs are also typically present."
     },
     {
-      question: "What customs are observed when visiting a mosque?",
-      answer: "Visitors to mosques should conduct themselves as they would when visiting any religious institution. They should feel free to ask questions about the mosque, its purpose, architecture, and activities. Muslims are always pleased to answer any questions about our faith and customs.\n\nMen and women customarily dress modestly when visiting a mosque. Examples of appropriate clothing may include loose-fitting shirts, blouses, pants/slacks or long skirts, and may we also suggest no shorts or sleeveless shirts. Typically, Muslim women wear a scarf at the mosque; however, guests and visitors should not feel obliged to do so. Since we require a clean area on which to pray, everyone removes his or her shoes prior to entering the prayer hall. Shoe racks are located near the prayer hall entrance."
+      question: "What customs should visitors observe?",
+      answer: "Visitors should behave respectfully, similar to attending any religious site, and are encouraged to ask questions. Modest clothing is advised (loose-fitting attire; women may wear a headscarf, but it isn't required for guests), and everyone must remove shoes before entering the prayer hall. Shoe racks are available near the entrance."
     }
   ];
 
