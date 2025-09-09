@@ -53,127 +53,128 @@ const FAQ = () => {
 
   return (
     <div 
-      className="min-h-screen bg-background elegant-texture relative"
+      className="min-h-screen relative"
       style={{
-        backgroundImage: `url('/lovable-uploads/697d6062-ecca-408f-98bc-1fddaadef6c2.png')`,
+        backgroundImage: `url('/lovable-uploads/df75c306-9fa0-4287-ab32-4382608ba5e7.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         backgroundAttachment: 'fixed'
       }}
     >
-      {/* Background overlay for better text readability */}
-      <div className="absolute inset-0 bg-background/80 backdrop-blur-[1px]"></div>
+      {/* Gradient overlay for better readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
       
       {/* Content wrapper */}
       <div className="relative z-10">
-      {/* Header */}
-      <div className="bg-olive-green text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center gap-4 mb-8">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => navigate("/")}
-              className="text-white hover:bg-white/10 rounded-xl transition-colors duration-200"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Home
-            </Button>
-          </div>
-          <div className="flex items-center gap-6">
-            <div className="w-20 h-20 rounded-full bg-white/15 flex items-center justify-center border-2 border-white/30">
-              <HelpCircle className="w-10 h-10 text-white" />
+        {/* Header - Floating Design */}
+        <div className="pt-8 pb-16">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center gap-4 mb-12">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate("/")}
+                className="text-white/90 hover:text-white hover:bg-white/10 rounded-xl transition-all duration-300 backdrop-blur-sm border border-white/20"
+              >
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back to Home
+              </Button>
             </div>
-            <div>
-              <h1 className="font-elegant text-5xl lg:text-6xl font-bold leading-tight mb-4">
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-white/10 backdrop-blur-md border-2 border-white/30 mb-8">
+                <HelpCircle className="w-12 h-12 text-white" />
+              </div>
+              <h1 className="font-elegant text-6xl lg:text-7xl font-bold text-white leading-tight mb-4 drop-shadow-2xl">
                 Frequently Asked Questions
               </h1>
+              <p className="font-body text-xl text-white/90 max-w-2xl mx-auto leading-relaxed drop-shadow-lg">
+                Understanding mosques and Islamic worship practices
+              </p>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto">
-          {/* Introduction Card */}
-          <Card className="bg-warm-ivory border-2 border-golden-beige/60 shadow-xl rounded-2xl overflow-hidden mb-12">
-            <CardHeader className="bg-warm-ivory border-b border-golden-beige/40 py-8">
-              <CardTitle className="font-elegant text-3xl font-bold text-archway-black flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-olive-green/15 flex items-center justify-center border border-golden-beige/60">
-                  <Building2 className="w-6 h-6 text-olive-green" />
-                </div>
-                About Mosques
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="bg-warm-ivory p-8">
-              <p className="font-body text-lg text-slate-blue leading-relaxed">
-                Understanding mosques and Islamic worship practices can help build bridges between communities. 
-                These frequently asked questions provide insight into the role, customs, and features of mosques 
-                to promote better understanding and cultural awareness.
-              </p>
-            </CardContent>
-          </Card>
-
-          {/* FAQ Items */}
-          <div className="space-y-8">
-            {faqItems.map((item, index) => (
-              <Card key={index} className="bg-warm-ivory border-2 border-golden-beige/60 shadow-lg rounded-2xl overflow-hidden">
-                <CardHeader className="bg-warm-ivory border-b border-golden-beige/40 py-6">
-                  <CardTitle className="font-elegant text-xl font-bold text-archway-black flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-burnt-ochre/15 flex items-center justify-center mt-1 flex-shrink-0 border border-golden-beige/40">
-                      <span className="font-body text-sm font-bold text-burnt-ochre">Q</span>
-                    </div>
-                    {item.question}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="bg-warm-ivory p-8">
-                  <div className="flex gap-4">
-                    <div className="w-8 h-8 rounded-full bg-olive-green/15 flex items-center justify-center mt-1 flex-shrink-0 border border-golden-beige/40">
-                      <span className="font-body text-sm font-bold text-olive-green">A</span>
-                    </div>
-                    <div className="flex-1">
-                      {item.answer.split('\n\n').map((paragraph, pIndex) => (
-                        <p key={pIndex} className="font-body text-lg text-slate-blue leading-relaxed mb-4 last:mb-0">
-                          {paragraph.split('\n').map((line, lIndex) => (
-                            <React.Fragment key={lIndex}>
-                              {line}
-                              {lIndex < paragraph.split('\n').length - 1 && <br />}
-                            </React.Fragment>
-                          ))}
-                        </p>
-                      ))}
-                    </div>
+        {/* Main Content - Glass Cards Design */}
+        <div className="container mx-auto px-4 pb-16">
+          <div className="max-w-4xl mx-auto">
+            {/* Introduction Card */}
+            <Card className="bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl rounded-3xl overflow-hidden mb-12">
+              <CardHeader className="border-b border-white/20 py-8">
+                <CardTitle className="font-elegant text-3xl font-bold text-white flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
+                    <Building2 className="w-6 h-6 text-white" />
                   </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          {/* Footer Card */}
-          <Card className="bg-warm-ivory border-2 border-golden-beige/60 shadow-xl rounded-2xl overflow-hidden mt-12">
-            <CardContent className="bg-warm-ivory p-8">
-              <div className="text-center">
-                <h3 className="font-elegant text-2xl font-bold text-archway-black mb-4">
-                  Have More Questions?
-                </h3>
-                <p className="font-body text-lg text-slate-blue leading-relaxed mb-6">
-                  If you have additional questions about mosques or Islamic practices, 
-                  we encourage you to reach out to your local mosque community. 
-                  Most mosques welcome questions and are happy to provide educational tours.
+                  About Mosques
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-8">
+                <p className="font-body text-lg text-white/90 leading-relaxed">
+                  Understanding mosques and Islamic worship practices can help build bridges between communities. 
+                  These frequently asked questions provide insight into the role, customs, and features of mosques 
+                  to promote better understanding and cultural awareness.
                 </p>
-                <Button
-                  onClick={() => navigate("/")}
-                  className="font-body text-lg font-semibold bg-olive-green hover:bg-olive-green/80 text-white rounded-xl shadow-lg border-2 border-golden-beige/40 transition-all duration-300 px-8 py-3"
-                >
-                  Find Mosques Near You
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+
+            {/* FAQ Items - Glass Effect */}
+            <div className="space-y-6">
+              {faqItems.map((item, index) => (
+                <Card key={index} className="bg-white/10 backdrop-blur-md border border-white/20 shadow-xl rounded-3xl overflow-hidden hover:bg-white/15 transition-all duration-300">
+                  <CardHeader className="border-b border-white/20 py-6">
+                    <CardTitle className="font-elegant text-xl font-bold text-white flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-full bg-golden-amber/20 backdrop-blur-sm flex items-center justify-center mt-1 flex-shrink-0 border border-golden-amber/40">
+                        <span className="font-body text-sm font-bold text-golden-amber">Q</span>
+                      </div>
+                      {item.question}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-8">
+                    <div className="flex gap-4">
+                      <div className="w-10 h-10 rounded-full bg-islamic-green/20 backdrop-blur-sm flex items-center justify-center mt-1 flex-shrink-0 border border-islamic-green/40">
+                        <span className="font-body text-sm font-bold text-islamic-green">A</span>
+                      </div>
+                      <div className="flex-1">
+                        {item.answer.split('\n\n').map((paragraph, pIndex) => (
+                          <p key={pIndex} className="font-body text-lg text-white/90 leading-relaxed mb-4 last:mb-0">
+                            {paragraph.split('\n').map((line, lIndex) => (
+                              <React.Fragment key={lIndex}>
+                                {line}
+                                {lIndex < paragraph.split('\n').length - 1 && <br />}
+                              </React.Fragment>
+                            ))}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            {/* Footer Card - Call to Action */}
+            <Card className="bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl rounded-3xl overflow-hidden mt-12">
+              <CardContent className="p-8">
+                <div className="text-center">
+                  <h3 className="font-elegant text-3xl font-bold text-white mb-4">
+                    Have More Questions?
+                  </h3>
+                  <p className="font-body text-lg text-white/90 leading-relaxed mb-8 max-w-2xl mx-auto">
+                    If you have additional questions about mosques or Islamic practices, 
+                    we encourage you to reach out to your local mosque community. 
+                    Most mosques welcome questions and are happy to provide educational tours.
+                  </p>
+                  <Button
+                    onClick={() => navigate("/")}
+                    className="font-body text-lg font-semibold bg-white/20 hover:bg-white/30 text-white rounded-2xl shadow-lg border border-white/30 backdrop-blur-sm transition-all duration-300 px-8 py-4"
+                  >
+                    Find Mosques Near You
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
-      </div>
       </div>
     </div>
   );
