@@ -273,7 +273,7 @@ const MosqueLocator = () => {
               Find My Mosque Australia
             </h1>
             <p className="font-body text-2xl lg:text-3xl text-white/95 mb-12 max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
-              Australia's most comprehensive mosque directory. Discover prayer times, facilities, and directions to Islamic centers nationwide.
+              A new, free platform created for the community to easily find mosques across Australia
             </p>
             
             {/* User Feedback Button - Removed */}
