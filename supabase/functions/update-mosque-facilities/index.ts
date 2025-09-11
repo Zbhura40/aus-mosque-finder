@@ -40,7 +40,6 @@ interface GooglePlaceDetails {
     accepts_nfc?: boolean;
   };
   outdoor_seating?: boolean;
-  live_music?: boolean;
   serves_breakfast?: boolean;
   serves_lunch?: boolean;
   serves_dinner?: boolean;
@@ -48,9 +47,7 @@ interface GooglePlaceDetails {
   serves_wine?: boolean;
   serves_vegetarian_food?: boolean;
   serves_halal_food?: boolean;
-  allowsChildren?: boolean;
   goodForChildren?: boolean;
-  allowsDogs?: boolean;
   delivery?: boolean;
   dine_in?: boolean;
   takeout?: boolean;
@@ -59,7 +56,6 @@ interface GooglePlaceDetails {
   serves_cocktails?: boolean;
   serves_coffee?: boolean;
   serves_dessert?: boolean;
-  serves_happy_hour_food?: boolean;
 }
 
 interface ProcessedFacilities {
@@ -253,16 +249,13 @@ async function updateMosqueFacilities(
       'parkingOptions',
       'paymentOptions',
       'outdoorSeating',
-      'liveMusic',
       'servesBreakfast',
       'servesLunch',
       'servesDinner',
       'servesBeer',
       'servesWine',
       'servesVegetarianFood',
-      'allowsChildren',
       'goodForChildren',
-      'allowsDogs',
       'delivery',
       'dineIn',
       'takeout',
@@ -271,7 +264,6 @@ async function updateMosqueFacilities(
       'servesCocktails',
       'servesCoffee',
       'servesDessert',
-      'servesHappyHourFood',
       'restroom',
       'wifi'
     ].join(',');
@@ -401,7 +393,7 @@ function processFacilitiesData(placeDetails: GooglePlaceDetails): ProcessedFacil
   // Process amenities
   facilities.amenities.restrooms = placeDetails.restroom || false;
   facilities.amenities.wifi = placeDetails.wifi;
-  facilities.amenities.childrenWelcome = placeDetails.allowsChildren || placeDetails.goodForChildren;
+  facilities.amenities.childrenWelcome = placeDetails.goodForChildren;
   facilities.amenities.halalFood = placeDetails.serves_halal_food;
   
   // Infer amenities from place types
@@ -409,7 +401,7 @@ function processFacilitiesData(placeDetails: GooglePlaceDetails): ProcessedFacil
   facilities.amenities.womensPrayerArea = types.includes('place_of_worship') || types.includes('mosque');
   facilities.amenities.communityHall = types.includes('community_center') || types.includes('event_venue');
   facilities.amenities.cafe = types.includes('cafe') || types.includes('restaurant') || placeDetails.serves_coffee;
-  facilities.amenities.playArea = placeDetails.goodForChildren && placeDetails.allowsChildren;
+  facilities.amenities.playArea = placeDetails.goodForChildren;
 
   // Process services
   facilities.services.takeout = placeDetails.takeout;

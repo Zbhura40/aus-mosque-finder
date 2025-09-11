@@ -80,7 +80,7 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
         .from('mosques')
         .select('facilities')
         .eq('mosque_id', mosque.id)
-        .single();
+        .maybeSingle();
 
       if (error) {
         console.error('Error fetching mosque facilities:', error);
