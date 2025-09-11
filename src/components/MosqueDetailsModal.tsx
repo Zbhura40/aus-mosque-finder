@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -8,16 +8,13 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { MapPin, Phone, Globe, Star, Clock, ExternalLink, Image as ImageIcon, Users, AccessibilityIcon } from "lucide-react";
+import { MapPin, Phone, Globe, Star, Clock, ExternalLink, Image as ImageIcon, Users } from "lucide-react";
 import mosquePlaceholder from "@/assets/mosque-placeholder.jpg";
 import { generateMosqueSchema } from "@/lib/json-ld-schema";
 import { useJsonLdSchema } from "@/hooks/useJsonLdSchema";
 import { SEOUtils } from "@/lib/seo-utils";
 import { useSEO } from "@/hooks/useSEO";
 import { useMosqueURL } from "@/hooks/useMosqueURL";
-import PrayerTimes from "@/components/PrayerTimes";
-import { MosqueFacilities } from "@/components/MosqueFacilities";
-import { supabase } from "@/integrations/supabase/client";
 
 interface Mosque {
   id: string;
@@ -31,7 +28,6 @@ interface Mosque {
   photoUrl?: string;
   latitude?: number;
   longitude?: number;
-  facilities?: any;
 }
 
 interface MosqueDetailsModalProps {
@@ -46,82 +42,12 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
   mosque,
 }) => {
   const [imageError, setImageError] = useState(false);
-  const [facilities, setFacilities] = useState(null);
-  const [isLoadingFacilities, setIsLoadingFacilities] = useState(false);
 
   // SEO, URL management and JSON-LD schema for the mosque when modal is open
   useSEO('mosque', mosque && isOpen ? mosque : null);
   useMosqueURL(mosque, isOpen);
   const mosqueSchema = mosque && isOpen ? generateMosqueSchema(mosque, window.location.href) : null;
   useJsonLdSchema(mosqueSchema);
-
-  // Fetch mosque facilities when modal opens
-  useEffect(() => {
-    if (isOpen && mosque) {
-      fetchMosqueFacilities();
-    }
-  }, [isOpen, mosque]);
-
-  const fetchMosqueFacilities = async () => {
-    if (!mosque) return;
-    
-    setIsLoadingFacilities(true);
-    
-    try {
-      // First check if we already have facilities data in the mosque object
-      if (mosque.facilities) {
-        setFacilities(mosque.facilities);
-        setIsLoadingFacilities(false);
-        return;
-      }
-
-      // Try to get facilities from the database first
-      const { data: mosqueData, error } = await supabase
-        .from('mosques')
-        .select('facilities')
-        .eq('mosque_id', mosque.id)
-        .maybeSingle();
-
-      if (error) {
-        console.error('Error fetching mosque facilities:', error);
-      } else if (mosqueData?.facilities) {
-        setFacilities(mosqueData.facilities);
-      }
-    } catch (error) {
-      console.error('Error fetching facilities:', error);
-    } finally {
-      setIsLoadingFacilities(false);
-    }
-  };
-
-  const refreshFacilities = async () => {
-    if (!mosque) return;
-    
-    setIsLoadingFacilities(true);
-    
-    try {
-      // Call the update facilities function
-      const response = await supabase.functions.invoke('update-mosque-facilities', {
-        body: { 
-          mosqueId: mosque.id,
-          forceRefresh: true 
-        }
-      });
-
-      if (response.error) {
-        console.error('Error updating facilities:', response.error);
-        return;
-      }
-
-      if (response.data?.success && response.data?.facilities) {
-        setFacilities(response.data.facilities);
-      }
-    } catch (error) {
-      console.error('Error refreshing facilities:', error);
-    } finally {
-      setIsLoadingFacilities(false);
-    }
-  };
 
   if (!mosque) return null;
 
@@ -311,44 +237,6 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
             </p>
           </section>
 
-          <Separator className="bg-golden-beige/60 h-px" />
-
-          {/* Facilities & Amenities - Google Places Data */}
-          <MosqueFacilities 
-            facilities={facilities}
-            mosqueName={mosque.name}
-            onRefresh={refreshFacilities}
-            isLoading={isLoadingFacilities}
-          />
-
-          <Separator className="bg-golden-beige/60 h-px" />
-
-          {/* Prayer Times Section */}
-          <PrayerTimes 
-            mosqueId={mosque.id} 
-            mosqueName={mosque.name}
-            mosqueWebsite={mosque.website}
-          />
-
-          <Separator className="bg-golden-beige/60 h-px" />
-
-          {/* Accessibility Information */}
-          <section className="space-y-6 bg-warm-ivory p-8 rounded-xl border-2 border-golden-beige/60 shadow-sm">
-            <h3 className="font-elegant text-xl font-bold text-archway-black flex items-center gap-3">
-              <AccessibilityIcon className="w-6 h-6 text-olive-green" />
-              Accessibility Features
-            </h3>
-            <div className="space-y-3">
-              {SEOUtils.generateAccessibilityInfo(mosque).map((feature, index) => (
-                <div key={index} className="flex items-start gap-4 font-body text-base text-slate-blue">
-                  <div className="w-2 h-2 bg-olive-green rounded-full mt-2.5 flex-shrink-0"></div>
-                  {feature}
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <Separator className="bg-golden-beige/60 h-px" />
 
           {/* Distance Info */}
           <div className="bg-warm-ivory rounded-xl p-8 border-2 border-golden-beige/60 shadow-sm">
