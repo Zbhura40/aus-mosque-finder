@@ -212,31 +212,6 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
             />
           </div>
 
-          <Separator className="bg-golden-beige/60 h-px" />
-
-          {/* Mosque Description */}
-          <section className="space-y-6 bg-warm-ivory p-8 rounded-xl border-2 border-golden-beige/60 shadow-sm">
-            <h2 className="font-elegant text-2xl font-bold text-archway-black flex items-center gap-4">
-              <div className="w-10 h-10 rounded-full bg-burnt-ochre/15 flex items-center justify-center shadow-sm border border-golden-beige/60">
-                <Users className="w-5 h-5 text-burnt-ochre" />
-              </div>
-              About {mosque.name}
-            </h2>
-            <p className="font-body text-lg text-slate-blue leading-relaxed">
-              {SEOUtils.generateMosqueDescription(mosque)}
-            </p>
-          </section>
-
-          <Separator className="bg-golden-beige/60 h-px" />
-
-          {/* Location Context */}
-          <section className="space-y-6 bg-warm-ivory p-8 rounded-xl border-2 border-golden-beige/60 shadow-sm">
-            <h3 className="font-elegant text-xl font-bold text-archway-black">Location & Accessibility</h3>
-            <p className="font-body text-lg text-slate-blue leading-relaxed">
-              {SEOUtils.getLocationContext(mosque)}
-            </p>
-          </section>
-
 
           {/* Distance Info */}
           <div className="bg-warm-ivory rounded-xl p-8 border-2 border-golden-beige/60 shadow-sm">
