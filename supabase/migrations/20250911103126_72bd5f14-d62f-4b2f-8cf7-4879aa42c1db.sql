@@ -1,0 +1,117 @@
+-- Insert sample prayer times for testing mosques
+INSERT INTO public.prayer_times (
+  mosque_id, 
+  date, 
+  fajr_adhan, 
+  fajr_iqamah, 
+  dhuhr_adhan, 
+  dhuhr_iqamah, 
+  asr_adhan, 
+  asr_iqamah, 
+  maghrib_adhan, 
+  maghrib_iqamah, 
+  isha_adhan, 
+  isha_iqamah, 
+  jumah_times, 
+  source_url, 
+  is_current
+) VALUES 
+(
+  'ChIJqw6QwA9bkWsRSI-exvQ5R2I', -- Holland Park Mosque
+  CURRENT_DATE, 
+  '05:30', 
+  '05:45', 
+  '12:15', 
+  '12:30', 
+  '15:45', 
+  '16:00', 
+  '17:30', 
+  '17:35', 
+  '19:00', 
+  '19:15', 
+  '["12:30", "13:15"]'::jsonb, 
+  'http://www.hollandparkmosque.org.au/', 
+  true
+),
+(
+  'ChIJwUkaaw1bkWsRn0soKq2Xjpw', -- Brisbane CBD Musallah
+  CURRENT_DATE, 
+  '05:20', 
+  '05:30', 
+  '12:10', 
+  '12:20', 
+  '15:40', 
+  '15:50', 
+  '17:25', 
+  '17:30', 
+  '18:55', 
+  '19:05', 
+  '["12:20", "13:00"]'::jsonb, 
+  'https://bcec.org.au/', 
+  true
+),
+(
+  'ChIJkSHSrWlakWsRpBIOV3kQ3es', -- Buranda Islamic Mosque
+  CURRENT_DATE, 
+  '05:25', 
+  '05:35', 
+  '12:12', 
+  '12:25', 
+  '15:42', 
+  '15:55', 
+  '17:28', 
+  '17:33', 
+  '18:58', 
+  '19:10', 
+  '["12:25", "13:10"]'::jsonb, 
+  'https://praydigital.info/place/212/buranda-mosque-agnes-street-woolloongabba-prayer-timings', 
+  true
+),
+(
+  'ChIJiUTU40ZRkWsR17pbh3PySBY', -- Masjid Al Madinah - West End
+  CURRENT_DATE, 
+  '05:22', 
+  '05:32', 
+  '12:08', 
+  '12:18', 
+  '15:38', 
+  '15:48', 
+  '17:22', 
+  '17:27', 
+  '18:52', 
+  '19:02', 
+  '["12:18", "12:58"]'::jsonb, 
+  'https://gopray.com.au/place/west-end-mosque/', 
+  true
+),
+(
+  'ChIJi6X6Q8xZkWsRC3PG7hXowiA', -- Masjid As-Sunnah Lutwyche
+  CURRENT_DATE, 
+  '05:18', 
+  '05:28', 
+  '12:05', 
+  '12:15', 
+  '15:35', 
+  '15:45', 
+  '17:18', 
+  '17:23', 
+  '18:48', 
+  '18:58', 
+  '["12:15", "12:55"]'::jsonb, 
+  'https://www.masjidlutwyche.org.au/', 
+  true
+)
+ON CONFLICT (mosque_id, date) DO UPDATE SET
+  fajr_adhan = EXCLUDED.fajr_adhan,
+  fajr_iqamah = EXCLUDED.fajr_iqamah,
+  dhuhr_adhan = EXCLUDED.dhuhr_adhan,
+  dhuhr_iqamah = EXCLUDED.dhuhr_iqamah,
+  asr_adhan = EXCLUDED.asr_adhan,
+  asr_iqamah = EXCLUDED.asr_iqamah,
+  maghrib_adhan = EXCLUDED.maghrib_adhan,
+  maghrib_iqamah = EXCLUDED.maghrib_iqamah,
+  isha_adhan = EXCLUDED.isha_adhan,
+  isha_iqamah = EXCLUDED.isha_iqamah,
+  jumah_times = EXCLUDED.jumah_times,
+  source_url = EXCLUDED.source_url,
+  updated_at = now();
