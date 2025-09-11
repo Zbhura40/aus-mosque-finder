@@ -126,11 +126,19 @@ serve(async (req) => {
         await logScrapeAttempt(supabase, mosqueId, website, 'success', '', extractionResult);
 
         console.log(`Successfully updated prayer times for mosque ${mosqueId}`);
+
+        // Update mosque platform integration info if detected
+        if (extractionResult.sourceFormat.includes('platform')) {
+          await updateMosquePlatformInfo(supabase, mosqueId, extractionResult);
+        }
+
         return new Response(JSON.stringify({
           success: true,
           data: extractionResult.prayerTimes,
           confidence: extractionResult.confidence,
           sourceFormat: extractionResult.sourceFormat,
+          platformIntegration: extractionResult.sourceFormat.includes('platform'),
+          adminReviewRequired: extractionResult.confidence < 50,
           notes: extractionResult.notes
         }), {
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -1568,6 +1576,80 @@ function validateAndEnhanceData(prayerTimes: PrayerTimes, html: string): { praye
 function timeToMinutes(timeStr: string): number {
   const [hours, minutes] = timeStr.split(':').map(Number);
   return hours * 60 + minutes;
+}
+
+// ==================== UTILITY FUNCTIONS ====================
+
+function calculateFreshnessScore(extractionResult: ExtractionResult): number {
+  let score = 0;
+  
+  // Base score from confidence
+  score = extractionResult.confidence;
+  
+  // Bonus for platform integrations (always fresh)
+  if (extractionResult.sourceFormat.includes('platform')) {
+    score += 30;
+  }
+  
+  // Bonus for structured data sources
+  if (extractionResult.sourceFormat.includes('table') || 
+      extractionResult.sourceFormat.includes('document')) {
+    score += 10;
+  }
+  
+  // Check for date freshness indicators in notes
+  const freshnessIndicators = extractionResult.notes.some(note => 
+    /current|today|updated|daily|fresh/i.test(note)
+  );
+  
+  if (freshnessIndicators) {
+    score += 15;
+  }
+  
+  return Math.min(score, 100); // Cap at 100
+}
+
+async function updateMosquePlatformInfo(supabase: any, mosqueId: string, extractionResult: ExtractionResult): Promise<void> {
+  try {
+    let platformIntegration = null;
+    let platformMosqueId = null;
+    
+    // Extract platform details from source format and notes
+    if (extractionResult.sourceFormat.includes('masjidbox')) {
+      platformIntegration = 'masjidbox';
+      const idNote = extractionResult.notes.find(note => note.includes('Masjidbox mosque ID'));
+      if (idNote) {
+        platformMosqueId = idNote.split(':')[1]?.trim();
+      }
+    } else if (extractionResult.sourceFormat.includes('mawaqit')) {
+      platformIntegration = 'mawaqit';
+      const idNote = extractionResult.notes.find(note => note.includes('Mawaqit mosque UUID'));
+      if (idNote) {
+        platformMosqueId = idNote.split(':')[1]?.trim();
+      }
+    } else if (extractionResult.sourceFormat.includes('prayers_connect')) {
+      platformIntegration = 'prayers_connect';
+      const idNote = extractionResult.notes.find(note => note.includes('Prayers Connect mosque ID'));
+      if (idNote) {
+        platformMosqueId = idNote.split(':')[1]?.trim();
+      }
+    }
+    
+    if (platformIntegration) {
+      const { error } = await supabase.rpc('update_mosque_details', {
+        p_mosque_id: mosqueId,
+        p_platform_integration: platformIntegration,
+        p_platform_mosque_id: platformMosqueId
+      });
+      
+      if (error) {
+        console.error('Failed to update mosque platform info:', error);
+      }
+    }
+    
+  } catch (error) {
+    console.error('Error updating mosque platform info:', error);
+  }
 }
 
 // ==================== HELPER FUNCTIONS ====================
