@@ -49,6 +49,9 @@ verify_jwt = false
 [functions.update-prayer-times-daily]
 verify_jwt = false
 
+[functions.update-mosque-facilities]
+verify_jwt = false
+
 [auth]
 enabled = true
 port = 54326
