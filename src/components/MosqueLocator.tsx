@@ -290,8 +290,44 @@ const MosqueLocator = () => {
 
       {/* Main Content */}
       <main>
+        {/* Trust Building Section */}
+        <section className="container mx-auto px-4 py-16 relative z-20">
+          <Card className="bg-warm-ivory/95 border-2 border-golden-beige/60 shadow-xl rounded-3xl overflow-hidden backdrop-blur-sm max-w-4xl mx-auto">
+            <CardContent className="p-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* Free to Use */}
+                <div className="text-center space-y-4">
+                  <div className="w-16 h-16 mx-auto rounded-full bg-islamic-green/20 flex items-center justify-center border-2 border-islamic-green/40">
+                    <span className="text-2xl">🆓</span>
+                  </div>
+                  <h3 className="font-elegant text-xl font-semibold text-architectural-shadow">100% Free</h3>
+                  <p className="font-body text-muted-foreground leading-relaxed">This platform is completely free to use, with zero ads of any kind.</p>
+                </div>
+
+                {/* Built by Muslims */}
+                <div className="text-center space-y-4">
+                  <div className="w-16 h-16 mx-auto rounded-full bg-golden-amber/20 flex items-center justify-center border-2 border-golden-amber/60">
+                    <span className="text-2xl">🤝</span>
+                  </div>
+                  <h3 className="font-elegant text-xl font-semibold text-architectural-shadow">Community Built</h3>
+                  <p className="font-body text-muted-foreground leading-relaxed">Designed and managed by Muslims, with your best interests at heart.</p>
+                </div>
+
+                {/* No Ads Ever */}
+                <div className="text-center space-y-4">
+                  <div className="w-16 h-16 mx-auto rounded-full bg-rose-dome/20 flex items-center justify-center border-2 border-rose-dome/40">
+                    <span className="text-2xl">🚫</span>
+                  </div>
+                  <h3 className="font-elegant text-xl font-semibold text-architectural-shadow">No Ads Ever</h3>
+                  <p className="font-body text-muted-foreground leading-relaxed">Absolutely no advertisements—ever. Just a clean, focused experience.</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
         {/* Search Section */}
-        <section className="container mx-auto px-4 -mt-32 relative z-20">
+        <section className="container mx-auto px-4 relative z-20">
           <Card className="bg-warm-ivory border-2 border-golden-beige/60 shadow-2xl rounded-3xl overflow-hidden backdrop-blur-sm">
             <CardHeader className="text-center pb-6 relative bg-warm-ivory border-b border-golden-beige/40">
               <h2 className="font-elegant text-4xl font-semibold text-archway-black flex items-center justify-center gap-3">
