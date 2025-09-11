@@ -1,5 +1,6 @@
+import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.57.2';
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.2";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -21,9 +22,12 @@ interface PrayerTimes {
   date?: string;
 }
 
-interface ScrapeRequest {
-  mosqueId: string;
-  website: string;
+interface ExtractionResult {
+  prayerTimes: PrayerTimes | null;
+  confidence: number;
+  sourceFormat: string;
+  notes: string[];
+  success: boolean;
 }
 
 serve(async (req) => {
@@ -31,448 +35,754 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
-  try {
-    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
-    const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
-    
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
+  const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
+  const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+  const supabase = createClient(supabaseUrl, supabaseKey);
 
+  try {
     if (req.method === 'POST') {
-      const { mosqueId, website }: ScrapeRequest = await req.json();
+      const { mosqueId, website } = await req.json();
       
-      console.log(`Starting prayer time scraping for mosque ${mosqueId} from ${website}`);
-      
-      if (!website || !website.startsWith('http')) {
-        console.error('Invalid website URL:', website);
+      if (!mosqueId || !website) {
         return new Response(JSON.stringify({ 
           success: false, 
-          error: 'Invalid website URL provided' 
+          error: 'Missing mosqueId or website' 
         }), {
           status: 400,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         });
       }
-      
-      // Scrape the mosque website for prayer times
-      const scrapedData = await scrapePrayerTimes(website);
-      
-      if (scrapedData) {
-        console.log('Successfully scraped prayer times:', scrapedData);
-        
-        // Store the scraped data in the database
-        const today = new Date().toISOString().split('T')[0];
-        
-        const { data, error } = await supabase
-          .from('prayer_times')
-          .upsert({
-            mosque_id: mosqueId,
-            date: scrapedData.date || today,
-            fajr_adhan: scrapedData.fajr_adhan,
-            fajr_iqamah: scrapedData.fajr_iqamah,
-            dhuhr_adhan: scrapedData.dhuhr_adhan,
-            dhuhr_iqamah: scrapedData.dhuhr_iqamah,
-            asr_adhan: scrapedData.asr_adhan,
-            asr_iqamah: scrapedData.asr_iqamah,
-            maghrib_adhan: scrapedData.maghrib_adhan,
-            maghrib_iqamah: scrapedData.maghrib_iqamah,
-            isha_adhan: scrapedData.isha_adhan,
-            isha_iqamah: scrapedData.isha_iqamah,
-            jumah_times: scrapedData.jumah_times || [],
-            source_url: website,
-            is_current: true,
-            scraped_at: new Date().toISOString()
-          })
-          .select();
 
-        if (error) {
-          console.error('Database error:', error);
-          return new Response(JSON.stringify({ 
-            success: false, 
-            error: 'Failed to store prayer times in database',
-            details: error.message
+      console.log(`Starting enhanced prayer time scraping for mosque ${mosqueId} from ${website}`);
+      
+      // Log scrape attempt
+      await logScrapeAttempt(supabase, mosqueId, website, 'started', '');
+
+      const extractionResult = await comprehensiveExtraction(website);
+      
+      if (extractionResult.success && extractionResult.prayerTimes) {
+        // Store the prayer times
+        const upsertData = {
+          mosque_id: mosqueId,
+          date: extractionResult.prayerTimes.date || getTodayDate(),
+          fajr_adhan: extractionResult.prayerTimes.fajr_adhan,
+          fajr_iqamah: extractionResult.prayerTimes.fajr_iqamah,
+          dhuhr_adhan: extractionResult.prayerTimes.dhuhr_adhan,
+          dhuhr_iqamah: extractionResult.prayerTimes.dhuhr_iqamah,
+          asr_adhan: extractionResult.prayerTimes.asr_adhan,
+          asr_iqamah: extractionResult.prayerTimes.asr_iqamah,
+          maghrib_adhan: extractionResult.prayerTimes.maghrib_adhan,
+          maghrib_iqamah: extractionResult.prayerTimes.maghrib_iqamah,
+          isha_adhan: extractionResult.prayerTimes.isha_adhan,
+          isha_iqamah: extractionResult.prayerTimes.isha_iqamah,
+          jumah_times: extractionResult.prayerTimes.jumah_times,
+          source_url: website,
+          source_format: extractionResult.sourceFormat,
+          extraction_confidence: extractionResult.confidence,
+          parsing_notes: extractionResult.notes.join('; '),
+          last_scrape_attempt: new Date().toISOString(),
+          scrape_success: true,
+          auto_scraped: true,
+          is_current: true,
+        };
+
+        const { error: upsertError } = await supabase
+          .from('prayer_times')
+          .upsert(upsertData, { 
+            onConflict: 'mosque_id,date',
+            ignoreDuplicates: false 
+          });
+
+        if (upsertError) {
+          console.error('Database upsert error:', upsertError);
+          await logScrapeAttempt(supabase, mosqueId, website, 'database_error', upsertError.message);
+          
+          return new Response(JSON.stringify({
+            success: false,
+            error: 'Database error',
+            details: upsertError.message
           }), {
             status: 500,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
           });
         }
 
-        console.log(`Successfully stored prayer times for mosque ${mosqueId}`);
-        return new Response(JSON.stringify({ 
-          success: true, 
-          data: data[0],
-          prayerTimes: scrapedData,
-          message: 'Prayer times successfully scraped and stored'
+        // Log successful scrape
+        await logScrapeAttempt(supabase, mosqueId, website, 'success', '', extractionResult);
+
+        console.log(`Successfully updated prayer times for mosque ${mosqueId}`);
+        return new Response(JSON.stringify({
+          success: true,
+          data: extractionResult.prayerTimes,
+          confidence: extractionResult.confidence,
+          sourceFormat: extractionResult.sourceFormat,
+          notes: extractionResult.notes
         }), {
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         });
       } else {
-        console.log(`No prayer times found for mosque ${mosqueId} at ${website}`);
-        return new Response(JSON.stringify({ 
-          success: false, 
-          error: 'Could not extract prayer times from website',
-          details: 'The website content does not contain recognizable prayer time formats'
+        // Log failed scrape
+        await logScrapeAttempt(supabase, mosqueId, website, 'parsing_failed', extractionResult.notes.join('; '));
+        
+        return new Response(JSON.stringify({
+          success: false,
+          error: "Could not extract prayer times from website",
+          details: extractionResult.notes.join('; '),
+          confidence: extractionResult.confidence,
+          sourceFormat: extractionResult.sourceFormat
         }), {
           status: 404,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         });
       }
-    }
+    } else if (req.method === 'GET') {
+      // Handle GET requests for testing and retrieving today's prayer times
+      const url = new URL(req.url);
+      const testUrl = url.searchParams.get('testUrl');
+      const mosqueId = url.searchParams.get('mosqueId');
 
-    // GET request - fetch stored prayer times for a mosque OR test scraping
-    const url = new URL(req.url);
-    const mosqueId = url.searchParams.get('mosqueId');
-    const testUrl = url.searchParams.get('testUrl');
-    
-    // Test endpoint - scrape a URL without storing
-    if (testUrl) {
-      console.log(`Testing prayer time scraping for URL: ${testUrl}`);
-      
-      try {
-        const scrapedData = await scrapePrayerTimes(testUrl);
+      if (testUrl) {
+        console.log(`Testing extraction for URL: ${testUrl}`);
+        const result = await comprehensiveExtraction(testUrl);
         
-        return new Response(JSON.stringify({ 
-          success: !!scrapedData, 
-          data: scrapedData || null,
-          message: scrapedData ? 'Successfully extracted prayer times' : 'No prayer times found',
-          testUrl: testUrl
+        return new Response(JSON.stringify({
+          success: result.success,
+          extractedData: result.prayerTimes,
+          confidence: result.confidence,
+          sourceFormat: result.sourceFormat,
+          notes: result.notes
         }), {
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-        });
-      } catch (error) {
-        console.error('Test scraping error:', error);
-        return new Response(JSON.stringify({ 
-          success: false, 
-          error: error.message,
-          testUrl: testUrl
-        }), {
-          status: 500,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         });
       }
-    }
-    
-    if (!mosqueId) {
-      return new Response(JSON.stringify({ 
-        success: false, 
-        error: 'Mosque ID or test URL is required' 
-      }), {
+
+      if (mosqueId) {
+        const { data, error } = await supabase
+          .from('prayer_times')
+          .select('*')
+          .eq('mosque_id', mosqueId)
+          .eq('is_current', true)
+          .order('date', { ascending: false })
+          .limit(1)
+          .single();
+
+        if (error) {
+          return new Response(JSON.stringify({ success: false, error: error.message }), {
+            status: 500,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          });
+        }
+
+        return new Response(JSON.stringify({ success: true, data }), {
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+      }
+
+      return new Response(JSON.stringify({ success: false, error: 'Missing parameters' }), {
         status: 400,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
 
-    const today = new Date().toISOString().split('T')[0];
-    
-    const { data, error } = await supabase
-      .from('prayer_times')
-      .select('*')
-      .eq('mosque_id', mosqueId)
-      .eq('date', today)
-      .eq('is_current', true)
-      .maybeSingle();
-
-    if (error) {
-      console.error('Database error:', error);
-      return new Response(JSON.stringify({ 
-        success: false, 
-        error: 'Failed to fetch prayer times' 
-      }), {
-        status: 500,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-      });
-    }
-
-    return new Response(JSON.stringify({ 
-      success: true, 
-      data: data || null 
-    }), {
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+    return new Response('Method not allowed', { 
+      status: 405,
+      headers: corsHeaders 
     });
 
   } catch (error) {
-    console.error('Scraping error:', error);
+    console.error('Error in scrape-prayer-times function:', error);
     return new Response(JSON.stringify({ 
       success: false, 
       error: error.message 
     }), {
       status: 500,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   }
 });
 
-async function scrapePrayerTimes(website: string): Promise<PrayerTimes | null> {
-  try {
-    console.log(`Fetching website: ${website}`);
-    
-    const response = await fetch(website, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; MosqueLocator/1.0; +https://mosquelocator.com/bot)'
-      }
-    });
+async function comprehensiveExtraction(website: string): Promise<ExtractionResult> {
+  const result: ExtractionResult = {
+    prayerTimes: null,
+    confidence: 0,
+    sourceFormat: 'unknown',
+    notes: [],
+    success: false
+  };
 
-    if (!response.ok) {
-      console.error(`Failed to fetch website: ${response.status} ${response.statusText}`);
-      return null;
+  try {
+    // First, try to scrape the HTML
+    const htmlContent = await scrapePrayerTimes(website);
+    if (!htmlContent) {
+      result.notes.push('Failed to fetch website content');
+      return result;
     }
 
-    const html = await response.text();
-    console.log(`Successfully fetched ${html.length} characters from ${website}`);
-    
-    // Extract prayer times using various patterns and heuristics
-    return extractPrayerTimesFromHtml(html);
+    result.notes.push(`Fetched ${htmlContent.length} characters from website`);
+
+    // Try multiple extraction methods in order of reliability
+    const extractors = [
+      () => extractFromHTMLTables(htmlContent),
+      () => extractFromLists(htmlContent),
+      () => extractFromStructuredText(htmlContent),
+      () => extractFromPlainText(htmlContent)
+    ];
+
+    for (const extractor of extractors) {
+      try {
+        const extraction = await extractor();
+        if (extraction.success && extraction.confidence > result.confidence) {
+          result.prayerTimes = extraction.prayerTimes;
+          result.confidence = extraction.confidence;
+          result.sourceFormat = extraction.sourceFormat;
+          result.notes.push(...extraction.notes);
+          result.success = extraction.success;
+        }
+      } catch (error) {
+        result.notes.push(`Extraction error: ${error.message}`);
+      }
+    }
+
+    // Check for downloadable timetables (PDFs, Excel files)
+    const downloadableLinks = findDownloadableTimelinks(htmlContent);
+    if (downloadableLinks.length > 0) {
+      result.notes.push(`Found ${downloadableLinks.length} downloadable timetables: ${downloadableLinks.join(', ')}`);
+      // TODO: Implement PDF/Excel parsing in future iteration
+    }
+
+    // Check for embedded widgets or iframes
+    const embeddedSources = findEmbeddedSources(htmlContent);
+    if (embeddedSources.length > 0) {
+      result.notes.push(`Found ${embeddedSources.length} embedded sources: ${embeddedSources.join(', ')}`);
+      // TODO: Implement widget parsing in future iteration
+    }
+
+    // If we have any prayer times, consider it a success if confidence > 30
+    if (result.prayerTimes && result.confidence > 30) {
+      result.success = true;
+    } else if (result.prayerTimes) {
+      result.notes.push('Low confidence extraction - flagged for manual review');
+    } else {
+      result.notes.push('No prayer times could be extracted from any format');
+    }
+
+    return result;
+
   } catch (error) {
-    console.error('Error fetching website:', error);
-    return null;
+    result.notes.push(`Comprehensive extraction failed: ${error.message}`);
+    return result;
   }
 }
 
-function extractPrayerTimesFromHtml(html: string): PrayerTimes | null {
-  console.log('HTML content length:', html.length);
-  console.log('HTML preview:', html.substring(0, 500));
-  
-  // Remove HTML tags and get text content
-  const textContent = html.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
-                         .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
-                         .replace(/<[^>]*>/g, ' ')
-                         .replace(/\s+/g, ' ')
-                         .trim();
-  
-  console.log('Text content preview:', textContent.substring(0, 1000));
-  
-  const prayerTimes: Partial<PrayerTimes> = {};
-  
-  // Check for table format first (like Holland Park Mosque)
-  // Looking for pattern: Prayer Times ... Fajr | 4:33AM | — | Dhuhr | 11:45AM | — | ...
-  const tablePattern = /Prayer\s+Times[\s\S]*?Fajr[\s\S]*?(\d{1,2}:\d{2}\s*[AP]M)[\s\S]*?Dhuhr[\s\S]*?(\d{1,2}:\d{2}\s*[AP]M)[\s\S]*?Asr[\s\S]*?(\d{1,2}:\d{2}\s*[AP]M)[\s\S]*?Maghrib[\s\S]*?(\d{1,2}:\d{2}\s*[AP]M)[\s\S]*?Isha[\s\S]*?(\d{1,2}:\d{2}\s*[AP]M)/i;
-  const tableMatch = textContent.match(tablePattern);
-  
-  if (tableMatch) {
-    console.log('Found table format prayer times');
-    prayerTimes.fajr_adhan = normalizeTime(tableMatch[1]);
-    prayerTimes.dhuhr_adhan = normalizeTime(tableMatch[2]);
-    prayerTimes.asr_adhan = normalizeTime(tableMatch[3]);
-    prayerTimes.maghrib_adhan = normalizeTime(tableMatch[4]);
-    prayerTimes.isha_adhan = normalizeTime(tableMatch[5]);
+async function extractFromHTMLTables(html: string): Promise<ExtractionResult> {
+  const result: ExtractionResult = {
+    prayerTimes: {},
+    confidence: 0,
+    sourceFormat: 'html_table',
+    notes: [],
+    success: false
+  };
+
+  try {
+    // Parse HTML and find table elements
+    const tableRegex = /<table[^>]*>([\s\S]*?)<\/table>/gi;
+    const tables = [...html.matchAll(tableRegex)];
     
-    console.log('Extracted prayer times from table:', {
-      fajr: prayerTimes.fajr_adhan,
-      dhuhr: prayerTimes.dhuhr_adhan,
-      asr: prayerTimes.asr_adhan,
-      maghrib: prayerTimes.maghrib_adhan,
-      isha: prayerTimes.isha_adhan
-    });
-  } else {
-    console.log('Table format not found, trying individual prayer patterns...');
+    result.notes.push(`Found ${tables.length} table(s)`);
+
+    for (let i = 0; i < tables.length; i++) {
+      const tableContent = tables[i][1];
+      
+      // Extract rows
+      const rowRegex = /<tr[^>]*>([\s\S]*?)<\/tr>/gi;
+      const rows = [...tableContent.matchAll(rowRegex)];
+      
+      if (rows.length < 2) continue; // Need at least header + data row
+      
+      result.notes.push(`Processing table ${i + 1} with ${rows.length} rows`);
+      
+      // Parse each row to find prayer times
+      for (const row of rows) {
+        const cellRegex = /<t[hd][^>]*>([\s\S]*?)<\/t[hd]>/gi;
+        const cells = [...row[1].matchAll(cellRegex)];
+        
+        if (cells.length >= 2) {
+          const cleanCells = cells.map(cell => 
+            cell[1].replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim()
+          );
+          
+          // Try to match prayer names and times
+          const extraction = matchPrayerTimesFromCells(cleanCells);
+          if (extraction.found > 0) {
+            Object.assign(result.prayerTimes!, extraction.times);
+            result.confidence = Math.max(result.confidence, extraction.found * 15);
+            result.notes.push(`Found ${extraction.found} prayer times in table row`);
+          }
+        }
+      }
+    }
+
+    // Look for date information in table headers or captions
+    const dateInfo = extractDateFromHTML(html);
+    if (dateInfo) {
+      result.prayerTimes!.date = dateInfo;
+      result.confidence += 10;
+      result.notes.push(`Extracted date: ${dateInfo}`);
+    }
+
+    result.success = result.confidence > 30;
+    return result;
+
+  } catch (error) {
+    result.notes.push(`HTML table extraction error: ${error.message}`);
+    return result;
+  }
+}
+
+async function extractFromLists(html: string): Promise<ExtractionResult> {
+  const result: ExtractionResult = {
+    prayerTimes: {},
+    confidence: 0,
+    sourceFormat: 'html_list',
+    notes: [],
+    success: false
+  };
+
+  try {
+    // Find ul and ol elements
+    const listRegex = /<[uo]l[^>]*>([\s\S]*?)<\/[uo]l>/gi;
+    const lists = [...html.matchAll(listRegex)];
     
-    // Enhanced prayer time patterns for other formats
-    const prayers = ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'];
+    result.notes.push(`Found ${lists.length} list(s)`);
+
+    for (let i = 0; i < lists.length; i++) {
+      const listContent = lists[i][1];
+      
+      // Extract list items
+      const itemRegex = /<li[^>]*>([\s\S]*?)<\/li>/gi;
+      const items = [...listContent.matchAll(itemRegex)];
+      
+      result.notes.push(`Processing list ${i + 1} with ${items.length} items`);
+      
+      for (const item of items) {
+        const cleanText = item[1].replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+        const extraction = extractPrayerTimeFromText(cleanText);
+        
+        if (extraction.prayer && extraction.time) {
+          const field = `${extraction.prayer}_adhan` as keyof PrayerTimes;
+          result.prayerTimes![field] = extraction.time;
+          result.confidence += 15;
+          result.notes.push(`Found ${extraction.prayer}: ${extraction.time}`);
+        }
+      }
+    }
+
+    result.success = result.confidence > 30;
+    return result;
+
+  } catch (error) {
+    result.notes.push(`HTML list extraction error: ${error.message}`);
+    return result;
+  }
+}
+
+async function extractFromStructuredText(html: string): Promise<ExtractionResult> {
+  const result: ExtractionResult = {
+    prayerTimes: {},
+    confidence: 0,
+    sourceFormat: 'structured_text',
+    notes: [],
+    success: false
+  };
+
+  try {
+    // Look for div, span, p elements that might contain prayer times
+    const blockRegex = /<(div|span|p)[^>]*>([\s\S]*?)<\/\1>/gi;
+    const blocks = [...html.matchAll(blockRegex)];
     
-    for (const prayer of prayers) {
-      console.log(`Looking for ${prayer} prayer times...`);
+    result.notes.push(`Found ${blocks.length} text block(s)`);
+
+    for (const block of blocks) {
+      const cleanText = block[2].replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
       
-      // More flexible regex patterns
-      const prayerRegex = new RegExp(
-        `${prayer}\\s*:?\\s*([0-9]{1,2}:[0-9]{2}\\s*(?:am|pm|AM|PM)?)|` +
-        `${prayer}\\s*(?:begins?|start|adhan)?\\s*:?\\s*([0-9]{1,2}:[0-9]{2}\\s*(?:am|pm|AM|PM)?)|` +
-        `${prayer.charAt(0).toUpperCase() + prayer.slice(1)}\\s*:?\\s*([0-9]{1,2}:[0-9]{2}\\s*(?:am|pm|AM|PM)?)`,
-        'gi'
-      );
+      // Skip if text is too short or too long (likely not prayer times)
+      if (cleanText.length < 10 || cleanText.length > 500) continue;
       
-      const matches = textContent.match(prayerRegex);
+      // Look for prayer time patterns
+      const prayers = ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'];
       
-      if (matches) {
-        for (const match of matches) {
-          const timeMatch = match.match(/([0-9]{1,2}:[0-9]{2})\s*(am|pm|AM|PM)?/);
-          if (timeMatch) {
-            const time = timeMatch[1];
-            const period = timeMatch[2] ? timeMatch[2].toLowerCase() : '';
-            const normalizedTime = normalizeTime(`${time}${period ? ' ' + period : ''}`);
-            
-            if (normalizedTime) {
-              if (prayer === 'fajr') {
-                prayerTimes.fajr_adhan = normalizedTime;
-              } else if (prayer === 'dhuhr') {
-                prayerTimes.dhuhr_adhan = normalizedTime;
-              } else if (prayer === 'asr') {
-                prayerTimes.asr_adhan = normalizedTime;
-              } else if (prayer === 'maghrib') {
-                prayerTimes.maghrib_adhan = normalizedTime;
-              } else if (prayer === 'isha') {
-                prayerTimes.isha_adhan = normalizedTime;
+      for (const prayer of prayers) {
+        const prayerRegex = new RegExp(
+          `(${prayer}|${prayer.charAt(0).toUpperCase() + prayer.slice(1)})\\s*:?\\s*([0-9]{1,2}:[0-9]{2}\\s*(?:am|pm|AM|PM)?)`,
+          'gi'
+        );
+        
+        const matches = cleanText.match(prayerRegex);
+        if (matches) {
+          for (const match of matches) {
+            const timeMatch = match.match(/([0-9]{1,2}:[0-9]{2})\s*(am|pm|AM|PM)?/);
+            if (timeMatch) {
+              const normalizedTime = normalizeTime(timeMatch[0]);
+              if (normalizedTime) {
+                const field = `${prayer}_adhan` as keyof PrayerTimes;
+                result.prayerTimes![field] = normalizedTime;
+                result.confidence += 15;
+                result.notes.push(`Found ${prayer}: ${normalizedTime} in structured text`);
               }
-              break;
+            }
+          }
+        }
+      }
+    }
+
+    result.success = result.confidence > 30;
+    return result;
+
+  } catch (error) {
+    result.notes.push(`Structured text extraction error: ${error.message}`);
+    return result;
+  }
+}
+
+async function extractFromPlainText(html: string): Promise<ExtractionResult> {
+  const result: ExtractionResult = {
+    prayerTimes: {},
+    confidence: 0,
+    sourceFormat: 'plain_text',
+    notes: [],
+    success: false
+  };
+
+  try {
+    // Remove all HTML tags and get plain text
+    const plainText = html
+      .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+      .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+      .replace(/<[^>]*>/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    result.notes.push(`Processing ${plainText.length} characters of plain text`);
+
+    // Enhanced prayer time patterns
+    const patterns = {
+      fajr: [
+        /(?:fajr|fair|fajar|dawn)\s*[:\-\s]*([0-9]{1,2}:[0-9]{2}\s*(?:am|pm|AM|PM)?)/gi,
+        /([0-9]{1,2}:[0-9]{2}\s*(?:am|pm|AM|PM)?)\s*(?:fajr|fair|fajar|dawn)/gi
+      ],
+      dhuhr: [
+        /(?:dhuhr|zuhr|dhur|noon|dhohr)\s*[:\-\s]*([0-9]{1,2}:[0-9]{2}\s*(?:am|pm|AM|PM)?)/gi,
+        /([0-9]{1,2}:[0-9]{2}\s*(?:am|pm|AM|PM)?)\s*(?:dhuhr|zuhr|dhur|noon|dhohr)/gi
+      ],
+      asr: [
+        /(?:asr|asar|afternoon)\s*[:\-\s]*([0-9]{1,2}:[0-9]{2}\s*(?:am|pm|AM|PM)?)/gi,
+        /([0-9]{1,2}:[0-9]{2}\s*(?:am|pm|AM|PM)?)\s*(?:asr|asar|afternoon)/gi
+      ],
+      maghrib: [
+        /(?:maghrib|magrib|sunset|maghreb)\s*[:\-\s]*([0-9]{1,2}:[0-9]{2}\s*(?:am|pm|AM|PM)?)/gi,
+        /([0-9]{1,2}:[0-9]{2}\s*(?:am|pm|AM|PM)?)\s*(?:maghrib|magrib|sunset|maghreb)/gi
+      ],
+      isha: [
+        /(?:isha|isya|esha|night)\s*[:\-\s]*([0-9]{1,2}:[0-9]{2}\s*(?:am|pm|AM|PM)?)/gi,
+        /([0-9]{1,2}:[0-9]{2}\s*(?:am|pm|AM|PM)?)\s*(?:isha|isya|esha|night)/gi
+      ]
+    };
+
+    for (const [prayer, regexList] of Object.entries(patterns)) {
+      for (const regex of regexList) {
+        const matches = [...plainText.matchAll(regex)];
+        if (matches.length > 0) {
+          const timeStr = matches[0][1];
+          const normalizedTime = normalizeTime(timeStr);
+          if (normalizedTime) {
+            const field = `${prayer}_adhan` as keyof PrayerTimes;
+            result.prayerTimes![field] = normalizedTime;
+            result.confidence += 12;
+            result.notes.push(`Found ${prayer}: ${normalizedTime} in plain text`);
+            break; // Found a match, try next prayer
+          }
+        }
+      }
+    }
+
+    // Look for Jumu'ah times
+    const jumahRegex = /(?:jum[aá]h|friday|jummah)\s*[:\-\s]*([0-9]{1,2}:[0-9]{2}\s*(?:am|pm|AM|PM)?)/gi;
+    const jumahMatches = [...plainText.matchAll(jumahRegex)];
+    if (jumahMatches.length > 0) {
+      const jumahTimes = jumahMatches
+        .map(match => normalizeTime(match[1]))
+        .filter(time => time !== null);
+      
+      if (jumahTimes.length > 0) {
+        result.prayerTimes!.jumah_times = jumahTimes;
+        result.confidence += 10;
+        result.notes.push(`Found Jumu'ah times: ${jumahTimes.join(', ')}`);
+      }
+    }
+
+    result.success = result.confidence > 30;
+    return result;
+
+  } catch (error) {
+    result.notes.push(`Plain text extraction error: ${error.message}`);
+    return result;
+  }
+}
+
+function matchPrayerTimesFromCells(cells: string[]): { times: Partial<PrayerTimes>, found: number } {
+  const times: Partial<PrayerTimes> = {};
+  let found = 0;
+
+  // Common table patterns: [Prayer Name, Time] or [Prayer Name, Adhan, Iqamah]
+  for (let i = 0; i < cells.length - 1; i++) {
+    const prayerCell = cells[i].toLowerCase();
+    const timeCell = cells[i + 1];
+    
+    // Check if this cell contains a prayer name
+    const prayerMatch = prayerCell.match(/(fajr|dhuhr|asr|maghrib|isha|jumah|friday)/);
+    if (prayerMatch) {
+      const prayer = prayerMatch[1] === 'friday' ? 'jumah' : prayerMatch[1];
+      const timeMatch = timeCell.match(/([0-9]{1,2}:[0-9]{2}\s*(?:am|pm|AM|PM)?)/);
+      
+      if (timeMatch) {
+        const normalizedTime = normalizeTime(timeMatch[1]);
+        if (normalizedTime) {
+          if (prayer === 'jumah') {
+            times.jumah_times = [normalizedTime];
+          } else {
+            times[`${prayer}_adhan` as keyof PrayerTimes] = normalizedTime;
+          }
+          found++;
+          
+          // Check for iqamah in next cell
+          if (i + 2 < cells.length) {
+            const iqamahCell = cells[i + 2];
+            const iqamahMatch = iqamahCell.match(/([0-9]{1,2}:[0-9]{2}\s*(?:am|pm|AM|PM)?)/);
+            if (iqamahMatch) {
+              const normalizedIqamah = normalizeTime(iqamahMatch[1]);
+              if (normalizedIqamah && prayer !== 'jumah') {
+                times[`${prayer}_iqamah` as keyof PrayerTimes] = normalizedIqamah;
+                found++;
+              }
             }
           }
         }
       }
     }
   }
-    
-    // Look for iqamah times in table format or structured data
-    if (prayerTimes[`${prayer}_adhan` as keyof PrayerTimes]) {
-      const iqamahPatterns = [
-        new RegExp(`(?:${prayer})[\\s\\S]{0,200}?(?:iqamah|jamaat|jama|congregation)[\\s\\S]{0,50}?(\\d{1,2}:\\d{2}(?:\\s*[ap]m)?)`, 'gi'),
-        new RegExp(`(?:iqamah|jamaat|jama|congregation)[\\s\\S]{0,50}?(?:${prayer})[\\s\\S]{0,50}?(\\d{1,2}:\\d{2}(?:\\s*[ap]m)?)`, 'gi')
-      ];
-      
-      for (const iqPattern of iqamahPatterns) {
-        const iqamahMatch = textContent.match(iqPattern);
-        if (iqamahMatch && iqamahMatch[1]) {
-          prayerTimes[`${prayer}_iqamah` as keyof PrayerTimes] = normalizeTime(iqamahMatch[1]);
-          console.log(`Set ${prayer} iqamah:`, normalizeTime(iqamahMatch[1]));
-          break;
-        }
-      }
-    }
-  }
 
-  // Enhanced Jumah extraction
-  const jumahPatterns = [
-    /(?:jum[aá]h|friday|jummah)\s*[:\-\s]*(\d{1,2}:\d{2}(?:\s*[ap]m)?)/gi,
-    /(?:friday\s*prayer|juma\s*prayer)[^0-9]*?(\d{1,2}:\d{2}(?:\s*[ap]m)?)/gi,
-    /(\d{1,2}:\d{2}(?:\s*[ap]m)?)[^0-9]*?(?:jum[aá]h|friday|jummah)/gi
-  ];
-  
-  const allJumahTimes = [];
-  for (const pattern of jumahPatterns) {
-    const matches = [...textContent.matchAll(pattern)];
-    for (const match of matches) {
-      const timeStr = match[1] || match[0];
-      if (timeStr && /\d{1,2}:\d{2}/.test(timeStr)) {
-        allJumahTimes.push(normalizeTime(timeStr));
-      }
-    }
-  }
-  
-  if (allJumahTimes.length > 0) {
-    // Remove duplicates
-    prayerTimes.jumah_times = [...new Set(allJumahTimes)];
-    console.log('Found Jumah times:', prayerTimes.jumah_times);
-  }
-
-  // Enhanced date extraction
-  const datePatterns = [
-    /(?:today|date|updated|current)[^0-9]*?(\d{1,2}[\/\-\.]\d{1,2}[\/\-\.]\d{2,4})/gi,
-    /(\d{1,2}[\/\-\.]\d{1,2}[\/\-\.]\d{2,4})/g,
-    /(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)[^0-9]*?(\d{1,2}[\/\-\.]\d{1,2}[\/\-\.]\d{2,4})/gi
-  ];
-  
-  for (const pattern of datePatterns) {
-    const dateMatch = textContent.match(pattern);
-    if (dateMatch && dateMatch[1]) {
-      prayerTimes.date = formatDateFromString(dateMatch[1]);
-      console.log('Found date:', prayerTimes.date);
-      break;
-    }
-  }
-
-  // Fallback: look for any time patterns that might be prayer times
-  if (Object.keys(prayerTimes).filter(k => k.includes('_adhan')).length === 0) {
-    console.log('No specific prayer times found, looking for any time patterns...');
-    
-    const allTimeMatches = [...textContent.matchAll(/\b(\d{1,2}:\d{2}(?:\s*[ap]m)?)\b/gi)];
-    console.log('All time matches found:', allTimeMatches.map(m => m[1]));
-    
-    // If we find exactly 5 times, assume they are the 5 daily prayers
-    if (allTimeMatches.length >= 5) {
-      const prayers = ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'];
-      const uniqueTimes = [...new Set(allTimeMatches.map(m => normalizeTime(m[1])))];
-      
-      if (uniqueTimes.length >= 5) {
-        console.log('Assuming 5 times are daily prayers:', uniqueTimes.slice(0, 5));
-        prayers.forEach((prayer, index) => {
-          if (uniqueTimes[index]) {
-            prayerTimes[`${prayer}_adhan` as keyof PrayerTimes] = uniqueTimes[index];
-          }
-        });
-      }
-    }
-  }
-
-  // Check if we found any prayer times
-  const foundAnyPrayer = Object.keys(prayerTimes).some(key => 
-    key.includes('_adhan') && prayerTimes[key as keyof PrayerTimes]
-  );
-
-  if (!foundAnyPrayer) {
-    console.log('No prayer times found in HTML');
-    console.log('Text content preview:', textContent.substring(0, 1000));
-    return null;
-  }
-
-  console.log('Final extracted prayer times:', prayerTimes);
-  return prayerTimes;
+  return { times, found };
 }
 
-function normalizeTime(timeStr: string): string {
-  // Remove extra spaces and normalize format
-  let normalized = timeStr.trim().replace(/\s+/g, ' ');
+function extractPrayerTimeFromText(text: string): { prayer: string | null, time: string | null } {
+  const prayerRegex = /(fajr|dhuhr|asr|maghrib|isha|jumah|friday)\s*[:\-\s]*([0-9]{1,2}:[0-9]{2}\s*(?:am|pm|AM|PM)?)/gi;
+  const match = text.match(prayerRegex);
   
-  // Convert to 24-hour format if needed
-  const match = normalized.match(/(\d{1,2}):(\d{2})(?:\s*(am|pm))?/i);
   if (match) {
-    let hours = parseInt(match[1]);
-    const minutes = match[2];
-    const ampm = match[3]?.toLowerCase();
+    const timeMatch = match[0].match(/([0-9]{1,2}:[0-9]{2}\s*(?:am|pm|AM|PM)?)/);
+    const prayerMatch = match[0].match(/(fajr|dhuhr|asr|maghrib|isha|jumah|friday)/i);
     
-    if (ampm === 'pm' && hours !== 12) {
-      hours += 12;
-    } else if (ampm === 'am' && hours === 12) {
-      hours = 0;
+    if (timeMatch && prayerMatch) {
+      const prayer = prayerMatch[1].toLowerCase();
+      const normalizedTime = normalizeTime(timeMatch[1]);
+      return { 
+        prayer: prayer === 'friday' ? 'jumah' : prayer, 
+        time: normalizedTime 
+      };
     }
-    
-    return `${hours.toString().padStart(2, '0')}:${minutes}`;
   }
   
-  return normalized;
+  return { prayer: null, time: null };
+}
+
+function findDownloadableTimelinks(html: string): string[] {
+  const links: string[] = [];
+  const linkRegex = /<a[^>]*href=["']([^"']*\.(pdf|xls|xlsx|csv))[^"']*["'][^>]*>/gi;
+  
+  const matches = [...html.matchAll(linkRegex)];
+  for (const match of matches) {
+    const url = match[1];
+    const linkText = match[0].toLowerCase();
+    
+    // Check if link text suggests it's a prayer timetable
+    if (linkText.includes('prayer') || linkText.includes('timetable') || 
+        linkText.includes('times') || linkText.includes('schedule')) {
+      links.push(url);
+    }
+  }
+  
+  return links;
+}
+
+function findEmbeddedSources(html: string): string[] {
+  const sources: string[] = [];
+  
+  // Look for iframes
+  const iframeRegex = /<iframe[^>]*src=["']([^"']*?)["'][^>]*>/gi;
+  const iframes = [...html.matchAll(iframeRegex)];
+  sources.push(...iframes.map(match => match[1]));
+  
+  // Look for embedded scripts that might load prayer time widgets
+  const scriptRegex = /<script[^>]*src=["']([^"']*prayer[^"']*?)["'][^>]*>/gi;
+  const scripts = [...html.matchAll(scriptRegex)];
+  sources.push(...scripts.map(match => match[1]));
+  
+  return sources;
+}
+
+function extractDateFromHTML(html: string): string | null {
+  // Look for date patterns in HTML
+  const datePatterns = [
+    /(\d{1,2}[\/\-\.]\d{1,2}[\/\-\.]\d{2,4})/g,
+    /(\d{2,4}[\/\-\.]\d{1,2}[\/\-\.]\d{1,2})/g,
+    /(january|february|march|april|may|june|july|august|september|october|november|december)\s+\d{1,2},?\s+\d{2,4}/gi,
+    /\d{1,2}\s+(january|february|march|april|may|june|july|august|september|october|november|december)\s+\d{2,4}/gi
+  ];
+  
+  const cleanText = html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ');
+  
+  for (const pattern of datePatterns) {
+    const matches = cleanText.match(pattern);
+    if (matches && matches.length > 0) {
+      const dateStr = matches[0];
+      const formatted = formatDateFromString(dateStr);
+      if (formatted !== getTodayDate()) {
+        return formatted;
+      }
+    }
+  }
+  
+  return null;
+}
+
+async function scrapePrayerTimes(website: string): Promise<string | null> {
+  try {
+    console.log(`Fetching website: ${website}`);
+    
+    const response = await fetch(website, {
+      method: 'GET',
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36 MosqueLocator/1.0',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.5',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive',
+        'Upgrade-Insecure-Requests': '1',
+      },
+      redirect: 'follow',
+    });
+
+    if (!response.ok) {
+      console.error(`HTTP error! status: ${response.status}`);
+      return null;
+    }
+
+    const html = await response.text();
+    console.log(`Successfully fetched ${html.length} characters from ${website}`);
+    
+    return html;
+  } catch (error) {
+    console.error('Error fetching website:', error);
+    return null;
+  }
+}
+
+function normalizeTime(timeStr: string): string | null {
+  if (!timeStr) return null;
+  
+  try {
+    // Clean the time string
+    const cleanTime = timeStr.trim().toLowerCase();
+    
+    // Extract time pattern
+    const timeMatch = cleanTime.match(/(\d{1,2}):(\d{2})\s*(am|pm)?/);
+    
+    if (!timeMatch) return null;
+    
+    let hours = parseInt(timeMatch[1]);
+    const minutes = parseInt(timeMatch[2]);
+    const period = timeMatch[3];
+    
+    // Validate minutes
+    if (minutes >= 60) return null;
+    
+    // Handle 12-hour to 24-hour conversion
+    if (period) {
+      if (period === 'am' && hours === 12) {
+        hours = 0;
+      } else if (period === 'pm' && hours !== 12) {
+        hours += 12;
+      }
+    }
+    
+    // Validate hours
+    if (hours >= 24) return null;
+    
+    // Format as HH:MM
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+  } catch (error) {
+    console.error('Error normalizing time:', error);
+    return null;
+  }
 }
 
 function formatDateFromString(dateStr: string): string {
   try {
-    console.log('Formatting date string:', dateStr);
+    // Handle various date formats
+    const date = new Date(dateStr);
+    if (!isNaN(date.getTime())) {
+      return date.toISOString().split('T')[0];
+    }
     
-    // Remove any non-date characters
-    const cleanDate = dateStr.replace(/[^\d\/\-\.]/g, '');
-    
-    // Try to parse various date formats and convert to YYYY-MM-DD
-    const separators = ['//', '-', '.'];
-    for (const sep of separators) {
-      if (cleanDate.includes(sep)) {
-        const parts = cleanDate.split(sep);
-        if (parts.length === 3) {
-          let day, month, year;
-          
-          // Handle different year formats
-          if (parts[2].length === 4) {
-            // DD/MM/YYYY or MM/DD/YYYY
-            day = parts[0].padStart(2, '0');
-            month = parts[1].padStart(2, '0');
-            year = parts[2];
-          } else if (parts[0].length === 4) {
-            // YYYY/MM/DD
-            year = parts[0];
-            month = parts[1].padStart(2, '0');
-            day = parts[2].padStart(2, '0');
-          } else {
-            // DD/MM/YY - assume 20YY
-            day = parts[0].padStart(2, '0');
-            month = parts[1].padStart(2, '0');
-            year = `20${parts[2]}`;
-          }
-          
-          const formatted = `${year}-${month}-${day}`;
-          console.log('Formatted date:', formatted);
-          return formatted;
-        }
+    // Try parsing DD/MM/YYYY format
+    const ddmmyyyy = dateStr.match(/(\d{1,2})[\/\-\.](\d{1,2})[\/\-\.](\d{2,4})/);
+    if (ddmmyyyy) {
+      const day = parseInt(ddmmyyyy[1]);
+      const month = parseInt(ddmmyyyy[2]);
+      let year = parseInt(ddmmyyyy[3]);
+      
+      if (year < 100) year += 2000;
+      
+      const parsedDate = new Date(year, month - 1, day);
+      if (!isNaN(parsedDate.getTime())) {
+        return parsedDate.toISOString().split('T')[0];
       }
     }
+    
+    return getTodayDate();
   } catch (error) {
-    console.error('Error formatting date:', error);
+    return getTodayDate();
   }
-  
-  // Return today's date as fallback
-  const today = new Date().toISOString().split('T')[0];
-  console.log('Using fallback date:', today);
-  return today;
+}
+
+function getTodayDate(): string {
+  return new Date().toISOString().split('T')[0];
+}
+
+async function logScrapeAttempt(
+  supabase: any,
+  mosqueId: string,
+  website: string,
+  status: string,
+  errorMessage: string,
+  extractionResult?: ExtractionResult
+): Promise<void> {
+  try {
+    const logData = {
+      mosque_id: mosqueId,
+      website_url: website,
+      success: status === 'success',
+      source_format: extractionResult?.sourceFormat || null,
+      extraction_confidence: extractionResult?.confidence || 0,
+      error_message: errorMessage || null,
+      raw_content_preview: status === 'success' ? 'Success' : `Status: ${status}`,
+      times_found: extractionResult?.prayerTimes || null
+    };
+
+    await supabase
+      .from('scraping_logs')
+      .insert(logData);
+  } catch (error) {
+    console.error('Failed to log scrape attempt:', error);
+  }
 }

@@ -48,10 +48,12 @@ export type Database = {
         Row: {
           asr_adhan: string | null
           asr_iqamah: string | null
+          auto_scraped: boolean | null
           created_at: string | null
           date: string
           dhuhr_adhan: string | null
           dhuhr_iqamah: string | null
+          extraction_confidence: number | null
           fajr_adhan: string | null
           fajr_iqamah: string | null
           id: string
@@ -59,20 +61,26 @@ export type Database = {
           isha_adhan: string | null
           isha_iqamah: string | null
           jumah_times: Json | null
+          last_scrape_attempt: string | null
           maghrib_adhan: string | null
           maghrib_iqamah: string | null
           mosque_id: string
+          parsing_notes: string | null
+          scrape_success: boolean | null
           scraped_at: string | null
+          source_format: string | null
           source_url: string | null
           updated_at: string | null
         }
         Insert: {
           asr_adhan?: string | null
           asr_iqamah?: string | null
+          auto_scraped?: boolean | null
           created_at?: string | null
           date: string
           dhuhr_adhan?: string | null
           dhuhr_iqamah?: string | null
+          extraction_confidence?: number | null
           fajr_adhan?: string | null
           fajr_iqamah?: string | null
           id?: string
@@ -80,20 +88,26 @@ export type Database = {
           isha_adhan?: string | null
           isha_iqamah?: string | null
           jumah_times?: Json | null
+          last_scrape_attempt?: string | null
           maghrib_adhan?: string | null
           maghrib_iqamah?: string | null
           mosque_id: string
+          parsing_notes?: string | null
+          scrape_success?: boolean | null
           scraped_at?: string | null
+          source_format?: string | null
           source_url?: string | null
           updated_at?: string | null
         }
         Update: {
           asr_adhan?: string | null
           asr_iqamah?: string | null
+          auto_scraped?: boolean | null
           created_at?: string | null
           date?: string
           dhuhr_adhan?: string | null
           dhuhr_iqamah?: string | null
+          extraction_confidence?: number | null
           fajr_adhan?: string | null
           fajr_iqamah?: string | null
           id?: string
@@ -101,12 +115,58 @@ export type Database = {
           isha_adhan?: string | null
           isha_iqamah?: string | null
           jumah_times?: Json | null
+          last_scrape_attempt?: string | null
           maghrib_adhan?: string | null
           maghrib_iqamah?: string | null
           mosque_id?: string
+          parsing_notes?: string | null
+          scrape_success?: boolean | null
           scraped_at?: string | null
+          source_format?: string | null
           source_url?: string | null
           updated_at?: string | null
+        }
+        Relationships: []
+      }
+      scraping_logs: {
+        Row: {
+          created_at: string
+          error_message: string | null
+          extraction_confidence: number | null
+          id: string
+          mosque_id: string
+          raw_content_preview: string | null
+          scrape_date: string
+          source_format: string | null
+          success: boolean
+          times_found: Json | null
+          website_url: string
+        }
+        Insert: {
+          created_at?: string
+          error_message?: string | null
+          extraction_confidence?: number | null
+          id?: string
+          mosque_id: string
+          raw_content_preview?: string | null
+          scrape_date?: string
+          source_format?: string | null
+          success?: boolean
+          times_found?: Json | null
+          website_url: string
+        }
+        Update: {
+          created_at?: string
+          error_message?: string | null
+          extraction_confidence?: number | null
+          id?: string
+          mosque_id?: string
+          raw_content_preview?: string | null
+          scrape_date?: string
+          source_format?: string | null
+          success?: boolean
+          times_found?: Json | null
+          website_url?: string
         }
         Relationships: []
       }
