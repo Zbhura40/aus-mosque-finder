@@ -228,61 +228,86 @@ async function scrapePrayerTimes(website: string): Promise<PrayerTimes | null> {
 }
 
 function extractPrayerTimesFromHtml(html: string): PrayerTimes | null {
-  const prayerTimes: PrayerTimes = {};
-  
   console.log('HTML content length:', html.length);
   console.log('HTML preview:', html.substring(0, 500));
   
-  // Remove HTML tags for better text extraction
-  const textContent = html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ');
+  // Remove HTML tags and get text content
+  const textContent = html.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+                         .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
+                         .replace(/<[^>]*>/g, ' ')
+                         .replace(/\s+/g, ' ')
+                         .trim();
   
-  // Enhanced prayer patterns with more variations and flexible matching
-  const prayerPatterns = {
-    fajr: [
-      /(?:fajr|fair|fajar|dawn)\s*[:\-\s]*(\d{1,2}:\d{2}(?:\s*[ap]m)?)/gi,
-      /(?:fajr|fair|fajar|dawn)[^0-9]*?(\d{1,2}:\d{2}(?:\s*[ap]m)?)/gi,
-      /(\d{1,2}:\d{2}(?:\s*[ap]m)?)[^0-9]*?(?:fajr|fair|fajar|dawn)/gi
-    ],
-    dhuhr: [
-      /(?:dhuhr|zuhr|dhur|noon|dhohr)\s*[:\-\s]*(\d{1,2}:\d{2}(?:\s*[ap]m)?)/gi,
-      /(?:dhuhr|zuhr|dhur|noon|dhohr)[^0-9]*?(\d{1,2}:\d{2}(?:\s*[ap]m)?)/gi,
-      /(\d{1,2}:\d{2}(?:\s*[ap]m)?)[^0-9]*?(?:dhuhr|zuhr|dhur|noon|dhohr)/gi
-    ],
-    asr: [
-      /(?:asr|asar|afternoon)\s*[:\-\s]*(\d{1,2}:\d{2}(?:\s*[ap]m)?)/gi,
-      /(?:asr|asar|afternoon)[^0-9]*?(\d{1,2}:\d{2}(?:\s*[ap]m)?)/gi,
-      /(\d{1,2}:\d{2}(?:\s*[ap]m)?)[^0-9]*?(?:asr|asar|afternoon)/gi
-    ],
-    maghrib: [
-      /(?:maghrib|magrib|sunset|maghreb)\s*[:\-\s]*(\d{1,2}:\d{2}(?:\s*[ap]m)?)/gi,
-      /(?:maghrib|magrib|sunset|maghreb)[^0-9]*?(\d{1,2}:\d{2}(?:\s*[ap]m)?)/gi,
-      /(\d{1,2}:\d{2}(?:\s*[ap]m)?)[^0-9]*?(?:maghrib|magrib|sunset|maghreb)/gi
-    ],
-    isha: [
-      /(?:isha|isya|esha|night)\s*[:\-\s]*(\d{1,2}:\d{2}(?:\s*[ap]m)?)/gi,
-      /(?:isha|isya|esha|night)[^0-9]*?(\d{1,2}:\d{2}(?:\s*[ap]m)?)/gi,
-      /(\d{1,2}:\d{2}(?:\s*[ap]m)?)[^0-9]*?(?:isha|isya|esha|night)/gi
-    ]
-  };
-
-  // Extract each prayer time using multiple patterns
-  for (const [prayer, patterns] of Object.entries(prayerPatterns)) {
-    console.log(`Looking for ${prayer} prayer times...`);
+  console.log('Text content preview:', textContent.substring(0, 1000));
+  
+  const prayerTimes: Partial<PrayerTimes> = {};
+  
+  // Check for table format first (like Holland Park Mosque)
+  // Looking for pattern: Prayer Times ... Fajr | 4:33AM | — | Dhuhr | 11:45AM | — | ...
+  const tablePattern = /Prayer\s+Times[\s\S]*?Fajr[\s\S]*?(\d{1,2}:\d{2}\s*[AP]M)[\s\S]*?Dhuhr[\s\S]*?(\d{1,2}:\d{2}\s*[AP]M)[\s\S]*?Asr[\s\S]*?(\d{1,2}:\d{2}\s*[AP]M)[\s\S]*?Maghrib[\s\S]*?(\d{1,2}:\d{2}\s*[AP]M)[\s\S]*?Isha[\s\S]*?(\d{1,2}:\d{2}\s*[AP]M)/i;
+  const tableMatch = textContent.match(tablePattern);
+  
+  if (tableMatch) {
+    console.log('Found table format prayer times');
+    prayerTimes.fajr_adhan = normalizeTime(tableMatch[1]);
+    prayerTimes.dhuhr_adhan = normalizeTime(tableMatch[2]);
+    prayerTimes.asr_adhan = normalizeTime(tableMatch[3]);
+    prayerTimes.maghrib_adhan = normalizeTime(tableMatch[4]);
+    prayerTimes.isha_adhan = normalizeTime(tableMatch[5]);
     
-    for (const pattern of patterns) {
-      const matches = [...textContent.matchAll(pattern)];
-      if (matches.length > 0) {
-        console.log(`Found ${prayer} matches:`, matches.map(m => m[1] || m[0]));
-        
-        // Take the first valid time match
-        const timeStr = matches[0][1] || matches[0][0];
-        if (timeStr && /\d{1,2}:\d{2}/.test(timeStr)) {
-          prayerTimes[`${prayer}_adhan` as keyof PrayerTimes] = normalizeTime(timeStr);
-          console.log(`Set ${prayer} adhan:`, normalizeTime(timeStr));
-          break; // Found a match, stop trying other patterns for this prayer
+    console.log('Extracted prayer times from table:', {
+      fajr: prayerTimes.fajr_adhan,
+      dhuhr: prayerTimes.dhuhr_adhan,
+      asr: prayerTimes.asr_adhan,
+      maghrib: prayerTimes.maghrib_adhan,
+      isha: prayerTimes.isha_adhan
+    });
+  } else {
+    console.log('Table format not found, trying individual prayer patterns...');
+    
+    // Enhanced prayer time patterns for other formats
+    const prayers = ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'];
+    
+    for (const prayer of prayers) {
+      console.log(`Looking for ${prayer} prayer times...`);
+      
+      // More flexible regex patterns
+      const prayerRegex = new RegExp(
+        `${prayer}\\s*:?\\s*([0-9]{1,2}:[0-9]{2}\\s*(?:am|pm|AM|PM)?)|` +
+        `${prayer}\\s*(?:begins?|start|adhan)?\\s*:?\\s*([0-9]{1,2}:[0-9]{2}\\s*(?:am|pm|AM|PM)?)|` +
+        `${prayer.charAt(0).toUpperCase() + prayer.slice(1)}\\s*:?\\s*([0-9]{1,2}:[0-9]{2}\\s*(?:am|pm|AM|PM)?)`,
+        'gi'
+      );
+      
+      const matches = textContent.match(prayerRegex);
+      
+      if (matches) {
+        for (const match of matches) {
+          const timeMatch = match.match(/([0-9]{1,2}:[0-9]{2})\s*(am|pm|AM|PM)?/);
+          if (timeMatch) {
+            const time = timeMatch[1];
+            const period = timeMatch[2] ? timeMatch[2].toLowerCase() : '';
+            const normalizedTime = normalizeTime(`${time}${period ? ' ' + period : ''}`);
+            
+            if (normalizedTime) {
+              if (prayer === 'fajr') {
+                prayerTimes.fajr_adhan = normalizedTime;
+              } else if (prayer === 'dhuhr') {
+                prayerTimes.dhuhr_adhan = normalizedTime;
+              } else if (prayer === 'asr') {
+                prayerTimes.asr_adhan = normalizedTime;
+              } else if (prayer === 'maghrib') {
+                prayerTimes.maghrib_adhan = normalizedTime;
+              } else if (prayer === 'isha') {
+                prayerTimes.isha_adhan = normalizedTime;
+              }
+              break;
+            }
+          }
         }
       }
     }
+  }
     
     // Look for iqamah times in table format or structured data
     if (prayerTimes[`${prayer}_adhan` as keyof PrayerTimes]) {
