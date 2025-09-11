@@ -44,6 +44,72 @@ export type Database = {
         }
         Relationships: []
       }
+      prayer_times: {
+        Row: {
+          asr_adhan: string | null
+          asr_iqamah: string | null
+          created_at: string | null
+          date: string
+          dhuhr_adhan: string | null
+          dhuhr_iqamah: string | null
+          fajr_adhan: string | null
+          fajr_iqamah: string | null
+          id: string
+          is_current: boolean | null
+          isha_adhan: string | null
+          isha_iqamah: string | null
+          jumah_times: Json | null
+          maghrib_adhan: string | null
+          maghrib_iqamah: string | null
+          mosque_id: string
+          scraped_at: string | null
+          source_url: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          asr_adhan?: string | null
+          asr_iqamah?: string | null
+          created_at?: string | null
+          date: string
+          dhuhr_adhan?: string | null
+          dhuhr_iqamah?: string | null
+          fajr_adhan?: string | null
+          fajr_iqamah?: string | null
+          id?: string
+          is_current?: boolean | null
+          isha_adhan?: string | null
+          isha_iqamah?: string | null
+          jumah_times?: Json | null
+          maghrib_adhan?: string | null
+          maghrib_iqamah?: string | null
+          mosque_id: string
+          scraped_at?: string | null
+          source_url?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          asr_adhan?: string | null
+          asr_iqamah?: string | null
+          created_at?: string | null
+          date?: string
+          dhuhr_adhan?: string | null
+          dhuhr_iqamah?: string | null
+          fajr_adhan?: string | null
+          fajr_iqamah?: string | null
+          id?: string
+          is_current?: boolean | null
+          isha_adhan?: string | null
+          isha_iqamah?: string | null
+          jumah_times?: Json | null
+          maghrib_adhan?: string | null
+          maghrib_iqamah?: string | null
+          mosque_id?: string
+          scraped_at?: string | null
+          source_url?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

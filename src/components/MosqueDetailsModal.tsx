@@ -15,6 +15,7 @@ import { useJsonLdSchema } from "@/hooks/useJsonLdSchema";
 import { SEOUtils } from "@/lib/seo-utils";
 import { useSEO } from "@/hooks/useSEO";
 import { useMosqueURL } from "@/hooks/useMosqueURL";
+import PrayerTimes from "@/components/PrayerTimes";
 
 interface Mosque {
   id: string;
@@ -251,6 +252,15 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
               ))}
             </div>
           </section>
+
+          <Separator className="bg-golden-beige/60 h-px" />
+
+          {/* Prayer Times Section */}
+          <PrayerTimes 
+            mosqueId={mosque.id} 
+            mosqueName={mosque.name}
+            mosqueWebsite={mosque.website}
+          />
 
           <Separator className="bg-golden-beige/60 h-px" />
 
