@@ -175,7 +175,20 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_mosques_needing_scrape: {
+        Args: Record<PropertyKey, never>
+        Returns: {
+          days_since_scrape: number
+          last_scrape: string
+          mosque_id: string
+          name: string
+          website: string
+        }[]
+      }
+      update_prayer_times_currency: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never
