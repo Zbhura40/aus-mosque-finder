@@ -55,6 +55,13 @@ serve(async (req) => {
 
       console.log(`Starting enhanced prayer time scraping for mosque ${mosqueId} from ${website}`);
       
+      // Add detailed logging for debugging
+      console.log('Function environment check:', {
+        supabaseUrl: !!supabaseUrl,
+        supabaseKey: !!supabaseKey,
+        timestamp: new Date().toISOString()
+      });
+      
       // Log scrape attempt
       await logScrapeAttempt(supabase, mosqueId, website, 'started', '');
 
@@ -152,7 +159,8 @@ serve(async (req) => {
           error: "Could not extract prayer times from website",
           details: extractionResult.notes.join('; '),
           confidence: extractionResult.confidence,
-          sourceFormat: extractionResult.sourceFormat
+          sourceFormat: extractionResult.sourceFormat,
+          helpText: "This website may require JavaScript or have prayer times on a different page. Please contact the mosque directly for accurate prayer times."
         }), {
           status: 404,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
