@@ -61,7 +61,7 @@ serve(async (req) => {
       const extractionResult = await comprehensiveExtraction(website);
       
       if (extractionResult.success && extractionResult.prayerTimes) {
-        // Store the prayer times
+        // Store the prayer times with enhanced tracking
         const upsertData = {
           mosque_id: mosqueId,
           date: extractionResult.prayerTimes.date || getTodayDate(),
@@ -78,13 +78,28 @@ serve(async (req) => {
           jumah_times: extractionResult.prayerTimes.jumah_times,
           source_url: website,
           source_format: extractionResult.sourceFormat,
+          platform_source: extractionResult.sourceFormat.includes('platform') ? extractionResult.sourceFormat : null,
           extraction_confidence: extractionResult.confidence,
+          data_freshness_score: calculateFreshnessScore(extractionResult),
+          admin_review_required: extractionResult.confidence < 50,
           parsing_notes: extractionResult.notes.join('; '),
           last_scrape_attempt: new Date().toISOString(),
           scrape_success: true,
           auto_scraped: true,
           is_current: true,
         };
+
+        // Update mosque with platform integration info if detected
+        if (extractionResult.sourceFormat.includes('platform')) {
+          const platformInfo = extractPlatformInfo(extractionResult.sourceFormat, extractionResult.notes);
+          if (platformInfo) {
+            await supabase.rpc('update_mosque_details', {
+              p_mosque_id: mosqueId,
+              p_platform_integration: platformInfo.platform,
+              p_platform_mosque_id: platformInfo.mosqueId
+            });
+          }
+        }
 
         const { error: upsertError } = await supabase
           .from('prayer_times')
@@ -1553,4 +1568,57 @@ function validateAndEnhanceData(prayerTimes: PrayerTimes, html: string): { praye
 function timeToMinutes(timeStr: string): number {
   const [hours, minutes] = timeStr.split(':').map(Number);
   return hours * 60 + minutes;
+}
+
+// ==================== HELPER FUNCTIONS ====================
+
+function calculateFreshnessScore(extractionResult: ExtractionResult): number {
+  let score = 50; // Base score
+  
+  // Platform integrations get higher freshness scores
+  if (extractionResult.sourceFormat.includes('platform')) {
+    score += 40;
+  } else if (extractionResult.sourceFormat.includes('document')) {
+    score += 20;
+  } else if (extractionResult.sourceFormat.includes('widget')) {
+    score += 30;
+  }
+  
+  // Confidence affects freshness
+  score += Math.min(extractionResult.confidence / 2, 25);
+  
+  // Check for recent date indicators
+  if (extractionResult.prayerTimes?.date) {
+    const dateObj = new Date(extractionResult.prayerTimes.date);
+    const today = new Date();
+    const daysDiff = Math.abs((today.getTime() - dateObj.getTime()) / (1000 * 60 * 60 * 24));
+    
+    if (daysDiff <= 1) score += 15;
+    else if (daysDiff <= 7) score += 5;
+    else score -= 10;
+  }
+  
+  return Math.min(Math.max(score, 0), 100);
+}
+
+function extractPlatformInfo(sourceFormat: string, notes: string[]): { platform: string, mosqueId: string | null } | null {
+  if (sourceFormat.includes('masjidbox')) {
+    const mosqueIdNote = notes.find(note => note.includes('Masjidbox mosque ID:'));
+    const mosqueId = mosqueIdNote ? mosqueIdNote.split(':')[1]?.trim() : null;
+    return { platform: 'masjidbox', mosqueId };
+  }
+  
+  if (sourceFormat.includes('mawaqit')) {
+    const uuidNote = notes.find(note => note.includes('Mawaqit mosque UUID:'));
+    const mosqueId = uuidNote ? uuidNote.split(':')[1]?.trim() : null;
+    return { platform: 'mawaqit', mosqueId };
+  }
+  
+  if (sourceFormat.includes('prayers_connect')) {
+    const idNote = notes.find(note => note.includes('Prayers Connect mosque ID:'));
+    const mosqueId = idNote ? idNote.split(':')[1]?.trim() : null;
+    return { platform: 'prayers_connect', mosqueId };
+  }
+  
+  return null;
 }

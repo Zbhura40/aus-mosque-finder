@@ -17,43 +17,61 @@ export type Database = {
       mosques: {
         Row: {
           address: string
+          contact_info: Json | null
+          facilities: Json | null
           facilities_json: Json | null
+          last_updated: string | null
           latitude: number
           longitude: number
           mosque_id: string
           name: string
           phone: string | null
+          platform_integration: string | null
+          platform_mosque_id: string | null
         }
         Insert: {
           address: string
+          contact_info?: Json | null
+          facilities?: Json | null
           facilities_json?: Json | null
+          last_updated?: string | null
           latitude: number
           longitude: number
           mosque_id: string
           name: string
           phone?: string | null
+          platform_integration?: string | null
+          platform_mosque_id?: string | null
         }
         Update: {
           address?: string
+          contact_info?: Json | null
+          facilities?: Json | null
           facilities_json?: Json | null
+          last_updated?: string | null
           latitude?: number
           longitude?: number
           mosque_id?: string
           name?: string
           phone?: string | null
+          platform_integration?: string | null
+          platform_mosque_id?: string | null
         }
         Relationships: []
       }
       prayer_times: {
         Row: {
+          admin_review_required: boolean | null
           asr_adhan: string | null
           asr_iqamah: string | null
           auto_scraped: boolean | null
           created_at: string | null
+          data_freshness_score: number | null
           date: string
           dhuhr_adhan: string | null
           dhuhr_iqamah: string | null
           extraction_confidence: number | null
+          facility_updates: Json | null
           fajr_adhan: string | null
           fajr_iqamah: string | null
           id: string
@@ -66,6 +84,7 @@ export type Database = {
           maghrib_iqamah: string | null
           mosque_id: string
           parsing_notes: string | null
+          platform_source: string | null
           scrape_success: boolean | null
           scraped_at: string | null
           source_format: string | null
@@ -73,14 +92,17 @@ export type Database = {
           updated_at: string | null
         }
         Insert: {
+          admin_review_required?: boolean | null
           asr_adhan?: string | null
           asr_iqamah?: string | null
           auto_scraped?: boolean | null
           created_at?: string | null
+          data_freshness_score?: number | null
           date: string
           dhuhr_adhan?: string | null
           dhuhr_iqamah?: string | null
           extraction_confidence?: number | null
+          facility_updates?: Json | null
           fajr_adhan?: string | null
           fajr_iqamah?: string | null
           id?: string
@@ -93,6 +115,7 @@ export type Database = {
           maghrib_iqamah?: string | null
           mosque_id: string
           parsing_notes?: string | null
+          platform_source?: string | null
           scrape_success?: boolean | null
           scraped_at?: string | null
           source_format?: string | null
@@ -100,14 +123,17 @@ export type Database = {
           updated_at?: string | null
         }
         Update: {
+          admin_review_required?: boolean | null
           asr_adhan?: string | null
           asr_iqamah?: string | null
           auto_scraped?: boolean | null
           created_at?: string | null
+          data_freshness_score?: number | null
           date?: string
           dhuhr_adhan?: string | null
           dhuhr_iqamah?: string | null
           extraction_confidence?: number | null
+          facility_updates?: Json | null
           fajr_adhan?: string | null
           fajr_iqamah?: string | null
           id?: string
@@ -120,6 +146,7 @@ export type Database = {
           maghrib_iqamah?: string | null
           mosque_id?: string
           parsing_notes?: string | null
+          platform_source?: string | null
           scrape_success?: boolean | null
           scraped_at?: string | null
           source_format?: string | null
@@ -175,6 +202,21 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      flag_prayer_times_for_review: {
+        Args: { p_confidence_threshold?: number; p_mosque_id: string }
+        Returns: undefined
+      }
+      get_mosque_platform_status: {
+        Args: { p_mosque_id: string }
+        Returns: {
+          avg_confidence: number
+          last_successful_scrape: string
+          mosque_id: string
+          needs_review: boolean
+          platform_integration: string
+          platform_mosque_id: string
+        }[]
+      }
       get_mosques_needing_scrape: {
         Args: Record<PropertyKey, never>
         Returns: {
@@ -184,6 +226,16 @@ export type Database = {
           name: string
           website: string
         }[]
+      }
+      update_mosque_details: {
+        Args: {
+          p_contact_info?: Json
+          p_facilities?: Json
+          p_mosque_id: string
+          p_platform_integration?: string
+          p_platform_mosque_id?: string
+        }
+        Returns: undefined
       }
       update_prayer_times_currency: {
         Args: Record<PropertyKey, never>
