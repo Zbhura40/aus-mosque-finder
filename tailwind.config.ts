@@ -19,10 +19,10 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Crimson Text', 'serif'],
-				serif: ['Playfair Display', 'serif'],
-				elegant: ['Playfair Display', 'serif'],
-				body: ['Crimson Text', 'serif'],
+				sans: ['Poppins', 'sans-serif'],
+				serif: ['Poppins', 'sans-serif'],
+				elegant: ['Poppins', 'sans-serif'],
+				body: ['Poppins', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
