@@ -114,7 +114,7 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-warm-ivory backdrop-blur-sm border-2 border-golden-beige/60 shadow-2xl">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-background backdrop-blur-sm border-2 border-golden-beige/60 shadow-2xl">
         <DialogHeader className="pb-8">
           <DialogTitle className="font-elegant text-3xl font-bold text-archway-black flex items-center gap-4">
             <div className="w-14 h-14 rounded-full bg-burnt-ochre/20 flex items-center justify-center shadow-lg border-2 border-golden-beige/60">
