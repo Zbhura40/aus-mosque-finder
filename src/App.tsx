@@ -7,6 +7,7 @@ import TransparentNavbar from "@/components/TransparentNavbar";
 import Index from "./pages/Index";
 import UserFeedback from "./pages/UserFeedback";
 import FAQ from "./pages/FAQ";
+import ImamProfiles from "./pages/ImamProfiles";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/feedback" element={<UserFeedback />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/imam-profiles" element={<ImamProfiles />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
