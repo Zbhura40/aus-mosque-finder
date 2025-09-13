@@ -48,6 +48,14 @@ const FAQ = () => {
     {
       question: "What customs should visitors observe?",
       answer: "Visitors should behave respectfully, similar to attending any religious site, and are encouraged to ask questions. Modest clothing is advised (loose-fitting attire; women may wear a headscarf, but it isn't required for guests), and everyone must remove shoes before entering the prayer hall. Shoe racks are available near the entrance."
+    },
+    {
+      question: "How can I find the nearest mosque or search for mosques near me to attend daily prayers?",
+      answer: "To find the nearest mosque or search for mosques near me, use our online mosque directory. Simply enter your location or allow location access, or search for masjids using our search radius buttons (3kms, 10kms or 25kms) and you'll see a list of mosques and masjids based on your criteria, including directions and contact details for each one."
+    },
+    {
+      question: "Where can I check accurate prayer times for a masjid near me or the closest mosque near me?",
+      answer: "At this stage, we do not publish prayer times. We recommend contacting the masjid directly. If this is a feature you would like to see, please let us know."
     }
   ];
 
