@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, User, ExternalLink } from "lucide-react";
-import { useSEO } from "@/hooks/useSEO";
 import { useJsonLdSchema } from "@/hooks/useJsonLdSchema";
+import { SEOUtils } from "@/lib/seo-utils";
 
 const ImamProfiles: React.FC = () => {
-  useSEO('landing');
+  // SEO optimization for Imam Profiles page
+  useEffect(() => {
+    const title = "Australian Mosque Imams | Islamic Leaders & Community Guides";
+    const description = "Meet leading Australian imams serving Muslim communities. Read profiles, educational backgrounds, and community service of Islamic religious leaders.";
+    const url = window.location.href;
+    
+    SEOUtils.updateDocumentHead(title, description, url);
+  }, []);
+
   useJsonLdSchema({
     type: 'website',
     name: 'Australian Mosque Directory - Imam Profiles',
