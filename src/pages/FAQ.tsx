@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { ArrowLeft, HelpCircle, Building2 } from "lucide-react";
+import { SEOUtils } from "@/lib/seo-utils";
 
 const FAQ = () => {
   const navigate = useNavigate();
+
+  // SEO optimization for FAQ page
+  useEffect(() => {
+    const title = "Mosque Etiquette & Islamic Prayer FAQs | Australian Muslim Guide";
+    const description = "Learn mosque customs, prayer etiquette, and Islamic practices in Australia. Comprehensive guide for visitors and new Muslims.";
+    const url = window.location.href;
+    
+    SEOUtils.updateDocumentHead(title, description, url);
+  }, []);
 
   const faqItems = [
     {
