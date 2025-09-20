@@ -83,9 +83,9 @@ const BrisbaneMosques = () => {
           <div className="grid gap-4">
             {[
               { name: "Islamic Council of Queensland", address: "83 Kuraby Rd, Kuraby QLD 4112", phone: "(07) 3341 4122", website: "https://www.icq.org.au/" },
-              { name: "Holland Park Mosque", address: "1 Tay St, Holland Park QLD 4121", phone: "(07) 3847 4499", website: "https://www.facebook.com/HollandParkMosque/" },
-              { name: "Algester Mosque", address: "180 Algester Rd, Algester QLD 4115", phone: "(07) 3274 8233", website: "https://www.facebook.com/AlgesterMosque/" },
-              { name: "Darra Mosque", address: "114 Monier Rd, Darra QLD 4076", phone: "(07) 3375 1792", website: "https://www.facebook.com/DarraMosque/" },
+              { name: "Holland Park Mosque", address: "309 Nursery Rd, Holland Park QLD 4121", phone: "(07) 3847 4499", website: "https://www.hollandparkmosque.org.au/" },
+              { name: "Algester Mosque", address: "48 Learoyd Rd, Algester QLD 4115", phone: "(07) 3274 8233", website: "https://www.isoa.com.au/" },
+              { name: "Darra Mosque", address: "225 Douglas St, Oxley QLD 4075", phone: "(07) 3375 1792", website: "http://isd.org.au/" },
               { name: "Zillmere Mosque", address: "48 Zillmere Rd, Zillmere QLD 4034", phone: "(07) 3263 8288", website: "https://www.facebook.com/ZillmereMosque/" },
               { name: "Inala Islamic Centre", address: "15 Wirraway Parade, Inala QLD 4077", phone: "(07) 3372 1400", website: "https://www.facebook.com/InalaIslamicCentre/" },
               { name: "Goodna Mosque", address: "161 Queen St, Goodna QLD 4300", phone: "(07) 3818 0288", website: "https://www.facebook.com/GoodnaMosque/" },
@@ -109,14 +109,48 @@ const BrisbaneMosques = () => {
                       {mosque.website && (
                         <div className="flex items-center text-muted-foreground">
                           <ExternalLink className="w-4 h-4 mr-2" />
-                          <a href={mosque.website} target="_blank" rel="noopener noreferrer" className="text-sm hover:text-primary">Visit Website</a>
+                          <a 
+                            href={mosque.website} 
+                            target="_parent" 
+                            rel="noopener noreferrer" 
+                            className="text-sm hover:text-primary"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              // Try multiple methods to open the link
+                              try {
+                                if (window.parent && window.parent !== window) {
+                                  window.parent.open(mosque.website, '_blank');
+                                } else {
+                                  window.open(mosque.website, '_blank');
+                                }
+                              } catch (error) {
+                                // Fallback: direct navigation
+                                window.location.href = mosque.website;
+                              }
+                            }}
+                          >
+                            Visit Website
+                          </a>
                         </div>
                       )}
                     </div>
                     <Button 
                       variant="outline" 
                       size="sm"
-                      onClick={() => window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mosque.address)}`, '_blank')}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mosque.address)}`;
+                        try {
+                          if (window.parent && window.parent !== window) {
+                            window.parent.open(mapsUrl, '_blank');
+                          } else {
+                            window.open(mapsUrl, '_blank');
+                          }
+                        } catch (error) {
+                          // Fallback: direct navigation
+                          window.location.href = mapsUrl;
+                        }
+                      }}
                       className="shrink-0"
                     >
                       Get Directions

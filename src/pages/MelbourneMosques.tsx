@@ -105,14 +105,45 @@ const MelbourneMosques = () => {
                       {mosque.website && (
                         <div className="flex items-center text-muted-foreground">
                           <ExternalLink className="w-4 h-4 mr-2" />
-                          <a href={mosque.website} target="_blank" rel="noopener noreferrer" className="text-sm hover:text-primary">Visit Website</a>
+                          <a 
+                            href={mosque.website} 
+                            target="_parent" 
+                            rel="noopener noreferrer" 
+                            className="text-sm hover:text-primary"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              try {
+                                if (window.parent && window.parent !== window) {
+                                  window.parent.open(mosque.website, '_blank');
+                                } else {
+                                  window.open(mosque.website, '_blank');
+                                }
+                              } catch (error) {
+                                window.location.href = mosque.website;
+                              }
+                            }}
+                          >
+                            Visit Website
+                          </a>
                         </div>
                       )}
                     </div>
                     <Button 
                       variant="outline" 
                       size="sm"
-                      onClick={() => window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mosque.address)}`, '_blank')}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mosque.address)}`;
+                        try {
+                          if (window.parent && window.parent !== window) {
+                            window.parent.open(mapsUrl, '_blank');
+                          } else {
+                            window.open(mapsUrl, '_blank');
+                          }
+                        } catch (error) {
+                          window.location.href = mapsUrl;
+                        }
+                      }}
                       className="shrink-0"
                     >
                       Get Directions
