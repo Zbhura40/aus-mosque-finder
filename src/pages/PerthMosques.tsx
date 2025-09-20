@@ -80,10 +80,10 @@ const PerthMosques = () => {
           <Card>
             <CardContent className="p-6">
               <ol className="list-decimal list-inside space-y-3 text-lg">
-                <li>Enter your Perth location in the search box above</li>
-                <li>Set your preferred search radius (1km, 5km, 10km, or more)</li>
-                <li>Browse the list of nearby mosques with addresses and contact details</li>
-                <li>Click on any mosque to get directions and more information</li>
+                <li>Set your preferred search radius (within 3km, 10km, or 25km)</li>
+                <li>Select your location method by using your current location or entering a postcode</li>
+                <li>Click on Find Mosques</li>
+                <li>Click on any Mosque to get directions and more information</li>
               </ol>
             </CardContent>
           </Card>
@@ -97,7 +97,7 @@ const PerthMosques = () => {
             <CardContent className="p-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="text-lg font-semibold mb-3">Australia's Simplest Mosque Directory</h3>
+                  <h3 className="text-lg font-semibold mb-3">We try to keep it simple</h3>
                   <p className="text-muted-foreground">
                     No ads, no fuss - just find your mosque quickly with our community-built directory.
                   </p>

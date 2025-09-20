@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { MapPin, User, ExternalLink } from "lucide-react";
 import { useJsonLdSchema } from "@/hooks/useJsonLdSchema";
 import { SEOUtils } from "@/lib/seo-utils";
@@ -84,7 +85,7 @@ const ImamProfiles: React.FC = () => {
               Find an Imam Near You
             </h2>
             <p className="text-lg text-islamic-black/80 max-w-4xl mx-auto leading-relaxed">
-              Browse the leading imams serving Australian masjids near me and discover each mosque's approach to prayer times, community services, and religious guidance. Planning to find a mosque or explore the nearest mosque for prayer? These imam profiles help make your visit more welcoming and meaningful.
+              Planning to find an Imam near you? Here is a curated list of some of Australia's renowned Islamic Leaders. We will continue to add more profiles.
             </p>
           </div>
         </div>
@@ -94,9 +95,26 @@ const ImamProfiles: React.FC = () => {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="mb-12">
-            <h3 className="text-2xl font-semibold text-islamic-black mb-4 text-center">Sydney Islamic Leaders</h3>
-            <h3 className="text-2xl font-semibold text-islamic-black mb-4 text-center">Melbourne Imam Profiles</h3>
-            <h3 className="text-2xl font-semibold text-islamic-black mb-8 text-center">Brisbane and Queensland Imams</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
+              <Button 
+                variant="outline" 
+                className="h-12 font-body text-sm font-medium hover:bg-islamic-green/10 hover:border-islamic-green hover:text-islamic-green border-2"
+              >
+                Sydney Islamic Leaders
+              </Button>
+              <Button 
+                variant="outline" 
+                className="h-12 font-body text-sm font-medium hover:bg-islamic-green/10 hover:border-islamic-green hover:text-islamic-green border-2"
+              >
+                Melbourne Imam Profiles
+              </Button>
+              <Button 
+                variant="outline" 
+                className="h-12 font-body text-sm font-medium hover:bg-islamic-green/10 hover:border-islamic-green hover:text-islamic-green border-2"
+              >
+                Brisbane & Queensland
+              </Button>
+            </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {imams.map((imam, index) => (
@@ -133,12 +151,6 @@ const ImamProfiles: React.FC = () => {
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <h2 className="text-3xl font-semibold text-islamic-black mb-6">Imam Specialties and Services</h2>
-            <p className="text-sm text-islamic-black/60 max-w-3xl mx-auto">
-              These imam profiles showcase the diverse leadership within Australian Muslim communities. Each masjid near me offers unique approaches to community service, prayer times guidance, and spiritual development. When you find a mosque that resonates with your needs, these imam profiles help ensure a more meaningful and welcoming experience.
-            </p>
-          </div>
         </div>
       </section>
     </main>
