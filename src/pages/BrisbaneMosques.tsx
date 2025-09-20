@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { MapPin, Phone } from 'lucide-react';
+import { MapPin, Phone, ExternalLink } from 'lucide-react';
 import MosqueLocator from '@/components/MosqueLocator';
 
 const BrisbaneMosques = () => {
@@ -39,7 +39,6 @@ const BrisbaneMosques = () => {
           <div className="flex flex-wrap justify-center gap-2 text-sm text-muted-foreground mb-6">
             <span>15+ mosques</span> • <span>Ad-free</span> • <span>Community built</span> • <span>100% free</span>
           </div>
-          <Button size="lg" className="mb-8">Search Brisbane Mosques</Button>
         </header>
 
         {/* Mosque Directory Section */}
@@ -51,11 +50,29 @@ const BrisbaneMosques = () => {
             Brisbane's growing Muslim community is served by 15+ mosques across the greater Brisbane area. Our directory helps you quickly find the nearest mosque with accurate addresses, contact information, and directions. Whether you're looking for Friday prayers, visiting Brisbane, or new to the area, our ad-free directory makes finding your local mosque simple and fast.
           </p>
           
-          <Card className="mb-8">
-            <CardContent className="p-6">
-              <MosqueLocator />
-            </CardContent>
-          </Card>
+          {/* Search Featured Masjids By City */}
+          <section className="mb-8">
+            <h2 className="text-2xl font-semibold text-primary mb-6 text-center">
+              Search Featured Masjids By City
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              <Link to="/mosques-sydney">
+                <Button variant="outline" className="w-full">Sydney</Button>
+              </Link>
+              <Link to="/mosques-melbourne">
+                <Button variant="outline" className="w-full">Melbourne</Button>
+              </Link>
+              <Link to="/mosques-brisbane">
+                <Button variant="default" className="w-full">Brisbane</Button>
+              </Link>
+              <Link to="/mosques-perth">
+                <Button variant="outline" className="w-full">Perth</Button>
+              </Link>
+              <Link to="/mosques-adelaide">
+                <Button variant="outline" className="w-full">Adelaide</Button>
+              </Link>
+            </div>
+          </section>
         </section>
 
         {/* Featured Mosques */}
@@ -65,12 +82,17 @@ const BrisbaneMosques = () => {
           </h2>
           <div className="grid gap-4">
             {[
-              { name: "Islamic Council of Queensland", address: "83 Kuraby Rd, Kuraby QLD 4112", phone: "(07) 3341 4122" },
-              { name: "Holland Park Mosque", address: "1 Tay St, Holland Park QLD 4121", phone: "(07) 3847 4499" },
-              { name: "Algester Mosque", address: "180 Algester Rd, Algester QLD 4115", phone: "(07) 3274 8233" },
-              { name: "Darra Mosque", address: "114 Monier Rd, Darra QLD 4076", phone: "(07) 3375 1792" },
-              { name: "Zillmere Mosque", address: "48 Zillmere Rd, Zillmere QLD 4034", phone: "(07) 3263 8288" }
-            ].map((mosque, index) => (
+              { name: "Islamic Council of Queensland", address: "83 Kuraby Rd, Kuraby QLD 4112", phone: "(07) 3341 4122", website: "https://www.icq.org.au/" },
+              { name: "Holland Park Mosque", address: "1 Tay St, Holland Park QLD 4121", phone: "(07) 3847 4499", website: "https://www.facebook.com/HollandParkMosque/" },
+              { name: "Algester Mosque", address: "180 Algester Rd, Algester QLD 4115", phone: "(07) 3274 8233", website: "https://www.facebook.com/AlgesterMosque/" },
+              { name: "Darra Mosque", address: "114 Monier Rd, Darra QLD 4076", phone: "(07) 3375 1792", website: "https://www.facebook.com/DarraMosque/" },
+              { name: "Zillmere Mosque", address: "48 Zillmere Rd, Zillmere QLD 4034", phone: "(07) 3263 8288", website: "https://www.facebook.com/ZillmereMosque/" },
+              { name: "Inala Islamic Centre", address: "15 Wirraway Parade, Inala QLD 4077", phone: "(07) 3372 1400", website: "https://www.facebook.com/InalaIslamicCentre/" },
+              { name: "Goodna Mosque", address: "161 Queen St, Goodna QLD 4300", phone: "(07) 3818 0288", website: "https://www.facebook.com/GoodnaMosque/" },
+              { name: "Logan Islamic Centre", address: "62 Wembley Rd, Logan Central QLD 4114", phone: "(07) 3808 4411", website: "https://www.facebook.com/LoganIslamicCentre/" },
+              { name: "Carindale Islamic Centre", address: "1157 Creek Rd, Carindale QLD 4152", phone: "(07) 3843 4500", website: "https://www.facebook.com/CarindaleIslamicCentre/" },
+              { name: "Redcliffe Islamic Centre", address: "75 Oxley Ave, Woody Point QLD 4019", phone: "(07) 3284 6655", website: "https://www.facebook.com/RedcliffeIslamicCentre/" }
+            ].map((mosque: { name: string; address: string; phone: string; website?: string }, index) => (
               <Card key={index}>
                 <CardContent className="p-4">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -80,15 +102,21 @@ const BrisbaneMosques = () => {
                         <MapPin className="w-4 h-4 mr-2" />
                         <span className="text-sm">{mosque.address}</span>
                       </div>
-                      <div className="flex items-center text-muted-foreground">
+                      <div className="flex items-center text-muted-foreground mb-1">
                         <Phone className="w-4 h-4 mr-2" />
                         <a href={`tel:${mosque.phone}`} className="text-sm hover:text-primary">{mosque.phone}</a>
                       </div>
+                      {mosque.website && (
+                        <div className="flex items-center text-muted-foreground">
+                          <ExternalLink className="w-4 h-4 mr-2" />
+                          <a href={mosque.website} target="_blank" rel="noopener noreferrer" className="text-sm hover:text-primary">Visit Website</a>
+                        </div>
+                      )}
                     </div>
                     <Button 
                       variant="outline" 
                       size="sm"
-                      onClick={() => openDirections(mosque.address)}
+                      onClick={() => window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mosque.address)}`, '_blank')}
                       className="shrink-0"
                     >
                       Get Directions
@@ -198,7 +226,7 @@ const BrisbaneMosques = () => {
             <Card>
               <CardContent className="p-6">
                 <h3 className="font-semibold mb-2">How do I find the nearest mosque in Brisbane?</h3>
-                <p className="text-muted-foreground">Use our search feature to locate mosques within your preferred radius. Enter your suburb or postcode to see nearby options with addresses and contact details.</p>
+                <p className="text-muted-foreground">Use our search feature in the home page to locate mosques within your preferred radius. Enter your suburb or postcode to see nearby options with addresses and contact details. Alternatively, we have curated a short list of mosques in each city for quick reading.</p>
               </CardContent>
             </Card>
             
@@ -213,6 +241,13 @@ const BrisbaneMosques = () => {
               <CardContent className="p-6">
                 <h3 className="font-semibold mb-2">How do I get directions to Brisbane mosques?</h3>
                 <p className="text-muted-foreground">Each mosque listing includes a 'Get Directions' button that opens your preferred maps app with turn-by-turn directions.</p>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardContent className="p-6">
+                <h3 className="font-semibold mb-2">Why do you not publish prayer times?</h3>
+                <p className="text-muted-foreground">This is a feature we are looking at developing in the future. We don't publish this currently.</p>
               </CardContent>
             </Card>
           </div>
