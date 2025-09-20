@@ -368,7 +368,14 @@ const MosqueLocator = () => {
                   onClick={() => navigate('/mosques-perth')}
                   className="h-12 font-body text-sm font-medium hover:bg-islamic-green/10 hover:border-islamic-green hover:text-islamic-green border-2"
                 >
-                  Perth & Adelaide
+                  Perth Masjids
+                </Button>
+                <Button 
+                  variant="outline" 
+                  onClick={() => navigate('/mosques-adelaide')}
+                  className="h-12 font-body text-sm font-medium hover:bg-islamic-green/10 hover:border-islamic-green hover:text-islamic-green border-2"
+                >
+                  Adelaide Masjids
                 </Button>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
