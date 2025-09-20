@@ -68,12 +68,42 @@ export class SEOUtils {
 
   // Generate landing page title
   static generateLandingPageTitle(): string {
-    return 'Find My Mosque Australia – Locate Prayer Times, Directions & Mosque Information';
+    return 'Find Mosque Near Me Australia | Masjid Directory';
   }
 
   // Generate landing page meta description
   static generateLandingPageMetaDescription(): string {
-    return 'Discover mosques across Australia. Search by location to find prayer times, contact details, facilities & get directions. Free community platform.';
+    return 'Find masjid near me across Australia. Locate mosques, prayer rooms & contact details in Sydney, Melbourne, Brisbane & more. Free directory, no ads.';
+  }
+
+  // Generate FAQ page title
+  static generateFAQPageTitle(): string {
+    return 'FAQ - Find Masjid Near Me | Islamic Worship Info';
+  }
+
+  // Generate FAQ page meta description
+  static generateFAQPageMetaDescription(): string {
+    return 'Get answers about finding mosque near me, visitor information, and general information on Islamic worship practices. Free help.';
+  }
+
+  // Generate Imam Profiles page title
+  static generateImamProfilesPageTitle(): string {
+    return 'Renowned Imams Australia | Find An Imam Directory';
+  }
+
+  // Generate Imam Profiles page meta description
+  static generateImamProfilesPageMetaDescription(): string {
+    return 'Meet renowned Imams leading Muslim communities across Australia. Find Islamic religious leaders, their profiles and mosque affiliations near you.';
+  }
+
+  // Generate Feedback page title
+  static generateFeedbackPageTitle(): string {
+    return 'Contact Us | FindMyMosque Australia';
+  }
+
+  // Generate Feedback page meta description
+  static generateFeedbackPageMetaDescription(): string {
+    return 'Contact us to add your mosque, masjid, musallah or prayer room to our directory. Help Muslims find Jummah prayer near me.';
   }
 
   // Generate unique mosque description

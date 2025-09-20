@@ -7,8 +7,8 @@ import { SEOUtils } from "@/lib/seo-utils";
 const ImamProfiles: React.FC = () => {
   // SEO optimization for Imam Profiles page
   useEffect(() => {
-    const title = "Australian Mosque Imams | Islamic Leaders & Community Guides";
-    const description = "Meet leading Australian imams serving Muslim communities. Read profiles, educational backgrounds, and community service of Islamic religious leaders.";
+    const title = SEOUtils.generateImamProfilesPageTitle();
+    const description = SEOUtils.generateImamProfilesPageMetaDescription();
     const url = window.location.href;
     
     SEOUtils.updateDocumentHead(title, description, url);

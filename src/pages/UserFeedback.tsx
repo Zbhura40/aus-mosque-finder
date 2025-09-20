@@ -1,15 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowLeft, MessageSquare, Send } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import { SEOUtils } from "@/lib/seo-utils";
 
 const UserFeedback = () => {
   const [feedback, setFeedback] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
+  
+  useEffect(() => {
+    const title = SEOUtils.generateFeedbackPageTitle();
+    const description = SEOUtils.generateFeedbackPageMetaDescription();
+    const url = window.location.href;
+    
+    SEOUtils.updateDocumentHead(title, description, url);
+  }, []);
   
   const MAX_CHARACTERS = 3000;
   const remainingCharacters = MAX_CHARACTERS - feedback.length;

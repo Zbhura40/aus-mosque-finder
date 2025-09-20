@@ -11,8 +11,8 @@ const FAQ = () => {
 
   // SEO optimization for FAQ page
   useEffect(() => {
-    const title = "Mosque Etiquette & Islamic Prayer FAQs | Australian Muslim Guide";
-    const description = "Learn mosque customs, prayer etiquette, and Islamic practices in Australia. Comprehensive guide for visitors and new Muslims.";
+    const title = SEOUtils.generateFAQPageTitle();
+    const description = SEOUtils.generateFAQPageMetaDescription();
     const url = window.location.href;
     
     SEOUtils.updateDocumentHead(title, description, url);
