@@ -8,6 +8,11 @@ import Index from "./pages/Index";
 import UserFeedback from "./pages/UserFeedback";
 import FAQ from "./pages/FAQ";
 import ImamProfiles from "./pages/ImamProfiles";
+import SydneyMosques from "./pages/SydneyMosques";
+import MelbourneMosques from "./pages/MelbourneMosques";
+import BrisbaneMosques from "./pages/BrisbaneMosques";
+import PerthMosques from "./pages/PerthMosques";
+import AdelaideMosques from "./pages/AdelaideMosques";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +29,11 @@ const App = () => (
           <Route path="/feedback" element={<UserFeedback />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/imam-profiles" element={<ImamProfiles />} />
+          <Route path="/mosques-sydney" element={<SydneyMosques />} />
+          <Route path="/mosques-melbourne" element={<MelbourneMosques />} />
+          <Route path="/mosques-brisbane" element={<BrisbaneMosques />} />
+          <Route path="/mosques-perth" element={<PerthMosques />} />
+          <Route path="/mosques-adelaide" element={<AdelaideMosques />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
