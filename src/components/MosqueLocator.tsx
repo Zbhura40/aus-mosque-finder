@@ -270,7 +270,7 @@ const MosqueLocator = () => {
         <div className="relative container mx-auto px-4 py-20 z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="font-elegant text-6xl lg:text-8xl font-bold text-white mb-8 leading-tight drop-shadow-2xl">
-              Find My Mosque Australia
+              Find Mosque Near Me Australia | Complete Masjid Directory
             </h1>
             <p className="font-body text-2xl lg:text-3xl text-white/95 mb-12 max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
               A new, free platform created for the community to easily find mosques across Australia
@@ -334,13 +334,19 @@ const MosqueLocator = () => {
                 <div className="w-12 h-12 rounded-full bg-burnt-ochre/20 flex items-center justify-center border-2 border-burnt-ochre/40">
                   <MapPin className="w-6 h-6 text-burnt-ochre" />
                 </div>
-                Search for Mosques Near You
+                Featured Mosques and Islamic Centers
               </h2>
             </CardHeader>
           <CardContent className="space-y-8">
             {/* Radius Selection */}
             <div className="space-y-6">
               <h3 className="font-elegant text-2xl font-semibold text-architectural-shadow mb-4">Search Radius</h3>
+              <h3 className="font-elegant text-xl text-architectural-shadow mb-2">Sydney Mosques and Masjids</h3>
+              <h3 className="font-elegant text-xl text-architectural-shadow mb-2">Melbourne Islamic Centers</h3>
+              <h3 className="font-elegant text-xl text-architectural-shadow mb-2">Brisbane Prayer Rooms</h3>
+              <h3 className="font-elegant text-xl text-architectural-shadow mb-2">Perth and Adelaide Mosques</h3>
+              <h3 className="font-elegant text-xl text-architectural-shadow mb-2">Friday Prayer Locations</h3>
+              <h3 className="font-elegant text-xl text-architectural-shadow mb-4">Jummah Prayer Near Me</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {radiusOptions.map((option) => (
                   <Button
@@ -439,12 +445,12 @@ const MosqueLocator = () => {
           <section className="container mx-auto px-4 py-16">
             <h2 className="font-elegant text-4xl font-bold text-center mb-12 text-islamic-navy">
               Nearby Mosques & Islamic Centers
-            {!isSearching && mosques.length > 0 && (
-              <span className="font-body text-xl font-normal text-muted-foreground ml-3 block mt-2">
-                ({mosques.length} mosques found)
-              </span>
-            )}
-          </h2>
+              {!isSearching && mosques.length > 0 && (
+                <span className="font-body text-xl font-normal text-muted-foreground ml-3 block mt-2">
+                  ({mosques.length} mosques found)
+                </span>
+              )}
+            </h2>
           
           {isSearching ? (
             <div className="flex justify-center items-center py-20">

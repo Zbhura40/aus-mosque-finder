@@ -90,7 +90,7 @@ const UserFeedback = () => {
             </div>
             <div>
               <h1 className="font-elegant text-4xl lg:text-5xl font-bold leading-tight">
-                User Feedback
+                Contact Us | Add Your Mosque to Our Directory
               </h1>
               <p className="font-body text-lg text-white/90 mt-2">
                 Help us improve your mosque finding experience
@@ -188,9 +188,23 @@ const UserFeedback = () => {
                 <div className="flex items-start gap-4">
                   <MessageSquare className="w-6 h-6 text-burnt-ochre mt-1 flex-shrink-0" />
                   <div className="space-y-3">
-                    <h3 className="font-body text-lg font-semibold text-archway-black">
-                      Thank you for helping us improve!
-                    </h3>
+                    <h2 className="font-body text-lg font-semibold text-archway-black">
+                      Get Help and Support
+                    </h2>
+                    <div className="space-y-2">
+                      <h3 className="font-body text-base font-medium text-slate-blue">
+                        Add mosque near me to directory
+                      </h3>
+                      <h3 className="font-body text-base font-medium text-slate-blue">
+                        Update prayer room information
+                      </h3>
+                      <h3 className="font-body text-base font-medium text-slate-blue">
+                        Find Jummah prayer locations
+                      </h3>
+                      <h3 className="font-body text-base font-medium text-slate-blue">
+                        Technical support and feedback
+                      </h3>
+                    </div>
                     <p className="font-body text-base text-slate-blue leading-relaxed">
                       Your feedback is valuable to us. We read every submission and use your input to enhance our platform. 
                       While we may not be able to respond to every message individually, we appreciate your time and effort in helping us serve the community better.

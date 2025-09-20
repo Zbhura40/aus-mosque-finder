@@ -104,7 +104,7 @@ const FAQ = () => {
                 <HelpCircle className="w-12 h-12 text-white" />
               </div>
               <h1 className="font-elegant text-6xl lg:text-7xl font-bold text-white leading-tight mb-4 drop-shadow-2xl">
-                Frequently Asked Questions
+                Frequently Asked Questions - Find Masjid Near Me
               </h1>
               <p className="font-body text-xl text-white/90 max-w-2xl mx-auto leading-relaxed drop-shadow-lg">
                 Understanding mosques and Islamic worship practices
@@ -123,7 +123,7 @@ const FAQ = () => {
                   <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
                     <Building2 className="w-6 h-6 text-white" />
                   </div>
-                  About Mosques
+                  <h2>Finding Mosques and Islamic Centers</h2>
                 </CardTitle>
               </CardHeader>
               <CardContent className="p-8">
@@ -144,7 +144,7 @@ const FAQ = () => {
                       <div className="w-10 h-10 rounded-full bg-golden-amber/20 backdrop-blur-sm flex items-center justify-center mt-1 flex-shrink-0 border border-golden-amber/40">
                         <span className="font-body text-sm font-bold text-golden-amber">Q</span>
                       </div>
-                      {item.question}
+                      <h3>{item.question}</h3>
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="p-8">

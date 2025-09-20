@@ -78,8 +78,11 @@ const ImamProfiles: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-islamic-black mb-6">
-              Imam Profiles
+              Renowned Imams Australia | Islamic Leaders Directory
             </h1>
+            <h2 className="text-2xl font-semibold text-islamic-black/80 mb-4">
+              Find an Imam Near You
+            </h2>
             <p className="text-lg text-islamic-black/80 max-w-4xl mx-auto leading-relaxed">
               Browse the leading imams serving Australian masjids near me and discover each mosque's approach to prayer times, community services, and religious guidance. Planning to find a mosque or explore the nearest mosque for prayer? These imam profiles help make your visit more welcoming and meaningful.
             </p>
@@ -90,6 +93,11 @@ const ImamProfiles: React.FC = () => {
       {/* Imam Profiles Grid */}
       <section className="py-16">
         <div className="container mx-auto px-4">
+          <div className="mb-12">
+            <h3 className="text-2xl font-semibold text-islamic-black mb-4 text-center">Sydney Islamic Leaders</h3>
+            <h3 className="text-2xl font-semibold text-islamic-black mb-4 text-center">Melbourne Imam Profiles</h3>
+            <h3 className="text-2xl font-semibold text-islamic-black mb-8 text-center">Brisbane and Queensland Imams</h3>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {imams.map((imam, index) => (
               <Card key={index} className="bg-white/90 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300">
@@ -126,6 +134,7 @@ const ImamProfiles: React.FC = () => {
           </div>
 
           <div className="text-center mt-12">
+            <h2 className="text-3xl font-semibold text-islamic-black mb-6">Imam Specialties and Services</h2>
             <p className="text-sm text-islamic-black/60 max-w-3xl mx-auto">
               These imam profiles showcase the diverse leadership within Australian Muslim communities. Each masjid near me offers unique approaches to community service, prayer times guidance, and spiritual development. When you find a mosque that resonates with your needs, these imam profiles help ensure a more meaningful and welcoming experience.
             </p>
