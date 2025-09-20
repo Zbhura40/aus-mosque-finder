@@ -82,14 +82,14 @@ const SydneyMosques = () => {
           </h2>
           <div className="grid gap-4">
             {[
-              { name: "Lakemba Mosque", address: "71-75 Wangee Rd, Lakemba NSW 2195", phone: "(02) 9750 1988" },
-              { name: "Auburn Gallipoli Mosque", address: "122 Auburn Rd, Auburn NSW 2144", phone: "(02) 9649 6727" },
-              { name: "Parramatta Mosque", address: "150 Marsden St, Parramatta NSW 2150", phone: "(02) 9630 9948" },
-              { name: "Al Noor Mosque", address: "1 Haldon St, Lakemba NSW 2195", phone: "(02) 9740 0416" },
-              { name: "Bankstown Mosque", address: "45 Restwell St, Bankstown NSW 2200", phone: "(02) 9708 3833" },
-              { name: "Liverpool Mosque", address: "165 Bow St, Liverpool NSW 2170", phone: "(02) 9602 8277" },
-              { name: "Blacktown Mosque", address: "35 Flushcombe Rd, Blacktown NSW 2148", phone: "(02) 9622 9544" },
-              { name: "Fairfield Mosque", address: "2 Kenyon St, Fairfield NSW 2165", phone: "(02) 9724 4103" }
+              { name: "Lakemba Mosque", address: "71-75 Wangee Rd, Lakemba NSW 2195", phone: "(02) 9750 1988", website: "https://www.lakembamosque.org/" },
+              { name: "Auburn Gallipoli Mosque", address: "122 Auburn Rd, Auburn NSW 2144", phone: "(02) 9649 6727", website: "https://www.facebook.com/AuburnGallipoliMosque/" },
+              { name: "Parramatta Mosque", address: "150 Marsden St, Parramatta NSW 2150", phone: "(02) 9630 9948", website: "https://www.facebook.com/ParramattaMosque/" },
+              { name: "Al Noor Mosque", address: "1 Haldon St, Lakemba NSW 2195", phone: "(02) 9740 0416", website: "https://www.facebook.com/AlNoorMosqueLakemba/" },
+              { name: "Bankstown Mosque", address: "45 Restwell St, Bankstown NSW 2200", phone: "(02) 9708 3833", website: "https://www.facebook.com/BankstownMosque/" },
+              { name: "Liverpool Mosque", address: "165 Bow St, Liverpool NSW 2170", phone: "(02) 9602 8277", website: "https://www.facebook.com/LiverpoolMosque/" },
+              { name: "Blacktown Mosque", address: "35 Flushcombe Rd, Blacktown NSW 2148", phone: "(02) 9622 9544", website: "https://www.facebook.com/BlacktownMosque/" },
+              { name: "Fairfield Mosque", address: "2 Kenyon St, Fairfield NSW 2165", phone: "(02) 9724 4103", website: "https://www.facebook.com/FairfieldMosque/" }
             ].map((mosque, index) => (
               <Card key={index}>
                 <CardContent className="p-4">

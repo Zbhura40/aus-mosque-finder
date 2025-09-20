@@ -82,11 +82,11 @@ const PerthMosques = () => {
           </h2>
           <div className="grid gap-4">
             {[
-              { name: "Perth Mosque", address: "427 William St, Perth WA 6000", phone: "(08) 9328 4922" },
-              { name: "Mirrabooka Mosque", address: "7 Camberwarra Dr, Mirrabooka WA 6061", phone: "(08) 9342 3244" },
-              { name: "Langford Mosque", address: "24 Warton Rd, Canning Vale WA 6155", phone: "(08) 9455 4249" },
-              { name: "Thornlie Mosque", address: "16 Thornlie Ave, Thornlie WA 6108", phone: "(08) 9459 8866" },
-              { name: "Wanneroo Mosque", address: "23 Joondalup Dr, Wanneroo WA 6065", phone: "(08) 9405 1888" }
+              { name: "Perth Mosque", address: "427 William St, Perth WA 6000", phone: "(08) 9328 4922", website: "https://www.perthmasjid.com.au/" },
+              { name: "Mirrabooka Mosque", address: "7 Camberwarra Dr, Mirrabooka WA 6061", phone: "(08) 9342 3244", website: "https://www.facebook.com/MirrabookaMosque/" },
+              { name: "Langford Mosque", address: "24 Warton Rd, Canning Vale WA 6155", phone: "(08) 9455 4249", website: "https://www.facebook.com/LangfordMosque/" },
+              { name: "Thornlie Mosque", address: "16 Thornlie Ave, Thornlie WA 6108", phone: "(08) 9459 8866", website: "https://www.facebook.com/ThornlieMosque/" },
+              { name: "Wanneroo Mosque", address: "23 Joondalup Dr, Wanneroo WA 6065", phone: "(08) 9405 1888", website: "https://www.facebook.com/WannerooMosque/" }
             ].map((mosque, index) => (
               <Card key={index}>
                 <CardContent className="p-4">

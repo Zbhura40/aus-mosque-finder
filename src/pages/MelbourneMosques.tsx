@@ -82,12 +82,12 @@ const MelbourneMosques = () => {
           </h2>
           <div className="grid gap-4">
             {[
-              { name: "Preston Mosque", address: "546 Bell St, Preston VIC 3072", phone: "(03) 9484 3330" },
-              { name: "Newport Mosque", address: "56 Mason St, Newport VIC 3015", phone: "(03) 9391 8613" },
-              { name: "Hoppers Crossing Mosque", address: "143 Hogans Rd, Hoppers Crossing VIC 3029", phone: "(03) 9749 7668" },
-              { name: "Dandenong Mosque", address: "2 Princes Hwy, Dandenong VIC 3175", phone: "(03) 9794 0445" },
-              { name: "Coburg Islamic Centre", address: "829 Sydney Rd, Coburg VIC 3058", phone: "(03) 9354 1842" },
-              { name: "Box Hill Mosque", address: "45 Middleborough Rd, Box Hill VIC 3128", phone: "(03) 9890 2235" }
+              { name: "Preston Mosque", address: "546 Bell St, Preston VIC 3072", phone: "(03) 9484 3330", website: "https://www.facebook.com/PrestonMosqueVic/" },
+              { name: "Newport Mosque", address: "56 Mason St, Newport VIC 3015", phone: "(03) 9391 8613", website: "https://www.facebook.com/NewportMosque/" },
+              { name: "Hoppers Crossing Mosque", address: "143 Hogans Rd, Hoppers Crossing VIC 3029", phone: "(03) 9749 7668", website: "https://www.facebook.com/HoppersCrossingMosque/" },
+              { name: "Dandenong Mosque", address: "2 Princes Hwy, Dandenong VIC 3175", phone: "(03) 9794 0445", website: "https://www.facebook.com/DandenongMosque/" },
+              { name: "Coburg Islamic Centre", address: "829 Sydney Rd, Coburg VIC 3058", phone: "(03) 9354 1842", website: "https://www.facebook.com/CoburgIslamicCentre/" },
+              { name: "Box Hill Mosque", address: "45 Middleborough Rd, Box Hill VIC 3128", phone: "(03) 9890 2235", website: "https://www.facebook.com/BoxHillMosque/" }
             ].map((mosque, index) => (
               <Card key={index}>
                 <CardContent className="p-4">
