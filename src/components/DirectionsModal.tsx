@@ -61,7 +61,7 @@ const DirectionsModal = ({
         setIsLoading(true);
         
         // Validate API key
-        const apiKey = 'AIzaSyA0B2uS3GGInzPXjLY-ss5-QKHka1Q7sWs';
+        const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
         if (!apiKey) {
           throw new Error('Google Maps API key is missing');
         }
