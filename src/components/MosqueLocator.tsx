@@ -334,50 +334,13 @@ const MosqueLocator = () => {
                 <div className="w-12 h-12 rounded-full bg-burnt-ochre/20 flex items-center justify-center border-2 border-burnt-ochre/40">
                   <MapPin className="w-6 h-6 text-burnt-ochre" />
                 </div>
-                Featured Mosques and Islamic Centers
+                Find Mosques Near You
               </h2>
             </CardHeader>
           <CardContent className="space-y-8">
             {/* Radius Selection */}
             <div className="space-y-6">
               <h3 className="font-elegant text-2xl font-semibold text-architectural-shadow mb-4">Search Radius</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                <Button 
-                  variant="outline" 
-                  onClick={() => navigate('/mosques-sydney')}
-                  className="h-12 font-body text-sm font-medium hover:bg-islamic-green/10 hover:border-islamic-green hover:text-islamic-green border-2"
-                >
-                  Sydney Mosques
-                </Button>
-                <Button 
-                  variant="outline" 
-                  onClick={() => navigate('/mosques-melbourne')}
-                  className="h-12 font-body text-sm font-medium hover:bg-islamic-green/10 hover:border-islamic-green hover:text-islamic-green border-2"
-                >
-                  Melbourne Islamic Centers
-                </Button>
-                <Button 
-                  variant="outline" 
-                  onClick={() => navigate('/mosques-brisbane')}
-                  className="h-12 font-body text-sm font-medium hover:bg-islamic-green/10 hover:border-islamic-green hover:text-islamic-green border-2"
-                >
-                  Brisbane Prayer Rooms
-                </Button>
-                <Button 
-                  variant="outline" 
-                  onClick={() => navigate('/mosques-perth')}
-                  className="h-12 font-body text-sm font-medium hover:bg-islamic-green/10 hover:border-islamic-green hover:text-islamic-green border-2"
-                >
-                  Perth Masjids
-                </Button>
-                <Button 
-                  variant="outline" 
-                  onClick={() => navigate('/mosques-adelaide')}
-                  className="h-12 font-body text-sm font-medium hover:bg-islamic-green/10 hover:border-islamic-green hover:text-islamic-green border-2"
-                >
-                  Adelaide Masjids
-                </Button>
-              </div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {radiusOptions.map((option) => (
                   <Button
