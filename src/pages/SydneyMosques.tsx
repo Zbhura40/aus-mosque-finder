@@ -4,11 +4,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { MapPin, Phone, ExternalLink } from 'lucide-react';
 import MosqueLocator from '@/components/MosqueLocator';
+import { generateCityPageSchema, injectJsonLdSchema } from '@/lib/json-ld-schema';
 
 const SydneyMosques = () => {
   useEffect(() => {
     document.title = "Find Mosques in Sydney NSW | Quick Directory | No Ads | Free";
-    
+
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', "Find mosques in Sydney NSW with addresses, phone numbers, and directions. Use our search radius to locate the nearest masjid. Ad-free, community-built, 100% free.");
@@ -18,6 +19,11 @@ const SydneyMosques = () => {
     if (canonicalLink) {
       canonicalLink.setAttribute('href', `${window.location.origin}/mosques-sydney`);
     }
+
+    // Inject JSON-LD structured data
+    const cityUrl = `${window.location.origin}/mosques-sydney`;
+    const schema = generateCityPageSchema('Sydney', cityUrl);
+    injectJsonLdSchema(schema);
   }, []);
 
   const openDirections = (address: string) => {
@@ -26,7 +32,7 @@ const SydneyMosques = () => {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-background to-muted">
+    <main className="min-h-screen bg-gradient-to-br from-background to-muted pt-20">
       <div className="container mx-auto px-4 py-8">
         {/* Hero Section */}
         <header className="text-center mb-12">

@@ -187,26 +187,9 @@ const UserFeedback = () => {
               <div className="bg-golden-beige/20 rounded-xl p-6 border-2 border-golden-beige/50">
                 <div className="flex items-start gap-4">
                   <MessageSquare className="w-6 h-6 text-burnt-ochre mt-1 flex-shrink-0" />
-                  <div className="space-y-3">
-                    <h2 className="font-body text-lg font-semibold text-archway-black">
-                      Get Help and Support
-                    </h2>
-                    <div className="space-y-2">
-                      <h3 className="font-body text-base font-medium text-slate-blue">
-                        Add mosque near me to directory
-                      </h3>
-                      <h3 className="font-body text-base font-medium text-slate-blue">
-                        Update prayer room information
-                      </h3>
-                      <h3 className="font-body text-base font-medium text-slate-blue">
-                        Find Jummah prayer locations
-                      </h3>
-                      <h3 className="font-body text-base font-medium text-slate-blue">
-                        Technical support and feedback
-                      </h3>
-                    </div>
+                  <div>
                     <p className="font-body text-base text-slate-blue leading-relaxed">
-                      Your feedback is valuable to us. We read every submission and use your input to enhance our platform. 
+                      Your feedback is valuable to us. We read every submission and use your input to enhance our platform.
                       While we may not be able to respond to every message individually, we appreciate your time and effort in helping us serve the community better.
                     </p>
                   </div>

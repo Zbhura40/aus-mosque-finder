@@ -232,6 +232,66 @@ export const generateLandingPageSchema = () => {
   };
 };
 
+export const generateCityPageSchema = (cityName: string, cityUrl: string) => {
+  const baseUrl = window.location.origin;
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${cityUrl}#webpage`,
+        "url": cityUrl,
+        "name": `Find Mosques in ${cityName} | Masjid Directory`,
+        "description": `Find mosques in ${cityName} with addresses, phone numbers, and directions. Ad-free, community-built mosque directory.`,
+        "isPartOf": {
+          "@id": `${baseUrl}#website`
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${cityUrl}#breadcrumb`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": baseUrl
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": `${cityName} Mosques`,
+            "item": cityUrl
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${cityUrl}#faq`,
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": `How do I find the nearest mosque in ${cityName}?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Use our search feature to locate mosques within your preferred radius in ${cityName}. Enter your suburb or postcode to see nearby options with addresses and contact details.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `Are there Friday prayers available in ${cityName}?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Yes, most ${cityName} mosques offer Friday (Jummah) prayers. Contact the mosque directly for specific prayer times.`
+            }
+          }
+        ]
+      }
+    ]
+  };
+};
+
 export const injectJsonLdSchema = (schema: object) => {
   // Remove existing schema if present
   const existingScript = document.querySelector('script[type="application/ld+json"]');

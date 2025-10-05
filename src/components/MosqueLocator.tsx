@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin, Search, Navigation, Clock, MessageSquare, User, ExternalLink, Phone, Globe, Star, HeartHandshake, Shield, Gift } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
-import mosqueHero from "@/assets/mosque-hero.png";
+// Hero image will be loaded via CSS background for better performance
 import DirectionsModal from "./DirectionsModal";
 import MosqueDetailsModal from "./MosqueDetailsModal";
 import { generateLandingPageSchema } from "@/lib/json-ld-schema";
@@ -266,7 +266,7 @@ const MosqueLocator = () => {
   return (
     <div className="min-h-screen bg-background elegant-texture">
       {/* Hero Section with Stunning Background */}
-      <header className="relative hero-with-mosque overflow-hidden min-h-screen flex items-center">
+      <header className="relative hero-with-mosque overflow-hidden min-h-screen flex items-center pt-20">
         <div className="relative container mx-auto px-4 py-20 z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="font-elegant text-6xl lg:text-8xl font-bold text-white mb-8 leading-tight drop-shadow-2xl">
