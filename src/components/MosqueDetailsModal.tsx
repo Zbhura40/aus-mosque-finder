@@ -51,28 +51,28 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
 
   if (!mosque) return null;
 
-  const InfoRow = ({ 
-    icon: Icon, 
-    label, 
-    value, 
-    isLink = false, 
-    linkType = 'external' 
-  }: { 
-    icon: any, 
-    label: string, 
+  const InfoRow = ({
+    icon: Icon,
+    label,
+    value,
+    isLink = false,
+    linkType = 'external'
+  }: {
+    icon: any,
+    label: string,
     value: string | undefined,
     isLink?: boolean,
     linkType?: 'external' | 'tel' | 'mailto'
   }) => {
     if (!value) {
       return (
-        <div className="flex items-start gap-4 py-4">
-          <div className="w-12 h-12 rounded-full bg-stone-grey/15 flex items-center justify-center border border-golden-beige/40">
-            <Icon className="w-6 h-6 text-slate-blue" />
+        <div className="flex items-start gap-3 py-3">
+          <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
+            <Icon className="w-5 h-5 text-gray-400" />
           </div>
           <div className="flex-1">
-            <p className="font-body text-base font-semibold text-archway-black mb-2">{label}</p>
-            <p className="font-body text-lg text-slate-blue">Not available</p>
+            <p className="text-sm font-medium text-gray-900 mb-1">{label}</p>
+            <p className="text-sm text-gray-500">Not available</p>
           </div>
         </div>
       );
@@ -88,24 +88,24 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
     };
 
     return (
-      <div className="flex items-start gap-4 py-4">
-        <div className="w-12 h-12 rounded-full bg-burnt-ochre/15 flex items-center justify-center border border-golden-beige/50">
-          <Icon className="w-6 h-6 text-burnt-ochre" />
+      <div className="flex items-start gap-3 py-3">
+        <div className="w-10 h-10 rounded-full bg-teal-50 flex items-center justify-center">
+          <Icon className="w-5 h-5 text-teal-600" />
         </div>
         <div className="flex-1">
-          <p className="font-body text-base font-semibold text-archway-black mb-2">{label}</p>
+          <p className="text-sm font-medium text-gray-900 mb-1">{label}</p>
           {isLink ? (
-            <a 
+            <a
               href={getHref()}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-body text-lg text-olive-green hover:text-olive-green/80 hover:underline transition-colors flex items-center gap-2"
+              className="text-sm text-teal-600 hover:text-teal-700 hover:underline transition-colors flex items-center gap-1"
             >
               {value}
-              <ExternalLink className="w-4 h-4" />
+              <ExternalLink className="w-3 h-3" />
             </a>
           ) : (
-            <p className="font-body text-lg text-slate-blue">{value}</p>
+            <p className="text-sm text-gray-600">{value}</p>
           )}
         </div>
       </div>
@@ -114,11 +114,11 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-background backdrop-blur-sm border-2 border-golden-beige/60 shadow-2xl">
-        <DialogHeader className="pb-8">
-          <DialogTitle className="font-elegant text-3xl font-bold text-archway-black flex items-center gap-4">
-            <div className="w-14 h-14 rounded-full bg-burnt-ochre/20 flex items-center justify-center shadow-lg border-2 border-golden-beige/60">
-              <MapPin className="w-7 h-7 text-burnt-ochre" />
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-white border border-gray-200">
+        <DialogHeader className="pb-4">
+          <DialogTitle className="text-2xl font-serif font-medium text-gray-900 flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-teal-50 flex items-center justify-center">
+              <MapPin className="w-5 h-5 text-teal-600" />
             </div>
             Mosque Details
           </DialogTitle>
@@ -127,55 +127,55 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
           </DialogDescription>
         </DialogHeader>
 
-        <div className="space-y-8">
+        <div className="space-y-6">
           {/* Mosque Photo */}
-          <div className="relative w-full h-72 rounded-xl overflow-hidden bg-warm-ivory border-2 border-golden-beige/40 shadow-lg">
+          <div className="relative w-full h-64 rounded-lg overflow-hidden bg-gray-100">
             {mosque.photoUrl && !imageError ? (
               <img
                 src={mosque.photoUrl}
                 alt={SEOUtils.generateImageAltText(mosque, 'exterior')}
-                className="w-full h-full object-cover transition-opacity duration-300"
+                className="w-full h-full object-cover"
                 onError={() => setImageError(true)}
                 onLoad={() => setImageError(false)}
               />
             ) : (
-              <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-warm-ivory to-golden-beige/20">
+              <div className="w-full h-full flex flex-col items-center justify-center bg-gray-50">
                   <img
                     src={mosquePlaceholder}
                     alt={SEOUtils.generateImageAltText(mosque, 'exterior')}
-                    className="w-full h-full object-cover opacity-60"
+                    className="w-full h-full object-cover opacity-40"
                   />
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-blue/20">
-                  <ImageIcon className="w-14 h-14 text-white/90 mb-3" />
-                  <p className="text-white/90 font-body text-base font-medium">Photo not available</p>
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <ImageIcon className="w-12 h-12 text-gray-400 mb-2" />
+                  <p className="text-gray-500 text-sm">Photo not available</p>
                 </div>
               </div>
             )}
           </div>
 
           {/* Mosque Name and Title */}
-          <header className="text-center py-6 bg-warm-ivory rounded-xl border-2 border-golden-beige/50 shadow-sm">
-            <h1 className="font-elegant text-4xl font-bold text-archway-black leading-tight mb-4">
+          <header className="text-center py-4 bg-gray-50 rounded-lg">
+            <h1 className="text-2xl font-serif font-medium text-gray-900 mb-3">
               {mosque.name}
             </h1>
             {(mosque.rating || mosque.isOpen !== undefined) && (
-              <div className="flex items-center justify-center gap-6 mt-4">
+              <div className="flex items-center justify-center gap-4 mt-3">
                 {mosque.rating && (
-                  <div className="flex items-center gap-3 bg-burnt-ochre/15 px-6 py-3 rounded-full shadow-sm border border-golden-beige/60">
-                    <Star className="w-5 h-5 text-burnt-ochre fill-burnt-ochre" />
-                    <span className="font-body text-base font-semibold text-archway-black">
+                  <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-gray-200">
+                    <Star className="w-4 h-4 text-teal-600 fill-teal-600" />
+                    <span className="text-sm font-medium text-gray-900">
                       {mosque.rating} rating
                     </span>
                   </div>
                 )}
                 {mosque.isOpen !== undefined && (
-                  <div className={`flex items-center gap-3 px-6 py-3 rounded-full shadow-sm border-2 ${
-                    mosque.isOpen 
-                      ? 'bg-olive-green/15 text-olive-green border-olive-green/40' 
-                      : 'bg-red-100 text-red-600 border-red-200'
+                  <div className={`flex items-center gap-2 px-4 py-2 rounded-full border ${
+                    mosque.isOpen
+                      ? 'bg-teal-50 text-teal-700 border-teal-200'
+                      : 'bg-red-50 text-red-700 border-red-200'
                   }`}>
-                    <Clock className="w-5 h-5" />
-                    <span className="font-body text-base font-semibold">
+                    <Clock className="w-4 h-4" />
+                    <span className="text-sm font-medium">
                       {mosque.isOpen ? 'Currently Open' : 'Currently Closed'}
                     </span>
                   </div>
@@ -184,28 +184,28 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
             )}
           </header>
 
-          <Separator className="bg-golden-beige/60 h-px" />
+          <Separator className="bg-gray-200" />
 
           {/* Contact Information */}
-          <div className="space-y-4 bg-warm-ivory p-6 rounded-xl border-2 border-golden-beige/50 shadow-sm">
-            <h2 className="font-elegant text-2xl font-bold text-archway-black mb-6">Contact Information</h2>
-            <InfoRow 
-              icon={MapPin} 
-              label="Address" 
+          <div className="space-y-2 bg-gray-50 p-5 rounded-lg">
+            <h2 className="text-lg font-serif font-medium text-gray-900 mb-4">Contact Information</h2>
+            <InfoRow
+              icon={MapPin}
+              label="Address"
               value={mosque.address}
             />
-            
-            <InfoRow 
-              icon={Phone} 
-              label="Phone" 
+
+            <InfoRow
+              icon={Phone}
+              label="Phone"
               value={mosque.phone}
               isLink={true}
               linkType="tel"
             />
-            
-            <InfoRow 
-              icon={Globe} 
-              label="Website" 
+
+            <InfoRow
+              icon={Globe}
+              label="Website"
               value={mosque.website}
               isLink={true}
               linkType="external"
@@ -214,14 +214,14 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
 
 
           {/* Distance Info */}
-          <div className="bg-warm-ivory rounded-xl p-8 border-2 border-golden-beige/60 shadow-sm">
-            <div className="flex items-center justify-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-burnt-ochre/15 flex items-center justify-center shadow-sm border border-golden-beige/60">
-                <MapPin className="w-6 h-6 text-burnt-ochre" />
+          <div className="bg-gray-50 rounded-lg p-6">
+            <div className="flex items-center justify-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-teal-50 flex items-center justify-center">
+                <MapPin className="w-5 h-5 text-teal-600" />
               </div>
               <div className="text-center">
-                <p className="font-body text-base text-slate-blue mb-2">Distance from your location</p>
-                <p className="font-elegant text-2xl font-bold text-archway-black">
+                <p className="text-sm text-gray-600 mb-1">Distance from your location</p>
+                <p className="text-xl font-serif font-medium text-gray-900">
                   {mosque.distance}
                 </p>
               </div>
@@ -229,10 +229,10 @@ const MosqueDetailsModal: React.FC<MosqueDetailsModalProps> = ({
           </div>
 
           {/* Close Button */}
-          <div className="pt-6">
-            <Button 
+          <div className="pt-4">
+            <Button
               onClick={onClose}
-              className="w-full h-16 font-body text-xl font-semibold bg-burnt-ochre hover:bg-burnt-ochre/80 text-white rounded-xl shadow-lg border-2 border-golden-beige/40 transition-all duration-300"
+              className="w-full h-12 text-base font-medium bg-teal-600 hover:bg-teal-700 text-white rounded-lg"
             >
               Close
             </Button>

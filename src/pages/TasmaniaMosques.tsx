@@ -3,192 +3,70 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { MapPin, Phone, ExternalLink, Star, Clock, CheckCircle2 } from 'lucide-react';
-import MosqueLocator from '@/components/MosqueLocator';
 import { generateCityPageSchema, injectJsonLdSchema } from '@/lib/json-ld-schema';
-import mosquesData from '@/data/mosques-data.json';
 
-const BrisbaneMosques = () => {
+const TasmaniaMosques = () => {
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
+
   useEffect(() => {
-    document.title = "Find Mosques in Brisbane QLD | Quick Directory | No Ads | Free";
+    document.title = "Find Mosques in Tasmania | Quick Directory TAS | No Ads | Free";
 
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', "Find mosques in Brisbane QLD with addresses, phone numbers, and directions. Use our search radius to locate the nearest masjid. Ad-free, community-built, 100% free.");
+      metaDescription.setAttribute('content', "Find mosques in Tasmania with addresses, phone numbers, and directions. Ad-free, community-built, 100% free.");
     }
 
     const canonicalLink = document.querySelector('link[rel="canonical"]');
     if (canonicalLink) {
-      canonicalLink.setAttribute('href', `${window.location.origin}/mosques-brisbane`);
+      canonicalLink.setAttribute('href', `${window.location.origin}/mosques-tasmania`);
     }
 
     // Inject JSON-LD structured data
-    const cityUrl = `${window.location.origin}/mosques-brisbane`;
-    const schema = generateCityPageSchema('Brisbane', cityUrl);
+    const cityUrl = `${window.location.origin}/mosques-tasmania`;
+    const schema = generateCityPageSchema('Tasmania', cityUrl);
     injectJsonLdSchema(schema);
   }, []);
 
-  const openDirections = (address: string) => {
-    const encodedAddress = encodeURIComponent(address);
-    window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, '_blank');
-  };
-
-  const brisbaneMosques = [
+  // Tasmania mosque data
+  const tasmaniaMosques = [
     {
-      name: "Islamic Council of Queensland (Kuraby)",
-      address: "83 Kuraby Rd, Kuraby QLD 4112",
-      phone: "(07) 3341 4122",
-      website: "https://www.icq.org.au/",
-      region: "South Brisbane",
+      name: "Hobart Mosque",
+      address: "166 Warwick Street, West Hobart TAS 7000",
+      phone: "(03) 6234 6998",
+      website: "https://www.facebook.com/HobartMosque/",
+      region: "Hobart",
       rating: null,
       verified: false,
-      currentlyOpen: null,
       openingHours: [],
-      attributes: ["Wheelchair accessible", "Women's prayer area", "Wudu facilities"]
+      currentlyOpen: null,
+      categories: ["place_of_worship", "mosque", "point_of_interest", "establishment"],
+      attributes: ["Operational", "First mosque in Tasmania"]
     },
     {
-      name: "Holland Park Mosque",
-      address: "309 Nursery Rd, Holland Park QLD 4121",
-      phone: "(07) 3847 4499",
-      website: "https://www.hollandparkmosque.org.au/",
-      region: "South Brisbane",
+      name: "Masjid Launceston",
+      address: "16-18 Kay Street, Kings Meadows TAS 7249",
+      phone: "",
+      website: "https://www.masjidlaunceston.org.au/",
+      region: "Launceston",
       rating: null,
       verified: false,
-      currentlyOpen: null,
       openingHours: [],
-      attributes: ["Parking available", "Islamic school", "Community events", "Historic"]
+      currentlyOpen: null,
+      categories: ["place_of_worship", "mosque", "point_of_interest", "establishment"],
+      attributes: ["Women's prayer area", "Operational", "Islamic education"]
     },
     {
-      name: "Algester Mosque",
-      address: "48 Learoyd Rd, Algester QLD 4115",
-      phone: "(07) 3274 8233",
-      website: "https://www.isoa.com.au/",
-      region: "South Brisbane",
+      name: "Burnie Mosque (TNWIA)",
+      address: "11 Fidler Street, Cooee TAS 7320",
+      phone: "(04) 7321 8434",
+      website: "https://www.facebook.com/tnwia.au/",
+      region: "Other Regions",
       rating: null,
       verified: false,
-      currentlyOpen: null,
       openingHours: [],
-      attributes: ["Family friendly", "Halal shop nearby"]
-    },
-    {
-      name: "Darra Mosque",
-      address: "225 Douglas St, Oxley QLD 4075",
-      phone: "(07) 3375 1792",
-      website: "http://isd.org.au/",
-      region: "West Brisbane",
-      rating: null,
-      verified: false,
       currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Community center", "Youth programs"]
-    },
-    {
-      name: "Zillmere Mosque",
-      address: "48 Zillmere Rd, Zillmere QLD 4034",
-      phone: "(07) 3263 8288",
-      website: "https://www.facebook.com/ZillmereMosque/",
-      region: "North Brisbane",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Wheelchair accessible", "Parking available"]
-    },
-    {
-      name: "Carindale Islamic Centre",
-      address: "1157 Creek Rd, Carindale QLD 4152",
-      phone: "(07) 3843 4500",
-      website: "https://www.facebook.com/CarindaleIslamicCentre/",
-      region: "CBD & Eastern Suburbs",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Women's prayer area", "Islamic library", "Bookshop"]
-    },
-    {
-      name: "Masjid Taqwa (Bald Hills)",
-      address: "117 Telegraph Road, Bald Hills QLD 4036",
-      phone: "(07) 3431 4770",
-      website: "https://masjidtaqwa.org.au/",
-      region: "North Brisbane",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Large capacity", "Parking available", "Women's prayer area"]
-    },
-    {
-      name: "Brisbane Islamic Centre",
-      address: "161 Underwood Road, Eight Mile Plains QLD 4113",
-      phone: "(04) 6882 5786",
-      website: "https://bic.org.au/",
-      region: "South Brisbane",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Largest Islamic Centre in Australia", "Community programs", "Aged care"]
-    },
-    {
-      name: "Masjid As-Sunnah Lutwyche",
-      address: "33 Fuller Street, Lutwyche QLD 4030",
-      phone: "(04) 6977 6996",
-      website: "https://www.masjidlutwyche.org.au/",
-      region: "North Brisbane",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Peaceful location"]
-    },
-    {
-      name: "United Muslims of Brisbane (UMB)",
-      address: "8 Blackwood Road, Logan Central QLD 4114",
-      phone: "(04) 0197 2443",
-      website: "https://umb.org.au/",
-      region: "South Brisbane",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Near train station", "Community programs"]
-    },
-    {
-      name: "Rochedale Mosque (Bosnian Islamic Centre)",
-      address: "2674 Logan Road, Eight Mile Plains QLD 4113",
-      phone: "(07) 3841 2504",
-      website: "http://www.bicb.org.au",
-      region: "South Brisbane",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Bosnian community", "Two Friday prayer sessions"]
-    },
-    {
-      name: "Islamic Shia Council of Queensland",
-      address: "50 Parramatta Road, Underwood QLD 4119",
-      phone: "(04) 1038 8033",
-      website: "https://iscq.org/",
-      region: "South Brisbane",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Shia community"]
-    },
-    {
-      name: "Masjid Al Farooq (Kuraby Mosque)",
-      address: "1408 Beenleigh Road, Kuraby QLD 4112",
-      phone: "1300 133 956",
-      website: "https://www.kurabymosque.org.au/",
-      region: "South Brisbane",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Large facility", "Community programs"]
+      categories: ["place_of_worship", "mosque", "point_of_interest", "establishment"],
+      attributes: ["Operational", "Northwest Tasmania"]
     }
   ];
 
@@ -198,11 +76,11 @@ const BrisbaneMosques = () => {
         {/* Hero Section */}
         <header className="text-center mb-12 bg-white rounded-2xl p-8 border border-gray-200">
           <h1 className="text-3xl md:text-4xl font-serif font-medium text-gray-900 mb-2">
-            Queensland Masjid Directory
+            Tasmania Masjid Directory
           </h1>
         </header>
 
-        {/* Masjids in Queensland */}
+        {/* Mosques Section */}
         <section className="mb-12 bg-white rounded-2xl p-8 border border-gray-200">
           {/* Region Filter Buttons */}
           <div className="flex flex-wrap gap-2 mb-8">
@@ -219,57 +97,45 @@ const BrisbaneMosques = () => {
               All Regions
             </Button>
             <Button
-              variant={selectedRegion === "West Brisbane" ? "default" : "outline"}
+              variant={selectedRegion === "Hobart" ? "default" : "outline"}
               size="sm"
-              onClick={() => setSelectedRegion("West Brisbane")}
+              onClick={() => setSelectedRegion("Hobart")}
               className={`text-sm rounded-lg ${
-                selectedRegion === "West Brisbane"
+                selectedRegion === "Hobart"
                   ? 'bg-teal-600 hover:bg-teal-700 text-white'
                   : 'border-gray-300 hover:bg-gray-50 text-gray-700'
               }`}
             >
-              West
+              Hobart
             </Button>
             <Button
-              variant={selectedRegion === "North Brisbane" ? "default" : "outline"}
+              variant={selectedRegion === "Launceston" ? "default" : "outline"}
               size="sm"
-              onClick={() => setSelectedRegion("North Brisbane")}
+              onClick={() => setSelectedRegion("Launceston")}
               className={`text-sm rounded-lg ${
-                selectedRegion === "North Brisbane"
+                selectedRegion === "Launceston"
                   ? 'bg-teal-600 hover:bg-teal-700 text-white'
                   : 'border-gray-300 hover:bg-gray-50 text-gray-700'
               }`}
             >
-              North
+              Launceston
             </Button>
             <Button
-              variant={selectedRegion === "South Brisbane" ? "default" : "outline"}
+              variant={selectedRegion === "Other Regions" ? "default" : "outline"}
               size="sm"
-              onClick={() => setSelectedRegion("South Brisbane")}
+              onClick={() => setSelectedRegion("Other Regions")}
               className={`text-sm rounded-lg ${
-                selectedRegion === "South Brisbane"
+                selectedRegion === "Other Regions"
                   ? 'bg-teal-600 hover:bg-teal-700 text-white'
                   : 'border-gray-300 hover:bg-gray-50 text-gray-700'
               }`}
             >
-              South
-            </Button>
-            <Button
-              variant={selectedRegion === "CBD & Eastern Suburbs" ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedRegion("CBD & Eastern Suburbs")}
-              className={`text-sm rounded-lg ${
-                selectedRegion === "CBD & Eastern Suburbs"
-                  ? 'bg-teal-600 hover:bg-teal-700 text-white'
-                  : 'border-gray-300 hover:bg-gray-50 text-gray-700'
-              }`}
-            >
-              CBD & Eastern Suburbs
+              Other Regions
             </Button>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {brisbaneMosques.filter(mosque => selectedRegion === null || mosque.region === selectedRegion).map((mosque, index) => (
+            {tasmaniaMosques.filter(mosque => selectedRegion === null || mosque.region === selectedRegion).map((mosque, index) => (
               <Card key={index} className="rounded-lg border border-gray-200 hover:shadow-md transition-all duration-200 bg-white">
                 <CardContent className="p-5">
                   <div className="space-y-3">
@@ -290,21 +156,9 @@ const BrisbaneMosques = () => {
                           <ExternalLink className="w-4 h-4 mr-2 flex-shrink-0 text-teal-600" />
                           <a
                             href={mosque.website}
-                            target="_parent"
+                            target="_blank"
                             rel="noopener noreferrer"
                             className="text-sm hover:text-teal-600 transition-colors truncate"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              try {
-                                if (window.parent && window.parent !== window) {
-                                  window.parent.open(mosque.website, '_blank');
-                                } else {
-                                  window.open(mosque.website, '_blank');
-                                }
-                              } catch (error) {
-                                window.location.href = mosque.website;
-                              }
-                            }}
                           >
                             Visit Website
                           </a>
@@ -330,15 +184,7 @@ const BrisbaneMosques = () => {
                       onClick={(e) => {
                         e.preventDefault();
                         const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mosque.address)}`;
-                        try {
-                          if (window.parent && window.parent !== window) {
-                            window.parent.open(mapsUrl, '_blank');
-                          } else {
-                            window.open(mapsUrl, '_blank');
-                          }
-                        } catch (error) {
-                          window.location.href = mapsUrl;
-                        }
+                        window.open(mapsUrl, '_blank');
                       }}
                       className="w-full text-sm bg-teal-600 hover:bg-teal-700 text-white rounded-lg border-0"
                     >
@@ -352,10 +198,10 @@ const BrisbaneMosques = () => {
           </div>
         </section>
 
-        {/* Why Choose Our Directory */}
+        {/* Why Choose Section */}
         <section className="mb-12 bg-white rounded-2xl p-8 border border-gray-200">
           <h2 className="text-2xl font-serif font-medium text-gray-900 mb-6">
-            Why Choose Our Queensland Directory
+            Why Choose Our Tasmania Directory
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-4">
@@ -387,20 +233,20 @@ const BrisbaneMosques = () => {
             Find mosques interstate
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-6">
+            <Link to="/mosques-sydney" className="w-full" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              <Button variant="outline" size="sm" className="w-full text-sm border-gray-300 hover:bg-gray-50 rounded-lg">New South Wales</Button>
+            </Link>
             <Link to="/mosques-melbourne" className="w-full" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               <Button variant="outline" size="sm" className="w-full text-sm border-gray-300 hover:bg-gray-50 rounded-lg">Victoria</Button>
             </Link>
-            <Link to="/mosques-sydney" className="w-full" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              <Button variant="outline" size="sm" className="w-full text-sm border-gray-300 hover:bg-gray-50 rounded-lg">New South Wales</Button>
+            <Link to="/mosques-brisbane" className="w-full" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              <Button variant="outline" size="sm" className="w-full text-sm border-gray-300 hover:bg-gray-50 rounded-lg">Queensland</Button>
             </Link>
             <Link to="/mosques-adelaide" className="w-full" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               <Button variant="outline" size="sm" className="w-full text-sm border-gray-300 hover:bg-gray-50 rounded-lg">South Australia</Button>
             </Link>
             <Link to="/mosques-perth" className="w-full" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               <Button variant="outline" size="sm" className="w-full text-sm border-gray-300 hover:bg-gray-50 rounded-lg">Western Australia</Button>
-            </Link>
-            <Link to="/mosques-tasmania" className="w-full" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              <Button variant="outline" size="sm" className="w-full text-sm border-gray-300 hover:bg-gray-50 rounded-lg">Tasmania</Button>
             </Link>
           </div>
 
@@ -434,4 +280,4 @@ const BrisbaneMosques = () => {
   );
 };
 
-export default BrisbaneMosques;
+export default TasmaniaMosques;

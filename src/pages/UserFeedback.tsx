@@ -69,30 +69,30 @@ const UserFeedback = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background elegant-texture">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-islamic-navy text-white py-8">
+      <div className="bg-white border-b border-gray-200 pt-20 pb-8">
         <div className="container mx-auto px-4">
           <div className="flex items-center gap-4 mb-6">
             <Button
               variant="ghost"
               size="sm"
               onClick={() => navigate("/")}
-              className="text-white hover:bg-white/10 rounded-xl transition-colors duration-200 cursor-pointer z-10 relative"
+              className="text-gray-700 hover:bg-gray-100 rounded-lg"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Home
             </Button>
           </div>
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 rounded-full bg-islamic-green/20 flex items-center justify-center">
-              <MessageSquare className="w-8 h-8 text-islamic-green" />
+            <div className="w-14 h-14 rounded-full bg-teal-50 flex items-center justify-center">
+              <MessageSquare className="w-7 h-7 text-teal-600" />
             </div>
             <div>
-              <h1 className="font-elegant text-4xl lg:text-5xl font-bold leading-tight">
+              <h1 className="text-3xl md:text-4xl font-serif font-medium text-gray-900">
                 Contact Us | Add Your Mosque to Our Directory
               </h1>
-              <p className="font-body text-lg text-white/90 mt-2">
+              <p className="text-base text-gray-600 mt-2">
                 Help us improve your mosque finding experience
               </p>
             </div>
@@ -103,26 +103,26 @@ const UserFeedback = () => {
       {/* Main Content */}
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-4xl mx-auto">
-          <Card className="bg-warm-ivory border-2 border-golden-beige/60 shadow-xl rounded-2xl overflow-hidden">
-            <CardHeader className="text-center pb-8 bg-warm-ivory">
-              <CardTitle className="font-elegant text-3xl font-bold text-archway-black">
+          <Card className="bg-white border border-gray-200 rounded-lg">
+            <CardHeader className="text-center pb-6">
+              <CardTitle className="text-2xl font-serif font-medium text-gray-900">
                 Share Your Thoughts
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-8 bg-warm-ivory">
+            <CardContent className="space-y-6">
               {/* Feedback Message */}
-              <div className="bg-olive-green/10 rounded-xl p-6 border-2 border-golden-beige/40">
-                <p className="font-body text-lg text-slate-blue leading-relaxed">
+              <div className="bg-teal-50 rounded-lg p-5 border border-teal-100">
+                <p className="text-sm text-gray-700 leading-relaxed">
                   We value your feedback! Please share your thoughts, suggestions, or report any issues you've encountered while using our platform. If you would like to see more features or would like additional information on mosques, please let us know.
                 </p>
               </div>
 
               {/* Feedback Form */}
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-4">
-                  <label 
-                    htmlFor="feedback" 
-                    className="font-body text-xl font-semibold text-archway-black block"
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="space-y-3">
+                  <label
+                    htmlFor="feedback"
+                    className="text-base font-medium text-gray-900 block"
                   >
                     Your Feedback
                   </label>
@@ -131,51 +131,51 @@ const UserFeedback = () => {
                     value={feedback}
                     onChange={(e) => setFeedback(e.target.value)}
                     placeholder="Please type your feedback here..."
-                    className="min-h-48 font-body text-lg rounded-xl border-2 border-golden-beige/60 focus:border-burnt-ochre bg-warm-ivory text-slate-blue resize-none p-4"
+                    className="min-h-40 text-base rounded-lg border border-gray-300 focus:border-teal-500 focus:ring-teal-500 bg-white text-gray-900 resize-none p-4"
                     maxLength={MAX_CHARACTERS}
                   />
-                  
+
                   {/* Character Counter */}
-                  <div className="flex justify-between items-center text-base">
-                    <span className="font-body text-slate-blue">
+                  <div className="flex justify-between items-center text-sm">
+                    <span className="text-gray-600">
                       Share your thoughts in detail
                     </span>
-                    <span 
-                      className={`font-body font-medium text-base ${
-                        remainingCharacters < 100 
-                          ? remainingCharacters < 0 
-                            ? 'text-destructive' 
+                    <span
+                      className={`font-medium ${
+                        remainingCharacters < 100
+                          ? remainingCharacters < 0
+                            ? 'text-red-600'
                             : 'text-amber-600'
-                          : 'text-slate-blue'
+                          : 'text-gray-600'
                       }`}
                     >
                       {remainingCharacters} characters remaining
                     </span>
                   </div>
-                  
+
                   {/* Error message for character limit */}
                   {remainingCharacters < 0 && (
-                    <p className="text-destructive text-base font-body">
+                    <p className="text-red-600 text-sm">
                       Your feedback exceeds the {MAX_CHARACTERS} character limit. Please shorten it.
                     </p>
                   )}
                 </div>
 
                 {/* Submit Button */}
-                <div className="pt-6">
+                <div className="pt-4">
                   <Button
                     type="submit"
                     disabled={isSubmitting || remainingCharacters < 0 || !feedback.trim()}
-                    className="w-full h-16 font-body text-xl font-semibold bg-burnt-ochre hover:bg-burnt-ochre/80 text-white shadow-lg transition-all duration-300 disabled:opacity-50 rounded-xl border-2 border-golden-beige/40"
+                    className="w-full h-12 text-base font-medium bg-teal-600 hover:bg-teal-700 text-white transition-all duration-200 disabled:opacity-50 rounded-lg"
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-3"></div>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
                         Submitting...
                       </>
                     ) : (
                       <>
-                        <Send className="w-5 h-5 mr-3" />
+                        <Send className="w-4 h-4 mr-2" />
                         Submit Feedback
                       </>
                     )}
@@ -184,11 +184,11 @@ const UserFeedback = () => {
               </form>
 
               {/* Additional Info */}
-              <div className="bg-golden-beige/20 rounded-xl p-6 border-2 border-golden-beige/50">
-                <div className="flex items-start gap-4">
-                  <MessageSquare className="w-6 h-6 text-burnt-ochre mt-1 flex-shrink-0" />
+              <div className="bg-gray-50 rounded-lg p-5 border border-gray-200">
+                <div className="flex items-start gap-3">
+                  <MessageSquare className="w-5 h-5 text-teal-600 mt-0.5 flex-shrink-0" />
                   <div>
-                    <p className="font-body text-base text-slate-blue leading-relaxed">
+                    <p className="text-sm text-gray-600 leading-relaxed">
                       Your feedback is valuable to us. We read every submission and use your input to enhance our platform.
                       While we may not be able to respond to every message individually, we appreciate your time and effort in helping us serve the community better.
                     </p>

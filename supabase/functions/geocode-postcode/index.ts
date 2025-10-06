@@ -23,9 +23,10 @@ serve(async (req) => {
       throw new Error('Google Places API key not configured');
     }
 
-    // Use Google Geocoding API to get coordinates for Australian postcode
-    const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(postcode + ' Australia')}&key=${apiKey}`;
-    
+    // Use Google Geocoding API to get coordinates for Australian postcode or suburb
+    // Add 'components=country:AU' to restrict results to Australia for better accuracy
+    const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(postcode)}&components=country:AU&key=${apiKey}`;
+
     const response = await fetch(geocodeUrl);
     const data = await response.json();
     
@@ -35,26 +36,50 @@ serve(async (req) => {
     }
 
     if (!data.results || data.results.length === 0) {
-      throw new Error('No results found for this postcode');
+      throw new Error('No results found for this location');
     }
 
-    const result = data.results[0];
+    // Prioritize results that are localities (suburbs) over postal codes
+    let result = data.results[0];
+
+    // If there are multiple results, try to find the best match
+    if (data.results.length > 1) {
+      // Prefer locality results over postal_code results
+      const localityResult = data.results.find((r: any) =>
+        r.types.includes('locality') || r.types.includes('sublocality')
+      );
+      if (localityResult) {
+        result = localityResult;
+      }
+    }
+
     const location = result.geometry.location;
-    
+
     // Extract location name from address components
     let locationName = '';
     const addressComponents = result.address_components || [];
-    
+
     // Find suburb/locality and state
-    const suburb = addressComponents.find((comp: any) => 
-      comp.types.includes('locality') || comp.types.includes('sublocality')
+    const locality = addressComponents.find((comp: any) =>
+      comp.types.includes('locality')
     );
-    const state = addressComponents.find((comp: any) => 
+    const sublocality = addressComponents.find((comp: any) =>
+      comp.types.includes('sublocality') || comp.types.includes('sublocality_level_1')
+    );
+    const postalCode = addressComponents.find((comp: any) =>
+      comp.types.includes('postal_code')
+    );
+    const state = addressComponents.find((comp: any) =>
       comp.types.includes('administrative_area_level_1')
     );
-    
-    if (suburb && state) {
-      locationName = `${suburb.long_name}, ${state.short_name}`;
+
+    // Build location name with priority: locality > sublocality > postal code
+    const placeName = locality?.long_name || sublocality?.long_name || postalCode?.long_name;
+
+    if (placeName && state) {
+      locationName = `${placeName}, ${state.short_name}`;
+    } else if (placeName) {
+      locationName = placeName;
     } else {
       // Fallback to formatted address
       locationName = result.formatted_address.replace(', Australia', '');

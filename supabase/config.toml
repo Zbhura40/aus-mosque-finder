@@ -37,6 +37,12 @@ pop3_port = 54327
 [functions.geocode-postcode]
 verify_jwt = false
 
+[functions.autocomplete-suburb]
+verify_jwt = false
+
+[functions.geocode-place]
+verify_jwt = false
+
 [functions.search-mosques]
 verify_jwt = false
 

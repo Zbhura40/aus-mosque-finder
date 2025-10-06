@@ -1,0 +1,248 @@
+# Manual Actions for ZB - Keeping Mosque Data Updated
+
+This guide explains in simple terms what you need to do every 2 weeks to keep the mosque ratings, opening hours, and facilities information up to date on your website.
+
+---
+
+## ONE-TIME SETUP (Only do this once)
+
+### Step 1: Get Your Google Places API Key
+
+Think of an API key like a password that lets your computer talk to Google's database of business information.
+
+1. Go to: https://console.cloud.google.com/
+2. Sign in with your Google account
+3. Click "Create Project" (if you don't have one)
+   - Name it: "Find My Mosque"
+   - Click "Create"
+
+4. Enable the Places API:
+   - In the search bar at the top, type "Places API"
+   - Click on "Places API (New)"
+   - Click the blue "Enable" button
+
+5. Create your API Key:
+   - Go to "APIs & Services" → "Credentials" (on the left menu)
+   - Click "Create Credentials" → "API Key"
+   - A popup will show your API key - COPY IT!
+   - Click "Restrict Key" to make it secure
+
+6. Secure Your API Key:
+   - Under "API restrictions":
+     - Select "Restrict key"
+     - Choose only "Places API (New)"
+   - Click "Save"
+
+### Step 2: Add API Key to Your Project
+
+1. Open your project folder in VS Code (or whatever you use)
+
+2. Create a new file called `.env.local` in the main folder
+   - Important: The file must start with a dot (.)
+   - The file will be hidden (that's normal and good for security)
+
+3. Add this line to the file:
+   ```
+   VITE_GOOGLE_PLACES_API_KEY=paste_your_api_key_here
+   ```
+   Replace "paste_your_api_key_here" with the API key you copied
+
+4. Save the file
+
+5. IMPORTANT SECURITY CHECK:
+   - Open your terminal
+   - Type: `git status`
+   - Make sure `.env.local` does NOT appear in the list
+   - If it does appear, STOP and ask for help
+   - This file should NEVER be uploaded to GitHub
+
+---
+
+## FORTNIGHTLY UPDATE ROUTINE (Do this every 2 weeks)
+
+This is what keeps your mosque information fresh and accurate!
+
+### Time Required: 5-10 minutes
+### Best Day: Sunday morning (when you have a few minutes)
+
+### Step-by-Step Process:
+
+**1. Open Your Terminal**
+   - On Mac: Open "Terminal" app
+   - On Windows: Open "Command Prompt" or "PowerShell"
+   - Navigate to your project folder:
+     ```
+     cd /Users/zubairbhura/Work/findmymosque
+     ```
+
+**2. Run the Update Script**
+   - Type this command and press Enter:
+     ```
+     npm run fetch-mosque-data
+     ```
+
+**3. Watch the Progress**
+   - You'll see messages like:
+     ```
+     🔍 Fetching data for: Lakemba Mosque...
+     ✅ Successfully fetched data for: Lakemba Mosque
+     ```
+   - This will repeat for all 15 mosques
+   - Takes about 30 seconds total
+
+**4. Check the Results**
+   - At the end, you'll see a summary:
+     ```
+     ✅ Successfully saved mosque data
+     📦 Total mosques processed: 15
+     ⭐ Mosques with ratings: 5
+     🕐 Mosques with opening hours: 8
+     ```
+
+**5. Review the Changes**
+   - Start your website locally:
+     ```
+     npm run dev
+     ```
+   - Open your browser to: http://localhost:8081/mosques-sydney
+   - Check a few mosque cards:
+     - Do the opening hours look correct?
+     - Are ratings showing properly?
+     - Are the "Open now" / "Closed now" statuses working?
+
+**6. Commit and Push to GitHub**
+   - If everything looks good, save the changes:
+     ```
+     git add src/data/mosques-data.json
+     git commit -m "Updated mosque data - fortnightly refresh"
+     git push
+     ```
+   - Your live website will update automatically
+
+**7. Done!**
+   - That's it! Come back in 2 weeks and repeat.
+
+---
+
+## WHAT GETS UPDATED?
+
+When you run the script, it automatically fetches fresh information from Google for:
+
+✅ **Google Ratings** - Current star ratings (e.g., 4.9 stars)
+✅ **Opening Hours** - Monday to Sunday schedules
+✅ **Open/Closed Status** - Whether mosque is currently open
+✅ **Facilities** - Wheelchair access, women's prayer area, etc.
+✅ **Categories** - Tags like "Place of worship", "Mosque"
+
+All this information appears automatically on each mosque card on your website!
+
+---
+
+## TROUBLESHOOTING
+
+### Problem: "API key not found"
+**Solution:** Check that `.env.local` exists and has your API key
+
+### Problem: "Some mosques not found"
+**Solution:** This is normal. Some mosques don't have Google Business listings. They'll still show with basic info (name, address, phone).
+
+### Problem: Script takes too long or times out
+**Solution:**
+- Check your internet connection
+- Try again in a few minutes
+- Google might be slow sometimes
+
+### Problem: "Permission denied"
+**Solution:** Your API key might have restrictions. Go back to Google Cloud Console and check the API restrictions.
+
+### Problem: Ratings seem wrong
+**Solution:**
+- Google ratings change as people leave reviews
+- If a rating looks way off, manually check the mosque on Google Maps
+- You can edit `src/data/mosques-data.json` directly if needed
+
+---
+
+## COST TRACKING
+
+**How Much Does This Cost?**
+
+- Each time you run the script: ~$0.78 USD
+- Running every 2 weeks: ~$1.56/month
+- Running monthly: ~$0.78/month
+
+**Free Tier:**
+- Google gives you $200 free credit per month
+- You'll use less than $2/month
+- So effectively: **FREE**
+
+**Where to Check Usage:**
+- Go to: https://console.cloud.google.com/
+- Click "Billing" → "Reports"
+- Look for "Places API" usage
+
+---
+
+## ADDING NEW MOSQUES
+
+If you want to add a new mosque to the directory:
+
+1. Open the file: `scripts/fetch-mosque-data.js`
+
+2. Find the `mosques` array (around line 20)
+
+3. Add a new entry:
+   ```javascript
+   {
+     name: "New Mosque Name",
+     address: "123 Street Name, Suburb NSW 2000",
+     phone: "(02) 1234 5678",
+     website: "https://mosquename.com/",
+     region: "Western Sydney"
+   }
+   ```
+
+4. Save the file
+
+5. Run the update script:
+   ```
+   npm run fetch-mosque-data
+   ```
+
+6. The new mosque will appear on your website automatically!
+
+---
+
+## CALENDAR REMINDER
+
+Set a recurring reminder on your phone/calendar:
+
+**Title:** Update Find My Mosque data
+**Frequency:** Every 2 weeks (or monthly if you prefer)
+**Time:** Sunday 9:00 AM
+**Description:**
+1. Open terminal
+2. cd /Users/zubairbhura/Work/findmymosque
+3. npm run fetch-mosque-data
+4. Review changes
+5. git add, commit, push
+
+---
+
+## QUESTIONS?
+
+If something goes wrong:
+
+1. Check GOOGLE_PLACES_SETUP.md for detailed troubleshooting
+2. Check project-notes.md for technical details
+3. Or just ask Claude Code for help!
+
+---
+
+**Remember:**
+- This is a 5-10 minute task every 2 weeks
+- It keeps your mosque information accurate and fresh
+- Your API key is secure and never shared with users
+- The cost is covered by Google's free tier
+
+You've got this! 🎉

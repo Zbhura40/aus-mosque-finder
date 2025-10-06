@@ -73,18 +73,15 @@ const ImamProfiles: React.FC = () => {
   ];
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-warm-ivory to-cream/50">
+    <main className="min-h-screen bg-gray-50">
       {/* Header Section */}
-      <section className="pt-24 pb-16 bg-cream/30">
+      <section className="pt-24 pb-12 bg-white border-b border-gray-200">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-islamic-black mb-6">
-              Renowned Imams Australia | Islamic Leaders Directory
-            </h1>
-            <h2 className="text-2xl font-semibold text-islamic-black/80 mb-4">
+          <div className="text-center mb-8">
+            <h1 className="text-3xl md:text-4xl font-serif font-medium text-gray-900 mb-3">
               Find an Imam Near You
-            </h2>
-            <p className="text-lg text-islamic-black/80 max-w-4xl mx-auto leading-relaxed">
+            </h1>
+            <p className="text-base text-gray-600 max-w-4xl mx-auto leading-relaxed">
               Planning to find an Imam near you? Here is a curated list of some of Australia's renowned Islamic Leaders. We will continue to add more profiles.
             </p>
           </div>
@@ -92,55 +89,33 @@ const ImamProfiles: React.FC = () => {
       </section>
 
       {/* Imam Profiles Grid */}
-      <section className="py-16">
+      <section className="py-12">
         <div className="container mx-auto px-4">
-          <div className="mb-12">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
-              <Button 
-                variant="outline" 
-                className="h-12 font-body text-sm font-medium hover:bg-islamic-green/10 hover:border-islamic-green hover:text-islamic-green border-2"
-              >
-                Sydney Islamic Leaders
-              </Button>
-              <Button 
-                variant="outline" 
-                className="h-12 font-body text-sm font-medium hover:bg-islamic-green/10 hover:border-islamic-green hover:text-islamic-green border-2"
-              >
-                Melbourne Imam Profiles
-              </Button>
-              <Button 
-                variant="outline" 
-                className="h-12 font-body text-sm font-medium hover:bg-islamic-green/10 hover:border-islamic-green hover:text-islamic-green border-2"
-              >
-                Brisbane & Queensland
-              </Button>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {imams.map((imam, index) => (
-              <Card key={index} className="bg-white/90 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300">
+              <Card key={index} className="bg-white border border-gray-200 rounded-lg hover:shadow-md transition-all duration-200">
                 <CardContent className="p-6">
-                  <div className="w-24 h-24 mx-auto mb-4 bg-islamic-green/10 rounded-full flex items-center justify-center">
-                    <User className="w-12 h-12 text-islamic-green" />
+                  <div className="w-20 h-20 mx-auto mb-4 bg-teal-50 rounded-full flex items-center justify-center">
+                    <User className="w-10 h-10 text-teal-600" />
                   </div>
-                  <h2 className="text-xl font-semibold text-islamic-black mb-2 text-center">
+                  <h2 className="text-lg font-serif font-medium text-gray-900 mb-2 text-center">
                     {imam.name}
                   </h2>
-                  <p className="text-sm text-islamic-black/70 mb-4 leading-relaxed">
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">
                     {imam.bio}
                   </p>
-                  <div className="space-y-3 text-sm">
+                  <div className="space-y-2 text-sm">
                     <div className="flex items-start">
-                      <MapPin className="w-4 h-4 text-islamic-green mr-2 mt-0.5 flex-shrink-0" />
-                      <span className="font-medium">{imam.mosque}</span>
+                      <MapPin className="w-4 h-4 text-teal-600 mr-2 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-700">{imam.mosque}</span>
                     </div>
                     <div className="flex items-start">
-                      <ExternalLink className="w-4 h-4 text-islamic-green mr-2 mt-0.5 flex-shrink-0" />
-                      <a 
-                        href={imam.websiteUrl} 
-                        target="_blank" 
+                      <ExternalLink className="w-4 h-4 text-teal-600 mr-2 mt-0.5 flex-shrink-0" />
+                      <a
+                        href={imam.websiteUrl}
+                        target="_blank"
                         rel="noopener noreferrer"
-                        className="text-islamic-green hover:text-islamic-green/80 underline"
+                        className="text-teal-600 hover:text-teal-700 underline"
                       >
                         {imam.websiteText}
                       </a>
