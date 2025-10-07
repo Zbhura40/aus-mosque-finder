@@ -495,12 +495,6 @@ const MosqueLocator = () => {
                           ))}
                         </div>
                       )}
-                      {postcodeDisplay && (
-                        <p className="text-xs text-teal-600 font-medium flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 bg-teal-600 rounded-full"></span>
-                          {postcodeDisplay}
-                        </p>
-                      )}
                     </div>
                   )}
                 </div>
