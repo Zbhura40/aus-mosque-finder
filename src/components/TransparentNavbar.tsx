@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { HelpCircle, MessageSquare, User, MapPin, ChevronDown, Home, Menu, X } from "lucide-react";
+import { HelpCircle, MessageSquare, User, MapPin, ChevronDown, Home, Menu, X, Store } from "lucide-react";
 
 const TransparentNavbar: React.FC = () => {
   const navigate = useNavigate();
@@ -105,6 +105,19 @@ const TransparentNavbar: React.FC = () => {
           )}
         </div>
 
+        {/* Halal Supermarkets Button */}
+        <button
+          onClick={() => navigate("/halal-supermarkets")}
+          className="group relative flex items-center gap-2 px-4 py-2 rounded-lg bg-transparent hover:bg-islamic-green/20 transition-all duration-300 ease-out"
+          aria-label="Halal Supermarkets"
+        >
+          <Store className="w-5 h-5 text-warm-ivory/80 group-hover:text-islamic-green transition-colors duration-300" />
+          <span className="font-body text-sm font-medium text-warm-ivory/80 group-hover:text-islamic-green transition-colors duration-300 relative">
+            Halal Markets
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-islamic-green transition-all duration-300 ease-out group-hover:w-full"></span>
+          </span>
+        </button>
+
         {/* FAQ Button */}
         <button
           onClick={() => navigate("/faq")}
@@ -193,6 +206,17 @@ const TransparentNavbar: React.FC = () => {
                 </div>
               )}
             </div>
+
+            <button
+              onClick={() => {
+                navigate("/halal-supermarkets");
+                setIsMobileMenuOpen(false);
+              }}
+              className="w-full flex items-center gap-3 px-4 py-3 text-architectural-shadow hover:bg-islamic-green/10 transition-colors border-b border-golden-beige/30"
+            >
+              <Store className="w-5 h-5 text-islamic-green" />
+              <span className="font-body text-sm font-medium">Halal Markets</span>
+            </button>
 
             <button
               onClick={() => {

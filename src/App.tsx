@@ -14,6 +14,7 @@ import BrisbaneMosques from "./pages/BrisbaneMosques";
 import PerthMosques from "./pages/PerthMosques";
 import AdelaideMosques from "./pages/AdelaideMosques";
 import TasmaniaMosques from "./pages/TasmaniaMosques";
+import HalalSupermarkets from "./pages/HalalSupermarkets";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/mosques-perth" element={<PerthMosques />} />
           <Route path="/mosques-adelaide" element={<AdelaideMosques />} />
           <Route path="/mosques-tasmania" element={<TasmaniaMosques />} />
+          <Route path="/halal-supermarkets" element={<HalalSupermarkets />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
