@@ -178,7 +178,10 @@ const TransparentNavbar: React.FC = () => {
             {/* Browse by State in Mobile Menu */}
             <div className="border-b border-golden-beige/30">
               <button
-                onClick={() => setIsCityMenuOpen(!isCityMenuOpen)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsCityMenuOpen(!isCityMenuOpen);
+                }}
                 className="w-full flex items-center justify-between gap-3 px-4 py-3 text-architectural-shadow hover:bg-islamic-green/10 transition-colors"
               >
                 <div className="flex items-center gap-3">
@@ -192,7 +195,8 @@ const TransparentNavbar: React.FC = () => {
                   {cities.map((city) => (
                     <button
                       key={city.path}
-                      onClick={() => {
+                      onClick={(e) => {
+                        e.stopPropagation();
                         navigate(city.path);
                         setIsCityMenuOpen(false);
                         setIsMobileMenuOpen(false);
