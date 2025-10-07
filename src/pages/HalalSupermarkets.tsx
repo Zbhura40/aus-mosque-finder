@@ -1,92 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { MapPin, Filter, Search, Star, CheckCircle, Store } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
-import SupermarketCard from '@/components/SupermarketCard';
-
-interface Supermarket {
-  id: string;
-  place_id: string;
-  name: string;
-  address: string;
-  lat: number;
-  lng: number;
-  chain: string | null;
-  has_halal_section: boolean;
-  confidence_score: number | null;
-  reasoning: string | null;
-  source: string | null;
-  rating: number | null;
-  user_ratings_total: number;
-  last_checked: string;
-}
+import React from 'react';
+import { MapPin, Star, CheckCircle, Store, Clock, Sparkles } from 'lucide-react';
 
 const HalalSupermarkets = () => {
-  const [supermarkets, setSupermarkets] = useState<Supermarket[]>([]);
-  const [filteredSupermarkets, setFilteredSupermarkets] = useState<Supermarket[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [searchLocation, setSearchLocation] = useState('');
-  const [halalOnly, setHalalOnly] = useState(true);
-  const [minConfidence, setMinConfidence] = useState(0.7);
-  const [selectedChain, setSelectedChain] = useState<string>('all');
-
-  // Fetch supermarkets from Supabase
-  useEffect(() => {
-    fetchSupermarkets();
-  }, []);
-
-  const fetchSupermarkets = async () => {
-    try {
-      setLoading(true);
-      const { data, error } = await supabase
-        .from('supermarkets')
-        .select('*')
-        .eq('is_active', true)
-        .order('confidence_score', { ascending: false });
-
-      if (error) throw error;
-
-      setSupermarkets(data || []);
-      setFilteredSupermarkets(data || []);
-    } catch (error) {
-      console.error('Error fetching supermarkets:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Apply filters
-  useEffect(() => {
-    let filtered = [...supermarkets];
-
-    // Filter by halal only
-    if (halalOnly) {
-      filtered = filtered.filter(s => s.has_halal_section);
-    }
-
-    // Filter by confidence score
-    filtered = filtered.filter(
-      s => !s.confidence_score || s.confidence_score >= minConfidence
-    );
-
-    // Filter by chain
-    if (selectedChain !== 'all') {
-      filtered = filtered.filter(s => s.chain === selectedChain);
-    }
-
-    setFilteredSupermarkets(filtered);
-  }, [supermarkets, halalOnly, minConfidence, selectedChain]);
-
-  // Get unique chains for filter
-  const chains = Array.from(new Set(supermarkets.map(s => s.chain).filter(Boolean)));
-
-  // Get confidence level badge
-  const getConfidenceBadge = (score: number | null) => {
-    if (!score) return { text: 'Unverified', color: 'bg-gray-100 text-gray-600' };
-    if (score >= 0.9) return { text: 'High Confidence', color: 'bg-green-100 text-green-700' };
-    if (score >= 0.8) return { text: 'Good Confidence', color: 'bg-blue-100 text-blue-700' };
-    if (score >= 0.7) return { text: 'Medium Confidence', color: 'bg-yellow-100 text-yellow-700' };
-    return { text: 'Low Confidence', color: 'bg-orange-100 text-orange-700' };
-  };
+  // Coming Soon - No data yet
+  const supermarkets = [];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -130,112 +47,66 @@ const HalalSupermarkets = () => {
         </div>
       </div>
 
-      {/* Filters */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center gap-2 mb-4">
-            <Filter className="w-5 h-5 text-gray-600" />
-            <h2 className="text-lg font-semibold text-gray-900">Filters</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Halal Only Toggle */}
-            <div className="flex items-center gap-3">
-              <input
-                type="checkbox"
-                id="halal-only"
-                checked={halalOnly}
-                onChange={(e) => setHalalOnly(e.target.checked)}
-                className="w-5 h-5 text-teal-600 rounded focus:ring-teal-500"
-              />
-              <label htmlFor="halal-only" className="text-sm font-medium text-gray-700">
-                Show halal sections only
-              </label>
+      {/* Coming Soon Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="bg-gradient-to-br from-teal-50 via-blue-50 to-green-50 rounded-2xl border-2 border-teal-200 p-8 md:p-12 shadow-lg">
+          <div className="text-center max-w-3xl mx-auto">
+            {/* Icon */}
+            <div className="flex justify-center mb-6">
+              <div className="relative">
+                <Store className="w-20 h-20 text-teal-600" />
+                <div className="absolute -top-2 -right-2">
+                  <Sparkles className="w-8 h-8 text-yellow-500 animate-pulse" />
+                </div>
+              </div>
             </div>
 
-            {/* Confidence Slider */}
-            <div className="flex flex-col gap-2">
-              <label className="text-sm font-medium text-gray-700">
-                Min. Confidence: {(minConfidence * 100).toFixed(0)}%
-              </label>
-              <input
-                type="range"
-                min="0"
-                max="1"
-                step="0.1"
-                value={minConfidence}
-                onChange={(e) => setMinConfidence(parseFloat(e.target.value))}
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-teal-600"
-              />
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 bg-teal-600 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
+              <Clock className="w-4 h-4" />
+              Coming Soon
             </div>
 
-            {/* Chain Filter */}
-            <div className="flex flex-col gap-2">
-              <label className="text-sm font-medium text-gray-700">Supermarket Chain</label>
-              <select
-                value={selectedChain}
-                onChange={(e) => setSelectedChain(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
-              >
-                <option value="all">All Chains</option>
-                {chains.map(chain => (
-                  <option key={chain} value={chain || ''}>
-                    {chain}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
+            {/* Description */}
+            <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+              We're building Australia's most accurate directory of supermarkets with halal sections.
+              Using AI technology to analyze thousands of reviews and verify halal availability.
+            </p>
 
-          {/* Active Filters Summary */}
-          <div className="mt-4 flex items-center gap-2 text-sm text-gray-600">
-            <span className="font-medium">Showing {filteredSupermarkets.length} results</span>
-            {halalOnly && (
-              <span className="px-2 py-1 bg-teal-100 text-teal-700 rounded-full text-xs">
-                Halal Only
-              </span>
-            )}
-            {minConfidence > 0.7 && (
-              <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-xs">
-                {(minConfidence * 100).toFixed(0)}%+ Confidence
-              </span>
-            )}
-            {selectedChain !== 'all' && (
-              <span className="px-2 py-1 bg-purple-100 text-purple-700 rounded-full text-xs">
-                {selectedChain}
-              </span>
-            )}
+            {/* Features Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-white rounded-lg p-6 shadow-md">
+                <div className="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <CheckCircle className="w-6 h-6 text-teal-600" />
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-2">AI-Verified</h3>
+                <p className="text-sm text-gray-600">
+                  Claude AI analyzes reviews to confirm halal section availability
+                </p>
+              </div>
+
+              <div className="bg-white rounded-lg p-6 shadow-md">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Star className="w-6 h-6 text-blue-600" />
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-2">Confidence Scoring</h3>
+                <p className="text-sm text-gray-600">
+                  Every listing includes a confidence rating (0-100%)
+                </p>
+              </div>
+
+              <div className="bg-white rounded-lg p-6 shadow-md">
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <MapPin className="w-6 h-6 text-green-600" />
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-2">Australia-Wide</h3>
+                <p className="text-sm text-gray-600">
+                  Covering Coles, Woolworths, IGA, ALDI & more across all states
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-
-      {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {loading ? (
-          <div className="flex justify-center items-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-600"></div>
-          </div>
-        ) : filteredSupermarkets.length === 0 ? (
-          <div className="text-center py-20">
-            <Store className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
-              No supermarkets found
-            </h3>
-            <p className="text-gray-600">
-              Try adjusting your filters or check back later as we add more locations.
-            </p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredSupermarkets.map((supermarket) => (
-              <SupermarketCard
-                key={supermarket.id}
-                supermarket={supermarket}
-                getConfidenceBadge={getConfidenceBadge}
-              />
-            ))}
-          </div>
-        )}
       </div>
 
       {/* Footer Info */}

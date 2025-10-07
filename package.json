@@ -7,9 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "build:dev": "vite build --mode development",
+    "prebuild": "npm run generate-sitemap",
     "lint": "eslint .",
     "preview": "vite preview",
-    "fetch-mosque-data": "node scripts/fetch-mosque-data.js"
+    "fetch-mosque-data": "node scripts/fetch-mosque-data.js",
+    "generate-sitemap": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.10",
