@@ -1,6 +1,6 @@
 # Find My Mosque - Project Notes
 
-> **Last Updated:** October 7, 2025
+> **Last Updated:** October 8, 2025
 > **Purpose:** Concise reference for Cursor AI to generate accurate, context-aware code
 
 ---
@@ -24,8 +24,10 @@
 - ✅ All city pages live with 33+ mosques
 - ✅ Mobile navigation optimized
 - ✅ SEO Week 4 complete (automated sitemap)
-- ✅ Halal Supermarket Finder Phase 1 live
+- ✅ Halal Supermarket Finder Phase 1 live (3 stores)
 - ✅ Suburb autocomplete working
+- ✅ Feedback form working (new API keys)
+- ✅ Database audit complete (all 6 tables verified)
 - 🚧 Halal Supermarket automation pending (Phase 2-4)
 
 **Priority:** Security first, then SEO optimization for Google first-page ranking.
@@ -119,6 +121,14 @@
 
 ## 🗂️ Database Schema
 
+**Status:** All 6 tables verified and working with proper RLS (Oct 8, 2025)
+- ✅ mosques (2 records)
+- ✅ prayer_times
+- ✅ scraping_logs
+- ✅ feedback (working submission form)
+- ✅ supermarkets (3 records)
+- ✅ scrape_logs
+
 ### Tables
 
 #### `supermarkets`
@@ -153,7 +163,33 @@
 ```
 
 **RLS Policies:**
-- Service role only (admin access)
+- Public: SELECT for recent logs (30 days)
+- Service role only: INSERT, UPDATE, DELETE
+
+#### `feedback`
+```sql
+- id (uuid, primary key)
+- feedback_text (text, required)
+- page_url (text)
+- user_agent (text)
+- user_email (text, optional)
+- user_name (text, optional)
+- status (text) - new, in_progress, resolved, archived
+- is_read (boolean)
+- admin_notes (text)
+- created_at (timestamp)
+- updated_at (timestamp)
+- resolved_at (timestamp)
+```
+
+**RLS Policies:**
+- Anonymous: INSERT (anyone can submit feedback)
+- Authenticated only: SELECT, UPDATE, DELETE (admin access)
+
+**Views Available:**
+- `feedback_unread` - Priority inbox
+- `feedback_recent` - Last 30 days
+- `feedback_stats` - Statistics dashboard
 
 ---
 
@@ -163,9 +199,13 @@
 ```bash
 # .env (NEVER commit to Git)
 VITE_SUPABASE_URL=https://xxx.supabase.co
-VITE_SUPABASE_ANON_KEY=xxx
+VITE_SUPABASE_ANON_KEY=sb_publishable_xxx (new publishable key)
+SUPABASE_SECRET_KEY=sb_secret_xxx (new secret key)
+SUPABASE_ACCESS_TOKEN=sbp_xxx (for CLI operations)
 GOOGLE_MAPS_API_KEY=xxx (stored in Supabase secrets)
 ```
+
+**Note:** Supabase migrated from legacy JWT keys to new publishable/secret keys on Sept 2025. Legacy keys were disabled on Sept 23, 2025. All projects now use new key format starting with `sb_publishable_` and `sb_secret_`.
 
 ### Row Level Security (RLS)
 - Always enable RLS on new tables
@@ -234,6 +274,16 @@ Crawl-delay: 0
 ---
 
 ## 🐛 Known Issues & Solutions
+
+### Issue: Feedback Form 401 Error
+**Problem:** Form submissions failing with "Legacy API keys are disabled" error
+**Fix:** Generate new Supabase publishable/secret keys, update `.env`, restart dev server
+**Status:** ✅ Resolved (Oct 8, 2025)
+
+### Issue: TypeScript Types Out of Date
+**Problem:** Missing types for `supermarkets` and `scrape_logs` tables
+**Fix:** Run `npx supabase gen types typescript --project-id [ID] > src/integrations/supabase/types.ts`
+**Status:** ✅ Resolved (Oct 8, 2025)
 
 ### Issue: Suburb Autocomplete Not Working
 **Fix:** Deploy Edge Functions to Supabase, enable Google Places API

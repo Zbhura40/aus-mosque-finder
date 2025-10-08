@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { ArrowLeft, MessageSquare, Send } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { SEOUtils } from "@/lib/seo-utils";
+import { supabase } from "@/integrations/supabase/client";
 
 const UserFeedback = () => {
   const [feedback, setFeedback] = useState("");
@@ -25,7 +26,7 @@ const UserFeedback = () => {
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!feedback.trim()) {
       toast({
         variant: "destructive",
@@ -34,7 +35,7 @@ const UserFeedback = () => {
       });
       return;
     }
-    
+
     if (feedback.length > MAX_CHARACTERS) {
       toast({
         variant: "destructive",
@@ -43,21 +44,38 @@ const UserFeedback = () => {
       });
       return;
     }
-    
+
     setIsSubmitting(true);
-    
-    // Simulate API call - replace with actual implementation later
+
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
+      // Save feedback to Supabase
+      const { error } = await supabase
+        .from('feedback')
+        .insert({
+          feedback_text: feedback.trim(),
+          page_url: window.location.href,
+          user_agent: navigator.userAgent,
+        });
+
+      if (error) {
+        console.error('Supabase error:', error);
+        throw error;
+      }
+
       toast({
         title: "Feedback submitted successfully!",
         description: "Thank you for your valuable feedback. We'll review it and get back to you if needed.",
       });
-      
+
       setFeedback("");
-      navigate("/");
+
+      // Redirect to home after 1 second
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
+
     } catch (error) {
+      console.error('Error submitting feedback:', error);
       toast({
         variant: "destructive",
         title: "Submission failed",

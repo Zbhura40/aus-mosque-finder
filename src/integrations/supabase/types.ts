@@ -14,6 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
+      feedback: {
+        Row: {
+          admin_notes: string | null
+          created_at: string | null
+          feedback_text: string
+          id: string
+          is_read: boolean | null
+          page_url: string | null
+          resolved_at: string | null
+          status: string | null
+          updated_at: string | null
+          user_agent: string | null
+          user_email: string | null
+          user_name: string | null
+        }
+        Insert: {
+          admin_notes?: string | null
+          created_at?: string | null
+          feedback_text: string
+          id?: string
+          is_read?: boolean | null
+          page_url?: string | null
+          resolved_at?: string | null
+          status?: string | null
+          updated_at?: string | null
+          user_agent?: string | null
+          user_email?: string | null
+          user_name?: string | null
+        }
+        Update: {
+          admin_notes?: string | null
+          created_at?: string | null
+          feedback_text?: string
+          id?: string
+          is_read?: boolean | null
+          page_url?: string | null
+          resolved_at?: string | null
+          status?: string | null
+          updated_at?: string | null
+          user_agent?: string | null
+          user_email?: string | null
+          user_name?: string | null
+        }
+        Relationships: []
+      }
       mosques: {
         Row: {
           address: string
@@ -155,6 +200,63 @@ export type Database = {
         }
         Relationships: []
       }
+      scrape_logs: {
+        Row: {
+          batch_size: number | null
+          claude_api_calls: number | null
+          cost_estimate: number | null
+          created_by: string | null
+          duration_seconds: number | null
+          error_message: string | null
+          google_api_calls: number | null
+          halal_stores_found: number | null
+          id: string
+          new_stores_added: number | null
+          region: string | null
+          run_date: string | null
+          status: string
+          stores_updated: number | null
+          supermarkets_found: number | null
+          supermarkets_processed: number | null
+        }
+        Insert: {
+          batch_size?: number | null
+          claude_api_calls?: number | null
+          cost_estimate?: number | null
+          created_by?: string | null
+          duration_seconds?: number | null
+          error_message?: string | null
+          google_api_calls?: number | null
+          halal_stores_found?: number | null
+          id?: string
+          new_stores_added?: number | null
+          region?: string | null
+          run_date?: string | null
+          status: string
+          stores_updated?: number | null
+          supermarkets_found?: number | null
+          supermarkets_processed?: number | null
+        }
+        Update: {
+          batch_size?: number | null
+          claude_api_calls?: number | null
+          cost_estimate?: number | null
+          created_by?: string | null
+          duration_seconds?: number | null
+          error_message?: string | null
+          google_api_calls?: number | null
+          halal_stores_found?: number | null
+          id?: string
+          new_stores_added?: number | null
+          region?: string | null
+          run_date?: string | null
+          status?: string
+          stores_updated?: number | null
+          supermarkets_found?: number | null
+          supermarkets_processed?: number | null
+        }
+        Relationships: []
+      }
       scraping_logs: {
         Row: {
           created_at: string
@@ -197,9 +299,233 @@ export type Database = {
         }
         Relationships: []
       }
+      supermarkets: {
+        Row: {
+          address: string
+          chain: string | null
+          confidence_score: number | null
+          created_at: string | null
+          has_halal_section: boolean | null
+          id: string
+          is_active: boolean | null
+          last_checked: string | null
+          lat: number
+          lng: number
+          name: string
+          place_id: string
+          rating: number | null
+          reasoning: string | null
+          source: string | null
+          updated_at: string | null
+          user_ratings_total: number | null
+        }
+        Insert: {
+          address: string
+          chain?: string | null
+          confidence_score?: number | null
+          created_at?: string | null
+          has_halal_section?: boolean | null
+          id?: string
+          is_active?: boolean | null
+          last_checked?: string | null
+          lat: number
+          lng: number
+          name: string
+          place_id: string
+          rating?: number | null
+          reasoning?: string | null
+          source?: string | null
+          updated_at?: string | null
+          user_ratings_total?: number | null
+        }
+        Update: {
+          address?: string
+          chain?: string | null
+          confidence_score?: number | null
+          created_at?: string | null
+          has_halal_section?: boolean | null
+          id?: string
+          is_active?: boolean | null
+          last_checked?: string | null
+          lat?: number
+          lng?: number
+          name?: string
+          place_id?: string
+          rating?: number | null
+          reasoning?: string | null
+          source?: string | null
+          updated_at?: string | null
+          user_ratings_total?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
-      [_ in never]: never
+      feedback_recent: {
+        Row: {
+          created_at: string | null
+          feedback_text: string | null
+          id: string | null
+          is_read: boolean | null
+          page_url: string | null
+          status: string | null
+          user_email: string | null
+          user_name: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          feedback_text?: string | null
+          id?: string | null
+          is_read?: boolean | null
+          page_url?: string | null
+          status?: string | null
+          user_email?: string | null
+          user_name?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          feedback_text?: string | null
+          id?: string | null
+          is_read?: boolean | null
+          page_url?: string | null
+          status?: string | null
+          user_email?: string | null
+          user_name?: string | null
+        }
+        Relationships: []
+      }
+      feedback_stats: {
+        Row: {
+          in_progress_count: number | null
+          new_count: number | null
+          resolved_count: number | null
+          this_month: number | null
+          this_week: number | null
+          total_feedback: number | null
+          unread_count: number | null
+        }
+        Relationships: []
+      }
+      feedback_unread: {
+        Row: {
+          created_at: string | null
+          feedback_text: string | null
+          id: string | null
+          page_url: string | null
+          status: string | null
+          user_email: string | null
+          user_name: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          feedback_text?: string | null
+          id?: string | null
+          page_url?: string | null
+          status?: string | null
+          user_email?: string | null
+          user_name?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          feedback_text?: string | null
+          id?: string | null
+          page_url?: string | null
+          status?: string | null
+          user_email?: string | null
+          user_name?: string | null
+        }
+        Relationships: []
+      }
+      halal_supermarkets_verified: {
+        Row: {
+          address: string | null
+          chain: string | null
+          confidence_score: number | null
+          id: string | null
+          last_checked: string | null
+          lat: number | null
+          lng: number | null
+          name: string | null
+          place_id: string | null
+          rating: number | null
+          reasoning: string | null
+          user_ratings_total: number | null
+        }
+        Insert: {
+          address?: string | null
+          chain?: string | null
+          confidence_score?: number | null
+          id?: string | null
+          last_checked?: string | null
+          lat?: number | null
+          lng?: number | null
+          name?: string | null
+          place_id?: string | null
+          rating?: number | null
+          reasoning?: string | null
+          user_ratings_total?: number | null
+        }
+        Update: {
+          address?: string | null
+          chain?: string | null
+          confidence_score?: number | null
+          id?: string | null
+          last_checked?: string | null
+          lat?: number | null
+          lng?: number | null
+          name?: string | null
+          place_id?: string | null
+          rating?: number | null
+          reasoning?: string | null
+          user_ratings_total?: number | null
+        }
+        Relationships: []
+      }
+      recent_scrape_stats: {
+        Row: {
+          claude_api_calls: number | null
+          cost_estimate: number | null
+          duration_seconds: number | null
+          google_api_calls: number | null
+          halal_stores_found: number | null
+          new_stores_added: number | null
+          region: string | null
+          run_date: string | null
+          status: string | null
+          stores_updated: number | null
+          supermarkets_found: number | null
+          supermarkets_processed: number | null
+        }
+        Insert: {
+          claude_api_calls?: number | null
+          cost_estimate?: number | null
+          duration_seconds?: number | null
+          google_api_calls?: number | null
+          halal_stores_found?: number | null
+          new_stores_added?: number | null
+          region?: string | null
+          run_date?: string | null
+          status?: string | null
+          stores_updated?: number | null
+          supermarkets_found?: number | null
+          supermarkets_processed?: number | null
+        }
+        Update: {
+          claude_api_calls?: number | null
+          cost_estimate?: number | null
+          duration_seconds?: number | null
+          google_api_calls?: number | null
+          halal_stores_found?: number | null
+          new_stores_added?: number | null
+          region?: string | null
+          run_date?: string | null
+          status?: string | null
+          stores_updated?: number | null
+          supermarkets_found?: number | null
+          supermarkets_processed?: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       flag_prayer_times_for_review: {
@@ -226,6 +552,34 @@ export type Database = {
           name: string
           website: string
         }[]
+      }
+      get_supermarkets_near: {
+        Args: {
+          halal_only?: boolean
+          min_confidence?: number
+          radius_km?: number
+          search_lat: number
+          search_lng: number
+        }
+        Returns: {
+          address: string
+          chain: string
+          confidence_score: number
+          distance_km: number
+          has_halal_section: boolean
+          id: string
+          lat: number
+          lng: number
+          name: string
+        }[]
+      }
+      mark_feedback_read: {
+        Args: { feedback_id: string }
+        Returns: undefined
+      }
+      update_feedback_status: {
+        Args: { feedback_id: string; new_status: string }
+        Returns: undefined
       }
       update_mosque_details: {
         Args: {
