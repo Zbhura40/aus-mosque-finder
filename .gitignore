@@ -35,3 +35,11 @@ CLAUDE.md
 # Supabase temporary files
 supabase/.temp/
 .temp/
+
+# Working files and design assets
+Mosque photos/
+
+# Temporary audit documentation
+AUDIT_*.md
+DATABASE_STRUCTURE.md
+SUPABASE_DATABASE_AUDIT_REPORT.md
