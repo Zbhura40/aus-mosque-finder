@@ -1,301 +1,159 @@
 # Find My Mosque - Project Notes
 
-> **Last Updated:** October 8, 2025
-> **Purpose:** Concise reference for Cursor AI to generate accurate, context-aware code
+> **Last Updated:** October 10, 2025
+> **Purpose:** Concise reference for AI assistants to generate accurate, context-aware code
 
 ---
 
-## 📋 Quick Summary (300 tokens)
+## 📋 Quick Summary
 
 **Project:** Australian mosque directory helping Muslims find mosques by location/suburb search.
 
-**Tech Stack:** React + TypeScript, Next.js (considering), Vite, TailwindCSS, Supabase (backend/database), Google Places API, Claude AI
+**Tech Stack:** React + TypeScript, Vite, TailwindCSS, Supabase, Google Places API, Claude AI
 
 **Key Features:**
 - Mosque finder with radius/suburb autocomplete search
 - 6 state-specific landing pages (NSW, VIC, QLD, WA, SA, TAS)
 - Halal Supermarket Finder with confidence scoring
-- Imam profiles directory
-- FAQ and feedback pages
+- Feedback form, FAQ, Imam profiles
 - Mobile-responsive with hamburger menu
 - Automated SEO sitemap generation
 
 **Current Status:**
-- ✅ All city pages live with 33+ mosques
-- ✅ Mobile navigation optimized
+- ✅ Site live on GitHub Pages (findmymosque.org)
+- ✅ 33+ mosques across 6 state pages
 - ✅ SEO Week 4 complete (automated sitemap)
-- ✅ Halal Supermarket Finder Phase 1 live (3 stores)
-- ✅ Suburb autocomplete working
-- ✅ Feedback form working (new API keys)
-- ✅ Database audit complete (all 6 tables verified)
-- 🚧 Halal Supermarket automation pending (Phase 2-4)
+- ✅ Feedback form working (RLS fixed Oct 9)
+- ✅ **Backend Cache System Day 1-3 complete** (database + Edge Function + Shadow Mode)
+- 🚧 Backend Cache System Day 4-7 (frontend integration, automation, rollout)
+- 🚧 Halal Supermarket automation pending
 
-**Priority:** Security first, then SEO optimization for Google first-page ranking.
+**Priority:** Security first, then SEO optimization.
 
 **User Profile:** Non-technical founder. Explain concepts simply, present options with pros/cons, wait for approval on major decisions.
 
-**Critical Rules:**
-- Keep API keys in `.env` (never commit to Git)
-- Use Supabase Edge Functions for sensitive operations
-- Maintain Row Level Security (RLS) on all database tables
-- Test all features before marking complete
-- Update sitemap when adding new pages
-
-📖 **For detailed instructions:** See [instructions.md](./instructions.md)
-📖 **For plain-English notes:** See `project-notes-for-zbthedummy.txt`
+📖 **Detailed instructions:** See [instructions.md](./instructions.md)
+📖 **Plain-English notes:** See `project-notes-for-zbthedummy.txt`
+📖 **Backend plan:** See [SUPABASE_BACKEND_PLAN.md](./SUPABASE_BACKEND_PLAN.md)
 
 ---
 
-## 🎯 Current Features
+## 🎉 Latest Update (Oct 10, 2025)
 
-### 1. Mosque Finder (Homepage)
-- **Location:** `/`
-- **Features:**
-  - Search by postcode or suburb (autocomplete)
-  - Search by current location (geolocation)
-  - Radius-based search (1-50km)
-  - Google Maps integration
-  - Mosque detail modals with hours, attributes, ratings
-- **Backend:** Supabase Edge Functions for geocoding
-- **API:** Google Places API (secured via Supabase)
+### Backend Cache System - Day 3 Complete ✅
 
-### 2. State-Specific Pages
-- **URLs:** `/mosques-sydney`, `/mosques-melbourne`, `/mosques-brisbane`, `/mosques-perth`, `/mosques-adelaide`, `/mosques-tasmania`
-- **Features:**
-  - Region filtering (North, South, West, CBD, Eastern Suburbs)
-  - Opening hours with expandable schedule
-  - Google ratings with "Verified on Google" badge
-  - Mosque attributes (wheelchair accessible, parking, women's prayer area)
-  - Popular searches section (city-specific terms)
-- **Data:** Currently placeholder data (33 mosques total)
-- **Design:** Clean white/gray/teal color scheme
+**Achievement:** Shadow Mode deployed and fully operational in production!
 
-### 3. Halal Supermarket Finder
-- **Location:** `/halal-supermarkets`
-- **Features:**
-  - Confidence scoring (0-100% how sure halal section exists)
-  - Chain filtering (Coles, Woolworths, IGA, ALDI)
-  - AI reasoning display (why we think they have halal)
-  - Google ratings integration
-  - Distance-based search (future)
-  - Statistics dashboard
-- **Database:** `supermarkets` table with RLS
-- **Status:** Phase 1 complete (3 test supermarkets)
-- **Phase 2-4:** Google Places API automation pending (~$42/month)
+**What is Shadow Mode?**
+Modified existing `search-mosques` function to save mosque data to cache in background while maintaining 100% backward compatibility. Users see zero changes.
 
-### 4. Other Pages
-- **Imam Profiles:** `/imam-profiles` - Directory of Islamic leaders
-- **FAQ:** `/faq` - Common questions about mosques
-- **Feedback:** `/feedback` - Contact form to add mosques
+**Verified Results:**
+- ✅ Searches work perfectly (no user impact)
+- ✅ 31+ mosques automatically cached from real searches
+- ✅ API cost logging working ($0.049 tracked today)
+- ✅ Background cache-saving functioning silently
 
----
+**Files Modified:**
+- `supabase/functions/search-mosques/index.ts` - Added shadow mode logic
+- Bug fixed: API logging now includes required fields (request_params, response_status)
 
-## 🔧 Tech Stack Details
+**Key Learning:** Test thoroughly before deploying. Found and fixed API logging bug (missing required database fields).
 
-### Frontend
-- **Framework:** React 18 with TypeScript
-- **Build Tool:** Vite (fast HMR, code splitting)
-- **Styling:** TailwindCSS
-- **Icons:** Lucide React
-- **Routing:** React Router DOM
+**Current Performance:**
+- Cache growing automatically with each search
+- Zero user-facing changes
+- All searches logged for cost tracking
+- Production-ready for Day 4 frontend integration
 
-### Backend
-- **Database:** Supabase (PostgreSQL)
-- **Edge Functions:** 3 deployed
-  - `autocomplete-suburb` - Suburb suggestions
-  - `geocode-place` - Place details from place_id
-  - `validate-postcode` - Australian postcode validation
-- **Authentication:** Supabase Auth (not yet implemented)
-
-### APIs
-- **Google Places API:** Suburb autocomplete, mosque details
-- **Google Geocoding:** Postcode to coordinates
-- **Claude AI:** Review analysis for halal detection (Phase 3)
-
-### Deployment
-- **Hosting:** TBD (currently local development)
-- **Domain:** findmymosque.org (configured)
-- **SSL:** Required for production
+**Next:** Day 4 - Frontend integration to switch from `search-mosques` to `get-mosque-details` function
 
 ---
 
 ## 🗂️ Database Schema
 
-**Status:** All 6 tables verified and working with proper RLS (Oct 8, 2025)
-- ✅ mosques (2 records)
-- ✅ prayer_times
-- ✅ scraping_logs
-- ✅ feedback (working submission form)
-- ✅ supermarkets (3 records)
-- ✅ scrape_logs
+**Status:** All 9 tables working with proper RLS (Oct 9, 2025)
 
-### Tables
+### Existing Tables
+- `mosques` (2 records) - Legacy mosque data
+- `prayer_times` - Prayer time scraping
+- `scraping_logs` - Scraping history
+- `feedback` - User feedback form (RLS: anon INSERT, auth SELECT/UPDATE/DELETE)
+- `supermarkets` (3 records) - Halal supermarket finder
+- `scrape_logs` - Supermarket scraping logs
 
-#### `supermarkets`
-```sql
-- id (uuid, primary key)
-- name (text) - e.g., "Coles Lakemba"
-- address (text)
-- location (geography point) - PostGIS for distance queries
-- chain (text) - Coles, Woolworths, IGA, ALDI, Other
-- has_halal_section (boolean)
-- confidence_score (numeric 0-1)
-- reasoning (text) - AI-generated explanation
-- source (text) - "Google Places + Claude AI"
-- google_rating (numeric)
-- google_review_count (integer)
-- last_verified (timestamp)
-- created_at (timestamp)
-```
+### New Backend Cache Tables (Oct 9, 2025)
 
-**RLS Policies:**
-- Public: SELECT (read-only)
-- Authenticated only: INSERT, UPDATE, DELETE
+#### `mosques_cache`
+- **Purpose:** Main mosque directory cache to reduce Google API costs
+- **Key Fields:** google_place_id (unique), name, address, location (geography), opening_hours (jsonb), google_rating, last_fetched_from_google
+- **RLS:** Public SELECT, Authenticated INSERT/UPDATE, Service role full access
+- **Indexes:** Geospatial (GIST), state, suburb, last_fetched
 
-#### `scrape_logs`
-```sql
-- id (uuid, primary key)
-- started_at (timestamp)
-- completed_at (timestamp)
-- status (text) - running, completed, failed
-- supermarkets_processed (integer)
-- errors (jsonb)
-```
+#### `search_cache`
+- **Purpose:** Cache search results to avoid repeated queries
+- **Key Fields:** search_hash (unique), search_params (jsonb), results (jsonb), expires_at (7 days), hit_count
+- **RLS:** Public SELECT (valid only), Service role INSERT/UPDATE/DELETE
+- **Functions:** `cleanup_expired_search_cache()`, `get_search_cache_stats()`
 
-**RLS Policies:**
-- Public: SELECT for recent logs (30 days)
-- Service role only: INSERT, UPDATE, DELETE
+#### `google_api_logs`
+- **Purpose:** Track every API call for cost monitoring
+- **Key Fields:** api_type, cost_estimate, cache_hit (boolean), response_time_ms
+- **RLS:** Service role INSERT, Authenticated SELECT
+- **Functions:** `get_daily_api_costs(days)`, `get_current_month_cost()`, `get_api_usage_by_type(days)`
 
-#### `feedback`
-```sql
-- id (uuid, primary key)
-- feedback_text (text, required)
-- page_url (text)
-- user_agent (text)
-- user_email (text, optional)
-- user_name (text, optional)
-- status (text) - new, in_progress, resolved, archived
-- is_read (boolean)
-- admin_notes (text)
-- created_at (timestamp)
-- updated_at (timestamp)
-- resolved_at (timestamp)
-```
-
-**RLS Policies:**
-- Anonymous: INSERT (anyone can submit feedback)
-- Authenticated only: SELECT, UPDATE, DELETE (admin access)
-
-**Views Available:**
-- `feedback_unread` - Priority inbox
-- `feedback_recent` - Last 30 days
-- `feedback_stats` - Statistics dashboard
+📖 **Full schema details:** See [instructions.md#database-schema](./instructions.md)
 
 ---
 
-## 🔒 Security Best Practices
+## 🔧 Tech Stack
 
-### Environment Variables
+### Frontend
+- React 18 + TypeScript, Vite, TailwindCSS, Lucide React, React Router DOM
+
+### Backend
+- Supabase (PostgreSQL + PostGIS)
+- Edge Functions: `get-mosque-details` (with cache), `autocomplete-suburb`, `geocode-place`
+- Google Places API (secured via Supabase secrets)
+
+### Deployment
+- GitHub Pages (auto-deploy on push to main)
+- Domain: findmymosque.org (SSL enabled)
+- CI/CD: `.github/workflows/deploy.yml`
+
+---
+
+## 🔒 Security Rules
+
+**Critical:**
+- Keep API keys in `.env` (never commit to Git)
+- Update GitHub Secrets when changing API keys
+- Always enable RLS on new tables
+- RLS policies must explicitly allow `anon` role for public access
+- Test features before marking complete
+- Google Maps API key stored in Supabase secrets only
+
+**Environment Variables:**
 ```bash
-# .env (NEVER commit to Git)
 VITE_SUPABASE_URL=https://xxx.supabase.co
-VITE_SUPABASE_ANON_KEY=sb_publishable_xxx (new publishable key)
-SUPABASE_SECRET_KEY=sb_secret_xxx (new secret key)
-SUPABASE_ACCESS_TOKEN=sbp_xxx (for CLI operations)
-GOOGLE_MAPS_API_KEY=xxx (stored in Supabase secrets)
+VITE_SUPABASE_ANON_KEY=sb_publishable_xxx  # New key format (Sept 2025)
+SUPABASE_SECRET_KEY=sb_secret_xxx
+SUPABASE_ACCESS_TOKEN=sbp_xxx
+GOOGLE_MAPS_API_KEY=xxx  # Stored in Supabase secrets
 ```
 
-**Note:** Supabase migrated from legacy JWT keys to new publishable/secret keys on Sept 2025. Legacy keys were disabled on Sept 23, 2025. All projects now use new key format starting with `sb_publishable_` and `sb_secret_`.
-
-### Row Level Security (RLS)
-- Always enable RLS on new tables
-- Public read access for directories (mosques, supermarkets)
-- Authenticated write access only
-- Admin operations via service role
-
-### API Key Security
-- Google Maps API key stored in Supabase secrets
-- Edge Functions use `Deno.env.get('GOOGLE_MAPS_API_KEY')`
-- Never expose keys in client-side code
-- Restrict API key to specific domains in Google Cloud Console
+**Note:** Supabase legacy JWT keys disabled Sept 23, 2025. All projects now use `sb_publishable_` and `sb_secret_` format.
 
 ---
 
 ## 🚀 SEO Implementation
 
-### Automated Sitemap Generation
-- **Script:** `scripts/generate-sitemap.js`
-- **Config:** `scripts/sitemap-config.js` (18 routes)
-- **Trigger:** Runs automatically on `npm run build` (prebuild hook)
-- **Output:** `public/sitemap.xml`
-- **Validation:** Checks for duplicates, valid priorities (0-1), valid changefreq
+- **Sitemap:** Auto-generated on `npm run build` (18 routes)
+- **robots.txt:** Configured with Googlebot optimization
+- **Meta Tags:** Page-specific titles, descriptions, Open Graph
+- **Structured Data:** Organization, LocalBusiness, BreadcrumbList schemas
+- **Mobile:** Responsive navigation, ≥44px touch targets
 
-### robots.txt
-```txt
-Sitemap: https://findmymosque.org/sitemap.xml
-Crawl-delay: 1
-User-agent: Googlebot
-Crawl-delay: 0
-```
-
-### Meta Tags
-- Page-specific titles and descriptions
-- Open Graph tags for social sharing
-- Canonical URLs
-- Mobile viewport meta tag
-
-### Structured Data (JSON-LD)
-- Organization schema
-- LocalBusiness schema for mosques
-- BreadcrumbList for navigation
-
-📖 **Full SEO guide:** [instructions.md#seo-optimization](./instructions.md#seo-optimization)
-
----
-
-## 📱 Mobile Optimization
-
-### Responsive Navigation
-- **Desktop:** Horizontal navigation bar with dropdown
-- **Mobile:** Hamburger menu (≡) with slide-down menu
-- **Breakpoint:** 768px (tablet size)
-- **Implementation:** `TransparentNavbar.tsx` with click-outside detection
-
-### Touch Targets
-- Buttons ≥44px height (Apple guidelines)
-- Full-width mobile menu items
-- Large tap areas for filters and cards
-
-### Responsive Grid
-- **Desktop:** 3 columns (mosque/supermarket cards)
-- **Tablet:** 2 columns
-- **Mobile:** 1 column (stacked)
-
----
-
-## 🐛 Known Issues & Solutions
-
-### Issue: Feedback Form 401 Error
-**Problem:** Form submissions failing with "Legacy API keys are disabled" error
-**Fix:** Generate new Supabase publishable/secret keys, update `.env`, restart dev server
-**Status:** ✅ Resolved (Oct 8, 2025)
-
-### Issue: TypeScript Types Out of Date
-**Problem:** Missing types for `supermarkets` and `scrape_logs` tables
-**Fix:** Run `npx supabase gen types typescript --project-id [ID] > src/integrations/supabase/types.ts`
-**Status:** ✅ Resolved (Oct 8, 2025)
-
-### Issue: Suburb Autocomplete Not Working
-**Fix:** Deploy Edge Functions to Supabase, enable Google Places API
-**Status:** ✅ Resolved (Oct 7, 2025)
-
-### Issue: Dropdown Menu Not Closing
-**Fix:** Add useRef + useEffect with click-outside detection
-**Status:** ✅ Resolved (Oct 6, 2025)
-
-### Issue: ES Module vs CommonJS Conflict
-**Fix:** Convert scripts to ES modules (`import`/`export` instead of `require`/`module.exports`)
-**Status:** ✅ Resolved (Oct 7, 2025)
+📖 **Full SEO guide:** [instructions.md#seo-optimization](./instructions.md)
 
 ---
 
@@ -303,110 +161,23 @@ Crawl-delay: 0
 
 ### Current (Phase 1)
 - **Supabase:** $0/month (free tier)
-- **Hosting:** $0/month (GitHub Pages or similar)
+- **Hosting:** $0/month (GitHub Pages)
 - **Domain:** ~$15/year
 - **Total:** ~$1.25/month
 
-### Future (Phase 2-4 with Automation)
-- **Google Places API:** ~$40/month (10,000 initial searches, then ~$5/month for weekly updates)
-- **Claude AI:** ~$1-2/month (review analysis)
-- **Total:** ~$42/month (within $45 budget)
-
----
-
-## 📝 Adding New Pages Checklist
-
-### 1. Create Page Component
-```tsx
-// src/pages/NewPage.tsx
-import React from 'react';
-
-export default function NewPage() {
-  return <div>New Page Content</div>;
-}
-```
-
-### 2. Add Route
-```tsx
-// src/App.tsx
-import NewPage from './pages/NewPage';
-
-<Route path="/new-page" element={<NewPage />} />
-```
-
-### 3. Update Sitemap Config
-```javascript
-// scripts/sitemap-config.js
-{
-  path: '/new-page',
-  priority: 0.8,
-  changefreq: 'weekly',
-}
-```
-
-### 4. Build & Deploy
-```bash
-npm run build  # Sitemap auto-updates
-git add .
-git commit -m "Add new page"
-git push
-```
-
----
-
-## 🔄 Weekly Automation Tasks (When Phase 2-4 Complete)
-
-### Supermarket Data Updates
-- **Frequency:** Weekly (Sunday 2 AM)
-- **Process:**
-  1. Fetch supermarkets from Google Places API
-  2. Analyze reviews with Claude AI
-  3. Calculate confidence scores
-  4. Update database with new findings
-- **Cost:** ~$5/week
-
-### SEO Monitoring
-- **Frequency:** Weekly (Monday morning)
-- **Tasks:**
-  - Check Google Search Console for errors
-  - Review keyword rankings
-  - Monitor click-through rates
-  - Fix any indexing issues
-
-📖 **Automation setup guide:** [instructions.md#automation](./instructions.md#automation)
-
----
-
-## 📊 Success Metrics
-
-### SEO Goals (6 months)
-- **Indexed Pages:** 40+ (currently ~18)
-- **Organic Visitors:** 2,000-5,000/month
-- **Keywords Ranking:** 100+ (currently ~5-10)
-- **First Page Rankings:** 25-40 (currently 2-3)
-- **Average Position:** 5-10 for "mosque near me" queries
-
-### User Engagement
-- **Bounce Rate:** <40%
-- **Session Duration:** >2 minutes
-- **Pages per Session:** >2.5
-- **Mobile Users:** 60-70%
+### Future (With Backend Cache - Day 7)
+- **Google Places API:** ~$23/month (with 80-95% cache hit rate)
+- **Claude AI:** ~$1-2/month (halal review analysis)
+- **Total:** ~$24/month (saves $52/month!)
 
 ---
 
 ## 🧪 Testing Commands
 
 ```bash
-# Development
 npm run dev                    # Start dev server (localhost:8080)
-
-# Build
 npm run build                  # Generate sitemap + build production
-
-# Sitemap
 npm run generate-sitemap       # Manually generate sitemap
-
-# Lint
 npm run lint                   # Check TypeScript errors
 ```
 
@@ -414,85 +185,57 @@ npm run lint                   # Check TypeScript errors
 
 ## 📂 Important Files
 
-### Core Application
-- `src/App.tsx` - Main app with routes
-- `src/components/TransparentNavbar.tsx` - Navigation (mobile + desktop)
-- `src/components/MosqueLocator.tsx` - Homepage search
-- `src/components/MosqueDetailsModal.tsx` - Mosque popup details
+**Core App:** `src/App.tsx`, `src/components/TransparentNavbar.tsx`, `src/components/MosqueLocator.tsx`
 
-### State Pages
-- `src/pages/SydneyMosques.tsx`
-- `src/pages/MelbourneMosques.tsx`
-- `src/pages/BrisbaneMosques.tsx`
-- `src/pages/PerthMosques.tsx`
-- `src/pages/AdelaideMosques.tsx`
-- `src/pages/TasmaniaMosques.tsx`
+**State Pages:** `src/pages/SydneyMosques.tsx` (+ Melbourne, Brisbane, Perth, Adelaide, Tasmania)
 
-### Halal Supermarket Finder
-- `src/pages/HalalSupermarkets.tsx` - Main page component
-- `supabase/migrations/` - Database setup
+**Backend:** `supabase/migrations/` (database setup), `supabase/functions/` (Edge Functions)
 
-### Configuration
-- `vite.config.ts` - Build configuration
-- `tailwind.config.js` - Styling configuration
-- `scripts/sitemap-config.js` - SEO sitemap routes
-- `scripts/generate-sitemap.js` - Sitemap generator
+**Deployment:** `.github/workflows/deploy.yml`, GitHub Secrets
 
-### Documentation
-- `CLAUDE.md` - Instructions for Cursor AI
-- `project-notes.md` - This file (concise reference)
-- `instructions.md` - Detailed technical instructions
-- `project-notes-for-zbthedummy.txt` - Plain-English version
-- `GOOGLE_SEARCH_CONSOLE_GUIDE.md` - GSC setup guide
-- `WEEK4_SEO_COMPLETION_SUMMARY.md` - SEO completion details
+**Docs:** `CLAUDE.md`, `project-notes.md`, `instructions.md`, `SUPABASE_BACKEND_PLAN.md`, `DAY1_COMPLETION_SUMMARY.md`
 
 ---
 
-## 🎯 Next Steps (Priority Order)
+## 🎯 Next Steps
 
-### Immediate
-1. ✅ Test all features on live site
-2. ✅ Set up Google Search Console
-3. ✅ Submit sitemap to GSC
-4. ⏳ Add more mosque data to state pages
+### Immediate (Day 4)
+1. ⏳ Frontend integration - Create service layer to switch between functions
+2. ⏳ Add feature flag system for gradual rollout
+3. ⏳ Update MosqueLocator.tsx to use `get-mosque-details` function
+4. ⏳ Test locally with cache-first approach
 
-### Short-term (Next 2-4 weeks)
-1. ⏳ Decide on hosting provider (Vercel, Netlify, or custom)
-2. ⏳ Deploy to production
-3. ⏳ Set up SSL certificate
-4. ⏳ Configure domain DNS
+### Short-term (Days 5-7)
+1. ⏳ Automation setup (weekly cache refresh, daily cleanup)
+2. ⏳ Production rollout (gradual 10% → 50% → 100%)
+3. ⏳ Cost monitoring dashboard
+4. ⏳ Performance verification and optimization
 
 ### Medium-term (Next 1-3 months)
-1. ⏳ Build Halal Supermarket Phase 2 (Google Places integration)
-2. ⏳ Build Phase 3 (Claude AI review analysis)
-3. ⏳ Build Phase 4 (weekly automation)
-4. ⏳ Add user authentication (for mosque managers)
-
-### Long-term (3-6 months)
-1. ⏳ Prayer times integration
-2. ⏳ Mosque photo uploads
-3. ⏳ User reviews and ratings
-4. ⏳ Email notifications for new mosques
+1. ⏳ Expand mosque database
+2. ⏳ Halal Supermarket Phase 2-4 (automation)
+3. ⏳ User authentication
+4. ⏳ Prayer times integration
 
 ---
 
 ## 📞 Communication Guidelines
 
-### When Presenting Options
-- Always provide 2-3 options with clear pros/cons
-- Explain which option you recommend and why
+**When Presenting Options:**
+- Provide 2-3 options with clear pros/cons
+- Explain recommendation and why
 - Wait for explicit approval before implementing
 - Use simple, non-technical language
 
-### When Explaining Technical Concepts
+**When Explaining:**
 - Use everyday analogies
 - Explain the "why" behind decisions
-- Show how it impacts the business/users
-- Provide links to beginner-friendly resources
+- Show business/user impact
+- Provide beginner-friendly resources
 
-### Progress Updates
+**Progress Updates:**
 - Regular updates during long tasks
-- Explain both successes and challenges
+- Explain successes and challenges
 - Be transparent about time estimates
 - Celebrate small wins
 

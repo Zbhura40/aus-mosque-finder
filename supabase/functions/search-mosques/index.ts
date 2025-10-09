@@ -1,5 +1,6 @@
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.38.4';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -17,12 +18,25 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
+  const startTime = Date.now();
+
   try {
     const { latitude, longitude, radius }: SearchRequest = await req.json();
     const apiKey = Deno.env.get('GOOGLE_PLACES_API_KEY');
+    const supabaseUrl = Deno.env.get('SUPABASE_URL');
+    const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
 
     if (!apiKey) {
       throw new Error('Google Places API key not configured');
+    }
+
+    // Initialize Supabase client for background cache-saving (shadow mode)
+    let supabase = null;
+    if (supabaseUrl && supabaseServiceKey) {
+      supabase = createClient(supabaseUrl, supabaseServiceKey);
+      console.log('✓ Shadow mode enabled - will save to cache in background');
+    } else {
+      console.log('⚠ Shadow mode disabled - Supabase credentials not found');
     }
 
     // Use Google Places API (New) to search for mosques
@@ -57,11 +71,27 @@ serve(async (req) => {
     });
 
     const data = await response.json();
+    const googleResponseTime = Date.now() - startTime;
     console.log('Google Places API response:', JSON.stringify(data, null, 2));
-    
+
     if (!response.ok) {
       console.error('Google Places API error:', data);
+      // Log failed API call (shadow mode)
+      if (supabase) {
+        logApiCall(supabase, 'nearby_search', 0.032, false, googleResponseTime, requestBody, 'error', JSON.stringify(data.error)).catch(err =>
+          console.error('Failed to log API error:', err)
+        );
+      }
       throw new Error(`Google Places API error: ${data.error?.message || 'Unknown error'}`);
+    }
+
+    // Log successful API call (shadow mode) - Nearby Search = $0.032 per call
+    if (supabase) {
+      const resultsCount = data.places?.length || 0;
+      console.log(`📊 Logging API call: $0.032 (${resultsCount} results, ${googleResponseTime}ms)`);
+      logApiCall(supabase, 'nearby_search', 0.032, false, googleResponseTime, requestBody, 'success').catch(err =>
+        console.error('Failed to log API call:', err)
+      );
     }
 
     // Calculate distances and format results
@@ -154,6 +184,14 @@ serve(async (req) => {
       };
 
       console.log(`Final result for ${result.name}:`, JSON.stringify(result, null, 2));
+
+      // SHADOW MODE: Save to cache in background (don't wait for completion)
+      if (supabase) {
+        saveMosqueToCache(supabase, place, result).catch(err =>
+          console.error(`⚠ Cache save failed for ${result.name}:`, err.message)
+        );
+      }
+
       return result;
     }));
 
@@ -184,11 +222,120 @@ function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: numbe
   const R = 6371; // Radius of the Earth in kilometers
   const dLat = (lat2 - lat1) * Math.PI / 180;
   const dLon = (lon2 - lon1) * Math.PI / 180;
-  const a = 
+  const a =
     Math.sin(dLat/2) * Math.sin(dLat/2) +
-    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
     Math.sin(dLon/2) * Math.sin(dLon/2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
   const distance = R * c;
   return distance;
+}
+
+// SHADOW MODE: Helper function to save mosque to cache (runs in background)
+async function saveMosqueToCache(
+  supabase: any,
+  place: any,
+  result: any
+): Promise<void> {
+  try {
+    // Parse address components
+    const addressParts = (place.formattedAddress || '').split(',').map((s: string) => s.trim());
+    let suburb = undefined;
+    let state = undefined;
+    let postcode = undefined;
+
+    if (addressParts.length >= 3) {
+      suburb = addressParts[addressParts.length - 3];
+      const statePostcode = addressParts[addressParts.length - 2];
+      const match = statePostcode.match(/([A-Z]+)\s+(\d{4})/);
+      if (match) {
+        state = match[1];
+        postcode = match[2];
+      }
+    }
+
+    // Get photo reference if available
+    let photoReference = undefined;
+    if (place.photos && place.photos.length > 0) {
+      photoReference = place.photos[0].name;
+    }
+
+    // Prepare mosque data for cache
+    const mosqueData = {
+      google_place_id: place.id,
+      name: result.name,
+      address: result.address,
+      suburb,
+      state,
+      postcode,
+      location: `POINT(${place.location.longitude} ${place.location.latitude})`,
+      latitude: place.location.latitude,
+      longitude: place.location.longitude,
+      phone_number: result.phone,
+      website: result.website,
+      email: result.email,
+      google_rating: result.rating,
+      google_review_count: place.userRatingCount,
+      opening_hours: place.currentOpeningHours,
+      is_open_now: result.isOpen,
+      photos: result.photoUrl ? [{ url: result.photoUrl, reference: photoReference }] : [],
+      formatted_address: place.formattedAddress,
+      place_types: place.types,
+      business_status: place.businessStatus,
+      editorial_summary: place.editorialSummary?.text,
+      last_fetched_from_google: new Date().toISOString()
+    };
+
+    // Save to cache (upsert: update if exists, insert if new)
+    const { error } = await supabase
+      .from('mosques_cache')
+      .upsert(mosqueData, {
+        onConflict: 'google_place_id'
+      });
+
+    if (error) {
+      throw error;
+    }
+
+    console.log(`✓ SHADOW MODE: Cached ${result.name}`);
+  } catch (error) {
+    console.error(`✗ SHADOW MODE: Failed to cache mosque:`, error);
+    throw error;
+  }
+}
+
+// SHADOW MODE: Helper function to log API calls for cost tracking
+async function logApiCall(
+  supabase: any,
+  apiType: string,
+  costEstimate: number,
+  cacheHit: boolean,
+  responseTime: number,
+  requestParams: any,
+  responseStatus: string,
+  errorMessage?: string
+): Promise<void> {
+  try {
+    const { error } = await supabase
+      .from('google_api_logs')
+      .insert({
+        api_type: apiType,
+        request_params: requestParams,
+        response_status: responseStatus,
+        cost_estimate: costEstimate,
+        cache_hit: cacheHit,
+        response_time_ms: responseTime,
+        error_message: errorMessage,
+        created_at: new Date().toISOString()
+      });
+
+    if (error) {
+      console.error('❌ Log insert error:', error);
+      throw error;
+    }
+    console.log(`✓ SHADOW MODE: Logged ${apiType} call ($${costEstimate})`);
+  } catch (err) {
+    console.error('Failed to log API call:', err);
+    throw err;
+  }
 }
