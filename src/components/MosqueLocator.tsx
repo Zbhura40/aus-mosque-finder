@@ -12,6 +12,7 @@ import InteractiveMobileMockup from "./InteractiveMobileMockup";
 import { generateLandingPageSchema } from "@/lib/json-ld-schema";
 import { useJsonLdSchema } from "@/hooks/useJsonLdSchema";
 import { useSEO } from "@/hooks/useSEO";
+import { searchMosques } from "@/services/mosqueService";
 
 interface SearchParams {
   radius: string;
@@ -284,24 +285,24 @@ const MosqueLocator = () => {
           radiusInMeters = 10000;
       }
 
-      // Search for mosques using Google Places API
-      const { supabase } = await import("@/integrations/supabase/client");
-      const { data: searchData, error: searchError } = await supabase.functions.invoke('search-mosques', {
-        body: {
-          latitude,
-          longitude,
-          radius: radiusInMeters
-        }
+      // Search for mosques using the service layer
+      // This automatically decides whether to use cache or Google API
+      const searchResult = await searchMosques({
+        latitude,
+        longitude,
+        radius: radiusInMeters
       });
 
-      if (searchError) throw searchError;
-
-      const foundMosques = searchData?.mosques || [];
+      const foundMosques = searchResult.mosques || [];
       setMosques(foundMosques);
-      
+
+      // Show where the data came from and how fast it was
+      const sourceLabel = searchResult.source === 'cache' ? '⚡ Cache' : '🌐 Google';
+      const speedLabel = searchResult.searchTime < 1000 ? 'Lightning fast' : 'Complete';
+
       toast({
-        title: "Search complete",
-        description: `Found ${foundMosques.length} mosques within ${searchParams.radius}km`,
+        title: `${speedLabel} search ${sourceLabel}`,
+        description: `Found ${foundMosques.length} mosques within ${searchParams.radius}km (${searchResult.searchTime}ms)`,
       });
 
     } catch (error: any) {
