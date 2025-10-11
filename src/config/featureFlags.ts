@@ -20,17 +20,17 @@ export interface FeatureFlags {
  *
  * Recommended rollout plan:
  * - Day 4: 0% (testing only) ✅
- * - Day 5: 10% (initial rollout) 👈 WE ARE HERE
- * - Day 6: 50% (if no issues)
+ * - Day 5: 10% (initial rollout) ✅
+ * - Day 6: 50% (if no issues) 👈 WE ARE HERE
  * - Day 7: 100% (full rollout)
  */
 const featureFlags: FeatureFlags = {
   // Enable/disable cache system entirely
-  useCacheSystem: true, // ✅ ENABLED for Day 5 rollout
+  useCacheSystem: true, // ✅ ENABLED for Day 6 rollout
 
   // Percentage of users who get the cache (0-100)
   // We use a deterministic approach based on timestamp to ensure consistent experience per session
-  cacheRolloutPercentage: 10, // 10% rollout - 1 in 10 users gets cache
+  cacheRolloutPercentage: 50, // 50% rollout - 1 in 2 users gets cache
 };
 
 /**

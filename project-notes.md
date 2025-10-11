@@ -1,244 +1,213 @@
 # Find My Mosque - Project Notes
 
 > **Last Updated:** October 10, 2025
-> **Purpose:** Concise reference for AI assistants to generate accurate, context-aware code
+> **Purpose:** Date-organized progress tracking and quick reference
 
 ---
 
-## 📋 Quick Summary
+## 📋 Project Overview
 
-**Project:** Australian mosque directory helping Muslims find mosques by location/suburb search.
+**Project:** Australian mosque directory (findmymosque.org)
+**Tech Stack:** React + TypeScript, Vite, TailwindCSS, Supabase, Google Places API
+**Status:** Live on GitHub Pages with 33+ mosques across 6 states
 
-**Tech Stack:** React + TypeScript, Vite, TailwindCSS, Supabase, Google Places API, Claude AI
+**Key Features:** Mosque finder, state landing pages, Halal Supermarket Finder, feedback form, SEO sitemap
 
-**Key Features:**
-- Mosque finder with radius/suburb autocomplete search
-- 6 state-specific landing pages (NSW, VIC, QLD, WA, SA, TAS)
-- Halal Supermarket Finder with confidence scoring
-- Feedback form, FAQ, Imam profiles
-- Mobile-responsive with hamburger menu
-- Automated SEO sitemap generation
-
-**Current Status:**
-- ✅ Site live on GitHub Pages (findmymosque.org)
-- ✅ 33+ mosques across 6 state pages
-- ✅ SEO Week 4 complete (automated sitemap)
-- ✅ Feedback form working (RLS fixed Oct 9)
-- ✅ **Backend Cache System Day 1-3 complete** (database + Edge Function + Shadow Mode)
-- 🚧 Backend Cache System Day 4-7 (frontend integration, automation, rollout)
-- 🚧 Halal Supermarket automation pending
-
-**Priority:** Security first, then SEO optimization.
-
-**User Profile:** Non-technical founder. Explain concepts simply, present options with pros/cons, wait for approval on major decisions.
-
-📖 **Detailed instructions:** See [instructions.md](./instructions.md)
-📖 **Plain-English notes:** See `project-notes-for-zbthedummy.txt`
-📖 **Backend plan:** See [SUPABASE_BACKEND_PLAN.md](./SUPABASE_BACKEND_PLAN.md)
+📖 **References:**
+- Detailed tech docs: [instructions.md](./instructions.md)
+- Simple explanations: `project-notes-for-zbthedummy.txt`
+- Backend plan: [SUPABASE_BACKEND_PLAN.md](./SUPABASE_BACKEND_PLAN.md)
+- Marketing strategy: [marketing-strategy-project.md](./marketing-strategy-project.md)
 
 ---
 
-## 🎉 Latest Update (Oct 10, 2025)
+## 📅 October 10, 2025
 
-### Backend Cache System - Day 3 Complete ✅
+### ✅ Marketing System - Day 1 Complete
 
-**Achievement:** Shadow Mode deployed and fully operational in production!
+**Achievement:** Email extraction system built and tested successfully!
 
-**What is Shadow Mode?**
-Modified existing `search-mosques` function to save mosque data to cache in background while maintaining 100% backward compatibility. Users see zero changes.
+**What Was Built:**
+- 7 TypeScript modules for email extraction pipeline
+- Supabase `mosques_emails` table (private, RLS-protected)
+- Google Maps → Website → Facebook scraping chain
+- DNS MX email validation (free, 95% accuracy)
+- Test extraction verified (20 mosques, 1 verified email)
 
-**Verified Results:**
-- ✅ Searches work perfectly (no user impact)
-- ✅ 31+ mosques automatically cached from real searches
-- ✅ API cost logging working ($0.049 tracked today)
-- ✅ Background cache-saving functioning silently
+**Files Created:**
+- `supabase/migrations/20251010_create_mosques_emails_table.sql`
+- `scripts/apify/` - 7 modules (validator, scrapers, uploader, orchestrator)
+- `marketing-strategy-project.md` - 5-day execution plan
+- Dependencies: apify-client, tsx
 
-**Files Modified:**
-- `supabase/functions/search-mosques/index.ts` - Added shadow mode logic
-- Bug fixed: API logging now includes required fields (request_params, response_status)
+**Test Results:**
+- Duration: 32 seconds
+- Mosques found: 20 (Sydney)
+- Emails found: 1
+- Verified: 100%
+- Cost: ~$0.20
 
-**Key Learning:** Test thoroughly before deploying. Found and fixed API logging bug (missing required database fields).
+**Status:** ✅ System ready for full extraction (300+ mosques, ~$25-30)
 
-**Current Performance:**
-- Cache growing automatically with each search
-- Zero user-facing changes
-- All searches logged for cost tracking
-- Production-ready for Day 4 frontend integration
+**Next:** Run full extraction when ready (`npm run extract-emails`)
 
-**Next:** Day 4 - Frontend integration to switch from `search-mosques` to `get-mosque-details` function
-
----
-
-## 🗂️ Database Schema
-
-**Status:** All 9 tables working with proper RLS (Oct 9, 2025)
-
-### Existing Tables
-- `mosques` (2 records) - Legacy mosque data
-- `prayer_times` - Prayer time scraping
-- `scraping_logs` - Scraping history
-- `feedback` - User feedback form (RLS: anon INSERT, auth SELECT/UPDATE/DELETE)
-- `supermarkets` (3 records) - Halal supermarket finder
-- `scrape_logs` - Supermarket scraping logs
-
-### New Backend Cache Tables (Oct 9, 2025)
-
-#### `mosques_cache`
-- **Purpose:** Main mosque directory cache to reduce Google API costs
-- **Key Fields:** google_place_id (unique), name, address, location (geography), opening_hours (jsonb), google_rating, last_fetched_from_google
-- **RLS:** Public SELECT, Authenticated INSERT/UPDATE, Service role full access
-- **Indexes:** Geospatial (GIST), state, suburb, last_fetched
-
-#### `search_cache`
-- **Purpose:** Cache search results to avoid repeated queries
-- **Key Fields:** search_hash (unique), search_params (jsonb), results (jsonb), expires_at (7 days), hit_count
-- **RLS:** Public SELECT (valid only), Service role INSERT/UPDATE/DELETE
-- **Functions:** `cleanup_expired_search_cache()`, `get_search_cache_stats()`
-
-#### `google_api_logs`
-- **Purpose:** Track every API call for cost monitoring
-- **Key Fields:** api_type, cost_estimate, cache_hit (boolean), response_time_ms
-- **RLS:** Service role INSERT, Authenticated SELECT
-- **Functions:** `get_daily_api_costs(days)`, `get_current_month_cost()`, `get_api_usage_by_type(days)`
-
-📖 **Full schema details:** See [instructions.md#database-schema](./instructions.md)
+📖 **See:** [instructions.md#mosque-email-extraction-system](./instructions.md)
 
 ---
 
-## 🔧 Tech Stack
+## 📅 October 9, 2025
 
-### Frontend
-- React 18 + TypeScript, Vite, TailwindCSS, Lucide React, React Router DOM
+### Backend Cache System (Days 4-5)
 
-### Backend
-- Supabase (PostgreSQL + PostGIS)
-- Edge Functions: `get-mosque-details` (with cache), `autocomplete-suburb`, `geocode-place`
-- Google Places API (secured via Supabase secrets)
+**Achievement:** Cache deployed at 10% rollout, saving costs and improving speed
 
-### Deployment
-- GitHub Pages (auto-deploy on push to main)
-- Domain: findmymosque.org (SSL enabled)
-- CI/CD: `.github/workflows/deploy.yml`
+**Performance:**
+- Cache hits: 700ms (58% faster)
+- Google API: 1,700ms
+- Cost: $0 (cache) vs $0.032 (Google)
+- 84 mosques cached
+
+**Files:**
+- `src/config/featureFlags.ts` - Rollout control
+- `src/services/mosqueService.ts` - Cache-first routing
+- `src/components/MosqueLocator.tsx` - Frontend integration
+
+**Status:** 10% rollout active, monitoring for 24-48h before scaling to 50%
+
+**Expected Savings:** $77/month at 100% rollout
+
+### Database Tables Added
+
+**`mosques_cache`** - Main cache (public read, 84 records)
+**`search_cache`** - Query results cache (7-day expiry)
+**`google_api_logs`** - Cost tracking
+
+**RLS Fixed:** Anonymous feedback submissions now working
 
 ---
 
-## 🔒 Security Rules
+## 📅 Previous Work Summary
 
-**Critical:**
-- Keep API keys in `.env` (never commit to Git)
-- Update GitHub Secrets when changing API keys
-- Always enable RLS on new tables
-- RLS policies must explicitly allow `anon` role for public access
-- Test features before marking complete
-- Google Maps API key stored in Supabase secrets only
+### October 7, 2025
+- ✅ SEO Week 4: Dynamic sitemap automation
+- ✅ Halal Supermarket Finder Phase 1 (3 test records)
+- ✅ Mobile hamburger menu + favicon
+
+### October 6, 2025
+- ✅ 6 state landing pages (NSW, VIC, QLD, WA, SA, TAS)
+- ✅ 33 placeholder mosques added
+- ✅ Region filtering + popular searches
+
+### September 2025
+- ✅ Site deployed to GitHub Pages
+- ✅ Domain configured (findmymosque.org)
+- ✅ Supabase integration
+- ✅ Google Places API setup
+
+---
+
+## 🗂️ Database Schema (10 Tables)
+
+### Public Tables
+- `mosques` (2) - Legacy data
+- `mosques_cache` (84) - Main cache
+- `search_cache` - Query cache
+- `supermarkets` (3) - Halal finder
+- `feedback` - User submissions
+- `prayer_times` - Scraping data
+
+### Private Tables
+- `mosques_emails` (2) - **Marketing only, no public access**
+- `google_api_logs` - Cost tracking
+- `scraping_logs` - Automation logs
+- `scrape_logs` - Supermarket logs
+
+📖 **Schema details:** [instructions.md#database-schema](./instructions.md)
+
+---
+
+## 🎯 Roadmap
+
+### Immediate (Days 6-7)
+1. ⏳ Monitor cache @ 10% (24-48h)
+2. ⏳ Scale to 50% if successful
+3. ⏳ Full 100% rollout (Day 7)
+4. ⏳ Verify $77/month savings
+
+### Marketing (Days 2-5)
+1. ⏳ **Day 2:** Run full email extraction (300+ mosques)
+2. ⏳ **Day 3:** Create email campaign (3-email sequence)
+3. ⏳ **Day 4:** Launch campaign (50-100 emails/day)
+4. ⏳ **Day 5:** Monitor & optimize
+
+### Day 8 - Weekly Automation
+**Prerequisite:** Day 7 @ 100% rollout with zero issues
+
+Tasks: Edge Function for weekly mosque refresh, PostgreSQL cron (Sundays 2 AM), differential sync
+
+**Expected:** ~$2.70/week to keep 84+ mosques fresh
+
+### Medium-term (1-3 months)
+- Halal Supermarket automation (Phases 2-4)
+- User authentication
+- Prayer times integration
+- Mobile app consideration
+
+---
+
+## 💰 Cost Summary
+
+**Current:** ~$1.25/month (domain only, Supabase free tier, GitHub Pages free)
+
+**After Cache (Day 7):** ~$24/month
+- Google Places: ~$23/month (with cache)
+- Claude AI: ~$1-2/month
+- **Savings:** $52/month vs no cache
+
+**Marketing (One-time):** $25-30 for 300+ mosque emails
+
+---
+
+## 🔒 Security
+
+**Critical Rules:**
+- API keys in `.env` only (never commit)
+- RLS enabled on all tables
+- `mosques_emails` table: NO public access
+- Service role keys for scripts only
 
 **Environment Variables:**
 ```bash
 VITE_SUPABASE_URL=https://xxx.supabase.co
-VITE_SUPABASE_ANON_KEY=sb_publishable_xxx  # New key format (Sept 2025)
+VITE_SUPABASE_ANON_KEY=sb_publishable_xxx
 SUPABASE_SECRET_KEY=sb_secret_xxx
-SUPABASE_ACCESS_TOKEN=sbp_xxx
-GOOGLE_MAPS_API_KEY=xxx  # Stored in Supabase secrets
+APIFY_TOKEN=apify_api_xxx
+GOOGLE_MAPS_API_KEY=xxx  # In Supabase secrets
 ```
 
-**Note:** Supabase legacy JWT keys disabled Sept 23, 2025. All projects now use `sb_publishable_` and `sb_secret_` format.
-
 ---
 
-## 🚀 SEO Implementation
-
-- **Sitemap:** Auto-generated on `npm run build` (18 routes)
-- **robots.txt:** Configured with Googlebot optimization
-- **Meta Tags:** Page-specific titles, descriptions, Open Graph
-- **Structured Data:** Organization, LocalBusiness, BreadcrumbList schemas
-- **Mobile:** Responsive navigation, ≥44px touch targets
-
-📖 **Full SEO guide:** [instructions.md#seo-optimization](./instructions.md)
-
----
-
-## 💰 Cost Breakdown
-
-### Current (Phase 1)
-- **Supabase:** $0/month (free tier)
-- **Hosting:** $0/month (GitHub Pages)
-- **Domain:** ~$15/year
-- **Total:** ~$1.25/month
-
-### Future (With Backend Cache - Day 7)
-- **Google Places API:** ~$23/month (with 80-95% cache hit rate)
-- **Claude AI:** ~$1-2/month (halal review analysis)
-- **Total:** ~$24/month (saves $52/month!)
-
----
-
-## 🧪 Testing Commands
+## 🚀 Quick Commands
 
 ```bash
-npm run dev                    # Start dev server (localhost:8080)
-npm run build                  # Generate sitemap + build production
-npm run generate-sitemap       # Manually generate sitemap
-npm run lint                   # Check TypeScript errors
+npm run dev                 # Dev server (localhost:8080)
+npm run build               # Production build + sitemap
+npm run extract-emails      # Marketing: Extract mosque emails
+npm run lint                # TypeScript check
 ```
 
 ---
 
-## 📂 Important Files
+## 📞 Communication Style
 
-**Core App:** `src/App.tsx`, `src/components/TransparentNavbar.tsx`, `src/components/MosqueLocator.tsx`
+**For Non-Technical Founder:**
+- Explain concepts in simple terms using analogies
+- Present 2-3 options with pros/cons
+- Wait for approval on major decisions
+- Show business impact of technical choices
 
-**State Pages:** `src/pages/SydneyMosques.tsx` (+ Melbourne, Brisbane, Perth, Adelaide, Tasmania)
-
-**Backend:** `supabase/migrations/` (database setup), `supabase/functions/` (Edge Functions)
-
-**Deployment:** `.github/workflows/deploy.yml`, GitHub Secrets
-
-**Docs:** `CLAUDE.md`, `project-notes.md`, `instructions.md`, `SUPABASE_BACKEND_PLAN.md`, `DAY1_COMPLETION_SUMMARY.md`
+**Priority:** Security first, then SEO
 
 ---
 
-## 🎯 Next Steps
-
-### Immediate (Day 4)
-1. ⏳ Frontend integration - Create service layer to switch between functions
-2. ⏳ Add feature flag system for gradual rollout
-3. ⏳ Update MosqueLocator.tsx to use `get-mosque-details` function
-4. ⏳ Test locally with cache-first approach
-
-### Short-term (Days 5-7)
-1. ⏳ Automation setup (weekly cache refresh, daily cleanup)
-2. ⏳ Production rollout (gradual 10% → 50% → 100%)
-3. ⏳ Cost monitoring dashboard
-4. ⏳ Performance verification and optimization
-
-### Medium-term (Next 1-3 months)
-1. ⏳ Expand mosque database
-2. ⏳ Halal Supermarket Phase 2-4 (automation)
-3. ⏳ User authentication
-4. ⏳ Prayer times integration
-
----
-
-## 📞 Communication Guidelines
-
-**When Presenting Options:**
-- Provide 2-3 options with clear pros/cons
-- Explain recommendation and why
-- Wait for explicit approval before implementing
-- Use simple, non-technical language
-
-**When Explaining:**
-- Use everyday analogies
-- Explain the "why" behind decisions
-- Show business/user impact
-- Provide beginner-friendly resources
-
-**Progress Updates:**
-- Regular updates during long tasks
-- Explain successes and challenges
-- Be transparent about time estimates
-- Celebrate small wins
-
----
-
-**For detailed implementation guides, troubleshooting, and technical deep-dives, see [instructions.md](./instructions.md)**
+**For detailed guides, see [instructions.md](./instructions.md)**

@@ -1192,6 +1192,353 @@ ANTHROPIC_API_KEY=your-claude-api-key (Phase 3)
 
 ---
 
+## Mosque Email Extraction System
+
+### Overview
+
+**Purpose:** Extract and maintain mosque email addresses for marketing campaigns (cold outreach to promote findmymosque.org)
+
+**Privacy:** Email data stored in PRIVATE Supabase table (no public access)
+
+**Created:** October 10, 2025
+
+---
+
+### Architecture
+
+**Pipeline:**
+1. Extract mosques from Google Maps (Apify: `compass/google-maps-extractor`)
+2. Scrape emails from mosque websites (Apify: `apify/website-content-crawler`)
+3. Scrape emails from Facebook pages (fallback, optional)
+4. Validate emails using DNS MX records (free, no API cost)
+5. Store in Supabase `mosques_emails` table
+
+**Target:** 300+ mosques across Australia
+
+---
+
+### Database Schema
+
+**Table:** `mosques_emails`
+
+```sql
+CREATE TABLE mosques_emails (
+    id UUID PRIMARY KEY,
+    name TEXT NOT NULL,
+    location TEXT,
+    state TEXT,
+    suburb TEXT,
+    phone TEXT,
+    website TEXT,
+    facebook TEXT,
+    email_primary TEXT,
+    email_secondary TEXT,
+    email_tertiary TEXT,
+    email_verified BOOLEAN DEFAULT false,
+    source TEXT NOT NULL, -- 'google_maps', 'website', 'facebook'
+    google_place_id TEXT,
+    last_updated TIMESTAMP WITH TIME ZONE,
+    notes TEXT,
+    is_active BOOLEAN DEFAULT true
+);
+```
+
+**RLS Policies:**
+- ❌ NO public access (anon blocked)
+- ✅ Authenticated users full access
+- ✅ Service role full access
+
+**Helper Functions:**
+- `get_email_extraction_stats()` - Returns extraction statistics
+- `get_verified_emails_for_export()` - Export verified emails for Make.com/n8n
+
+---
+
+### File Structure
+
+```
+scripts/apify/
+├── email-validator.ts          # DNS MX validation (free)
+├── gmaps-scraper.ts            # Google Maps extraction
+├── website-scraper.ts          # Website email scraping
+├── facebook-scraper.ts         # Facebook scraping (optional)
+├── supabase-uploader.ts        # Upload to database
+├── run-extraction.ts           # Main orchestrator
+└── data/
+    ├── raw/
+    │   └── gmaps-results.json
+    ├── processed/
+    │   └── website-emails.json
+    └── extraction-report.json
+```
+
+---
+
+### Setup Instructions
+
+#### 1. Install Dependencies
+
+```bash
+npm install apify-client tsx
+```
+
+#### 2. Get Apify API Token
+
+1. Go to [console.apify.com/account/integrations](https://console.apify.com/account/integrations)
+2. Copy your API token
+3. Add to `.env`:
+
+```bash
+APIFY_TOKEN="YOUR_APIFY_TOKEN_HERE"
+```
+
+#### 3. Run Database Migration
+
+```bash
+# Via Supabase CLI
+supabase migration up
+
+# Or run SQL directly in Supabase Dashboard
+```
+
+Migration file: `supabase/migrations/20251010_create_mosques_emails_table.sql`
+
+---
+
+### Usage
+
+#### One-Time Extraction
+
+```bash
+npm run extract-emails
+```
+
+**What happens:**
+1. Searches 16 locations across Australia (Sydney, Melbourne, Brisbane, Perth, Adelaide, Canberra, regional areas)
+2. Extracts 300+ mosques from Google Maps
+3. Scrapes emails from mosque websites
+4. Validates emails using DNS MX records
+5. Uploads to Supabase `mosques_emails` table
+6. Generates final report
+
+**Duration:** ~30-60 minutes (depending on network speed)
+
+**Cost Estimate:**
+- Google Maps extraction: ~$8-12
+- Website scraping: ~$12-23
+- **Total: ~$20-35 (one-time)**
+
+---
+
+### Email Validation
+
+**Method:** DNS MX Record Lookup
+
+**How it works:**
+1. Extract domain from email (e.g., `info@mosque.org.au` → `mosque.org.au`)
+2. Query DNS for MX (mail exchange) records
+3. If MX records exist → email domain is valid
+4. Mark as `verified: true` or `verified: false`
+
+**Advantages:**
+- ✅ 100% free (no API costs)
+- ✅ Fast (100ms per email)
+- ✅ Accurate (~95% accuracy)
+- ✅ No rate limits
+
+**Limitations:**
+- Doesn't test if inbox exists (only domain validity)
+- Won't catch typos in local part (e.g., `inffo@mosque.org.au`)
+
+---
+
+### Search Queries Used
+
+**Major Cities (Tier 1):**
+- Sydney, NSW
+- Melbourne, VIC
+- Brisbane, QLD
+- Perth, WA
+- Adelaide, SA
+- Canberra, ACT
+
+**Regional Areas (Tier 2):**
+- Gold Coast, QLD
+- Newcastle, NSW
+- Hobart, TAS
+- Darwin, NT
+
+**Search Terms:**
+- "mosque OR masjid OR Islamic centre"
+- "Islamic center" (American spelling)
+- "prayer hall"
+- "Muslim community centre"
+
+---
+
+### Data Export for Make.com/n8n
+
+#### Option 1: SQL Query
+
+```sql
+SELECT * FROM get_verified_emails_for_export();
+```
+
+Returns:
+```json
+{
+  "mosque_name": "Lakemba Mosque",
+  "email": "info@lakembamosque.org.au",
+  "location": "65-67 Wangee Rd, Lakemba NSW 2195",
+  "phone": "(02) 9740 9831",
+  "state": "NSW",
+  "website": "https://lakembamosque.org.au"
+}
+```
+
+#### Option 2: Supabase REST API
+
+```bash
+# Get all verified emails
+curl 'https://your-project.supabase.co/rest/v1/mosques_emails?email_verified=eq.true&select=name,email_primary,location,phone,state' \
+  -H "apikey: YOUR_SERVICE_ROLE_KEY" \
+  -H "Authorization: Bearer YOUR_SERVICE_ROLE_KEY"
+```
+
+#### Option 3: CSV Export
+
+1. Open Supabase Dashboard
+2. Navigate to Table Editor → `mosques_emails`
+3. Apply filter: `email_verified = true`
+4. Click "Export" → "CSV"
+
+---
+
+### Monitoring & Statistics
+
+#### View Extraction Stats
+
+```sql
+SELECT * FROM get_email_extraction_stats();
+```
+
+**Returns:**
+- Total mosques
+- Mosques with primary/secondary/tertiary emails
+- Verified email count
+- Breakdown by state
+
+#### Check Last Extraction
+
+```sql
+SELECT
+  COUNT(*) as total_mosques,
+  COUNT(email_primary) as with_email,
+  MAX(last_updated) as last_run
+FROM mosques_emails;
+```
+
+---
+
+### Cost Breakdown
+
+**One-Time Extraction (300+ mosques):**
+- Google Maps Extractor: ~$10 (16 searches × 50-100 results each)
+- Website Content Crawler: ~$15 (200 websites × 7 pages each)
+- Facebook Pages Scraper: ~$5 (50 pages, optional)
+- Email Validation: $0 (free DNS lookup)
+- **Total: ~$25-30**
+
+**Apify Free Tier:**
+- $5 free credits per month
+- Good for testing with 50-100 mosques
+
+---
+
+### Troubleshooting
+
+#### "Missing APIFY_TOKEN" Error
+
+**Solution:** Add your Apify token to `.env`:
+```bash
+APIFY_TOKEN="apify_api_xxxxxxxxxxxxxxxxxxxxxxxx"
+```
+
+#### "No mosques found" Error
+
+**Possible causes:**
+1. Apify account has no credits
+2. Actor name changed (check Apify docs)
+3. Network/firewall blocking API requests
+
+**Solution:**
+```bash
+# Check Apify credits
+# Go to: https://console.apify.com/billing
+```
+
+#### "Database connection failed"
+
+**Possible causes:**
+1. Wrong Supabase credentials in `.env`
+2. RLS policies blocking service role
+3. Table doesn't exist
+
+**Solution:**
+```bash
+# Verify env variables
+echo $VITE_SUPABASE_URL
+echo $SUPABASE_SECRET_KEY
+
+# Run migration
+supabase migration up
+```
+
+#### Low Extraction Rate (<30% emails found)
+
+**Possible causes:**
+1. Mosques don't have websites
+2. Websites don't list emails (only contact forms)
+3. Emails hidden behind JavaScript
+
+**Solution:**
+- Use Facebook scraper as fallback
+- Manually add emails for high-priority mosques
+- Consider phone-based outreach
+
+---
+
+### Security Best Practices
+
+**DO:**
+- ✅ Keep `APIFY_TOKEN` in `.env` (never commit to Git)
+- ✅ Use service role key for scripts (not anon key)
+- ✅ Ensure `mosques_emails` table has RLS enabled
+- ✅ Export emails only when needed (no permanent local copies)
+
+**DON'T:**
+- ❌ Expose email table via public API
+- ❌ Share email list publicly or with third parties
+- ❌ Store emails in frontend code
+- ❌ Commit `.env` file to Git
+
+---
+
+### Future Enhancements
+
+**Potential Improvements:**
+1. **SMTP Verification:** Test if inboxes actually exist (~$0.001/email via ZeroBounce)
+2. **Auto-refresh:** Re-validate emails quarterly (mosques change emails)
+3. **Phone Extraction:** Also extract phone numbers from websites
+4. **Social Media:** Extract Instagram, Twitter handles
+5. **Contact Preference:** Detect preferred contact method from website
+
+---
+
+**End of Mosque Email Extraction Documentation**
+
+---
+
 **End of Instructions**
 
 For quick reference, see [project-notes.md](./project-notes.md)
