@@ -2,13 +2,51 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { MapPin, Phone, ExternalLink, Star, Clock, CheckCircle2 } from 'lucide-react';
-import MosqueLocator from '@/components/MosqueLocator';
+import { MapPin, Phone, ExternalLink, CheckCircle2 } from 'lucide-react';
 import { generateCityPageSchema, injectJsonLdSchema } from '@/lib/json-ld-schema';
-import mosquesData from '@/data/mosques-data.json';
+import { supabase } from '@/integrations/supabase/client';
+
+interface Mosque {
+  id: string;
+  name: string;
+  address: string;
+  phone_number?: string;
+  website?: string;
+  suburb?: string;
+  google_rating?: number;
+  attributes?: string[];
+  opening_hours?: any;
+}
 
 const PerthMosques = () => {
-  const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
+  const [mosques, setMosques] = useState<Mosque[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch mosques from database
+  useEffect(() => {
+    const fetchMosques = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('mosques_cache' as any)
+          .select('*')
+          .eq('state', 'WA')
+          .eq('is_active', true)
+          .order('name');
+
+        if (error) {
+          console.error('Error fetching mosques:', error);
+        } else {
+          setMosques((data as any) || []);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMosques();
+  }, []);
 
   useEffect(() => {
     document.title = "Find Mosques in Perth WA | Quick Directory | No Ads | Free";
@@ -29,182 +67,6 @@ const PerthMosques = () => {
     injectJsonLdSchema(schema);
   }, []);
 
-  const openDirections = (address: string) => {
-    const encodedAddress = encodeURIComponent(address);
-    window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, '_blank');
-  };
-
-  const perthMosques = [
-    {
-      name: "Perth Mosque",
-      address: "427 William St, Perth WA 6000",
-      phone: "(08) 9328 8535",
-      website: "https://perthmosque.org/",
-      region: "CBD & Eastern Suburbs",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Wheelchair accessible", "Parking available", "Historical landmark"]
-    },
-    {
-      name: "Islamic Centre of WA",
-      address: "238 Guildford Rd, Maylands WA 6051",
-      phone: "(08) 9271 3332",
-      website: "https://www.icentrewa.com.au/",
-      region: "CBD & Eastern Suburbs",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Wheelchair accessible", "Women's prayer area", "Community programs"]
-    },
-    {
-      name: "Masjid Al Taqwa Mirrabooka",
-      address: "135 Boyare Ave, Mirrabooka WA 6061",
-      phone: "(08) 9248 8559",
-      website: "https://altaqwa.org.au/",
-      region: "North Perth",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Women's prayer area", "Wudu facilities", "Islamic education"]
-    },
-    {
-      name: "Al Majid Mosque Padbury",
-      address: "64 Walter Padbury Blvd, Padbury WA 6025",
-      phone: "(04) 3412 2237",
-      website: "",
-      region: "North Perth",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Parking available", "Wudu facilities"]
-    },
-    {
-      name: "Canning Suleymaniye Mosque",
-      address: "239 Welshpool Rd, Queens Park WA 6107",
-      phone: "(08) 9451 8699",
-      website: "http://canningmosque.com/",
-      region: "South Perth",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Women's prayer area", "Cultural programs", "Turkish community"]
-    },
-    {
-      name: "Masjid Ibrahim",
-      address: "1526 Leslie St, Southern River WA 6110",
-      phone: "(04) 1278 5919",
-      website: "https://www.masjidibrahim.com.au/",
-      region: "South Perth",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Wheelchair accessible", "Parking available", "Women's prayer area"]
-    },
-    {
-      name: "Rivervale Islamic Centre",
-      address: "9 Rowe Ave, Rivervale WA 6103",
-      phone: "(08) 9362 2210",
-      website: "",
-      region: "CBD & Eastern Suburbs",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Parking available", "Community center"]
-    },
-    {
-      name: "Thornlie Mosque - Australian Islamic College",
-      address: "26 Clancy Way, Thornlie WA 6108",
-      phone: "(08) 9452 3531",
-      website: "https://www.thornliemasjid.com/",
-      region: "South Perth",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Islamic school", "Women's prayer area", "Parking available"]
-    },
-    {
-      name: "High Wycombe Mosque - Madrasa Talimuddin Darul-Iman",
-      address: "126 Sultana Rd W, High Wycombe WA 6057",
-      phone: "(08) 9452 2892",
-      website: "",
-      region: "CBD & Eastern Suburbs",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Islamic education", "Wudu facilities"]
-    },
-    {
-      name: "Canning Vale Musalla",
-      address: "Cnr Eucalyptus Blvd & Waratah Blvd, Canning Vale WA 6155",
-      phone: "(04) 0260 3845",
-      website: "",
-      region: "South Perth",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Friday prayers", "Women's prayer area", "Community centre"]
-    },
-    {
-      name: "Fremantle Mosque",
-      address: "10 Blamey Pl, O'Connor WA 6163",
-      phone: "(04) 2992 6629",
-      website: "https://fremantlemosque.au/",
-      region: "Fremantle Area",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Wheelchair accessible", "Parking available", "Janazah facilities"]
-    },
-    {
-      name: "Ar-Rukun Mosque Rockingham",
-      address: "4 Attwood Way, Rockingham WA 6168",
-      phone: "(08) 9527 8633",
-      website: "https://www.ar-rukunmosque.org.au/",
-      region: "Fremantle Area",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Women's prayer area", "Wudu facilities", "Community programs"]
-    },
-    {
-      name: "Perth City Musallah",
-      address: "Suite 3, 101 Murray St, Perth WA 6000",
-      phone: "(08) 6249 6826",
-      website: "https://www.perthcitymusallah.org.au/",
-      region: "CBD & Eastern Suburbs",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["CBD location", "Business district"]
-    },
-    {
-      name: "Perth Ummah Centre",
-      address: "56 Whitlock Rd, Queens Park WA 6107",
-      phone: "(04) 4457 7484",
-      website: "https://www.icentrewa.com.au/",
-      region: "South Perth",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Women's prayer area", "Community programs"]
-    }
-  ];
-
   return (
     <main className="min-h-screen bg-gray-50 pt-20">
       <div className="container mx-auto px-4 py-8">
@@ -217,86 +79,36 @@ const PerthMosques = () => {
 
         {/* Masjids in WA */}
         <section className="mb-12 bg-white rounded-2xl p-8 border border-gray-200">
-          {/* Region Filter Buttons */}
-          <div className="flex flex-wrap gap-2 mb-8">
-            <Button
-              variant={selectedRegion === null ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedRegion(null)}
-              className={`text-sm rounded-lg ${
-                selectedRegion === null
-                  ? 'bg-teal-600 hover:bg-teal-700 text-white'
-                  : 'border-gray-300 hover:bg-gray-50 text-gray-700'
-              }`}
-            >
-              All Regions
-            </Button>
-            <Button
-              variant={selectedRegion === "North Perth" ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedRegion("North Perth")}
-              className={`text-sm rounded-lg ${
-                selectedRegion === "North Perth"
-                  ? 'bg-teal-600 hover:bg-teal-700 text-white'
-                  : 'border-gray-300 hover:bg-gray-50 text-gray-700'
-              }`}
-            >
-              North Perth
-            </Button>
-            <Button
-              variant={selectedRegion === "South Perth" ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedRegion("South Perth")}
-              className={`text-sm rounded-lg ${
-                selectedRegion === "South Perth"
-                  ? 'bg-teal-600 hover:bg-teal-700 text-white'
-                  : 'border-gray-300 hover:bg-gray-50 text-gray-700'
-              }`}
-            >
-              South Perth
-            </Button>
-            <Button
-              variant={selectedRegion === "CBD & Eastern Suburbs" ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedRegion("CBD & Eastern Suburbs")}
-              className={`text-sm rounded-lg ${
-                selectedRegion === "CBD & Eastern Suburbs"
-                  ? 'bg-teal-600 hover:bg-teal-700 text-white'
-                  : 'border-gray-300 hover:bg-gray-50 text-gray-700'
-              }`}
-            >
-              CBD & Eastern Suburbs
-            </Button>
-            <Button
-              variant={selectedRegion === "Fremantle Area" ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedRegion("Fremantle Area")}
-              className={`text-sm rounded-lg ${
-                selectedRegion === "Fremantle Area"
-                  ? 'bg-teal-600 hover:bg-teal-700 text-white'
-                  : 'border-gray-300 hover:bg-gray-50 text-gray-700'
-              }`}
-            >
-              Fremantle Area
-            </Button>
-          </div>
+          {loading ? (
+            <div className="text-center py-12">
+              <p className="text-gray-600">Loading mosques...</p>
+            </div>
+          ) : (
+            <>
+              <div className="mb-6">
+                <p className="text-lg font-medium text-gray-900">
+                  {mosques.length} Mosques in Western Australia
+                </p>
+              </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {perthMosques.filter(mosque => selectedRegion === null || mosque.region === selectedRegion).map((mosque, index) => (
-              <Card key={index} className="rounded-lg border border-gray-200 hover:shadow-md transition-all duration-200 bg-white">
-                <CardContent className="p-5">
-                  <div className="space-y-3">
-                    <h3 className="text-lg font-serif font-medium text-gray-900">{mosque.name}</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {mosques.map((mosque) => (
+                  <Card key={mosque.id} className="rounded-lg border border-gray-200 hover:shadow-md transition-all duration-200 bg-white">
+                    <CardContent className="p-5">
+                      <div className="space-y-3">
+                        <h3 className="text-lg font-serif font-medium text-gray-900">{mosque.name}</h3>
 
-                    <div className="space-y-2">
-                      <div className="flex items-start text-gray-600">
-                        <MapPin className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0 text-teal-600" />
-                        <span className="text-sm leading-relaxed">{mosque.address}</span>
-                      </div>
-                      <div className="flex items-center text-gray-600">
-                        <Phone className="w-4 h-4 mr-2 flex-shrink-0 text-teal-600" />
-                        <a href={`tel:${mosque.phone}`} className="text-sm hover:text-teal-600 transition-colors">{mosque.phone}</a>
-                      </div>
+                        <div className="space-y-2">
+                          <div className="flex items-start text-gray-600">
+                            <MapPin className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0 text-teal-600" />
+                            <span className="text-sm leading-relaxed">{mosque.address}</span>
+                          </div>
+                          {mosque.phone_number && (
+                            <div className="flex items-center text-gray-600">
+                              <Phone className="w-4 h-4 mr-2 flex-shrink-0 text-teal-600" />
+                              <a href={`tel:${mosque.phone_number}`} className="text-sm hover:text-teal-600 transition-colors">{mosque.phone_number}</a>
+                            </div>
+                          )}
 
                       {mosque.website && (
                         <div className="flex items-center text-gray-600">
@@ -325,44 +137,46 @@ const PerthMosques = () => {
                       )}
                     </div>
 
-                    {/* Attributes */}
-                    {mosque.attributes && mosque.attributes.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5">
-                        {mosque.attributes.slice(0, 3).map((attr: string, idx: number) => (
-                          <span key={idx} className="inline-flex items-center gap-1 px-2 py-1 bg-teal-50 text-teal-700 rounded-md text-xs">
-                            <CheckCircle2 className="w-3 h-3" />
-                            {attr}
-                          </span>
-                        ))}
-                      </div>
-                    )}
+                        {/* Attributes */}
+                        {mosque.attributes && Array.isArray(mosque.attributes) && mosque.attributes.length > 0 && (
+                          <div className="flex flex-wrap gap-1.5">
+                            {mosque.attributes.slice(0, 3).map((attr: string, idx: number) => (
+                              <span key={idx} className="inline-flex items-center gap-1 px-2 py-1 bg-teal-50 text-teal-700 rounded-md text-xs">
+                                <CheckCircle2 className="w-3 h-3" />
+                                {attr}
+                              </span>
+                            ))}
+                          </div>
+                        )}
 
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mosque.address)}`;
-                        try {
-                          if (window.parent && window.parent !== window) {
-                            window.parent.open(mapsUrl, '_blank');
-                          } else {
-                            window.open(mapsUrl, '_blank');
-                          }
-                        } catch (error) {
-                          window.location.href = mapsUrl;
-                        }
-                      }}
-                      className="w-full text-sm bg-teal-600 hover:bg-teal-700 text-white rounded-lg border-0"
-                    >
-                      <MapPin className="w-4 h-4 mr-2" />
-                      Get Directions
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mosque.address)}`;
+                            try {
+                              if (window.parent && window.parent !== window) {
+                                window.parent.open(mapsUrl, '_blank');
+                              } else {
+                                window.open(mapsUrl, '_blank');
+                              }
+                            } catch (error) {
+                              window.location.href = mapsUrl;
+                            }
+                          }}
+                          className="w-full text-sm bg-teal-600 hover:bg-teal-700 text-white rounded-lg border-0"
+                        >
+                          <MapPin className="w-4 h-4 mr-2" />
+                          Get Directions
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </>
+          )}
         </section>
 
         {/* Why Choose Our Directory */}

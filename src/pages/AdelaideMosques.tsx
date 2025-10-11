@@ -2,13 +2,52 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { MapPin, Phone, ExternalLink, Star, Clock, CheckCircle2 } from 'lucide-react';
-import MosqueLocator from '@/components/MosqueLocator';
+import { MapPin, Phone, ExternalLink, CheckCircle2 } from 'lucide-react';
 import { generateCityPageSchema, injectJsonLdSchema } from '@/lib/json-ld-schema';
-import mosquesData from '@/data/mosques-data.json';
+import { supabase } from '@/integrations/supabase/client';
+
+interface Mosque {
+  id: string;
+  name: string;
+  address: string;
+  phone_number?: string;
+  website?: string;
+  suburb?: string;
+  google_rating?: number;
+  attributes?: string[];
+  opening_hours?: any;
+}
 
 const AdelaideMosques = () => {
-  const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
+  const [mosques, setMosques] = useState<Mosque[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch mosques from database
+  useEffect(() => {
+    const fetchMosques = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('mosques_cache' as any)
+          .select('*')
+          .eq('state', 'SA')
+          .eq('is_active', true)
+          .order('name');
+
+        if (error) {
+          console.error('Error fetching mosques:', error);
+        } else {
+          setMosques((data as any) || []);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMosques();
+  }, []);
+
   useEffect(() => {
     document.title = "Find Mosques in Adelaide SA | Quick Directory | No Ads | Free";
 
@@ -28,206 +67,6 @@ const AdelaideMosques = () => {
     injectJsonLdSchema(schema);
   }, []);
 
-  const openDirections = (address: string) => {
-    const encodedAddress = encodeURIComponent(address);
-    window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, '_blank');
-  };
-
-  const adelaideMosques = [
-    {
-      name: "Adelaide City Mosque",
-      address: "20-28 Little Gilbert Street, Adelaide SA 5000",
-      phone: "(08) 8231 6443",
-      website: "https://adelaidecitymosque.org.au/",
-      region: "CBD & Eastern Suburbs",
-      rating: null,
-      verified: false,
-      openingHours: [],
-      currentlyOpen: null,
-      attributes: ["Historic", "Oldest mosque in Australia", "Wheelchair accessible"]
-    },
-    {
-      name: "Masjid Omar Ibn ul-Khattab (Marion Mosque)",
-      address: "658 Marion Road, Park Holme SA 5043",
-      phone: "(08) 8374 2280",
-      website: "https://islamicsocietysa.org.au/",
-      region: "South Adelaide",
-      rating: null,
-      verified: false,
-      openingHours: [],
-      currentlyOpen: null,
-      attributes: ["Islamic Society HQ", "Wheelchair accessible"]
-    },
-    {
-      name: "Masjid Al-Khalil (Islamic Arabic Centre)",
-      address: "596 Torrens Road, Woodville North SA 5012",
-      phone: "(08) 8268 1944",
-      website: "",
-      region: "Western Suburbs",
-      rating: null,
-      verified: false,
-      openingHours: [],
-      currentlyOpen: null,
-      attributes: ["Arabic Centre", "Funeral Services", "Islamic Education"]
-    },
-    {
-      name: "Masjid Abu Bakr As-Siddiq (Wandana Masjid)",
-      address: "52-56 Wandana Avenue, Gilles Plains SA 5086",
-      phone: "(08) 8396 0791",
-      website: "",
-      region: "North Adelaide",
-      rating: null,
-      verified: false,
-      openingHours: [],
-      currentlyOpen: null,
-      attributes: ["Parking available"]
-    },
-    {
-      name: "Mahmood Mosque",
-      address: "6-8 Toogood Avenue, Beverley SA 5009",
-      phone: "(08) 7225 1459",
-      website: "https://www.mahmoodmosque.org.au/",
-      region: "Western Suburbs",
-      rating: null,
-      verified: false,
-      openingHours: [],
-      currentlyOpen: null,
-      attributes: ["Ahmadiyya Muslim Community", "Largest mosque in Adelaide"]
-    },
-    {
-      name: "Parafield Gardens Masjid (ICMG)",
-      address: "92 Shepherdson Road, Parafield Gardens SA 5107",
-      phone: "(08) 8182 5151",
-      website: "https://www.icmg.org.au/branches/adelaide/",
-      region: "North Adelaide",
-      rating: null,
-      verified: false,
-      openingHours: [],
-      currentlyOpen: null,
-      attributes: ["Turkish Mosque", "Sunday School"]
-    },
-    {
-      name: "Adelaide Turkish Islamic and Cultural Centre",
-      address: "714 Main North Road, Dry Creek SA 5094",
-      phone: "(08) 8281 4639",
-      website: "",
-      region: "North Adelaide",
-      rating: null,
-      verified: false,
-      openingHours: [],
-      currentlyOpen: null,
-      attributes: ["Turkish Community", "Cultural Centre"]
-    },
-    {
-      name: "Bosniaks Masjid",
-      address: "1 Frederick Road, Royal Park SA 5014",
-      phone: "0403 298 687",
-      website: "https://bosniaksmasjidadelaide.com/",
-      region: "Western Suburbs",
-      rating: null,
-      verified: false,
-      openingHours: [],
-      currentlyOpen: null,
-      attributes: ["Bosnian Community"]
-    },
-    {
-      name: "Maryam Masjid",
-      address: "26 Clarke Street, Wayville SA 5034",
-      phone: "",
-      website: "https://maryammasjid.org.au/",
-      region: "CBD & Eastern Suburbs",
-      rating: null,
-      verified: false,
-      openingHours: [],
-      currentlyOpen: null,
-      attributes: ["Women's Mosque", "Near CBD"]
-    },
-    {
-      name: "Noor Mosque (Ahmadiyya Muslim Association)",
-      address: "28-30 Hillier Road, Morphett Vale SA 5162",
-      phone: "(08) 7288 3354",
-      website: "https://www.ahmadiyya.org.au/",
-      region: "South Adelaide",
-      rating: null,
-      verified: false,
-      openingHours: [],
-      currentlyOpen: null,
-      attributes: ["Ahmadiyya Muslim Community"]
-    },
-    {
-      name: "Islamic Information Centre of SA (IICSA)",
-      address: "1/53 Henley Beach Road, Mile End SA 5031",
-      phone: "(08) 7226 6268",
-      website: "https://iicsa.com.au/",
-      region: "Western Suburbs",
-      rating: null,
-      verified: false,
-      openingHours: [],
-      currentlyOpen: null,
-      attributes: ["Islamic Centre", "Arabic School", "Youth Programs"]
-    },
-    {
-      name: "Elizabeth Grove Masjid",
-      address: "139-141 Hogarth Road, Elizabeth Grove SA 5112",
-      phone: "(08) 8374 2280",
-      website: "https://islamicsocietysa.org.au/",
-      region: "North Adelaide",
-      rating: null,
-      verified: false,
-      openingHours: [],
-      currentlyOpen: null,
-      attributes: ["Islamic Society of SA"]
-    },
-    {
-      name: "Murray Bridge Masjid",
-      address: "85 Old Swanport Road, Murray Bridge SA 5253",
-      phone: "(08) 8374 2280",
-      website: "https://islamicsocietysa.org.au/",
-      region: "North Adelaide",
-      rating: null,
-      verified: false,
-      openingHours: [],
-      currentlyOpen: null,
-      attributes: ["Islamic Society of SA", "Regional"]
-    },
-    {
-      name: "Mount Gambier Masjid",
-      address: "9A Cedar Street, Mount Gambier SA 5290",
-      phone: "(08) 8374 2280",
-      website: "https://islamicsocietysa.org.au/",
-      region: "South Adelaide",
-      rating: null,
-      verified: false,
-      openingHours: [],
-      currentlyOpen: null,
-      attributes: ["Islamic Society of SA", "Regional"]
-    },
-    {
-      name: "Renmark Masjid",
-      address: "230 Fourteenth Street, Renmark SA 5341",
-      phone: "(08) 8586 1229",
-      website: "",
-      region: "North Adelaide",
-      rating: null,
-      verified: false,
-      openingHours: [],
-      currentlyOpen: null,
-      attributes: ["Regional"]
-    },
-    {
-      name: "Whyalla Islamic Centre & Masjid",
-      address: "5 Morris Crescent, Whyalla Norrie SA 5608",
-      phone: "",
-      website: "",
-      region: "North Adelaide",
-      rating: null,
-      verified: false,
-      openingHours: [],
-      currentlyOpen: null,
-      attributes: ["Regional"]
-    }
-  ];
-
   return (
     <main className="min-h-screen bg-gray-50 pt-20">
       <div className="container mx-auto px-4 py-8">
@@ -240,86 +79,36 @@ const AdelaideMosques = () => {
 
         {/* Masjids in SA */}
         <section className="mb-12 bg-white rounded-2xl p-8 border border-gray-200">
-          {/* Region Filter Buttons */}
-          <div className="flex flex-wrap gap-2 mb-8">
-            <Button
-              variant={selectedRegion === null ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedRegion(null)}
-              className={`text-sm rounded-lg ${
-                selectedRegion === null
-                  ? 'bg-teal-600 hover:bg-teal-700 text-white'
-                  : 'border-gray-300 hover:bg-gray-50 text-gray-700'
-              }`}
-            >
-              All Regions
-            </Button>
-            <Button
-              variant={selectedRegion === "North Adelaide" ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedRegion("North Adelaide")}
-              className={`text-sm rounded-lg ${
-                selectedRegion === "North Adelaide"
-                  ? 'bg-teal-600 hover:bg-teal-700 text-white'
-                  : 'border-gray-300 hover:bg-gray-50 text-gray-700'
-              }`}
-            >
-              North Adelaide
-            </Button>
-            <Button
-              variant={selectedRegion === "South Adelaide" ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedRegion("South Adelaide")}
-              className={`text-sm rounded-lg ${
-                selectedRegion === "South Adelaide"
-                  ? 'bg-teal-600 hover:bg-teal-700 text-white'
-                  : 'border-gray-300 hover:bg-gray-50 text-gray-700'
-              }`}
-            >
-              South Adelaide
-            </Button>
-            <Button
-              variant={selectedRegion === "CBD & Eastern Suburbs" ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedRegion("CBD & Eastern Suburbs")}
-              className={`text-sm rounded-lg ${
-                selectedRegion === "CBD & Eastern Suburbs"
-                  ? 'bg-teal-600 hover:bg-teal-700 text-white'
-                  : 'border-gray-300 hover:bg-gray-50 text-gray-700'
-              }`}
-            >
-              CBD & Eastern Suburbs
-            </Button>
-            <Button
-              variant={selectedRegion === "Western Suburbs" ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedRegion("Western Suburbs")}
-              className={`text-sm rounded-lg ${
-                selectedRegion === "Western Suburbs"
-                  ? 'bg-teal-600 hover:bg-teal-700 text-white'
-                  : 'border-gray-300 hover:bg-gray-50 text-gray-700'
-              }`}
-            >
-              Western Suburbs
-            </Button>
-          </div>
+          {loading ? (
+            <div className="text-center py-12">
+              <p className="text-gray-600">Loading mosques...</p>
+            </div>
+          ) : (
+            <>
+              <div className="mb-6">
+                <p className="text-lg font-medium text-gray-900">
+                  {mosques.length} Mosques in South Australia
+                </p>
+              </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {adelaideMosques.filter(mosque => selectedRegion === null || mosque.region === selectedRegion).map((mosque, index) => (
-              <Card key={index} className="rounded-lg border border-gray-200 hover:shadow-md transition-all duration-200 bg-white">
-                <CardContent className="p-5">
-                  <div className="space-y-3">
-                    <h3 className="text-lg font-serif font-medium text-gray-900">{mosque.name}</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {mosques.map((mosque) => (
+                  <Card key={mosque.id} className="rounded-lg border border-gray-200 hover:shadow-md transition-all duration-200 bg-white">
+                    <CardContent className="p-5">
+                      <div className="space-y-3">
+                        <h3 className="text-lg font-serif font-medium text-gray-900">{mosque.name}</h3>
 
-                    <div className="space-y-2">
-                      <div className="flex items-start text-gray-600">
-                        <MapPin className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0 text-teal-600" />
-                        <span className="text-sm leading-relaxed">{mosque.address}</span>
-                      </div>
-                      <div className="flex items-center text-gray-600">
-                        <Phone className="w-4 h-4 mr-2 flex-shrink-0 text-teal-600" />
-                        <a href={`tel:${mosque.phone}`} className="text-sm hover:text-teal-600 transition-colors">{mosque.phone}</a>
-                      </div>
+                        <div className="space-y-2">
+                          <div className="flex items-start text-gray-600">
+                            <MapPin className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0 text-teal-600" />
+                            <span className="text-sm leading-relaxed">{mosque.address}</span>
+                          </div>
+                          {mosque.phone_number && (
+                            <div className="flex items-center text-gray-600">
+                              <Phone className="w-4 h-4 mr-2 flex-shrink-0 text-teal-600" />
+                              <a href={`tel:${mosque.phone_number}`} className="text-sm hover:text-teal-600 transition-colors">{mosque.phone_number}</a>
+                            </div>
+                          )}
 
                       {mosque.website && (
                         <div className="flex items-center text-gray-600">
@@ -348,44 +137,46 @@ const AdelaideMosques = () => {
                       )}
                     </div>
 
-                    {/* Attributes */}
-                    {mosque.attributes && mosque.attributes.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5">
-                        {mosque.attributes.slice(0, 3).map((attr: string, idx: number) => (
-                          <span key={idx} className="inline-flex items-center gap-1 px-2 py-1 bg-teal-50 text-teal-700 rounded-md text-xs">
-                            <CheckCircle2 className="w-3 h-3" />
-                            {attr}
-                          </span>
-                        ))}
-                      </div>
-                    )}
+                        {/* Attributes */}
+                        {mosque.attributes && Array.isArray(mosque.attributes) && mosque.attributes.length > 0 && (
+                          <div className="flex flex-wrap gap-1.5">
+                            {mosque.attributes.slice(0, 3).map((attr: string, idx: number) => (
+                              <span key={idx} className="inline-flex items-center gap-1 px-2 py-1 bg-teal-50 text-teal-700 rounded-md text-xs">
+                                <CheckCircle2 className="w-3 h-3" />
+                                {attr}
+                              </span>
+                            ))}
+                          </div>
+                        )}
 
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mosque.address)}`;
-                        try {
-                          if (window.parent && window.parent !== window) {
-                            window.parent.open(mapsUrl, '_blank');
-                          } else {
-                            window.open(mapsUrl, '_blank');
-                          }
-                        } catch (error) {
-                          window.location.href = mapsUrl;
-                        }
-                      }}
-                      className="w-full text-sm bg-teal-600 hover:bg-teal-700 text-white rounded-lg border-0"
-                    >
-                      <MapPin className="w-4 h-4 mr-2" />
-                      Get Directions
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mosque.address)}`;
+                            try {
+                              if (window.parent && window.parent !== window) {
+                                window.parent.open(mapsUrl, '_blank');
+                              } else {
+                                window.open(mapsUrl, '_blank');
+                              }
+                            } catch (error) {
+                              window.location.href = mapsUrl;
+                            }
+                          }}
+                          className="w-full text-sm bg-teal-600 hover:bg-teal-700 text-white rounded-lg border-0"
+                        >
+                          <MapPin className="w-4 h-4 mr-2" />
+                          Get Directions
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </>
+          )}
         </section>
 
         {/* Why Choose Our Directory */}

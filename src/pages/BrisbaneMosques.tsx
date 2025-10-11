@@ -2,13 +2,52 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { MapPin, Phone, ExternalLink, Star, Clock, CheckCircle2 } from 'lucide-react';
-import MosqueLocator from '@/components/MosqueLocator';
+import { MapPin, Phone, ExternalLink, CheckCircle2 } from 'lucide-react';
 import { generateCityPageSchema, injectJsonLdSchema } from '@/lib/json-ld-schema';
-import mosquesData from '@/data/mosques-data.json';
+import { supabase } from '@/integrations/supabase/client';
+
+interface Mosque {
+  id: string;
+  name: string;
+  address: string;
+  phone_number?: string;
+  website?: string;
+  suburb?: string;
+  google_rating?: number;
+  attributes?: string[];
+  opening_hours?: any;
+}
 
 const BrisbaneMosques = () => {
-  const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
+  const [mosques, setMosques] = useState<Mosque[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch mosques from database
+  useEffect(() => {
+    const fetchMosques = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('mosques_cache' as any)
+          .select('*')
+          .eq('state', 'QLD')
+          .eq('is_active', true)
+          .order('name');
+
+        if (error) {
+          console.error('Error fetching mosques:', error);
+        } else {
+          setMosques((data as any) || []);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMosques();
+  }, []);
+
   useEffect(() => {
     document.title = "Find Mosques in Brisbane QLD | Quick Directory | No Ads | Free";
 
@@ -28,170 +67,6 @@ const BrisbaneMosques = () => {
     injectJsonLdSchema(schema);
   }, []);
 
-  const openDirections = (address: string) => {
-    const encodedAddress = encodeURIComponent(address);
-    window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, '_blank');
-  };
-
-  const brisbaneMosques = [
-    {
-      name: "Islamic Council of Queensland (Kuraby)",
-      address: "83 Kuraby Rd, Kuraby QLD 4112",
-      phone: "(07) 3341 4122",
-      website: "https://www.icq.org.au/",
-      region: "South Brisbane",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Wheelchair accessible", "Women's prayer area", "Wudu facilities"]
-    },
-    {
-      name: "Holland Park Mosque",
-      address: "309 Nursery Rd, Holland Park QLD 4121",
-      phone: "(07) 3847 4499",
-      website: "https://www.hollandparkmosque.org.au/",
-      region: "South Brisbane",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Parking available", "Islamic school", "Community events", "Historic"]
-    },
-    {
-      name: "Algester Mosque",
-      address: "48 Learoyd Rd, Algester QLD 4115",
-      phone: "(07) 3274 8233",
-      website: "https://www.isoa.com.au/",
-      region: "South Brisbane",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Family friendly", "Halal shop nearby"]
-    },
-    {
-      name: "Darra Mosque",
-      address: "225 Douglas St, Oxley QLD 4075",
-      phone: "(07) 3375 1792",
-      website: "http://isd.org.au/",
-      region: "West Brisbane",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Community center", "Youth programs"]
-    },
-    {
-      name: "Zillmere Mosque",
-      address: "48 Zillmere Rd, Zillmere QLD 4034",
-      phone: "(07) 3263 8288",
-      website: "https://www.facebook.com/ZillmereMosque/",
-      region: "North Brisbane",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Wheelchair accessible", "Parking available"]
-    },
-    {
-      name: "Carindale Islamic Centre",
-      address: "1157 Creek Rd, Carindale QLD 4152",
-      phone: "(07) 3843 4500",
-      website: "https://www.facebook.com/CarindaleIslamicCentre/",
-      region: "CBD & Eastern Suburbs",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Women's prayer area", "Islamic library", "Bookshop"]
-    },
-    {
-      name: "Masjid Taqwa (Bald Hills)",
-      address: "117 Telegraph Road, Bald Hills QLD 4036",
-      phone: "(07) 3431 4770",
-      website: "https://masjidtaqwa.org.au/",
-      region: "North Brisbane",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Large capacity", "Parking available", "Women's prayer area"]
-    },
-    {
-      name: "Brisbane Islamic Centre",
-      address: "161 Underwood Road, Eight Mile Plains QLD 4113",
-      phone: "(04) 6882 5786",
-      website: "https://bic.org.au/",
-      region: "South Brisbane",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Largest Islamic Centre in Australia", "Community programs", "Aged care"]
-    },
-    {
-      name: "Masjid As-Sunnah Lutwyche",
-      address: "33 Fuller Street, Lutwyche QLD 4030",
-      phone: "(04) 6977 6996",
-      website: "https://www.masjidlutwyche.org.au/",
-      region: "North Brisbane",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Peaceful location"]
-    },
-    {
-      name: "United Muslims of Brisbane (UMB)",
-      address: "8 Blackwood Road, Logan Central QLD 4114",
-      phone: "(04) 0197 2443",
-      website: "https://umb.org.au/",
-      region: "South Brisbane",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Near train station", "Community programs"]
-    },
-    {
-      name: "Rochedale Mosque (Bosnian Islamic Centre)",
-      address: "2674 Logan Road, Eight Mile Plains QLD 4113",
-      phone: "(07) 3841 2504",
-      website: "http://www.bicb.org.au",
-      region: "South Brisbane",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Bosnian community", "Two Friday prayer sessions"]
-    },
-    {
-      name: "Islamic Shia Council of Queensland",
-      address: "50 Parramatta Road, Underwood QLD 4119",
-      phone: "(04) 1038 8033",
-      website: "https://iscq.org/",
-      region: "South Brisbane",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Shia community"]
-    },
-    {
-      name: "Masjid Al Farooq (Kuraby Mosque)",
-      address: "1408 Beenleigh Road, Kuraby QLD 4112",
-      phone: "1300 133 956",
-      website: "https://www.kurabymosque.org.au/",
-      region: "South Brisbane",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Large facility", "Community programs"]
-    }
-  ];
-
   return (
     <main className="min-h-screen bg-gray-50 pt-20">
       <div className="container mx-auto px-4 py-8">
@@ -204,86 +79,36 @@ const BrisbaneMosques = () => {
 
         {/* Masjids in Queensland */}
         <section className="mb-12 bg-white rounded-2xl p-8 border border-gray-200">
-          {/* Region Filter Buttons */}
-          <div className="flex flex-wrap gap-2 mb-8">
-            <Button
-              variant={selectedRegion === null ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedRegion(null)}
-              className={`text-sm rounded-lg ${
-                selectedRegion === null
-                  ? 'bg-teal-600 hover:bg-teal-700 text-white'
-                  : 'border-gray-300 hover:bg-gray-50 text-gray-700'
-              }`}
-            >
-              All Regions
-            </Button>
-            <Button
-              variant={selectedRegion === "West Brisbane" ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedRegion("West Brisbane")}
-              className={`text-sm rounded-lg ${
-                selectedRegion === "West Brisbane"
-                  ? 'bg-teal-600 hover:bg-teal-700 text-white'
-                  : 'border-gray-300 hover:bg-gray-50 text-gray-700'
-              }`}
-            >
-              West
-            </Button>
-            <Button
-              variant={selectedRegion === "North Brisbane" ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedRegion("North Brisbane")}
-              className={`text-sm rounded-lg ${
-                selectedRegion === "North Brisbane"
-                  ? 'bg-teal-600 hover:bg-teal-700 text-white'
-                  : 'border-gray-300 hover:bg-gray-50 text-gray-700'
-              }`}
-            >
-              North
-            </Button>
-            <Button
-              variant={selectedRegion === "South Brisbane" ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedRegion("South Brisbane")}
-              className={`text-sm rounded-lg ${
-                selectedRegion === "South Brisbane"
-                  ? 'bg-teal-600 hover:bg-teal-700 text-white'
-                  : 'border-gray-300 hover:bg-gray-50 text-gray-700'
-              }`}
-            >
-              South
-            </Button>
-            <Button
-              variant={selectedRegion === "CBD & Eastern Suburbs" ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedRegion("CBD & Eastern Suburbs")}
-              className={`text-sm rounded-lg ${
-                selectedRegion === "CBD & Eastern Suburbs"
-                  ? 'bg-teal-600 hover:bg-teal-700 text-white'
-                  : 'border-gray-300 hover:bg-gray-50 text-gray-700'
-              }`}
-            >
-              CBD & Eastern Suburbs
-            </Button>
-          </div>
+          {loading ? (
+            <div className="text-center py-12">
+              <p className="text-gray-600">Loading mosques...</p>
+            </div>
+          ) : (
+            <>
+              <div className="mb-6">
+                <p className="text-lg font-medium text-gray-900">
+                  {mosques.length} Mosques in Queensland
+                </p>
+              </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {brisbaneMosques.filter(mosque => selectedRegion === null || mosque.region === selectedRegion).map((mosque, index) => (
-              <Card key={index} className="rounded-lg border border-gray-200 hover:shadow-md transition-all duration-200 bg-white">
-                <CardContent className="p-5">
-                  <div className="space-y-3">
-                    <h3 className="text-lg font-serif font-medium text-gray-900">{mosque.name}</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {mosques.map((mosque) => (
+                  <Card key={mosque.id} className="rounded-lg border border-gray-200 hover:shadow-md transition-all duration-200 bg-white">
+                    <CardContent className="p-5">
+                      <div className="space-y-3">
+                        <h3 className="text-lg font-serif font-medium text-gray-900">{mosque.name}</h3>
 
-                    <div className="space-y-2">
-                      <div className="flex items-start text-gray-600">
-                        <MapPin className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0 text-teal-600" />
-                        <span className="text-sm leading-relaxed">{mosque.address}</span>
-                      </div>
-                      <div className="flex items-center text-gray-600">
-                        <Phone className="w-4 h-4 mr-2 flex-shrink-0 text-teal-600" />
-                        <a href={`tel:${mosque.phone}`} className="text-sm hover:text-teal-600 transition-colors">{mosque.phone}</a>
-                      </div>
+                        <div className="space-y-2">
+                          <div className="flex items-start text-gray-600">
+                            <MapPin className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0 text-teal-600" />
+                            <span className="text-sm leading-relaxed">{mosque.address}</span>
+                          </div>
+                          {mosque.phone_number && (
+                            <div className="flex items-center text-gray-600">
+                              <Phone className="w-4 h-4 mr-2 flex-shrink-0 text-teal-600" />
+                              <a href={`tel:${mosque.phone_number}`} className="text-sm hover:text-teal-600 transition-colors">{mosque.phone_number}</a>
+                            </div>
+                          )}
 
                       {mosque.website && (
                         <div className="flex items-center text-gray-600">
@@ -312,44 +137,46 @@ const BrisbaneMosques = () => {
                       )}
                     </div>
 
-                    {/* Attributes */}
-                    {mosque.attributes && mosque.attributes.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5">
-                        {mosque.attributes.slice(0, 3).map((attr: string, idx: number) => (
-                          <span key={idx} className="inline-flex items-center gap-1 px-2 py-1 bg-teal-50 text-teal-700 rounded-md text-xs">
-                            <CheckCircle2 className="w-3 h-3" />
-                            {attr}
-                          </span>
-                        ))}
-                      </div>
-                    )}
+                        {/* Attributes */}
+                        {mosque.attributes && Array.isArray(mosque.attributes) && mosque.attributes.length > 0 && (
+                          <div className="flex flex-wrap gap-1.5">
+                            {mosque.attributes.slice(0, 3).map((attr: string, idx: number) => (
+                              <span key={idx} className="inline-flex items-center gap-1 px-2 py-1 bg-teal-50 text-teal-700 rounded-md text-xs">
+                                <CheckCircle2 className="w-3 h-3" />
+                                {attr}
+                              </span>
+                            ))}
+                          </div>
+                        )}
 
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mosque.address)}`;
-                        try {
-                          if (window.parent && window.parent !== window) {
-                            window.parent.open(mapsUrl, '_blank');
-                          } else {
-                            window.open(mapsUrl, '_blank');
-                          }
-                        } catch (error) {
-                          window.location.href = mapsUrl;
-                        }
-                      }}
-                      className="w-full text-sm bg-teal-600 hover:bg-teal-700 text-white rounded-lg border-0"
-                    >
-                      <MapPin className="w-4 h-4 mr-2" />
-                      Get Directions
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mosque.address)}`;
+                            try {
+                              if (window.parent && window.parent !== window) {
+                                window.parent.open(mapsUrl, '_blank');
+                              } else {
+                                window.open(mapsUrl, '_blank');
+                              }
+                            } catch (error) {
+                              window.location.href = mapsUrl;
+                            }
+                          }}
+                          className="w-full text-sm bg-teal-600 hover:bg-teal-700 text-white rounded-lg border-0"
+                        >
+                          <MapPin className="w-4 h-4 mr-2" />
+                          Get Directions
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </>
+          )}
         </section>
 
         {/* Why Choose Our Directory */}

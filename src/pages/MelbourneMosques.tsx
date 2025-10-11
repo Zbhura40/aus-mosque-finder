@@ -2,13 +2,52 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { MapPin, Phone, ExternalLink, Star, Clock, CheckCircle2 } from 'lucide-react';
-import MosqueLocator from '@/components/MosqueLocator';
+import { MapPin, Phone, ExternalLink, CheckCircle2 } from 'lucide-react';
 import { generateCityPageSchema, injectJsonLdSchema } from '@/lib/json-ld-schema';
-import mosquesData from '@/data/mosques-data.json';
+import { supabase } from '@/integrations/supabase/client';
+
+interface Mosque {
+  id: string;
+  name: string;
+  address: string;
+  phone_number?: string;
+  website?: string;
+  suburb?: string;
+  google_rating?: number;
+  attributes?: string[];
+  opening_hours?: any;
+}
 
 const MelbourneMosques = () => {
-  const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
+  const [mosques, setMosques] = useState<Mosque[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch mosques from database
+  useEffect(() => {
+    const fetchMosques = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('mosques_cache' as any)
+          .select('*')
+          .eq('state', 'VIC')
+          .eq('is_active', true)
+          .order('name');
+
+        if (error) {
+          console.error('Error fetching mosques:', error);
+        } else {
+          setMosques((data as any) || []);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMosques();
+  }, []);
+
   useEffect(() => {
     document.title = "Find Mosques in Melbourne VIC | Quick Directory | No Ads | Free";
 
@@ -28,246 +67,6 @@ const MelbourneMosques = () => {
     injectJsonLdSchema(schema);
   }, []);
 
-  const openDirections = (address: string) => {
-    const encodedAddress = encodeURIComponent(address);
-    window.open(`https://www.google.com/maps/search/?api=1&query=${encodedAddress}`, '_blank');
-  };
-
-  const melbourneMosques = [
-    // North Melbourne
-    {
-      name: "Preston Mosque (Islamic Society of Victoria)",
-      address: "90 Cramer Street, Preston VIC 3072",
-      phone: "(03) 9470 2424",
-      website: "https://isv.org.au",
-      region: "North Melbourne",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Wheelchair accessible", "Parking available", "Wudu facilities"]
-    },
-    {
-      name: "Coburg Islamic Centre (Fatih Mosque)",
-      address: "31 Nicholson Street, Coburg VIC 3058",
-      phone: "(03) 9386 5324",
-      website: "https://cic.org.au",
-      region: "North Melbourne",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Wudu facilities", "Women's prayer area"]
-    },
-    {
-      name: "Brunswick Mosque (ICMG)",
-      address: "660 Sydney Road, Brunswick VIC 3056",
-      phone: "(03) 9385 8423",
-      website: "https://icmgbrunswick.com.au",
-      region: "North Melbourne",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Turkish community", "Islamic education"]
-    },
-    {
-      name: "Albanian Mosque Carlton North",
-      address: "765 Drummond Street, Carlton North VIC 3054",
-      phone: "(03) 9347 6505",
-      website: "https://www.aais.org.au",
-      region: "North Melbourne",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Albanian community", "Women's prayer area"]
-    },
-    {
-      name: "Fitzroy Turkish Islamic Society",
-      address: "144 Palmer Street, Fitzroy VIC 3065",
-      phone: "(03) 9417 5760",
-      website: "",
-      region: "North Melbourne",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Turkish community"]
-    },
-    {
-      name: "Craigieburn Mosque (ICMG)",
-      address: "1550 Mickleham Road, Mickleham VIC 3064",
-      phone: "(03) 9385 8423",
-      website: "https://www.icmg.org.au/branches/craigieburn",
-      region: "North Melbourne",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Turkish community", "Parking available"]
-    },
-    // West Melbourne
-    {
-      name: "Australian Islamic Centre Newport",
-      address: "23-31 Blenheim Road, Newport VIC 3015",
-      phone: "(03) 9000 0177",
-      website: "https://australianislamiccentre.org",
-      region: "West Melbourne",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Wheelchair accessible", "Women's prayer area", "Community programs"]
-    },
-    {
-      name: "Sunshine Mosque",
-      address: "618 Ballarat Road, Sunshine VIC 3022",
-      phone: "(03) 9363 8245",
-      website: "https://www.sunshinemosque.com.au",
-      region: "West Melbourne",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Parking available", "Wudu facilities"]
-    },
-    {
-      name: "Deer Park Mosque",
-      address: "285 Station Road, Deer Park VIC 3023",
-      phone: "(03) 9310 8811",
-      website: "https://www.deerparkmasjid.com",
-      region: "West Melbourne",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Parking available", "Islamic education"]
-    },
-    {
-      name: "Werribee Islamic Centre",
-      address: "70 Wootten Road, Tarneit VIC 3029",
-      phone: "(03) 9748 2864",
-      website: "https://www.wicentre.org.au",
-      region: "West Melbourne",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Wheelchair accessible", "Women's prayer area", "Community programs"]
-    },
-    {
-      name: "Al-Taqwa Mosque",
-      address: "201 Sayers Road, Truganina VIC 3029",
-      phone: "(03) 9269 5000",
-      website: "https://al-taqwa.vic.edu.au",
-      region: "West Melbourne",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Islamic school", "Women's prayer area", "Parking available"]
-    },
-    {
-      name: "Melbourne Grand Mosque (MGM)",
-      address: "70 Wootten Road, Tarneit VIC 3029",
-      phone: "(03) 8087 2323",
-      website: "https://mgm.org.au",
-      region: "West Melbourne",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Large capacity", "Community programs", "Parking available"]
-    },
-    // South Melbourne
-    {
-      name: "Emir Sultan Mosque Dandenong",
-      address: "139 Cleeland Street, Dandenong VIC 3175",
-      phone: "(04) 2374 1717",
-      website: "https://www.emirsultanmosque.com",
-      region: "South Melbourne",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Turkish community", "Women's prayer area"]
-    },
-    {
-      name: "Noble Park Mosque",
-      address: "18 Leonard Avenue, Noble Park VIC 3174",
-      phone: "(03) 9546 8089",
-      website: "",
-      region: "South Melbourne",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Parking available"]
-    },
-    {
-      name: "Keysborough Turkish Islamic Centre",
-      address: "396 Greens Road, Keysborough VIC 3173",
-      phone: "(03) 9709 0100",
-      website: "",
-      region: "South Melbourne",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Turkish community", "Women's prayer area"]
-    },
-    {
-      name: "Huntingdale Mosque (ABIC)",
-      address: "320-326 Huntingdale Road, Huntingdale VIC 3166",
-      phone: "(03) 9543 8037",
-      website: "https://www.abicmelbourne.com.au",
-      region: "South Melbourne",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Wheelchair accessible", "Parking available", "Islamic school"]
-    },
-    {
-      name: "Springvale Mosque",
-      address: "68 Garnsworthy Street, Springvale VIC 3171",
-      phone: "(03) 9546 8089",
-      website: "",
-      region: "South Melbourne",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Community programs"]
-    },
-    // CBD & Eastern Suburbs
-    {
-      name: "Islamic Council of Victoria (ICV)",
-      address: "66-68 Jeffcott Street, West Melbourne VIC 3003",
-      phone: "(03) 9328 2067",
-      website: "https://icv.org.au",
-      region: "CBD & Eastern Suburbs",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["Main Islamic Council", "Community programs", "Administrative centre"]
-    },
-    {
-      name: "Melbourne Madinah",
-      address: "359 Exhibition Street, Melbourne VIC 3000",
-      phone: "1300 623 462",
-      website: "http://www.madinahnext.org",
-      region: "CBD & Eastern Suburbs",
-      rating: null,
-      verified: false,
-      currentlyOpen: null,
-      openingHours: [],
-      attributes: ["CBD location", "Wheelchair accessible"]
-    }
-  ];
-
   return (
     <main className="min-h-screen bg-gray-50 pt-20">
       <div className="container mx-auto px-4 py-8">
@@ -278,88 +77,38 @@ const MelbourneMosques = () => {
           </h1>
         </header>
 
-        {/* Masjids Section */}
+        {/* Masjids in VIC */}
         <section className="mb-12 bg-white rounded-2xl p-8 border border-gray-200">
-          {/* Region Filter Buttons */}
-          <div className="flex flex-wrap gap-2 mb-8">
-            <Button
-              variant={selectedRegion === null ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedRegion(null)}
-              className={`text-sm rounded-lg ${
-                selectedRegion === null
-                  ? 'bg-teal-600 hover:bg-teal-700 text-white'
-                  : 'border-gray-300 hover:bg-gray-50 text-gray-700'
-              }`}
-            >
-              All Regions
-            </Button>
-            <Button
-              variant={selectedRegion === "West Melbourne" ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedRegion("West Melbourne")}
-              className={`text-sm rounded-lg ${
-                selectedRegion === "West Melbourne"
-                  ? 'bg-teal-600 hover:bg-teal-700 text-white'
-                  : 'border-gray-300 hover:bg-gray-50 text-gray-700'
-              }`}
-            >
-              West
-            </Button>
-            <Button
-              variant={selectedRegion === "North Melbourne" ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedRegion("North Melbourne")}
-              className={`text-sm rounded-lg ${
-                selectedRegion === "North Melbourne"
-                  ? 'bg-teal-600 hover:bg-teal-700 text-white'
-                  : 'border-gray-300 hover:bg-gray-50 text-gray-700'
-              }`}
-            >
-              North
-            </Button>
-            <Button
-              variant={selectedRegion === "South Melbourne" ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedRegion("South Melbourne")}
-              className={`text-sm rounded-lg ${
-                selectedRegion === "South Melbourne"
-                  ? 'bg-teal-600 hover:bg-teal-700 text-white'
-                  : 'border-gray-300 hover:bg-gray-50 text-gray-700'
-              }`}
-            >
-              South
-            </Button>
-            <Button
-              variant={selectedRegion === "CBD & Eastern Suburbs" ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedRegion("CBD & Eastern Suburbs")}
-              className={`text-sm rounded-lg ${
-                selectedRegion === "CBD & Eastern Suburbs"
-                  ? 'bg-teal-600 hover:bg-teal-700 text-white'
-                  : 'border-gray-300 hover:bg-gray-50 text-gray-700'
-              }`}
-            >
-              CBD & Eastern Suburbs
-            </Button>
-          </div>
+          {loading ? (
+            <div className="text-center py-12">
+              <p className="text-gray-600">Loading mosques...</p>
+            </div>
+          ) : (
+            <>
+              <div className="mb-6">
+                <p className="text-lg font-medium text-gray-900">
+                  {mosques.length} Mosques in Victoria
+                </p>
+              </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {melbourneMosques.filter(mosque => selectedRegion === null || mosque.region === selectedRegion).map((mosque, index) => (
-              <Card key={index} className="rounded-lg border border-gray-200 hover:shadow-md transition-all duration-200 bg-white">
-                <CardContent className="p-5">
-                  <div className="space-y-3">
-                    <h3 className="text-lg font-serif font-medium text-gray-900">{mosque.name}</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {mosques.map((mosque) => (
+                  <Card key={mosque.id} className="rounded-lg border border-gray-200 hover:shadow-md transition-all duration-200 bg-white">
+                    <CardContent className="p-5">
+                      <div className="space-y-3">
+                        <h3 className="text-lg font-serif font-medium text-gray-900">{mosque.name}</h3>
 
-                    <div className="space-y-2">
-                      <div className="flex items-start text-gray-600">
-                        <MapPin className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0 text-teal-600" />
-                        <span className="text-sm leading-relaxed">{mosque.address}</span>
-                      </div>
-                      <div className="flex items-center text-gray-600">
-                        <Phone className="w-4 h-4 mr-2 flex-shrink-0 text-teal-600" />
-                        <a href={`tel:${mosque.phone}`} className="text-sm hover:text-teal-600 transition-colors">{mosque.phone}</a>
-                      </div>
+                        <div className="space-y-2">
+                          <div className="flex items-start text-gray-600">
+                            <MapPin className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0 text-teal-600" />
+                            <span className="text-sm leading-relaxed">{mosque.address}</span>
+                          </div>
+                          {mosque.phone_number && (
+                            <div className="flex items-center text-gray-600">
+                              <Phone className="w-4 h-4 mr-2 flex-shrink-0 text-teal-600" />
+                              <a href={`tel:${mosque.phone_number}`} className="text-sm hover:text-teal-600 transition-colors">{mosque.phone_number}</a>
+                            </div>
+                          )}
 
                       {mosque.website && (
                         <div className="flex items-center text-gray-600">
@@ -388,44 +137,46 @@ const MelbourneMosques = () => {
                       )}
                     </div>
 
-                    {/* Attributes */}
-                    {mosque.attributes && mosque.attributes.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5">
-                        {mosque.attributes.slice(0, 3).map((attr: string, idx: number) => (
-                          <span key={idx} className="inline-flex items-center gap-1 px-2 py-1 bg-teal-50 text-teal-700 rounded-md text-xs">
-                            <CheckCircle2 className="w-3 h-3" />
-                            {attr}
-                          </span>
-                        ))}
-                      </div>
-                    )}
+                        {/* Attributes */}
+                        {mosque.attributes && Array.isArray(mosque.attributes) && mosque.attributes.length > 0 && (
+                          <div className="flex flex-wrap gap-1.5">
+                            {mosque.attributes.slice(0, 3).map((attr: string, idx: number) => (
+                              <span key={idx} className="inline-flex items-center gap-1 px-2 py-1 bg-teal-50 text-teal-700 rounded-md text-xs">
+                                <CheckCircle2 className="w-3 h-3" />
+                                {attr}
+                              </span>
+                            ))}
+                          </div>
+                        )}
 
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mosque.address)}`;
-                        try {
-                          if (window.parent && window.parent !== window) {
-                            window.parent.open(mapsUrl, '_blank');
-                          } else {
-                            window.open(mapsUrl, '_blank');
-                          }
-                        } catch (error) {
-                          window.location.href = mapsUrl;
-                        }
-                      }}
-                      className="w-full text-sm bg-teal-600 hover:bg-teal-700 text-white rounded-lg border-0"
-                    >
-                      <MapPin className="w-4 h-4 mr-2" />
-                      Get Directions
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mosque.address)}`;
+                            try {
+                              if (window.parent && window.parent !== window) {
+                                window.parent.open(mapsUrl, '_blank');
+                              } else {
+                                window.open(mapsUrl, '_blank');
+                              }
+                            } catch (error) {
+                              window.location.href = mapsUrl;
+                            }
+                          }}
+                          className="w-full text-sm bg-teal-600 hover:bg-teal-700 text-white rounded-lg border-0"
+                        >
+                          <MapPin className="w-4 h-4 mr-2" />
+                          Get Directions
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </>
+          )}
         </section>
 
         {/* Why Choose Our Directory */}
