@@ -12,7 +12,14 @@
     "preview": "vite preview",
     "fetch-mosque-data": "node scripts/fetch-mosque-data.js",
     "generate-sitemap": "node scripts/generate-sitemap.js",
-    "extract-emails": "tsx scripts/apify/run-extraction.ts"
+    "extract-emails": "tsx scripts/apify/run-extraction.ts",
+    "db:migrate": "tsx scripts/marketing/run-migration.ts",
+    "import-prospects": "tsx scripts/marketing/import-prospects.ts",
+    "test-scraper": "tsx scripts/marketing/test-scraper.ts",
+    "scrape-emails": "tsx scripts/marketing/scrape-emails.ts",
+    "validate-mosques": "tsx scripts/marketing/validate-google-places.ts",
+    "migrate-mosques": "tsx scripts/marketing/migrate-validated-mosques.ts",
+    "fix-states": "tsx scripts/marketing/fix-unknown-states.ts"
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.10",
@@ -57,6 +64,9 @@
     "input-otp": "^1.4.2",
     "lucide-react": "^0.462.0",
     "next-themes": "^0.3.0",
+    "puppeteer": "^24.24.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
     "react": "^18.3.1",
     "react-day-picker": "^8.10.1",
     "react-dom": "^18.3.1",

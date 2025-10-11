@@ -166,7 +166,7 @@ export const generateLandingPageSchema = () => {
         "@id": `${baseUrl}#website`,
         "name": "Find My Mosque Australia",
         "alternateName": ["Find Mosques Near Me", "Australian Mosque Directory", "Masjid Finder Australia"],
-        "description": "Find mosques and masjids near you across Australia. Search 83+ verified mosques with prayer times, directions, and contact details.",
+        "description": "Find mosques and masjids near you across Australia. Search 340+ verified mosques with addresses, directions, and contact details.",
         "url": baseUrl,
         "inLanguage": "en-AU",
         "potentialAction": {
@@ -198,7 +198,7 @@ export const generateLandingPageSchema = () => {
         "@id": `${baseUrl}#service`,
         "serviceType": "Mosque Directory",
         "name": "Australian Mosque & Masjid Directory",
-        "description": "Free directory service helping users find verified mosques and masjids across Australia with contact details, directions, and prayer time information.",
+        "description": "Free directory service helping users find verified mosques and masjids across Australia with addresses, contact details, and directions.",
         "provider": {
           "@id": `${baseUrl}#organization`
         },
@@ -232,7 +232,7 @@ export const generateLandingPageSchema = () => {
             "name": "How do I find mosques near me in Australia?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Use our location-based search to find mosques near your current location or enter a specific postcode or suburb. We have 83+ verified mosques across all Australian states. Select your preferred search radius (5km-50km) to customize your results and get instant directions."
+              "text": "Use our location-based search to find mosques near your current location or enter a specific postcode or suburb. We have 340+ verified mosques across all Australian states. Select your preferred search radius (5km-50km) to customize your results and get instant directions."
             }
           },
           {
@@ -240,15 +240,15 @@ export const generateLandingPageSchema = () => {
             "name": "How many mosques are listed in Australia?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "We currently have 83+ verified mosques and masjids listed across Australia, covering all states and territories including NSW, VIC, QLD, WA, SA, and TAS. Our directory is regularly updated with new mosques."
+              "text": "We currently have 340+ verified mosques and masjids listed across Australia, covering all states and territories including NSW, VIC, QLD, WA, SA, TAS, ACT, and NT. Our directory is regularly updated with new mosques."
             }
           },
           {
             "@type": "Question",
-            "name": "Can I find prayer times for mosques?",
+            "name": "How do I contact mosques for information?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, many mosques in our directory include prayer time information. You can contact mosques directly via phone or visit their websites for current daily prayer schedules which change based on sunrise and sunset."
+              "text": "Each mosque listing includes phone numbers and websites where available. You can contact mosques directly for prayer times, facility information, and community programs."
             }
           },
           {
