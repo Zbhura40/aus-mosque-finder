@@ -1,0 +1,5602 @@
+[
+  {
+    "title": "Sydney CBD Masjid",
+    "address": "56/56-60 Erskine St, Sydney NSW 2000, Australia",
+    "location": {
+      "lat": -33.8666203,
+      "lng": 151.2039743
+    },
+    "website": "http://www.sydneycitymasjid.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Sydney%20CBD%20Masjid&query_place_id=ChIJpTpyTkeuEmsRyk375nNkMEI",
+    "placeId": "ChIJpTpyTkeuEmsRyk375nNkMEI",
+    "categories": [
+      "Mosque",
+      "Tourist attraction"
+    ],
+    "state": "NSW",
+    "suburb": "56/56-60 Erskine St"
+  },
+  {
+    "title": "Lakemba Mosque",
+    "address": "65-67 Wangee Rd, Lakemba NSW 2195, Australia",
+    "location": {
+      "lat": -33.912607,
+      "lng": 151.074138
+    },
+    "phone": "+61 2 9750 6833",
+    "website": "https://lma.org.au/mosques/lakemba-mosque/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Lakemba%20Mosque&query_place_id=ChIJ58DB8b67EmsRvaX8zYy47x8",
+    "placeId": "ChIJ58DB8b67EmsRvaX8zYy47x8",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "65-67 Wangee Rd"
+  },
+  {
+    "title": "Darul Ulum Sydney Mosque",
+    "address": "58 Quigg St S, Lakemba NSW 2195, Australia",
+    "location": {
+      "lat": -33.9213477,
+      "lng": 151.0801166
+    },
+    "phone": "+61 414 050 075",
+    "website": "http://darululumsydney.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Darul%20Ulum%20Sydney%20Mosque&query_place_id=ChIJ-SGyXTG7EmsRT3CMD8ZEXGQ",
+    "placeId": "ChIJ-SGyXTG7EmsRT3CMD8ZEXGQ",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "58 Quigg St S"
+  },
+  {
+    "title": "AICC, Omar Mosque - Auburn . Islamic Services (Shahada, marriage & Funerals)",
+    "address": "43-47 Harrow Rd, Auburn NSW 2144, Australia",
+    "location": {
+      "lat": -33.8548658,
+      "lng": 151.0303489
+    },
+    "phone": "+61 1800 417 779",
+    "website": "http://www.aiccentre.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=AICC%2C%20Omar%20Mosque%20-%20Auburn%20.%20Islamic%20Services%20(Shahada%2C%20marriage%20%26%20Funerals)&query_place_id=ChIJ2akzEbq8EmsR2Itc15gCjXs",
+    "placeId": "ChIJ2akzEbq8EmsR2Itc15gCjXs",
+    "categories": [
+      "Mosque",
+      "Community center",
+      "Funeral home"
+    ],
+    "state": "NSW",
+    "suburb": "43-47 Harrow Rd"
+  },
+  {
+    "title": "Masjid As-Sunnah Lakemba",
+    "address": "132 Haldon St, Lakemba NSW 2195, Australia",
+    "location": {
+      "lat": -33.9222345,
+      "lng": 151.0782354
+    },
+    "phone": "+61 484 518 332",
+    "website": "https://www.facebook.com/masjidassunnahlakemba/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20As-Sunnah%20Lakemba&query_place_id=ChIJq6quJ8S7EmsRf1Uf-AzB7Ys",
+    "placeId": "ChIJq6quJ8S7EmsRf1Uf-AzB7Ys",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "132 Haldon St"
+  },
+  {
+    "title": "King Faisal Mosque",
+    "address": "175-177 Commonwealth St, Surry Hills NSW 2010, Australia",
+    "location": {
+      "lat": -33.8818348,
+      "lng": 151.2106198
+    },
+    "phone": "+61 2 9281 0440",
+    "website": "http://islamicsocietynsw.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=King%20Faisal%20Mosque&query_place_id=ChIJGSHufRiuEmsRavr31pUVh5s",
+    "placeId": "ChIJGSHufRiuEmsRavr31pUVh5s",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "175-177 Commonwealth St"
+  },
+  {
+    "title": "Auburn Gallipoli Mosque",
+    "address": "15/19 Gelibolu Parade, Auburn NSW 2144, Australia",
+    "location": {
+      "lat": -33.85234,
+      "lng": 151.035976
+    },
+    "phone": "+61 2 9646 5972",
+    "website": "http://www.gallipolimosque.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Auburn%20Gallipoli%20Mosque&query_place_id=ChIJwY-nRce8EmsRAgTMAMVHvRI",
+    "placeId": "ChIJwY-nRce8EmsRAgTMAMVHvRI",
+    "categories": [
+      "Mosque",
+      "Tourist attraction"
+    ],
+    "state": "NSW",
+    "suburb": "15/19 Gelibolu Parade"
+  },
+  {
+    "title": "Punchbowl Masjid",
+    "address": "25-27 Matthews St, Punchbowl NSW 2196, Australia",
+    "location": {
+      "lat": -33.9270264,
+      "lng": 151.057302
+    },
+    "phone": "+61 2 9758 1215",
+    "website": "http://aim.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Punchbowl%20Masjid&query_place_id=ChIJ91cqhPy7EmsRoH-XQmSfv2k",
+    "placeId": "ChIJ91cqhPy7EmsRoH-XQmSfv2k",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "25-27 Matthews St"
+  },
+  {
+    "title": "Roselands Mosque",
+    "address": "37 Ludgate St, Roselands NSW 2196, Australia",
+    "location": {
+      "lat": -33.9318171,
+      "lng": 151.0782059
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Roselands%20Mosque&query_place_id=ChIJ20KFw9u7EmsRb-3EMoqro8M",
+    "placeId": "ChIJ20KFw9u7EmsRb-3EMoqro8M",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "37 Ludgate St"
+  },
+  {
+    "title": "Masjid Darul IMAAN",
+    "address": "10/12 Eden St, Wolli Creek NSW 2205, Australia",
+    "location": {
+      "lat": -33.9367667,
+      "lng": 151.1491944
+    },
+    "phone": "+61 2 8959 3414",
+    "website": "http://imaan.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Darul%20IMAAN&query_place_id=ChIJcdwq9KKwEmsRUNkUmW2B2qI",
+    "placeId": "ChIJcdwq9KKwEmsRUNkUmW2B2qI",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "10/12 Eden St"
+  },
+  {
+    "title": "Sefton Mosque",
+    "address": "17 Proctor Parade, Sefton NSW 2162, Australia",
+    "location": {
+      "lat": -33.8879415,
+      "lng": 151.0106824
+    },
+    "phone": "+61 406 690 446",
+    "website": "http://www.bicnsw.org/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Sefton%20Mosque&query_place_id=ChIJj1zwQlC8EmsRLXFqGpQsQ7M",
+    "placeId": "ChIJj1zwQlC8EmsRLXFqGpQsQ7M",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "17 Proctor Parade"
+  },
+  {
+    "title": "Masjid Arrahman",
+    "address": "20 Garema Cct, Kingsgrove NSW 2208, Australia",
+    "location": {
+      "lat": -33.938444,
+      "lng": 151.094173
+    },
+    "phone": "+61 2 9758 9977",
+    "website": "http://www.masjidarrahman.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Arrahman&query_place_id=ChIJkY3nMSu6EmsRnT8JcOuVG3g",
+    "placeId": "ChIJkY3nMSu6EmsRnT8JcOuVG3g",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "20 Garema Cct"
+  },
+  {
+    "title": "Omar ibn al khattab mosque",
+    "address": "20 Ernest St, Lakemba NSW 2195, Australia",
+    "location": {
+      "lat": -33.9221813,
+      "lng": 151.0731037
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Omar%20ibn%20al%20khattab%20mosque&query_place_id=ChIJQfSQNcK7EmsRV-DJoHzgLpk",
+    "placeId": "ChIJQfSQNcK7EmsRV-DJoHzgLpk",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "20 Ernest St"
+  },
+  {
+    "title": "Al-Azhar Mosque",
+    "address": "172B Burwood Rd, Belmore NSW 2192, Australia",
+    "location": {
+      "lat": -33.9093875,
+      "lng": 151.084549
+    },
+    "phone": "+61 455 376 700",
+    "url": "https://www.google.com/maps/search/?api=1&query=Al-Azhar%20Mosque&query_place_id=ChIJ4-1gn9y6EmsRQcYqKkB4Cxk",
+    "placeId": "ChIJ4-1gn9y6EmsRQcYqKkB4Cxk",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "172B Burwood Rd"
+  },
+  {
+    "title": "Al Hijrah Mosque",
+    "address": "45 Station St, Tempe NSW 2044, Australia",
+    "location": {
+      "lat": -33.925348,
+      "lng": 151.159367
+    },
+    "phone": "+61 484 119 444",
+    "website": "https://www.cide.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Al%20Hijrah%20Mosque&query_place_id=ChIJ-avAtY2wEmsRuazetscn-uo",
+    "placeId": "ChIJ-avAtY2wEmsRuazetscn-uo",
+    "categories": [
+      "Mosque",
+      "Community center",
+      "Place of worship"
+    ],
+    "state": "NSW",
+    "suburb": "45 Station St"
+  },
+  {
+    "title": "Rooty Hill Masjid",
+    "address": "33 Headcorn St, Mount Druitt NSW 2770, Australia",
+    "location": {
+      "lat": -33.759226,
+      "lng": 150.8301565
+    },
+    "phone": "+61 2 9675 6246",
+    "website": "http://www.rootyhillmasjid.com.au/contact-us/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Rooty%20Hill%20Masjid&query_place_id=ChIJhYq04U6aEmsRkO54cFdWj7c",
+    "placeId": "ChIJhYq04U6aEmsRkO54cFdWj7c",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "33 Headcorn St"
+  },
+  {
+    "title": "Zetland Mosque",
+    "address": "932 Bourke St, Zetland NSW 2017, Australia",
+    "location": {
+      "lat": -33.9043392,
+      "lng": 151.2055847
+    },
+    "phone": "+61 2 9319 6733",
+    "url": "https://www.google.com/maps/search/?api=1&query=Zetland%20Mosque&query_place_id=ChIJS8UyQ8GxEmsR2_oD3qg0Oco",
+    "placeId": "ChIJS8UyQ8GxEmsR2_oD3qg0Oco",
+    "categories": [
+      "Mosque",
+      "Place of worship",
+      "Tourist attraction"
+    ],
+    "state": "NSW",
+    "suburb": "932 Bourke St"
+  },
+  {
+    "title": "Masjid Al Hidayah",
+    "address": "2 Frederick St, Rockdale NSW 2216, Australia",
+    "location": {
+      "lat": -33.9530324,
+      "lng": 151.135427
+    },
+    "phone": "+61 1800 497 080",
+    "website": "https://www.facebook.com/Masjid-Al-Hydayah-Rockdale-103534862356083/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Al%20Hidayah&query_place_id=ChIJeX_DRP-5EmsREFVIRJjt-fM",
+    "placeId": "ChIJeX_DRP-5EmsREFVIRJjt-fM",
+    "categories": [
+      "Mosque",
+      "Place of worship"
+    ],
+    "state": "NSW",
+    "suburb": "2 Frederick St"
+  },
+  {
+    "title": "Association of Islamic Da'wah in Australia (AIDA)",
+    "address": "1 Catherine St, Punchbowl NSW 2196, Australia",
+    "location": {
+      "lat": -33.9227944,
+      "lng": 151.0529741
+    },
+    "phone": "+61 412 180 549",
+    "website": "http://www.aidainc.net.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Association%20of%20Islamic%20Da'wah%20in%20Australia%20(AIDA)&query_place_id=ChIJJVkngfm7EmsRBjUAe8s4BIQ",
+    "placeId": "ChIJJVkngfm7EmsRBjUAe8s4BIQ",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "1 Catherine St"
+  },
+  {
+    "title": "Turkish Mosque",
+    "address": "13 John St, Erskineville NSW 2043, Australia",
+    "location": {
+      "lat": -33.8988323,
+      "lng": 151.1845427
+    },
+    "phone": "+61 2 9516 3039",
+    "url": "https://www.google.com/maps/search/?api=1&query=Turkish%20Mosque&query_place_id=ChIJ0dJOhDSwEmsR-fCU0VkWF8w",
+    "placeId": "ChIJ0dJOhDSwEmsR-fCU0VkWF8w",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "13 John St"
+  },
+  {
+    "title": "MIA - Liverpool Islamic Centre",
+    "address": "230 Macquarie St, Liverpool NSW 2170, Australia",
+    "location": {
+      "lat": -33.923084,
+      "lng": 150.923817
+    },
+    "phone": "+61 2 8712 9219",
+    "website": "http://www.mialiverpool.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=MIA%20-%20Liverpool%20Islamic%20Centre&query_place_id=ChIJIQ3KW7mVEmsRhlaSuTRVMIc",
+    "placeId": "ChIJIQ3KW7mVEmsRhlaSuTRVMIc",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "230 Macquarie St"
+  },
+  {
+    "title": "The Australian Islamic House Masjid",
+    "address": "2094 Camden Valley Wy, Edmondson Park NSW 2174, Australia",
+    "location": {
+      "lat": -33.9580459,
+      "lng": 150.8667905
+    },
+    "phone": "+61 451 508 244",
+    "website": "http://www.taih.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=The%20Australian%20Islamic%20House%20Masjid&query_place_id=ChIJ-xGi1K6UEmsRzKuHXJU89MQ",
+    "placeId": "ChIJ-xGi1K6UEmsRzKuHXJU89MQ",
+    "categories": [
+      "Mosque",
+      "Place of worship"
+    ],
+    "state": "NSW",
+    "suburb": "2094 Camden Valley Wy"
+  },
+  {
+    "title": "Masjid Al Zahra (Al Zahra Mosque)",
+    "address": "1 Wollongong Rd, Arncliffe NSW 2205, Australia",
+    "location": {
+      "lat": -33.9323087,
+      "lng": 151.1490517
+    },
+    "phone": "+61 2 8021 8153",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Al%20Zahra%20(Al%20Zahra%20Mosque)&query_place_id=ChIJEdUJ_piwEmsR798e-09kTM4",
+    "placeId": "ChIJEdUJ_piwEmsR798e-09kTM4",
+    "categories": [
+      "Mosque",
+      "Tourist attraction"
+    ],
+    "state": "NSW",
+    "suburb": "1 Wollongong Rd"
+  },
+  {
+    "title": "Redfern Mosque",
+    "address": "328-330 Cleveland St, Surry Hills NSW 2010, Australia",
+    "location": {
+      "lat": -33.8903033,
+      "lng": 151.2094578
+    },
+    "phone": "+61 2 9698 4149",
+    "url": "https://www.google.com/maps/search/?api=1&query=Redfern%20Mosque&query_place_id=ChIJJdQ56N-xEmsR1KsUb9iHlro",
+    "placeId": "ChIJJdQ56N-xEmsR1KsUb9iHlro",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "328-330 Cleveland St"
+  },
+  {
+    "title": "Albanian Mosque - Islamic Centre Sheikh Albani",
+    "address": "20 Justin St, Smithfield NSW 2164, Australia",
+    "location": {
+      "lat": -33.8524563,
+      "lng": 150.9381001
+    },
+    "phone": "+61 477 193 248",
+    "url": "https://www.google.com/maps/search/?api=1&query=Albanian%20Mosque%20-%20Islamic%20Centre%20Sheikh%20Albani&query_place_id=ChIJDXvpSDC9EmsRFtYVjgwMjOs",
+    "placeId": "ChIJDXvpSDC9EmsRFtYVjgwMjOs",
+    "categories": [
+      "Mosque",
+      "Community center",
+      "Youth center"
+    ],
+    "state": "NSW",
+    "suburb": "20 Justin St"
+  },
+  {
+    "title": "Quakers Hill Masjid",
+    "address": "37 Douglas Rd, Quakers Hill NSW 2763, Australia",
+    "location": {
+      "lat": -33.7288574,
+      "lng": 150.8818921
+    },
+    "phone": "+61 2 9836 6383",
+    "website": "http://quakershillmasjid.org/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Quakers%20Hill%20Masjid&query_place_id=ChIJA2YBh0mZEmsREP9taVtwyiU",
+    "placeId": "ChIJA2YBh0mZEmsREP9taVtwyiU",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "37 Douglas Rd"
+  },
+  {
+    "title": "Ahl Al Bait Islamic Centre",
+    "address": "29a Queen St, Auburn NSW 2144, Australia",
+    "location": {
+      "lat": -33.8524102,
+      "lng": 151.0337536
+    },
+    "website": "http://ahlalbait.org/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Ahl%20Al%20Bait%20Islamic%20Centre&query_place_id=ChIJOU7fsrG8EmsRQJKbTt8VAQA",
+    "placeId": "ChIJOU7fsrG8EmsRQJKbTt8VAQA",
+    "categories": [
+      "Mosque",
+      "Education center"
+    ],
+    "state": "NSW",
+    "suburb": "29a Queen St"
+  },
+  {
+    "title": "Smithfield Mosque",
+    "address": "30 Bourke St, Smithfield NSW 2164, Australia",
+    "location": {
+      "lat": -33.857151,
+      "lng": 150.9272343
+    },
+    "phone": "+61 2 9610 7213",
+    "url": "https://www.google.com/maps/search/?api=1&query=Smithfield%20Mosque&query_place_id=ChIJ5fBo2bSXEmsRcQ51SGg8qtU",
+    "placeId": "ChIJ5fBo2bSXEmsRcQ51SGg8qtU",
+    "categories": [
+      "Mosque",
+      "Place of worship",
+      "Tourist attraction"
+    ],
+    "state": "NSW",
+    "suburb": "30 Bourke St"
+  },
+  {
+    "title": "Auburn Islamic Community Centre & Mosque",
+    "address": "12 Harrow Rd, Auburn NSW 2144, Australia",
+    "location": {
+      "lat": -33.8526554,
+      "lng": 151.0314057
+    },
+    "phone": "+61 2 9646 1124",
+    "website": "https://www.aiccauburn.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Auburn%20Islamic%20Community%20Centre%20%26%20Mosque&query_place_id=ChIJfRWUobC8EmsR_xkFJM0KTC4",
+    "placeId": "ChIJfRWUobC8EmsR_xkFJM0KTC4",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "12 Harrow Rd"
+  },
+  {
+    "title": "Daar Ibn Abbas Mosque",
+    "address": "131 Eldridge Rd, Condell Park NSW 2200, Australia",
+    "location": {
+      "lat": -33.9305281,
+      "lng": 151.0128692
+    },
+    "phone": "+61 1300 700 050",
+    "website": "https://www.ibnabbas.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Daar%20Ibn%20Abbas%20Mosque&query_place_id=ChIJN43uGtS_EmsRwHUX3KqpKA0",
+    "placeId": "ChIJN43uGtS_EmsRwHUX3KqpKA0",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "131 Eldridge Rd"
+  },
+  {
+    "title": "Dee Why Mosque",
+    "address": "12 S Creek Rd, Dee Why NSW 2097, Australia",
+    "location": {
+      "lat": -33.743438,
+      "lng": 151.2934729
+    },
+    "phone": "+61 2 9982 6102",
+    "url": "https://www.google.com/maps/search/?api=1&query=Dee%20Why%20Mosque&query_place_id=ChIJMxWvF2NVDWsRKeiu118hPZk",
+    "placeId": "ChIJMxWvF2NVDWsRKeiu118hPZk",
+    "categories": [
+      "Mosque",
+      "Place of worship"
+    ],
+    "state": "NSW",
+    "suburb": "12 S Creek Rd"
+  },
+  {
+    "title": "Masjid Abu Bakr Al-Siddeeq",
+    "address": "1b Melissa St, Auburn NSW 2144, Australia",
+    "location": {
+      "lat": -33.8754546,
+      "lng": 151.0143123
+    },
+    "phone": "+61 2 9738 7700",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Abu%20Bakr%20Al-Siddeeq&query_place_id=ChIJvwwupfe8EmsR_QQEukX1M9s",
+    "placeId": "ChIJvwwupfe8EmsR_QQEukX1M9s",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "1b Melissa St"
+  },
+  {
+    "title": "Masjid St Marys - IPDC Centre",
+    "address": "117-119 Forrester Rd, North St Marys NSW 2760, Australia",
+    "location": {
+      "lat": -33.7563509,
+      "lng": 150.7759354
+    },
+    "phone": "+61 404 936 792",
+    "website": "http://www.ipdc.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20St%20Marys%20-%20IPDC%20Centre&query_place_id=ChIJTYNQuMmaEmsRK6LOmccdLxM",
+    "placeId": "ChIJTYNQuMmaEmsRK6LOmccdLxM",
+    "categories": [
+      "Mosque",
+      "Marriage celebrant",
+      "Marriage or relationship counselor",
+      "Marriage license bureau"
+    ],
+    "state": "NSW",
+    "suburb": "117-119 Forrester Rd"
+  },
+  {
+    "title": "JAAM-E-MASJID Green Valley",
+    "address": "285 Wilson Rd, Green Valley NSW 2168, Australia",
+    "location": {
+      "lat": -33.8985036,
+      "lng": 150.8665923
+    },
+    "website": "https://praydigital.info/place/285/green-valley-mosque-coronation-drive-prayer-timings",
+    "url": "https://www.google.com/maps/search/?api=1&query=JAAM-E-MASJID%20Green%20Valley&query_place_id=ChIJS43e_wuUEmsRVGofk2W-tnw",
+    "placeId": "ChIJS43e_wuUEmsRVGofk2W-tnw",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "285 Wilson Rd"
+  },
+  {
+    "title": "Parramatta Mosque",
+    "address": "Unit 40/150 Marsden St, Parramatta NSW 2150, Australia",
+    "location": {
+      "lat": -33.8139183,
+      "lng": 151.0016485
+    },
+    "phone": "+61 406 175 745",
+    "website": "https://parramattamosque.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Parramatta%20Mosque&query_place_id=ChIJBdoMyh-jEmsRn96FZjpNWAA",
+    "placeId": "ChIJBdoMyh-jEmsRn96FZjpNWAA",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "Unit 40/150 Marsden St"
+  },
+  {
+    "title": "North Sydney Musalla",
+    "address": "165 Blues Point Rd, McMahons Point NSW 2060, Australia",
+    "location": {
+      "lat": -33.8430041,
+      "lng": 151.2051217
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=North%20Sydney%20Musalla&query_place_id=ChIJd_y2EPSuEmsRGgcZlheW6bw",
+    "placeId": "ChIJd_y2EPSuEmsRGgcZlheW6bw",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "165 Blues Point Rd"
+  },
+  {
+    "title": "ICMG Guildford Mosque",
+    "address": "64 Mountford Ave, Guildford NSW 2161, Australia",
+    "location": {
+      "lat": -33.852659,
+      "lng": 150.988808
+    },
+    "phone": "+61 434 679 627",
+    "website": "http://www.icmgsydney.org/",
+    "url": "https://www.google.com/maps/search/?api=1&query=ICMG%20Guildford%20Mosque&query_place_id=ChIJNegPTj29EmsRcWbw-ULhVKQ",
+    "placeId": "ChIJNegPTj29EmsRcWbw-ULhVKQ",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "64 Mountford Ave"
+  },
+  {
+    "title": "Al Nawawi Centre",
+    "address": "10 Gurney Rd, Chester Hill NSW 2162, Australia",
+    "location": {
+      "lat": -33.8700876,
+      "lng": 150.997404
+    },
+    "phone": "+61 451 689 342",
+    "website": "http://alnawawicentre.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Al%20Nawawi%20Centre&query_place_id=ChIJnxnW4Di9EmsR9xCz7_Mr7rg",
+    "placeId": "ChIJnxnW4Di9EmsR9xCz7_Mr7rg",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "10 Gurney Rd"
+  },
+  {
+    "title": "Masjid Qubaa",
+    "address": "19 Sunblest Cres, Mount Druitt NSW 2770, Australia",
+    "location": {
+      "lat": -33.7667437,
+      "lng": 150.8069749
+    },
+    "phone": "+61 2 9832 0287",
+    "website": "https://www.masjidqubaa.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Qubaa&query_place_id=ChIJWSMrwIyaEmsRyqkyAFKBTp0",
+    "placeId": "ChIJWSMrwIyaEmsRyqkyAFKBTp0",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "19 Sunblest Cres"
+  },
+  {
+    "title": "Blacktown Mosque",
+    "address": "15 Fourth Ave, Blacktown NSW 2148, Australia",
+    "location": {
+      "lat": -33.7642354,
+      "lng": 150.9115244
+    },
+    "phone": "+61 2 9831 2436",
+    "url": "https://www.google.com/maps/search/?api=1&query=Blacktown%20Mosque&query_place_id=ChIJtVrx8_yYEmsR1PuYuG_wOW0",
+    "placeId": "ChIJtVrx8_yYEmsR1PuYuG_wOW0",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "15 Fourth Ave"
+  },
+  {
+    "title": "Masjid Al Noor",
+    "address": "1-3 Ferndell St, South Granville NSW 2142, Australia",
+    "location": {
+      "lat": -33.863941,
+      "lng": 151.009986
+    },
+    "phone": "+61 455 777 557",
+    "website": "https://www.facebook.com/masjidalnoorsydney?mibextid=ZbWKwL",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Al%20Noor&query_place_id=ChIJgdAAeOa8EmsR6WGouBgKkJ8",
+    "placeId": "ChIJgdAAeOa8EmsR6WGouBgKkJ8",
+    "categories": [
+      "Mosque",
+      "Religious organization"
+    ],
+    "state": "NSW",
+    "suburb": "1-3 Ferndell St"
+  },
+  {
+    "title": "Al-Jaafaria Shia Islamic Centre",
+    "address": "6/9 Swaffham Rd, Minto NSW 2566, Australia",
+    "location": {
+      "lat": -34.0360445,
+      "lng": 150.8312845
+    },
+    "website": "https://www.aljaafaria.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Al-Jaafaria%20Shia%20Islamic%20Centre&query_place_id=ChIJ-TWkNtS5EmsR670pFg0JuZo",
+    "placeId": "ChIJ-TWkNtS5EmsR670pFg0JuZo",
+    "categories": [
+      "Non-profit organization"
+    ],
+    "state": "NSW",
+    "suburb": "6/9 Swaffham Rd"
+  },
+  {
+    "title": "Penshurst Mosque",
+    "address": "447 Forest Rd, Penshurst NSW 2222, Australia",
+    "location": {
+      "lat": -33.9633327,
+      "lng": 151.0837644
+    },
+    "phone": "+61 2 9580 3390",
+    "website": "http://www.penshurstmosque.com/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Penshurst%20Mosque&query_place_id=ChIJL2vNCz26EmsRJAHnj4Gp68s",
+    "placeId": "ChIJL2vNCz26EmsRJAHnj4Gp68s",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "447 Forest Rd"
+  },
+  {
+    "title": "MCYAS Muslim Cultural & Youth Association Sydney",
+    "address": "3/11 Eddie Rd, Minchinbury NSW 2770, Australia",
+    "location": {
+      "lat": -33.7832221,
+      "lng": 150.8153839
+    },
+    "phone": "+61 469 082 247",
+    "website": "http://www.mcyas.org/",
+    "url": "https://www.google.com/maps/search/?api=1&query=MCYAS%20Muslim%20Cultural%20%26%20Youth%20Association%20Sydney&query_place_id=ChIJ33DaCX6aEmsRkDjYAjFE12U",
+    "placeId": "ChIJ33DaCX6aEmsRkDjYAjFE12U",
+    "categories": [
+      "Mosque",
+      "Community school",
+      "Education center",
+      "Religious institution",
+      "Seminary"
+    ],
+    "state": "NSW",
+    "suburb": "3/11 Eddie Rd"
+  },
+  {
+    "title": "Artarmon Mosque",
+    "address": "35 Hampden Rd, Artarmon NSW 2064, Australia",
+    "location": {
+      "lat": -33.8099755,
+      "lng": 151.1868631
+    },
+    "phone": "+61 2 9643 0314",
+    "website": "http://aiccentre.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Artarmon%20Mosque&query_place_id=ChIJ-3gNKCivEmsRJXzMC_uJle8",
+    "placeId": "ChIJ-3gNKCivEmsRJXzMC_uJle8",
+    "categories": [
+      "Mosque",
+      "Place of worship"
+    ],
+    "state": "NSW",
+    "suburb": "35 Hampden Rd"
+  },
+  {
+    "title": "Matraville Masjid",
+    "address": "436A Bunnerong Rd, Matraville NSW 2036, Australia",
+    "location": {
+      "lat": -33.9557344,
+      "lng": 151.2300652
+    },
+    "website": "https://matravillemasjid.org/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Matraville%20Masjid&query_place_id=ChIJj7hmmpaxEmsR0QGMRIFxACw",
+    "placeId": "ChIJj7hmmpaxEmsR0QGMRIFxACw",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "436A Bunnerong Rd"
+  },
+  {
+    "title": "Bait-ul-Huda Mosque",
+    "address": "45 Hollinsworth Rd, Marsden Park NSW 2765, Australia",
+    "location": {
+      "lat": -33.7256544,
+      "lng": 150.842665
+    },
+    "phone": "+61 432 527 057",
+    "website": "https://www.baitulhudamosque.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Bait-ul-Huda%20Mosque&query_place_id=ChIJc3eXI7ebEmsRKRcBz7Pc1v4",
+    "placeId": "ChIJc3eXI7ebEmsRKRcBz7Pc1v4",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "45 Hollinsworth Rd"
+  },
+  {
+    "title": "Rydalmere Masjid",
+    "address": "2 Primrose Ave, Rydalmere NSW 2116, Australia",
+    "location": {
+      "lat": -33.8138575,
+      "lng": 151.0509999
+    },
+    "phone": "+61 2 9638 7788",
+    "website": "https://gopray.com.au/place/rydalmere-primrose-avenue-masjid/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Rydalmere%20Masjid&query_place_id=ChIJeZD6xIOkEmsRVET1rIkHNmA",
+    "placeId": "ChIJeZD6xIOkEmsRVET1rIkHNmA",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "2 Primrose Ave"
+  },
+  {
+    "title": "Harrington Mosque (Mushalla)",
+    "address": "107 Harrington St, The Rocks NSW 2000, Australia",
+    "location": {
+      "lat": -33.8613919,
+      "lng": 151.2071417
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Harrington%20Mosque%20(Mushalla)&query_place_id=ChIJ9YiysvevEmsR8Gtm11g6f84",
+    "placeId": "ChIJ9YiysvevEmsR8Gtm11g6f84",
+    "categories": [
+      "Musalla"
+    ],
+    "state": "NSW",
+    "suburb": "107 Harrington St"
+  },
+  {
+    "title": "Nabi Akram Islamic Centre",
+    "address": "395/397 Guildford Rd, Guildford NSW 2161, Australia",
+    "location": {
+      "lat": -33.8530707,
+      "lng": 150.9831362
+    },
+    "phone": "+61 2 9188 2439",
+    "website": "http://nabiakram.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Nabi%20Akram%20Islamic%20Centre&query_place_id=ChIJSbBhxTGjEmsR1pbM-uLWE7k",
+    "placeId": "ChIJSbBhxTGjEmsR1pbM-uLWE7k",
+    "categories": [
+      "Community center",
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "395/397 Guildford Rd"
+  },
+  {
+    "title": "Marsden Park Masjid",
+    "address": "16 Wealtheasy St, Angus NSW 2765, Australia",
+    "location": {
+      "lat": -33.6809753,
+      "lng": 150.84282
+    },
+    "phone": "+61 423 883 276",
+    "website": "https://ifam.org.au/masajid/marsden-park-masjid/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Marsden%20Park%20Masjid&query_place_id=ChIJz7NLfUmdEmsRWQgH2iS-Aac",
+    "placeId": "ChIJz7NLfUmdEmsRWQgH2iS-Aac",
+    "categories": [
+      "Mosque",
+      "Community center"
+    ],
+    "state": "NSW",
+    "suburb": "16 Wealtheasy St"
+  },
+  {
+    "title": "Al-Sajjad Islamic Centre",
+    "address": "195 Chisholm Rd, Auburn NSW 2144, Australia",
+    "location": {
+      "lat": -33.8618541,
+      "lng": 151.0191054
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Al-Sajjad%20Islamic%20Centre&query_place_id=ChIJz-b0Eeq8EmsRxFzj3Sgeyr8",
+    "placeId": "ChIJz-b0Eeq8EmsRxFzj3Sgeyr8",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "195 Chisholm Rd"
+  },
+  {
+    "title": "Castlereagh & Park St Musalla",
+    "address": "189 Castlereagh St, Sydney NSW 2000, Australia",
+    "location": {
+      "lat": -33.8733666,
+      "lng": 151.2090581
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Castlereagh%20%26%20Park%20St%20Musalla&query_place_id=ChIJFfupdgCvEmsRvTbh0G2xw0Q",
+    "placeId": "ChIJFfupdgCvEmsRvTbh0G2xw0Q",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "189 Castlereagh St"
+  },
+  {
+    "title": "Mascot Musallah",
+    "address": "2 Hollingshed St, Mascot NSW 2020, Australia",
+    "location": {
+      "lat": -33.9321457,
+      "lng": 151.1947036
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Mascot%20Musallah&query_place_id=ChIJG44uwK6xEmsRZjxgvAqH77E",
+    "placeId": "ChIJG44uwK6xEmsRZjxgvAqH77E",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "2 Hollingshed St"
+  },
+  {
+    "title": "Salaudin Al Ayubi Mosque NSW",
+    "address": "22/7 Lyn Parade, Prestons NSW 2170, Australia",
+    "location": {
+      "lat": -33.9303356,
+      "lng": 150.8872824
+    },
+    "phone": "+61 414 409 283",
+    "url": "https://www.google.com/maps/search/?api=1&query=Salaudin%20Al%20Ayubi%20Mosque%20NSW&query_place_id=ChIJQXBwlDSVEmsRkkDXAMapgFw",
+    "placeId": "ChIJQXBwlDSVEmsRkkDXAMapgFw",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "22/7 Lyn Parade"
+  },
+  {
+    "title": "Rouse Hill Mussullah",
+    "address": "14/589 Withers Rd, Rouse Hill NSW 2155, Australia",
+    "location": {
+      "lat": -33.674692,
+      "lng": 150.9216728
+    },
+    "phone": "+61 424 125 368",
+    "url": "https://www.google.com/maps/search/?api=1&query=Rouse%20Hill%20Mussullah&query_place_id=ChIJEVx6e-qfEmsRVOgFP_rLhqs",
+    "placeId": "ChIJEVx6e-qfEmsRVOgFP_rLhqs",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "14/589 Withers Rd"
+  },
+  {
+    "title": "Granville Mosque",
+    "address": "20 The Avenue, Granville NSW 2142, Australia",
+    "location": {
+      "lat": -33.8320364,
+      "lng": 151.0068699
+    },
+    "phone": "+61 451 774 518",
+    "url": "https://www.google.com/maps/search/?api=1&query=Granville%20Mosque&query_place_id=ChIJo4vEui6jEmsRw5HdInnYbbs",
+    "placeId": "ChIJo4vEui6jEmsRw5HdInnYbbs",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "20 The Avenue"
+  },
+  {
+    "title": "Western Community Islamic Centre Ltd",
+    "address": "60A Auburn Rd, Auburn NSW 2144, Australia",
+    "location": {
+      "lat": -33.8532473,
+      "lng": 151.0325768
+    },
+    "phone": "+61 413 390 326",
+    "url": "https://www.google.com/maps/search/?api=1&query=Western%20Community%20Islamic%20Centre%20Ltd&query_place_id=ChIJ4wbmYLC8EmsRyLo5ft0H47U",
+    "placeId": "ChIJ4wbmYLC8EmsRyLo5ft0H47U",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "60A Auburn Rd"
+  },
+  {
+    "title": "Bilal Mosque | Masjid Bilal",
+    "address": "6 Wilson Rd, Hinchinbrook NSW 2168, Australia",
+    "location": {
+      "lat": -33.9243991,
+      "lng": 150.8617536
+    },
+    "phone": "+61 1800 417 779",
+    "website": "https://www.aiccentre.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Bilal%20Mosque%20%7C%20Masjid%20Bilal&query_place_id=ChIJk0-3OYCUEmsR01-OGtpQkhc",
+    "placeId": "ChIJk0-3OYCUEmsR01-OGtpQkhc",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "6 Wilson Rd"
+  },
+  {
+    "title": "Othman Bin Affan Mosque Cabramatta West",
+    "address": "22 Water St, Cabramatta West NSW 2166, Australia",
+    "location": {
+      "lat": -33.8891144,
+      "lng": 150.9160433
+    },
+    "phone": "+61 482 053 349",
+    "website": "https://www.facebook.com/OBA.MOSQUE/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Othman%20Bin%20Affan%20Mosque%20Cabramatta%20West&query_place_id=ChIJ_Qaus3uWEmsRXCMof-JqtNE",
+    "placeId": "ChIJ_Qaus3uWEmsRXCMof-JqtNE",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "22 Water St"
+  },
+  {
+    "title": "Masjid Al-Rida",
+    "address": "Unit 2/14 Forthorn Pl, North St Marys NSW 2760, Australia",
+    "location": {
+      "lat": -33.760396,
+      "lng": 150.779672
+    },
+    "phone": "+61 2 9044 1628",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Al-Rida&query_place_id=ChIJWeQIJ7iaEmsR8uL6N0OnsfI",
+    "placeId": "ChIJWeQIJ7iaEmsR8uL6N0OnsfI",
+    "categories": [
+      "Association / Organization",
+      "Charity",
+      "Mosque",
+      "Place of worship"
+    ],
+    "state": "NSW",
+    "suburb": "Unit 2/14 Forthorn Pl"
+  },
+  {
+    "title": "Minto Mosque",
+    "address": "44 Westmoreland Rd, Minto NSW 2566, Australia",
+    "location": {
+      "lat": -34.0434093,
+      "lng": 150.8484774
+    },
+    "phone": "+61 2 9820 2536",
+    "url": "https://www.google.com/maps/search/?api=1&query=Minto%20Mosque&query_place_id=ChIJObMX3afuEmsRT_b1xJb0n5Y",
+    "placeId": "ChIJObMX3afuEmsRT_b1xJb0n5Y",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "44 Westmoreland Rd"
+  },
+  {
+    "title": "Dawoodi Bohra Community Masjid",
+    "address": "2 Argyle St, Auburn NSW 2144, Australia",
+    "location": {
+      "lat": -33.8416198,
+      "lng": 151.0316042
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Dawoodi%20Bohra%20Community%20Masjid&query_place_id=ChIJqebF9kyjEmsRZ2ZjYCFc1Qg",
+    "placeId": "ChIJqebF9kyjEmsRZ2ZjYCFc1Qg",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "2 Argyle St"
+  },
+  {
+    "title": "Khaled Ibn Al Walid Mosque",
+    "address": "33 Anzac St, Greenacre NSW 2190, Australia",
+    "location": {
+      "lat": -33.9016821,
+      "lng": 151.0419505
+    },
+    "phone": "+61 416 008 506",
+    "website": "https://www.facebook.com/Greenacremosque",
+    "url": "https://www.google.com/maps/search/?api=1&query=Khaled%20Ibn%20Al%20Walid%20Mosque&query_place_id=ChIJE381lvO9EmsRgXyt5AYgWXs",
+    "placeId": "ChIJE381lvO9EmsRgXyt5AYgWXs",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "33 Anzac St"
+  },
+  {
+    "title": "Campbelltown Masjid",
+    "address": "10 Kingsclare St, Leumeah NSW 2560, Australia",
+    "location": {
+      "lat": -34.0556938,
+      "lng": 150.8289878
+    },
+    "phone": "+61 411 384 004",
+    "website": "https://www.facebook.com/CampbelltownMasjid?mibextid=ZbWKwL",
+    "url": "https://www.google.com/maps/search/?api=1&query=Campbelltown%20Masjid&query_place_id=ChIJWYvZH5PuEmsRoSXrI7hloMk",
+    "placeId": "ChIJWYvZH5PuEmsRoSXrI7hloMk",
+    "categories": [
+      "Mosque",
+      "Place of worship"
+    ],
+    "state": "NSW",
+    "suburb": "10 Kingsclare St"
+  },
+  {
+    "title": "Mt Druitt Anadolu Mosque",
+    "address": "52 Hythe St, Mount Druitt NSW 2770, Australia",
+    "location": {
+      "lat": -33.7645035,
+      "lng": 150.8260078
+    },
+    "phone": "+61 2 9832 2546",
+    "website": "http://www.anadolucamii.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Mt%20Druitt%20Anadolu%20Mosque&query_place_id=ChIJwxnctESaEmsREGDmU8cpnf8",
+    "placeId": "ChIJwxnctESaEmsREGDmU8cpnf8",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "52 Hythe St"
+  },
+  {
+    "title": "Mosque & Hussaineyat Ale Yassin(a.s)",
+    "address": "95/93 Carlingford St, Sefton NSW 2162, Australia",
+    "location": {
+      "lat": -33.8850279,
+      "lng": 151.0132822
+    },
+    "phone": "+61 2 9790 7177",
+    "website": "http://www.h-aleyassin.com/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Mosque%20%26%20Hussaineyat%20Ale%20Yassin(a.s)&query_place_id=ChIJl7Hc9Vm8EmsRpJ5Kmyv0kpY",
+    "placeId": "ChIJl7Hc9Vm8EmsRpJ5Kmyv0kpY",
+    "categories": [
+      "Religious organization"
+    ],
+    "state": "NSW",
+    "suburb": "95/93 Carlingford St"
+  },
+  {
+    "title": "Lebanese Muslim Association",
+    "address": "71-75 Wangee Rd, Lakemba NSW 2195, Australia",
+    "location": {
+      "lat": -33.9122791,
+      "lng": 151.0735822
+    },
+    "phone": "+61 2 9750 6833",
+    "website": "http://www.lma.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Lebanese%20Muslim%20Association&query_place_id=ChIJm7fm9L67EmsRWzp5QzLNglg",
+    "placeId": "ChIJm7fm9L67EmsRWzp5QzLNglg",
+    "categories": [
+      "Charity",
+      "Community center",
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "71-75 Wangee Rd"
+  },
+  {
+    "title": "Greenacre Musallah",
+    "address": "8/146 Waterloo Rd, Greenacre NSW 2190, Australia",
+    "location": {
+      "lat": -33.9077456,
+      "lng": 151.0568421
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Greenacre%20Musallah&query_place_id=ChIJuepv0I27EmsRrEmmkkRy4bw",
+    "placeId": "ChIJuepv0I27EmsRrEmmkkRy4bw",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "8/146 Waterloo Rd"
+  },
+  {
+    "title": "Hornsby Dawah Mosque",
+    "address": "75 Hunter St, Hornsby NSW 2077, Australia",
+    "location": {
+      "lat": -33.7007877,
+      "lng": 151.1008488
+    },
+    "phone": "+61 452 260 022",
+    "website": "http://hornsbydawahmosque.org/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Hornsby%20Dawah%20Mosque&query_place_id=ChIJ0TjO3YanEmsRVaijmI14dMg",
+    "placeId": "ChIJ0TjO3YanEmsRVaijmI14dMg",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "75 Hunter St"
+  },
+  {
+    "title": "Rahma Mosque Guildford",
+    "address": "3 Railway St, Old Guildford NSW 2161, Australia",
+    "location": {
+      "lat": -33.8583196,
+      "lng": 150.9833181
+    },
+    "phone": "+61 406 279 999",
+    "url": "https://www.google.com/maps/search/?api=1&query=Rahma%20Mosque%20Guildford&query_place_id=ChIJw0JI5xO9EmsR3COkwUc702A",
+    "placeId": "ChIJw0JI5xO9EmsR3COkwUc702A",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "3 Railway St"
+  },
+  {
+    "title": "Fitya Centre",
+    "address": "568 Hume Hwy, Yagoona NSW 2199, Australia",
+    "location": {
+      "lat": -33.9068304,
+      "lng": 151.0219077
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Fitya%20Centre&query_place_id=ChIJnbA7aT68EmsR0UD0jAEuAA0",
+    "placeId": "ChIJnbA7aT68EmsR0UD0jAEuAA0",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "568 Hume Hwy"
+  },
+  {
+    "title": "Al Madinah Mosque",
+    "address": "1492 Camden Valley Wy, Leppington NSW 2179, Australia",
+    "location": {
+      "lat": -33.9597705,
+      "lng": 150.8249102
+    },
+    "phone": "+61 485 500 096",
+    "website": "http://almadinahmasjid.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Al%20Madinah%20Mosque&query_place_id=ChIJS5l27dHsEmsR574fFdHcwR0",
+    "placeId": "ChIJS5l27dHsEmsR574fFdHcwR0",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "1492 Camden Valley Wy"
+  },
+  {
+    "title": "Bangladesh Islamic Centre of NSW",
+    "address": "13 Helen St, Sefton NSW 2162, Australia",
+    "location": {
+      "lat": -33.8879622,
+      "lng": 151.0106369
+    },
+    "phone": "+61 404 515 482",
+    "website": "https://bicnsw.org/contact-us/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Bangladesh%20Islamic%20Centre%20of%20NSW&query_place_id=ChIJAQC0QVC8EmsR0BzS085zu8g",
+    "placeId": "ChIJAQC0QVC8EmsR0BzS085zu8g",
+    "categories": [
+      "Social welfare center"
+    ],
+    "state": "NSW",
+    "suburb": "13 Helen St"
+  },
+  {
+    "title": "Islamic Dawah Centre of Australia",
+    "address": "1B Melissa St, Auburn NSW 2144, Australia",
+    "location": {
+      "lat": -33.8757107,
+      "lng": 151.0145592
+    },
+    "phone": "+61 2 9738 7700",
+    "url": "https://www.google.com/maps/search/?api=1&query=Islamic%20Dawah%20Centre%20of%20Australia&query_place_id=ChIJ-xDMXQm9EmsRFUpqAeKvL70",
+    "placeId": "ChIJ-xDMXQm9EmsRFUpqAeKvL70",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "1B Melissa St"
+  },
+  {
+    "title": "Al-Hidaya Centre",
+    "address": "63/65 Helen St, Sefton NSW 2162, Australia",
+    "location": {
+      "lat": -33.8838501,
+      "lng": 151.0115458
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Al-Hidaya%20Centre&query_place_id=ChIJWdicW1e8EmsRC4SZj2-wllQ",
+    "placeId": "ChIJWdicW1e8EmsRC4SZj2-wllQ",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "63/65 Helen St"
+  },
+  {
+    "title": "Rosebery Mosque",
+    "address": "357 Gardeners Rd, Rosebery NSW 2018, Australia",
+    "location": {
+      "lat": -33.9227145,
+      "lng": 151.2043704
+    },
+    "phone": "+61 430 466 902",
+    "website": "https://gopray.com.au/place/rosebery-musalla/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Rosebery%20Mosque&query_place_id=ChIJwZGf7S-xEmsRZusAkH6t7fw",
+    "placeId": "ChIJwZGf7S-xEmsRZusAkH6t7fw",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "357 Gardeners Rd"
+  },
+  {
+    "title": "Hills District Muslim Society Incorporated",
+    "address": "937 Old Northern Rd, Dural NSW 2158, Australia",
+    "location": {
+      "lat": -33.6824056,
+      "lng": 151.0287128
+    },
+    "website": "http://www.hdms.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Hills%20District%20Muslim%20Society%20Incorporated&query_place_id=ChIJQdE5JKGgEmsR-7CiLLJVsvg",
+    "placeId": "ChIJQdE5JKGgEmsR-7CiLLJVsvg",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "937 Old Northern Rd"
+  },
+  {
+    "title": "Bayan Mosque",
+    "address": "Auburn Rd, Regents Park NSW 2143, Australia",
+    "location": {
+      "lat": -33.8859993,
+      "lng": 151.0230398
+    },
+    "phone": "+61 2 8710 8122",
+    "website": "http://www.albayan.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Bayan%20Mosque&query_place_id=ChIJn_BddI29EmsRubkZbRkhyGY",
+    "placeId": "ChIJn_BddI29EmsRubkZbRkhyGY",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "Auburn Rd"
+  },
+  {
+    "title": "Almahdi Mosque",
+    "address": "9 Watsford Rd, Campbelltown NSW 2560, Australia",
+    "location": {
+      "lat": -34.059872,
+      "lng": 150.8169149
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Almahdi%20Mosque&query_place_id=ChIJhzFwZPbuEmsRKfT5ycJ9R9A",
+    "placeId": "ChIJhzFwZPbuEmsRKfT5ycJ9R9A",
+    "categories": [
+      "Place of worship"
+    ],
+    "state": "NSW",
+    "suburb": "9 Watsford Rd"
+  },
+  {
+    "title": "Al Falah Musalla",
+    "address": "24B Castlereagh St, Liverpool NSW 2170, Australia",
+    "location": {
+      "lat": -33.918131,
+      "lng": 150.921219
+    },
+    "phone": "+61 412 525 252",
+    "url": "https://www.google.com/maps/search/?api=1&query=Al%20Falah%20Musalla&query_place_id=ChIJl6Wk0fmVEmsRftzNsjSbZDU",
+    "placeId": "ChIJl6Wk0fmVEmsRftzNsjSbZDU",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "24B Castlereagh St"
+  },
+  {
+    "title": "Australian Islamic Cultural Centre",
+    "address": "149 Auburn Rd, Auburn NSW 2144, Australia",
+    "location": {
+      "lat": -33.8564984,
+      "lng": 151.031216
+    },
+    "phone": "+61 2 9646 1222",
+    "url": "https://www.google.com/maps/search/?api=1&query=Australian%20Islamic%20Cultural%20Centre&query_place_id=ChIJ4U9aS7q8EmsRVaLszlk5n4M",
+    "placeId": "ChIJ4U9aS7q8EmsRVaLszlk5n4M",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "149 Auburn Rd"
+  },
+  {
+    "title": "ASWJ Revesby Masjeed",
+    "address": "10/9-11 Mavis St, Revesby NSW 2212, Australia",
+    "location": {
+      "lat": -33.9365605,
+      "lng": 151.0189676
+    },
+    "phone": "+61 410 164 851",
+    "website": "http://www.aswj.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=ASWJ%20Revesby%20Masjeed&query_place_id=ChIJvZnJ7Za-EmsRsffNCwq4Cgg",
+    "placeId": "ChIJvZnJ7Za-EmsRsffNCwq4Cgg",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "10/9-11 Mavis St"
+  },
+  {
+    "title": "Masjid As-Salam Chester Hill",
+    "address": "40 Hector St, Chester Hill NSW 2162, Australia",
+    "location": {
+      "lat": -33.8762786,
+      "lng": 151.0075907
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20As-Salam%20Chester%20Hill&query_place_id=ChIJEwoyL_-8EmsRC5bnfrF8Tys",
+    "placeId": "ChIJEwoyL_-8EmsRC5bnfrF8Tys",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "40 Hector St"
+  },
+  {
+    "title": "Carramar Masjid",
+    "address": "31 Carramar Ave, Carramar NSW 2163, Australia",
+    "location": {
+      "lat": -33.8840097,
+      "lng": 150.960397
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Carramar%20Masjid&query_place_id=ChIJP7oKfYy9EmsRbcxRZ7xKinU",
+    "placeId": "ChIJP7oKfYy9EmsRbcxRZ7xKinU",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "31 Carramar Ave"
+  },
+  {
+    "title": "Amy Street Musallah",
+    "address": "5 Amy St, Regents Park NSW 2143, Australia",
+    "location": {
+      "lat": -33.8834981,
+      "lng": 151.0252484
+    },
+    "website": "https://regentsparkmusallah.sydney/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Amy%20Street%20Musallah&query_place_id=ChIJMRvl1c69EmsRxLkc66nmfeE",
+    "placeId": "ChIJMRvl1c69EmsRxLkc66nmfeE",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "5 Amy St"
+  },
+  {
+    "title": "Lakemba Musallah",
+    "address": "42 Haldon St, Lakemba NSW 2195, Australia",
+    "location": {
+      "lat": -33.9192595,
+      "lng": 151.0765885
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Lakemba%20Musallah&query_place_id=ChIJL0NJzcC7EmsRHnU3dAeyPK4",
+    "placeId": "ChIJL0NJzcC7EmsRHnU3dAeyPK4",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "42 Haldon St"
+  },
+  {
+    "title": "Iqro Mosque",
+    "address": "39 McCourt St, Wiley Park NSW 2195, Australia",
+    "location": {
+      "lat": -33.9177264,
+      "lng": 151.0681806
+    },
+    "phone": "+61 422 466 165",
+    "website": "http://www.iqro.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Iqro%20Mosque&query_place_id=ChIJoxcRUOq7EmsRyhneV22Ppsk",
+    "placeId": "ChIJoxcRUOq7EmsRyhneV22Ppsk",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "39 McCourt St"
+  },
+  {
+    "title": "Warwick Farm Musallah",
+    "address": "6/12/14 Hume Hwy, Warwick Farm NSW 2170, Australia",
+    "location": {
+      "lat": -33.914298,
+      "lng": 150.9302336
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Warwick%20Farm%20Musallah&query_place_id=ChIJB8zPBMKVEmsRUxv5i9PYDXc",
+    "placeId": "ChIJB8zPBMKVEmsRUxv5i9PYDXc",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "6/12/14 Hume Hwy"
+  },
+  {
+    "title": "Park Street Musalla",
+    "address": "Stand G, Town Hall, Park St, Sydney NSW 2000, Australia",
+    "location": {
+      "lat": -33.8734444,
+      "lng": 151.2088056
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Park%20Street%20Musalla&query_place_id=ChIJG1qlcgCvEmsR-uerjiB716Q",
+    "placeId": "ChIJG1qlcgCvEmsR-uerjiB716Q",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "Park St"
+  },
+  {
+    "title": "Hurstville Masjid (Underconstruction)",
+    "address": "88/90 Botany St, Carlton NSW 2218, Australia",
+    "location": {
+      "lat": -33.9646663,
+      "lng": 151.114336
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Hurstville%20Masjid%20(Underconstruction)&query_place_id=ChIJkyJr0Zi5EmsRi_7LmDWYkZc",
+    "placeId": "ChIJkyJr0Zi5EmsRi_7LmDWYkZc",
+    "categories": [
+      "Place of worship"
+    ],
+    "state": "NSW",
+    "suburb": "88/90 Botany St"
+  },
+  {
+    "title": "Al Minia Charitable Association & Mosque",
+    "address": "6 Rawson St, Wiley Park NSW 2195, Australia",
+    "location": {
+      "lat": -33.926864,
+      "lng": 151.0635
+    },
+    "phone": "+61 2 9759 3091",
+    "url": "https://www.google.com/maps/search/?api=1&query=Al%20Minia%20Charitable%20Association%20%26%20Mosque&query_place_id=ChIJrUz0OeS7EmsRVeMgd1cJrHI",
+    "placeId": "ChIJrUz0OeS7EmsRVeMgd1cJrHI",
+    "categories": [
+      "Mosque",
+      "Non-profit organization"
+    ],
+    "state": "NSW",
+    "suburb": "6 Rawson St"
+  },
+  {
+    "title": "Lakemba Islamic Centre IPDC",
+    "address": "9 Hampden Rd, Lakemba NSW 2196, Australia",
+    "location": {
+      "lat": -33.917328,
+      "lng": 151.0748036
+    },
+    "phone": "+61 425 816 529",
+    "website": "http://ipdc.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Lakemba%20Islamic%20Centre%20IPDC&query_place_id=ChIJvTwYvsC7EmsR7bJKLmDiyX8",
+    "placeId": "ChIJvTwYvsC7EmsR7bJKLmDiyX8",
+    "categories": [
+      "Religious organization"
+    ],
+    "state": "NSW",
+    "suburb": "9 Hampden Rd"
+  },
+  {
+    "title": "Lethbridge Park Masjid",
+    "address": "9 Apia Pl, Lethbridge Park NSW 2770, Australia",
+    "location": {
+      "lat": -33.7374833,
+      "lng": 150.7988067
+    },
+    "phone": "+61 450 773 286",
+    "url": "https://www.google.com/maps/search/?api=1&query=Lethbridge%20Park%20Masjid&query_place_id=ChIJgdUQ-5qbEmsR8qXLWWIQBiY",
+    "placeId": "ChIJgdUQ-5qbEmsR8qXLWWIQBiY",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "9 Apia Pl"
+  },
+  {
+    "title": "Auburn Central Musalla",
+    "address": "13 Auburn Rd, Auburn NSW 2144, Australia",
+    "location": {
+      "lat": -33.8504865,
+      "lng": 151.0329216
+    },
+    "phone": "+61 452 287 299",
+    "url": "https://www.google.com/maps/search/?api=1&query=Auburn%20Central%20Musalla&query_place_id=ChIJ4-YUfLG8EmsRsMEx7yMPMlk",
+    "placeId": "ChIJ4-YUfLG8EmsRsMEx7yMPMlk",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "13 Auburn Rd"
+  },
+  {
+    "title": "Islamic Council of Victoria (ICV)",
+    "address": "66-68 Jeffcott St, West Melbourne VIC 3003, Australia",
+    "location": {
+      "lat": -37.8118405,
+      "lng": 144.9514323
+    },
+    "phone": "+61 3 9328 2067",
+    "website": "http://www.icv.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Islamic%20Council%20of%20Victoria%20(ICV)&query_place_id=ChIJxW6TlEhd1moRWsU2crcvzXQ",
+    "placeId": "ChIJxW6TlEhd1moRWsU2crcvzXQ",
+    "categories": [
+      "Mosque",
+      "Tourist attraction"
+    ],
+    "state": "VIC",
+    "suburb": "66-68 Jeffcott St"
+  },
+  {
+    "title": "Coburg Islamic Centre (CIC)",
+    "address": "31 Nicholson St, Coburg VIC 3058, Australia",
+    "location": {
+      "lat": -37.755,
+      "lng": 144.9752778
+    },
+    "phone": "+61 3 9386 5324",
+    "website": "http://cic.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Coburg%20Islamic%20Centre%20(CIC)&query_place_id=ChIJl-kSM6RE1moR82y0Z0sPwvc",
+    "placeId": "ChIJl-kSM6RE1moR82y0Z0sPwvc",
+    "categories": [
+      "Mosque",
+      "Charity",
+      "Community center",
+      "Non-profit organization",
+      "Religious destination",
+      "Religious organization"
+    ],
+    "state": "VIC",
+    "suburb": "31 Nicholson St"
+  },
+  {
+    "title": "Melbourne Madinah",
+    "address": "359 Exhibition St, Melbourne VIC 3000, Australia",
+    "location": {
+      "lat": -37.8074,
+      "lng": 144.9682305
+    },
+    "phone": "+61 1300 623 462",
+    "website": "https://www.madinahnext.org/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Melbourne%20Madinah&query_place_id=ChIJ-_oYIrJC1moRQh_iqGoc-k4",
+    "placeId": "ChIJ-_oYIrJC1moRQh_iqGoc-k4",
+    "categories": [
+      "Mosque",
+      "Education center",
+      "Religious organization"
+    ],
+    "state": "VIC",
+    "suburb": "359 Exhibition St"
+  },
+  {
+    "title": "Maidstone Mosque",
+    "address": "34 Studley St, Maidstone VIC 3012, Australia",
+    "location": {
+      "lat": -37.7877503,
+      "lng": 144.8793614
+    },
+    "phone": "+61 3 8707 1541",
+    "website": "https://www.facebook.com/MaidstoneMosque/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Maidstone%20Mosque&query_place_id=ChIJBzhct-Zd1moRTon-mcOnwrQ",
+    "placeId": "ChIJBzhct-Zd1moRTon-mcOnwrQ",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "34 Studley St"
+  },
+  {
+    "title": "Melbourne Grand Mosque",
+    "address": "70 Wootten Rd, Tarneit VIC 3029, Australia",
+    "location": {
+      "lat": -37.8545063,
+      "lng": 144.6612837
+    },
+    "phone": "+61 3 8087 2323",
+    "website": "http://www.mgm.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Melbourne%20Grand%20Mosque&query_place_id=ChIJO5_fFKmP1moRXM8s9aT7ofk",
+    "placeId": "ChIJO5_fFKmP1moRXM8s9aT7ofk",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "70 Wootten Rd"
+  },
+  {
+    "title": "Muslimin.Melbourne Mosques",
+    "address": "17 Victoria St, Melbourne VIC 3000, Australia",
+    "location": {
+      "lat": -37.8074272,
+      "lng": 144.9680903
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Muslimin.Melbourne%20Mosques&query_place_id=ChIJnZ0lyM5D1moRYs3O-d1MCK8",
+    "placeId": "ChIJnZ0lyM5D1moRYs3O-d1MCK8",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "17 Victoria St"
+  },
+  {
+    "title": "Australian Islamic Centre",
+    "address": "23-27 Blenheim Rd, Newport VIC 3015, Australia",
+    "location": {
+      "lat": -37.8459878,
+      "lng": 144.8616818
+    },
+    "phone": "+61 3 9000 0177",
+    "website": "https://www.australianislamiccentre.org/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Australian%20Islamic%20Centre&query_place_id=ChIJU34zbLth1moRcn9t8o-SdV4",
+    "placeId": "ChIJU34zbLth1moRcn9t8o-SdV4",
+    "categories": [
+      "Mosque",
+      "Community center"
+    ],
+    "state": "VIC",
+    "suburb": "23-27 Blenheim Rd"
+  },
+  {
+    "title": "Omar Bin Al Khattab Masjid Preston",
+    "address": "90 Cramer St, Preston VIC 3072, Australia",
+    "location": {
+      "lat": -37.7390496,
+      "lng": 144.9931546
+    },
+    "phone": "+61 3 9470 2424",
+    "website": "http://isv.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Omar%20Bin%20Al%20Khattab%20Masjid%20Preston&query_place_id=ChIJS1n17e9E1moRNGVtG9J6Dqw",
+    "placeId": "ChIJS1n17e9E1moRNGVtG9J6Dqw",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "90 Cramer St"
+  },
+  {
+    "title": "BSN Central Mosque",
+    "address": "144 Fitzroy St, Fitzroy VIC 3065, Australia",
+    "location": {
+      "lat": -37.8043736,
+      "lng": 144.9764185
+    },
+    "phone": "+61 3 9417 5760",
+    "url": "https://www.google.com/maps/search/?api=1&query=BSN%20Central%20Mosque&query_place_id=ChIJHT11ldtC1moR50j6VlaRn8I",
+    "placeId": "ChIJHT11ldtC1moR50j6VlaRn8I",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "144 Fitzroy St"
+  },
+  {
+    "title": "MyCentre Mosque",
+    "address": "31 Kraft Ct, Broadmeadows VIC 3047, Australia",
+    "location": {
+      "lat": -37.6772929,
+      "lng": 144.9243316
+    },
+    "phone": "+61 3 9309 1515",
+    "website": "https://mycentre.org.au/?utm_source=google-my-business&utm_medium=&utm_term=&utm_content=&utm_campaign=",
+    "url": "https://www.google.com/maps/search/?api=1&query=MyCentre%20Mosque&query_place_id=ChIJYYGN7oVa1moRUXzkO7ut9z8",
+    "placeId": "ChIJYYGN7oVa1moRUXzkO7ut9z8",
+    "categories": [
+      "Mosque",
+      "Community center",
+      "Non-profit organization"
+    ],
+    "state": "VIC",
+    "suburb": "31 Kraft Ct"
+  },
+  {
+    "title": "Albanian Australian Islamic Society",
+    "address": "765 Drummond St, Carlton North VIC 3054, Australia",
+    "location": {
+      "lat": -37.786684,
+      "lng": 144.9705656
+    },
+    "phone": "+61 3 9347 6505",
+    "website": "http://www.aais.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Albanian%20Australian%20Islamic%20Society&query_place_id=ChIJ1RGMIjBD1moRtqq3d6c57ig",
+    "placeId": "ChIJ1RGMIjBD1moRtqq3d6c57ig",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "765 Drummond St"
+  },
+  {
+    "title": "Queen St Musallah (Mosque)",
+    "address": "Level 5/131 Queen St, Melbourne VIC 3000, Australia",
+    "location": {
+      "lat": -37.8154914,
+      "lng": 144.9606114
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Queen%20St%20Musallah%20(Mosque)&query_place_id=ChIJhWXdXzFd1moRxkzrWzOG2iE",
+    "placeId": "ChIJhWXdXzFd1moRxkzrWzOG2iE",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "Level 5/131 Queen St"
+  },
+  {
+    "title": "Australian Muslim Social Services Agency",
+    "address": "91-101 Boundary Rd, North Melbourne VIC 3051, Australia",
+    "location": {
+      "lat": -37.7916069,
+      "lng": 144.9393433
+    },
+    "phone": "+61 3 9329 0285",
+    "website": "http://www.amssa.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Australian%20Muslim%20Social%20Services%20Agency&query_place_id=ChIJRSo6CyJd1moR0lfy0Cdijgs",
+    "placeId": "ChIJRSo6CyJd1moR0lfy0Cdijgs",
+    "categories": [
+      "Mosque",
+      "Place of worship"
+    ],
+    "state": "VIC",
+    "suburb": "91-101 Boundary Rd"
+  },
+  {
+    "title": "Musalla - University of Melbourne Islamic Society",
+    "address": "Pelham St, Carlton VIC 3053, Australia",
+    "location": {
+      "lat": -37.8019599,
+      "lng": 144.9612737
+    },
+    "website": "https://umsu.unimelb.edu.au/buddy-up/clubs/clubs-listing/join/7029",
+    "url": "https://www.google.com/maps/search/?api=1&query=Musalla%20-%20University%20of%20Melbourne%20Islamic%20Society&query_place_id=ChIJ1ZPqstJC1moRx8iRGftqsE4",
+    "placeId": "ChIJ1ZPqstJC1moRx8iRGftqsE4",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "Pelham St"
+  },
+  {
+    "title": "Sunshine Mosque",
+    "address": "618 Ballarat Rd, Ardeer VIC 3022, Australia",
+    "location": {
+      "lat": -37.7716857,
+      "lng": 144.8011835
+    },
+    "phone": "+61 3 9363 8245",
+    "website": "https://www.sunshinemosque.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Sunshine%20Mosque&query_place_id=ChIJ44TcA-Rf1moRlFXYK6_HfK0",
+    "placeId": "ChIJ44TcA-Rf1moRlFXYK6_HfK0",
+    "categories": [
+      "Mosque",
+      "Funeral director"
+    ],
+    "state": "VIC",
+    "suburb": "618 Ballarat Rd"
+  },
+  {
+    "title": "Broadmeadows Turkish Islamic Cultural Centre",
+    "address": "45-55 King St, Dallas VIC 3047, Australia",
+    "location": {
+      "lat": -37.6685062,
+      "lng": 144.9415799
+    },
+    "phone": "+61 3 9359 0054",
+    "website": "http://www.bticc.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Broadmeadows%20Turkish%20Islamic%20Cultural%20Centre&query_place_id=ChIJh-7oiwxQ1moR9De5xavFruU",
+    "placeId": "ChIJh-7oiwxQ1moR9De5xavFruU",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "45-55 King St"
+  },
+  {
+    "title": "Islamic Society of Victoria.",
+    "address": "90 Cramer St, Preston VIC 3072, Australia",
+    "location": {
+      "lat": -37.7390496,
+      "lng": 144.9931546
+    },
+    "phone": "+61 3 9470 2424",
+    "website": "http://isv.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Islamic%20Society%20of%20Victoria.&query_place_id=ChIJeyUh7e9E1moRsa-otjsZpsA",
+    "placeId": "ChIJeyUh7e9E1moRsa-otjsZpsA",
+    "categories": [
+      "Mosque",
+      "Place of worship",
+      "Religious organization"
+    ],
+    "state": "VIC",
+    "suburb": "90 Cramer St"
+  },
+  {
+    "title": "Melbourne Multicultural Centre / Golden Wattle Masjid",
+    "address": "700 Davis Rd, Tarneit VIC 3029, Australia",
+    "location": {
+      "lat": -37.8034307,
+      "lng": 144.6599419
+    },
+    "phone": "+61 425 200 871",
+    "website": "http://www.ipdc.org.au/donate/mmc",
+    "url": "https://www.google.com/maps/search/?api=1&query=Melbourne%20Multicultural%20Centre%20%2F%20Golden%20Wattle%20Masjid&query_place_id=ChIJaZosIoKO1moR-wvLBMFXeN4",
+    "placeId": "ChIJaZosIoKO1moR-wvLBMFXeN4",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "700 Davis Rd"
+  },
+  {
+    "title": "Islamic Society of Melbourne Eastern Region - Lysterfield",
+    "address": "1273 Wellington Rd, Lysterfield VIC 3156, Australia",
+    "location": {
+      "lat": -37.927981,
+      "lng": 145.2709794
+    },
+    "phone": "+61 3 8740 2060",
+    "website": "http://www.isomer.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Islamic%20Society%20of%20Melbourne%20Eastern%20Region%20-%20Lysterfield&query_place_id=ChIJd2iFeng91moRaFgl-h2uh8Q",
+    "placeId": "ChIJd2iFeng91moRaFgl-h2uh8Q",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "1273 Wellington Rd"
+  },
+  {
+    "title": "Imam Ali Islamic Centre Melbourne",
+    "address": "90 Lowson St, Fawkner VIC 3060, Australia",
+    "location": {
+      "lat": -37.6980954,
+      "lng": 144.9652698
+    },
+    "phone": "+98 937 999 9806",
+    "website": "https://m.facebook.com/Imam-Ali-Islamic-Center-116498771752521/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Imam%20Ali%20Islamic%20Centre%20Melbourne&query_place_id=ChIJWXX7sUtF1moRgWHiTpmx34M",
+    "placeId": "ChIJWXX7sUtF1moRgWHiTpmx34M",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "90 Lowson St"
+  },
+  {
+    "title": "Australian Bosnian Islamic Centre Deer Park",
+    "address": "285 Station Rd, Albanvale VIC 3021, Australia",
+    "location": {
+      "lat": -37.7473721,
+      "lng": 144.777937
+    },
+    "phone": "+61 3 9310 8811",
+    "website": "http://abicdp.org/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Australian%20Bosnian%20Islamic%20Centre%20Deer%20Park&query_place_id=ChIJXVafHmf11moR3Mwkfrgf8j4",
+    "placeId": "ChIJXVafHmf11moR3Mwkfrgf8j4",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "285 Station Rd"
+  },
+  {
+    "title": "Al-Taqwa Masjid Hoppers Crossing",
+    "address": "201 Sayers Rd, Truganina VIC 3029, Australia",
+    "location": {
+      "lat": -37.852612,
+      "lng": 144.72202
+    },
+    "phone": "+61 3 9269 5000",
+    "website": "http://www.al-taqwa.vic.edu.au/index.php/contact-us",
+    "url": "https://www.google.com/maps/search/?api=1&query=Al-Taqwa%20Masjid%20Hoppers%20Crossing&query_place_id=ChIJJeswyxmJ1moRY0tX68Kl7CE",
+    "placeId": "ChIJJeswyxmJ1moRY0tX68Kl7CE",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "201 Sayers Rd"
+  },
+  {
+    "title": "Virgin Mary Mosque",
+    "address": "143 Hogans Rd, Hoppers Crossing VIC 3029, Australia",
+    "location": {
+      "lat": -37.863287,
+      "lng": 144.684033
+    },
+    "phone": "+61 3 8087 0900",
+    "website": "http://virginmarymosque.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Virgin%20Mary%20Mosque&query_place_id=ChIJ7wHTmTmP1moRUtJoJajw2CI",
+    "placeId": "ChIJ7wHTmTmP1moRUtJoJajw2CI",
+    "categories": [
+      "Mosque",
+      "Community center"
+    ],
+    "state": "VIC",
+    "suburb": "143 Hogans Rd"
+  },
+  {
+    "title": "Huntingdale Mosque",
+    "address": "320-326 Huntingdale Rd, Huntingdale VIC 3166, Australia",
+    "location": {
+      "lat": -37.9109922,
+      "lng": 145.1037172
+    },
+    "phone": "+61 3 9543 8037",
+    "url": "https://www.google.com/maps/search/?api=1&query=Huntingdale%20Mosque&query_place_id=ChIJDxzKT_tq1moRbseoQ4J7ZJI",
+    "placeId": "ChIJDxzKT_tq1moRbseoQ4J7ZJI",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "320-326 Huntingdale Rd"
+  },
+  {
+    "title": "ICMG Meadow Heights Mosque",
+    "address": "15-17 Hudson Cct, Meadow Heights VIC 3048, Australia",
+    "location": {
+      "lat": -37.6517898,
+      "lng": 144.9208998
+    },
+    "phone": "+61 3 9359 5292",
+    "website": "http://www.icmg.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=ICMG%20Meadow%20Heights%20Mosque&query_place_id=ChIJd6esFmFQ1moRpFgekatB530",
+    "placeId": "ChIJd6esFmFQ1moRpFgekatB530",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "15-17 Hudson Cct"
+  },
+  {
+    "title": "Emir Sultan Mosque (ICMG Dandenong)",
+    "address": "139 Cleeland St, Dandenong VIC 3175, Australia",
+    "location": {
+      "lat": -37.9748469,
+      "lng": 145.2160691
+    },
+    "phone": "+61 3 9793 5838",
+    "website": "http://emirsultanmosque.com/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Emir%20Sultan%20Mosque%20(ICMG%20Dandenong)&query_place_id=ChIJ4VyDNxgU1moRXsNUnaWHMc8",
+    "placeId": "ChIJ4VyDNxgU1moRXsNUnaWHMc8",
+    "categories": [
+      "Mosque",
+      "Non-profit organization"
+    ],
+    "state": "VIC",
+    "suburb": "139 Cleeland St"
+  },
+  {
+    "title": "UMMA Centre",
+    "address": "72 George St, Doncaster East VIC 3109, Australia",
+    "location": {
+      "lat": -37.7819463,
+      "lng": 145.1546787
+    },
+    "phone": "+61 414 886 421",
+    "website": "http://www.umma.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=UMMA%20Centre&query_place_id=ChIJ7Zv6gWE41moR_pfsiGAgx34",
+    "placeId": "ChIJ7Zv6gWE41moR_pfsiGAgx34",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "72 George St"
+  },
+  {
+    "title": "Fawkner Mosque",
+    "address": "Mosque/17 Baird St, Fawkner VIC 3060, Australia",
+    "location": {
+      "lat": -37.70498,
+      "lng": 144.9721117
+    },
+    "phone": "+61 3 9355 6800",
+    "website": "https://premium.masjidboardlive.com/v2/?mid=fawkner-masjid",
+    "url": "https://www.google.com/maps/search/?api=1&query=Fawkner%20Mosque&query_place_id=ChIJ5-TsiTdF1moRO8E06oM6TjM",
+    "placeId": "ChIJ5-TsiTdF1moRO8E06oM6TjM",
+    "categories": [
+      "Mosque",
+      "College"
+    ],
+    "state": "VIC",
+    "suburb": "Mosque/17 Baird St"
+  },
+  {
+    "title": "Elsedeaq Heidelberg Mosque",
+    "address": "32 Elliott St, Heidelberg Heights VIC 3081, Australia",
+    "location": {
+      "lat": -37.7441705,
+      "lng": 145.0515221
+    },
+    "phone": "+61 3 9369 6010",
+    "website": "https://m.facebook.com/Elsedeaq/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Elsedeaq%20Heidelberg%20Mosque&query_place_id=ChIJk8QazXhG1moRswysucSxv3E",
+    "placeId": "ChIJk8QazXhG1moRswysucSxv3E",
+    "categories": [
+      "Mosque",
+      "Place of worship"
+    ],
+    "state": "VIC",
+    "suburb": "32 Elliott St"
+  },
+  {
+    "title": "Campbellfield Mosque",
+    "address": "46-48 Mason St, Campbellfield VIC 3061, Australia",
+    "location": {
+      "lat": -37.6724206,
+      "lng": 144.9671035
+    },
+    "website": "https://campbellfieldmosque.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Campbellfield%20Mosque&query_place_id=ChIJlUm0mORP1moRqlBLwq8DQUU",
+    "placeId": "ChIJlUm0mORP1moRqlBLwq8DQUU",
+    "categories": [
+      "Mosque",
+      "Education center"
+    ],
+    "state": "VIC",
+    "suburb": "46-48 Mason St"
+  },
+  {
+    "title": "Noble Park Mosque",
+    "address": "18 Leonard Ave, Noble Park VIC 3174, Australia",
+    "location": {
+      "lat": -37.9694888,
+      "lng": 145.1752955
+    },
+    "website": "https://www.facebook.com/Bosnia-Herzegovina-Islamic-Society-Noble-Park-1077080442418338/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Noble%20Park%20Mosque&query_place_id=ChIJg8zy6YUU1moRsj7JCPuObe4",
+    "placeId": "ChIJg8zy6YUU1moRsj7JCPuObe4",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "18 Leonard Ave"
+  },
+  {
+    "title": "Australia Light Foundation - Olsen Place (Musalla)",
+    "address": "14/16 Freda St, Broadmeadows VIC 3047, Australia",
+    "location": {
+      "lat": -37.6901759,
+      "lng": 144.9267577
+    },
+    "website": "https://www.australialightfoundation.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Australia%20Light%20Foundation%20-%20Olsen%20Place%20(Musalla)&query_place_id=ChIJNecp9fJa1moRSCk_2WSqBhE",
+    "placeId": "ChIJNecp9fJa1moRSCk_2WSqBhE",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "14/16 Freda St"
+  },
+  {
+    "title": "Hume Islamic Youth Centre",
+    "address": "1/15 Motto Dr, Coolaroo VIC 3048, Australia",
+    "location": {
+      "lat": -37.6430603,
+      "lng": 144.9317739
+    },
+    "phone": "+61 3 9305 4812",
+    "website": "http://facebook.com/hiyc.aswj",
+    "url": "https://www.google.com/maps/search/?api=1&query=Hume%20Islamic%20Youth%20Centre&query_place_id=ChIJJfXhi0VQ1moRFC_JHtpWDhM",
+    "placeId": "ChIJJfXhi0VQ1moRFC_JHtpWDhM",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "1/15 Motto Dr"
+  },
+  {
+    "title": "Masjid Ar-Rahma Ravenhall Masjid & Community Centre",
+    "address": "101 Eucumbene Dr, Ravenhall VIC 3023, Australia",
+    "location": {
+      "lat": -37.7649651,
+      "lng": 144.7467905
+    },
+    "phone": "+61 3 7046 6860",
+    "website": "http://rmcc.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Ar-Rahma%20Ravenhall%20Masjid%20%26%20Community%20Centre&query_place_id=ChIJP_KVg6qL1moRvO7Y7qXBB5A",
+    "placeId": "ChIJP_KVg6qL1moRvO7Y7qXBB5A",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "101 Eucumbene Dr"
+  },
+  {
+    "title": "Thomastown Mosque",
+    "address": "124/130 Station St, Thomastown VIC 3074, Australia",
+    "location": {
+      "lat": -37.681454,
+      "lng": 145.014937
+    },
+    "phone": "+61 3 9465 3526",
+    "url": "https://www.google.com/maps/search/?api=1&query=Thomastown%20Mosque&query_place_id=ChIJiTBDv3JP1moRxDo2N9aHc2Y",
+    "placeId": "ChIJiTBDv3JP1moRxDo2N9aHc2Y",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "124/130 Station St"
+  },
+  {
+    "title": "Markaz AbuBakr",
+    "address": "191-193 William St, St Albans VIC 3021, Australia",
+    "location": {
+      "lat": -37.7356026,
+      "lng": 144.7983638
+    },
+    "website": "https://www.facebook.com/MarkazAbuBakrMelb",
+    "url": "https://www.google.com/maps/search/?api=1&query=Markaz%20AbuBakr&query_place_id=ChIJ13Bodppf1moRR4wP20KcTwY",
+    "placeId": "ChIJ13Bodppf1moRR4wP20KcTwY",
+    "categories": [
+      "Mosque",
+      "Social club"
+    ],
+    "state": "VIC",
+    "suburb": "191-193 William St"
+  },
+  {
+    "title": "Islamic Community Milli Gorus Brunswick Inc",
+    "address": "660 Sydney Rd, Brunswick VIC 3056, Australia",
+    "location": {
+      "lat": -37.7619319,
+      "lng": 144.9632063
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Islamic%20Community%20Milli%20Gorus%20Brunswick%20Inc&query_place_id=ChIJ1QHSb1ND1moRLt7FXkSYgKo",
+    "placeId": "ChIJ1QHSb1ND1moRLt7FXkSYgKo",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "660 Sydney Rd"
+  },
+  {
+    "title": "Masjid Westall",
+    "address": "130 Rosebank Ave, Clayton South VIC 3169, Australia",
+    "location": {
+      "lat": -37.9405055,
+      "lng": 145.1379769
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Westall&query_place_id=ChIJVQC_zswU1moRnT1JaIIxRtk",
+    "placeId": "ChIJVQC_zswU1moRnT1JaIIxRtk",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "130 Rosebank Ave"
+  },
+  {
+    "title": "Ahlulbait Mosque",
+    "address": "223 Broadhurst Ave, Reservoir VIC 3073, Australia",
+    "location": {
+      "lat": -37.7068792,
+      "lng": 144.9829774
+    },
+    "phone": "+61 413 723 227",
+    "url": "https://www.google.com/maps/search/?api=1&query=Ahlulbait%20Mosque&query_place_id=ChIJgTNvAUBF1moRyShcjvqg2AU",
+    "placeId": "ChIJgTNvAUBF1moRyShcjvqg2AU",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "223 Broadhurst Ave"
+  },
+  {
+    "title": "Imam Hasan Al-Mujtaba Islamic Center",
+    "address": "21 Railway Rd, Epping VIC 3076, Australia",
+    "location": {
+      "lat": -37.6563245,
+      "lng": 145.023394
+    },
+    "phone": "+61 435 748 547",
+    "url": "https://www.google.com/maps/search/?api=1&query=Imam%20Hasan%20Al-Mujtaba%20Islamic%20Center&query_place_id=ChIJbe_JPuZO1moR6EixnZsDldw",
+    "placeId": "ChIJbe_JPuZO1moR6EixnZsDldw",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "21 Railway Rd"
+  },
+  {
+    "title": "Quba Mosque",
+    "address": "250 Hume Hwy, Craigieburn VIC 3064, Australia",
+    "location": {
+      "lat": -37.6213308,
+      "lng": 144.9486969
+    },
+    "phone": "+61 494 043 765",
+    "website": "http://www.qubamosque.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Quba%20Mosque&query_place_id=ChIJO713lMJR1moRR0tARXDpuVM",
+    "placeId": "ChIJO713lMJR1moRR0tARXDpuVM",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "250 Hume Hwy"
+  },
+  {
+    "title": "Islamic Education and Welfare Association of Dandenong",
+    "address": "131-133 Belgrave-Hallam Rd, Narre Warren North VIC 3804, Australia",
+    "location": {
+      "lat": -37.9895677,
+      "lng": 145.2781571
+    },
+    "phone": "+61 3 9796 8539",
+    "website": "http://www.iewad.org.au/contact",
+    "url": "https://www.google.com/maps/search/?api=1&query=Islamic%20Education%20and%20Welfare%20Association%20of%20Dandenong&query_place_id=ChIJQUAPeRkX1moRLzi4qxPpyOE",
+    "placeId": "ChIJQUAPeRkX1moRLzi4qxPpyOE",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "131-133 Belgrave-Hallam Rd"
+  },
+  {
+    "title": "Albanian Islamic Centre of Dandenong",
+    "address": "Dalgety St, Dandenong VIC 3175, Australia",
+    "location": {
+      "lat": -37.9941969,
+      "lng": 145.2084661
+    },
+    "website": "https://m.facebook.com/100070295296412/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Albanian%20Islamic%20Centre%20of%20Dandenong&query_place_id=ChIJo-LL8fMT1moR2WrD0qSGDCA",
+    "placeId": "ChIJo-LL8fMT1moR2WrD0qSGDCA",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "Dalgety St"
+  },
+  {
+    "title": "Masjid IMCV - Baitul Ma'mur",
+    "address": "26 Maher Rd, Laverton VIC 3028, Australia",
+    "location": {
+      "lat": -37.862779,
+      "lng": 144.7728718
+    },
+    "phone": "+61 413 531 532",
+    "website": "https://baitulmakmur.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20IMCV%20-%20Baitul%20Ma'mur&query_place_id=ChIJTaJ0PcOJ1moRa6bXaU6aBrw",
+    "placeId": "ChIJTaJ0PcOJ1moRa6bXaU6aBrw",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "26 Maher Rd"
+  },
+  {
+    "title": "Faizan e Madina Masjid - Dawateislami Mosque",
+    "address": "43 Mahoneys Rd, Reservoir VIC 3073, Australia",
+    "location": {
+      "lat": -37.6945774,
+      "lng": 145.0044582
+    },
+    "phone": "+61 1300 004 786",
+    "website": "http://dawateislami.net.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Faizan%20e%20Madina%20Masjid%20-%20Dawateislami%20Mosque&query_place_id=ChIJ56oPPYBP1moRdI9nJZzUouw",
+    "placeId": "ChIJ56oPPYBP1moRdI9nJZzUouw",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "43 Mahoneys Rd"
+  },
+  {
+    "title": "Al-Asr Society of Australia",
+    "address": "2 Butler Rd, Altona North VIC 3025, Australia",
+    "location": {
+      "lat": -37.846035,
+      "lng": 144.8413085
+    },
+    "phone": "+61 416 123 786",
+    "website": "http://alasr.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Al-Asr%20Society%20of%20Australia&query_place_id=ChIJDa5iSm1h1moRrjsnm7EgcJ0",
+    "placeId": "ChIJDa5iSm1h1moRrjsnm7EgcJ0",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "2 Butler Rd"
+  },
+  {
+    "title": "Al-Muntada Australia",
+    "address": "416-424 Barry Rd, Coolaroo VIC 3048, Australia",
+    "location": {
+      "lat": -37.6653159,
+      "lng": 144.940384
+    },
+    "phone": "+61 3 9302 2293",
+    "website": "https://www.al-muntada.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Al-Muntada%20Australia&query_place_id=ChIJ-28LQQ1Q1moRZYVYdzpuazI",
+    "placeId": "ChIJ-28LQQ1Q1moRZYVYdzpuazI",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "416-424 Barry Rd"
+  },
+  {
+    "title": "Campbellfield Masjid",
+    "address": "95 Horne St, Campbellfield VIC 3061, Australia",
+    "location": {
+      "lat": -37.680662,
+      "lng": 144.9632
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Campbellfield%20Masjid&query_place_id=ChIJQ2ebl_9P1moRz9KqcW1nksM",
+    "placeId": "ChIJQ2ebl_9P1moRz9KqcW1nksM",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "95 Horne St"
+  },
+  {
+    "title": "PGCC",
+    "address": "9-11 Green St, Doveton VIC 3177, Australia",
+    "location": {
+      "lat": -37.9984444,
+      "lng": 145.2331582
+    },
+    "phone": "+61 1800 953 766",
+    "website": "http://www.pgcc.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=PGCC&query_place_id=ChIJd-1cIVMR1moRwwoKTwJaQ6Q",
+    "placeId": "ChIJd-1cIVMR1moRwwoKTwJaQ6Q",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "9-11 Green St"
+  },
+  {
+    "title": "Victoria University Mosque",
+    "address": "104 Ballarat Rd, Footscray VIC 3011, Australia",
+    "location": {
+      "lat": -37.7934316,
+      "lng": 144.8986736
+    },
+    "website": "https://www.facebook.com/VUislamicsociety",
+    "url": "https://www.google.com/maps/search/?api=1&query=Victoria%20University%20Mosque&query_place_id=ChIJ3SaU-ZRd1moRj1FCRI9f_oU",
+    "placeId": "ChIJ3SaU-ZRd1moRj1FCRI9f_oU",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "104 Ballarat Rd"
+  },
+  {
+    "title": "Khalid Bin Waleed Mosque",
+    "address": "8 Carrington Dr, Albion VIC 3020, Australia",
+    "location": {
+      "lat": -37.77266,
+      "lng": 144.809515
+    },
+    "website": "https://www.facebook.com/albionmosque",
+    "url": "https://www.google.com/maps/search/?api=1&query=Khalid%20Bin%20Waleed%20Mosque&query_place_id=ChIJL7BfTdxf1moRhha66Evy60c",
+    "placeId": "ChIJL7BfTdxf1moRhha66Evy60c",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "8 Carrington Dr"
+  },
+  {
+    "title": "Panjtan Centre",
+    "address": "21/23 Adelaide St, St Albans VIC 3021, Australia",
+    "location": {
+      "lat": -37.7415695,
+      "lng": 144.7925821
+    },
+    "phone": "+61 412 501 408",
+    "website": "https://panjtan.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Panjtan%20Centre&query_place_id=ChIJofYvbIRf1moRIvIyrNfHsSM",
+    "placeId": "ChIJofYvbIRf1moRIvIyrNfHsSM",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "21/23 Adelaide St"
+  },
+  {
+    "title": "Deakin Muslim Prayer Hall",
+    "address": "Building EC, Deakin University, Burwood Hwy, Burwood VIC 3125, Australia",
+    "location": {
+      "lat": -37.8457844,
+      "lng": 145.1109302
+    },
+    "website": "http://www.deakin.edu.au/students/health-and-wellbeing/multifaith-chaplain/places-of-worship",
+    "url": "https://www.google.com/maps/search/?api=1&query=Deakin%20Muslim%20Prayer%20Hall&query_place_id=ChIJ-W4FiuxB1moRbQfY128FDgA",
+    "placeId": "ChIJ-W4FiuxB1moRbQfY128FDgA",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "Burwood Hwy"
+  },
+  {
+    "title": "Masjid Ar-Rahman",
+    "address": "127 Jukes Rd, Fawkner VIC 3060, Australia",
+    "location": {
+      "lat": -37.7018021,
+      "lng": 144.9647854
+    },
+    "website": "http://www.masjid-arrahman.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Ar-Rahman&query_place_id=ChIJ--brUkxF1moRQXlGTVb6ovo",
+    "placeId": "ChIJ--brUkxF1moRQXlGTVb6ovo",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "127 Jukes Rd"
+  },
+  {
+    "title": "Glenroy Mosque",
+    "address": "163 Glenroy Rd, Glenroy VIC 3046, Australia",
+    "location": {
+      "lat": -37.7057235,
+      "lng": 144.9215797
+    },
+    "phone": "+61 424 141 118",
+    "url": "https://www.google.com/maps/search/?api=1&query=Glenroy%20Mosque&query_place_id=ChIJO4K-TDtb1moRpBPvNu1MH7k",
+    "placeId": "ChIJO4K-TDtb1moRpBPvNu1MH7k",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "163 Glenroy Rd"
+  },
+  {
+    "title": "Masjid IMCV - Surau Kita",
+    "address": "Unit 12/9 Dawson St, Coburg North VIC 3058, Australia",
+    "location": {
+      "lat": -37.731396,
+      "lng": 144.9577851
+    },
+    "phone": "+61 479 141 095",
+    "website": "https://www.imcv.org.au/surau-kita",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20IMCV%20-%20Surau%20Kita&query_place_id=ChIJRen1dTNb1moReAQr6-CAyvU",
+    "placeId": "ChIJRen1dTNb1moReAQr6-CAyvU",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "Unit 12/9 Dawson St"
+  },
+  {
+    "title": "Melbourne Masjid",
+    "address": "365-367 Belgrave-Hallam Rd, Narre Warren North VIC 3804, Australia",
+    "location": {
+      "lat": -37.9772198,
+      "lng": 145.3135329
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Melbourne%20Masjid&query_place_id=ChIJK6e8TQAX1moRC5jzYZWQUP8",
+    "placeId": "ChIJK6e8TQAX1moRC5jzYZWQUP8",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "365-367 Belgrave-Hallam Rd"
+  },
+  {
+    "title": "AYCC Australian Youth Community Centre & Mosque",
+    "address": "2/13 Hammer Ct, Hoppers Crossing VIC 3029, Australia",
+    "location": {
+      "lat": -37.8743879,
+      "lng": 144.7243424
+    },
+    "phone": "+61 435 778 005",
+    "website": "http://aycc.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=AYCC%20Australian%20Youth%20Community%20Centre%20%26%20Mosque&query_place_id=ChIJ94IZNOmI1moRGP0AHpaIi8g",
+    "placeId": "ChIJ94IZNOmI1moRGP0AHpaIi8g",
+    "categories": [
+      "Youth organization",
+      "Community center"
+    ],
+    "state": "VIC",
+    "suburb": "2/13 Hammer Ct"
+  },
+  {
+    "title": "University Of Melbourne Musalla (Prayer Rooms)",
+    "address": "Parkville VIC 3010, Australia",
+    "location": {
+      "lat": -37.8019273,
+      "lng": 144.9613333
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=University%20Of%20Melbourne%20Musalla%20(Prayer%20Rooms)&query_place_id=ChIJbR_8stJC1moRJdx8IdLrlFI",
+    "placeId": "ChIJbR_8stJC1moRJdx8IdLrlFI",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC"
+  },
+  {
+    "title": "Omar-Farooq Mosque",
+    "address": "14 Photinia St, Doveton VIC 3177, Australia",
+    "location": {
+      "lat": -37.9920781,
+      "lng": 145.2361884
+    },
+    "phone": "+61 3 9701 7300",
+    "website": "https://aicom.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Omar-Farooq%20Mosque&query_place_id=ChIJpZKGO64W1moR6veUyaTFpQ8",
+    "placeId": "ChIJpZKGO64W1moR6veUyaTFpQ8",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "14 Photinia St"
+  },
+  {
+    "title": "United Islamic Cultural Centre of Australia Inc.",
+    "address": "149-155 Malmsbury Dr, Meadow Heights VIC 3048, Australia",
+    "location": {
+      "lat": -37.6525909,
+      "lng": 144.9221793
+    },
+    "phone": "+61 3 9256 1903",
+    "website": "http://www.suleymaniyeeducation.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=United%20Islamic%20Cultural%20Centre%20of%20Australia%20Inc.&query_place_id=ChIJ7X7oSWFQ1moR9dbAtoOnWMs",
+    "placeId": "ChIJ7X7oSWFQ1moR9dbAtoOnWMs",
+    "categories": [
+      "Mosque",
+      "Cultural center",
+      "Education center"
+    ],
+    "state": "VIC",
+    "suburb": "149-155 Malmsbury Dr"
+  },
+  {
+    "title": "Dandenong Mosque مسجد",
+    "address": "10/12 Dalgety St, Dandenong VIC 3175, Australia",
+    "location": {
+      "lat": -37.9942757,
+      "lng": 145.2087083
+    },
+    "phone": "+61 3 9793 2879",
+    "website": "https://www.facebook.com/DandyMosque",
+    "url": "https://www.google.com/maps/search/?api=1&query=Dandenong%20Mosque%20%D9%85%D8%B3%D8%AC%D8%AF&query_place_id=ChIJv8G8-vMT1moRs1Dg2gn09HY",
+    "placeId": "ChIJv8G8-vMT1moRs1Dg2gn09HY",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "10/12 Dalgety St"
+  },
+  {
+    "title": "Cyprus Turkish Islamic Community Of Victoria Inc",
+    "address": "618 Ballarat Rd, Ardeer VIC 3022, Australia",
+    "location": {
+      "lat": -37.7714691,
+      "lng": 144.801239
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Cyprus%20Turkish%20Islamic%20Community%20Of%20Victoria%20Inc&query_place_id=ChIJy9u25ONf1moRTPAiIHD46OI",
+    "placeId": "ChIJy9u25ONf1moRTPAiIHD46OI",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "618 Ballarat Rd"
+  },
+  {
+    "title": "Darusalam Community Centre",
+    "address": "1/72-74 Chifley Dr, Preston VIC 3072, Australia",
+    "location": {
+      "lat": -37.749668,
+      "lng": 145.031065
+    },
+    "phone": "+61 3 9484 5134",
+    "website": "http://www.darusalamsociety.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Darusalam%20Community%20Centre&query_place_id=ChIJD5sDqzdE1moRd62E6jD39J0",
+    "placeId": "ChIJD5sDqzdE1moRd62E6jD39J0",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "1/72-74 Chifley Dr"
+  },
+  {
+    "title": "RMIT international Campus Musalla",
+    "address": "3000/265 Bourke St, Melbourne VIC 3000, Australia",
+    "location": {
+      "lat": -37.8136194,
+      "lng": 144.9659915
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=RMIT%20international%20Campus%20Musalla&query_place_id=ChIJ0WH297VC1moRCkzYEDSoTho",
+    "placeId": "ChIJ0WH297VC1moRCkzYEDSoTho",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "3000/265 Bourke St"
+  },
+  {
+    "title": "Australia Light Foundation",
+    "address": "291/293 Sunshine Rd, Tottenham VIC 3012, Australia",
+    "location": {
+      "lat": -37.7977371,
+      "lng": 144.8408813
+    },
+    "phone": "+61 3 9312 0104",
+    "website": "https://www.australialightfoundation.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Australia%20Light%20Foundation&query_place_id=ChIJc_3tyJpg1moRkNZbwyhTkKk",
+    "placeId": "ChIJc_3tyJpg1moRkNZbwyhTkKk",
+    "categories": [
+      "Mosque",
+      "Charity"
+    ],
+    "state": "VIC",
+    "suburb": "291/293 Sunshine Rd"
+  },
+  {
+    "title": "Noble Park Islamic Cultural Centre",
+    "address": "1286 Heatherton Rd, Noble Park VIC 3174, Australia",
+    "location": {
+      "lat": -37.9671464,
+      "lng": 145.1878339
+    },
+    "phone": "+61 3 9706 9991",
+    "website": "http://www.npicc.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Noble%20Park%20Islamic%20Cultural%20Centre&query_place_id=ChIJH-_PsGYU1moRc2-vzrjVaJE",
+    "placeId": "ChIJH-_PsGYU1moRc2-vzrjVaJE",
+    "categories": [
+      "Mosque",
+      "Educational institution",
+      "Religious organization"
+    ],
+    "state": "VIC",
+    "suburb": "1286 Heatherton Rd"
+  },
+  {
+    "title": "La Trobe Mosque مسجد لاتروب",
+    "address": "5 The Agora, Bundoora VIC 3083, Australia",
+    "location": {
+      "lat": -37.7215957,
+      "lng": 145.0496609
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=La%20Trobe%20Mosque%20%D9%85%D8%B3%D8%AC%D8%AF%20%D9%84%D8%A7%D8%AA%D8%B1%D9%88%D8%A8&query_place_id=ChIJ_6XDGAhG1moRbr7KWkDR934",
+    "placeId": "ChIJ_6XDGAhG1moRbr7KWkDR934",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "5 The Agora"
+  },
+  {
+    "title": "Masjid Ayesha",
+    "address": "39 Kraft Ct, Broadmeadows VIC 3047, Australia",
+    "location": {
+      "lat": -37.6774013,
+      "lng": 144.9243846
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Ayesha&query_place_id=ChIJH4P6R5db1moROktEB6184oE",
+    "placeId": "ChIJH4P6R5db1moROktEB6184oE",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "39 Kraft Ct"
+  },
+  {
+    "title": "Coolaroo Masjid",
+    "address": "Unit 1/36 Kyabram St, Coolaroo VIC 3048, Australia",
+    "location": {
+      "lat": -37.6614982,
+      "lng": 144.9373616
+    },
+    "phone": "+61 416 292 664",
+    "url": "https://www.google.com/maps/search/?api=1&query=Coolaroo%20Masjid&query_place_id=ChIJSyVzHG1Q1moRR0W-XYUxErM",
+    "placeId": "ChIJSyVzHG1Q1moRR0W-XYUxErM",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "Unit 1/36 Kyabram St"
+  },
+  {
+    "title": "Minaret College Mosque",
+    "address": "38 Lewis St, Springvale VIC 3171, Australia",
+    "location": {
+      "lat": -37.9382975,
+      "lng": 145.1481701
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Minaret%20College%20Mosque&query_place_id=ChIJL_xLYWMV1moR1GKskcvIeZY",
+    "placeId": "ChIJL_xLYWMV1moR1GKskcvIeZY",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "38 Lewis St"
+  },
+  {
+    "title": "AISA Mosque",
+    "address": "3048/15 Hudson Cct, Meadow Heights VIC 3048, Australia",
+    "location": {
+      "lat": -37.6518335,
+      "lng": 144.920786
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=AISA%20Mosque&query_place_id=ChIJSbe4F2FQ1moRNij6CvDVUP4",
+    "placeId": "ChIJSbe4F2FQ1moRNij6CvDVUP4",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "3048/15 Hudson Cct"
+  },
+  {
+    "title": "ICMG Delahey Mosque",
+    "address": "350 Taylors Rd, Delahey VIC 3037, Australia",
+    "location": {
+      "lat": -37.7255689,
+      "lng": 144.769914
+    },
+    "website": "http://www.icmg.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=ICMG%20Delahey%20Mosque&query_place_id=ChIJ89CiMNn11moRXDJI_KvxD3w",
+    "placeId": "ChIJ89CiMNn11moRXDJI_KvxD3w",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "350 Taylors Rd"
+  },
+  {
+    "title": "Prayer Room",
+    "address": "122-Southern Cross Railway Station, Spencer St, Docklands VIC 3008, Australia",
+    "location": {
+      "lat": -37.8189654,
+      "lng": 144.9530289
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Prayer%20Room&query_place_id=ChIJ10muOCZd1moRhuFqowBUbF0",
+    "placeId": "ChIJ10muOCZd1moRhuFqowBUbF0",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "Spencer St"
+  },
+  {
+    "title": "Bayswater Musalla - Fajr, Isha & Jumma - Only",
+    "address": "654 Mountain Hwy, Bayswater VIC 3153, Australia",
+    "location": {
+      "lat": -37.8423592,
+      "lng": 145.2619919
+    },
+    "website": "http://www.hsg.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Bayswater%20Musalla%20-%20Fajr%2C%20Isha%20%26%20Jumma%20-%20Only&query_place_id=ChIJc5rqa7071moR-Zzv60AL-Y0",
+    "placeId": "ChIJc5rqa7071moR-Zzv60AL-Y0",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "654 Mountain Hwy"
+  },
+  {
+    "title": "Faizan e Madina Islamic Centre Dandenong North - Dawateislami",
+    "address": "5 Birch Ave, Dandenong North VIC 3175, Australia",
+    "location": {
+      "lat": -37.9636282,
+      "lng": 145.2051518
+    },
+    "phone": "+61 1300 004 786",
+    "website": "http://www.dawateislami.net.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Faizan%20e%20Madina%20Islamic%20Centre%20Dandenong%20North%20-%20Dawateislami&query_place_id=ChIJD_nEDH0V1moRxbeDipIhOjI",
+    "placeId": "ChIJD_nEDH0V1moRxbeDipIhOjI",
+    "categories": [
+      "Mosque",
+      "Community center"
+    ],
+    "state": "VIC",
+    "suburb": "5 Birch Ave"
+  },
+  {
+    "title": "El Zahra Islamic Comunity Centre",
+    "address": "55 Industrial Ave, Hoppers Crossing VIC 3029, Australia",
+    "location": {
+      "lat": -37.867509,
+      "lng": 144.731975
+    },
+    "phone": "+61 478 655 207",
+    "website": "https://elzahracentre.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=El%20Zahra%20Islamic%20Comunity%20Centre&query_place_id=ChIJg5O37vyI1moRcMoJDAopyiE",
+    "placeId": "ChIJg5O37vyI1moRcMoJDAopyiE",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "55 Industrial Ave"
+  },
+  {
+    "title": "Prahan – Western Thrace Islamic Society – Union St Masjid",
+    "address": "103 Union St, Windsor VIC 3181, Australia",
+    "location": {
+      "lat": -37.8541371,
+      "lng": 144.9896924
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Prahan%20%E2%80%93%20Western%20Thrace%20Islamic%20Society%20%E2%80%93%20Union%20St%20Masjid&query_place_id=ChIJk_UIXABp1moRRZYmeihWvS8",
+    "placeId": "ChIJk_UIXABp1moRRZYmeihWvS8",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "103 Union St"
+  },
+  {
+    "title": "Sunnah Mosque",
+    "address": "42 Plumpton Ave, Glenroy VIC 3046, Australia",
+    "location": {
+      "lat": -37.71161,
+      "lng": 144.923349
+    },
+    "phone": "+61 451 118 113",
+    "url": "https://www.google.com/maps/search/?api=1&query=Sunnah%20Mosque&query_place_id=ChIJzYosIwRb1moRqQuGOzv7xnQ",
+    "placeId": "ChIJzYosIwRb1moRqQuGOzv7xnQ",
+    "categories": [
+      "Mosque",
+      "Place of worship"
+    ],
+    "state": "VIC",
+    "suburb": "42 Plumpton Ave"
+  },
+  {
+    "title": "DARUL KHAIR ISLAMIC SOCIETY OF MELBOURNE INCORPORATED.",
+    "address": "33 Lexton St, Coolaroo VIC 3048, Australia",
+    "location": {
+      "lat": -37.6612528,
+      "lng": 144.9375818
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=DARUL%20KHAIR%20ISLAMIC%20SOCIETY%20OF%20MELBOURNE%20INCORPORATED.&query_place_id=ChIJn1ZMfABR1moRVZJbfDSUR08",
+    "placeId": "ChIJn1ZMfABR1moRVZJbfDSUR08",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "33 Lexton St"
+  },
+  {
+    "title": "Monash Mosque",
+    "address": "16 Beddoe Ave, Clayton VIC 3168, Australia",
+    "location": {
+      "lat": -37.9085305,
+      "lng": 145.1287214
+    },
+    "phone": "+61 3 9902 9156",
+    "url": "https://www.google.com/maps/search/?api=1&query=Monash%20Mosque&query_place_id=ChIJuZSg-chq1moRWilFMUSsyPE",
+    "placeId": "ChIJuZSg-chq1moRWilFMUSsyPE",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "16 Beddoe Ave"
+  },
+  {
+    "title": "Masjid Taqwa Brisbane Australia",
+    "address": "119 Telegraph Rd, Bald Hills QLD 4036, Australia",
+    "location": {
+      "lat": -27.3297342,
+      "lng": 153.0158731
+    },
+    "phone": "+61 469 423 330",
+    "website": "http://masjidtaqwa.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Taqwa%20Brisbane%20Australia&query_place_id=ChIJ2UEE6irjk2sRLw8lERb7Ce8",
+    "placeId": "ChIJ2UEE6irjk2sRLw8lERb7Ce8",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "119 Telegraph Rd"
+  },
+  {
+    "title": "Australian Centre for Unity: Slacks Creek Mosque - IPDC QLD",
+    "address": "16 Queens Rd, Slacks Creek QLD 4127, Australia",
+    "location": {
+      "lat": -27.649316,
+      "lng": 153.1204196
+    },
+    "phone": "+61 422 357 931",
+    "website": "https://slackscreekmosque.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Australian%20Centre%20for%20Unity%3A%20Slacks%20Creek%20Mosque%20-%20IPDC%20QLD&query_place_id=ChIJBZmFK_tDkWsRb6hNhBgbJ-U",
+    "placeId": "ChIJBZmFK_tDkWsRb6hNhBgbJ-U",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "16 Queens Rd"
+  },
+  {
+    "title": "Holland Park Mosque",
+    "address": "309 Nursery Rd, Holland Park QLD 4121, Australia",
+    "location": {
+      "lat": -27.5272425,
+      "lng": 153.0756179
+    },
+    "phone": "+61 7 3343 4748",
+    "website": "http://www.hollandparkmosque.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Holland%20Park%20Mosque&query_place_id=ChIJqw6QwA9bkWsRSI-exvQ5R2I",
+    "placeId": "ChIJqw6QwA9bkWsRSI-exvQ5R2I",
+    "categories": [
+      "Mosque",
+      "Religious book store",
+      "Religious destination",
+      "Religious institution",
+      "Religious organization"
+    ],
+    "state": "QLD",
+    "suburb": "309 Nursery Rd"
+  },
+  {
+    "title": "Masjid Al Madinah - West End",
+    "address": "12 Princhester St, West End QLD 4101, Australia",
+    "location": {
+      "lat": -27.4812808,
+      "lng": 153.010752
+    },
+    "phone": "+61 7 3846 1573",
+    "website": "https://gopray.com.au/place/west-end-mosque/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Al%20Madinah%20-%20West%20End&query_place_id=ChIJiUTU40ZRkWsR17pbh3PySBY",
+    "placeId": "ChIJiUTU40ZRkWsR17pbh3PySBY",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "12 Princhester St"
+  },
+  {
+    "title": "Brisbane CBD Musallah",
+    "address": "1/138 Albert St, Brisbane City QLD 4000, Australia",
+    "location": {
+      "lat": -27.471099,
+      "lng": 153.0260545
+    },
+    "phone": "+61 436 291 269",
+    "website": "https://bcec.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Brisbane%20CBD%20Musallah&query_place_id=ChIJwUkaaw1bkWsRn0soKq2Xjpw",
+    "placeId": "ChIJwUkaaw1bkWsRn0soKq2Xjpw",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "1/138 Albert St"
+  },
+  {
+    "title": "Kuraby Mosque (Islamic Centre)",
+    "address": "1408 Beenleigh Rd, Kuraby QLD 4112, Australia",
+    "location": {
+      "lat": -27.6057947,
+      "lng": 153.0934445
+    },
+    "phone": "+61 1300 133 956",
+    "website": "https://www.kurabymosque.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Kuraby%20Mosque%20(Islamic%20Centre)&query_place_id=ChIJ922EpYlEkWsROrqsghDimT0",
+    "placeId": "ChIJ922EpYlEkWsROrqsghDimT0",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "1408 Beenleigh Rd"
+  },
+  {
+    "title": "United Muslims of Brisbane",
+    "address": "8 Blackwood Rd, Logan Central QLD 4114, Australia",
+    "location": {
+      "lat": -27.63891,
+      "lng": 153.106899
+    },
+    "phone": "+61 401 972 443",
+    "website": "http://umb.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=United%20Muslims%20of%20Brisbane&query_place_id=ChIJHen5kAlEkWsRLolqEV8JhHI",
+    "placeId": "ChIJHen5kAlEkWsRLolqEV8JhHI",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "8 Blackwood Rd"
+  },
+  {
+    "title": "Islamic Center",
+    "address": "12 Princhester St, West End QLD 4101, Australia",
+    "location": {
+      "lat": -27.4812684,
+      "lng": 153.0107312
+    },
+    "phone": "+61 7 3846 1573",
+    "url": "https://www.google.com/maps/search/?api=1&query=Islamic%20Center&query_place_id=ChIJI2DMxqFQkWsRweTmxGR6H4I",
+    "placeId": "ChIJI2DMxqFQkWsRweTmxGR6H4I",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "12 Princhester St"
+  },
+  {
+    "title": "Masjid As-Sunnah",
+    "address": "33 Fuller St, Lutwyche QLD 4030, Australia",
+    "location": {
+      "lat": -27.425136,
+      "lng": 153.030622
+    },
+    "phone": "+61 469 776 996",
+    "website": "https://www.masjidlutwyche.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20As-Sunnah&query_place_id=ChIJi6X6Q8xZkWsRC3PG7hXowiA",
+    "placeId": "ChIJi6X6Q8xZkWsRC3PG7hXowiA",
+    "categories": [
+      "Mosque",
+      "Community center",
+      "Place of worship",
+      "Religious organization"
+    ],
+    "state": "QLD",
+    "suburb": "33 Fuller St"
+  },
+  {
+    "title": "Buranda Islamic Mosque",
+    "address": "Brisbane Muslim School, 6 Agnes St, Woolloongabba QLD 4102, Australia",
+    "location": {
+      "lat": -27.4954644,
+      "lng": 153.0355633
+    },
+    "phone": "+61 7 3392 1310",
+    "website": "https://praydigital.info/place/212/buranda-mosque-agnes-street-woolloongabba-prayer-timings",
+    "url": "https://www.google.com/maps/search/?api=1&query=Buranda%20Islamic%20Mosque&query_place_id=ChIJkSHSrWlakWsRpBIOV3kQ3es",
+    "placeId": "ChIJkSHSrWlakWsRpBIOV3kQ3es",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "6 Agnes St"
+  },
+  {
+    "title": "Salam Mosque Logan City",
+    "address": "262 Third Ave, Berrinba QLD 4114, Australia",
+    "location": {
+      "lat": -27.6583987,
+      "lng": 153.091566
+    },
+    "website": "https://praydigital.info/place/30/logan-mosque-third-avenue-kingston-prayer-timings",
+    "url": "https://www.google.com/maps/search/?api=1&query=Salam%20Mosque%20Logan%20City&query_place_id=ChIJWx4bd6RGkWsRWwJ0xF42aWw",
+    "placeId": "ChIJWx4bd6RGkWsRWwJ0xF42aWw",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "262 Third Ave"
+  },
+  {
+    "title": "Islamic Shia Council of Queensland",
+    "address": "50 Parramatta Rd, Underwood QLD 4119, Australia",
+    "location": {
+      "lat": -27.6153896,
+      "lng": 153.1181825
+    },
+    "phone": "+61 410 388 033",
+    "website": "http://iscq.org/slm",
+    "url": "https://www.google.com/maps/search/?api=1&query=Islamic%20Shia%20Council%20of%20Queensland&query_place_id=ChIJ42oc-oJDkWsRuU2Qf-cOAm4",
+    "placeId": "ChIJ42oc-oJDkWsRuU2Qf-cOAm4",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "50 Parramatta Rd"
+  },
+  {
+    "title": "Islamic Society of Darra Inc.",
+    "address": "219 Douglas St, Oxley QLD 4075, Australia",
+    "location": {
+      "lat": -27.5670132,
+      "lng": 152.9706016
+    },
+    "phone": "+61 7 3375 4579",
+    "website": "http://www.isd.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Islamic%20Society%20of%20Darra%20Inc.&query_place_id=ChIJ5XZTdrNPkWsRQjGK7NP5h4E",
+    "placeId": "ChIJ5XZTdrNPkWsRQjGK7NP5h4E",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "219 Douglas St"
+  },
+  {
+    "title": "Rochedale Mosque",
+    "address": "2674 Logan Rd, Eight Mile Plains QLD 4113, Australia",
+    "location": {
+      "lat": -27.5864751,
+      "lng": 153.1048921
+    },
+    "website": "http://bosniakcentre.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Rochedale%20Mosque&query_place_id=ChIJfxcFp6FEkWsR3LuWc-GMv7E",
+    "placeId": "ChIJfxcFp6FEkWsR3LuWc-GMv7E",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "2674 Logan Rd"
+  },
+  {
+    "title": "The Islamic Society of Algester",
+    "address": "48 Learoyd Rd, Algester QLD 4115, Australia",
+    "location": {
+      "lat": -27.5991292,
+      "lng": 153.0359657
+    },
+    "phone": "+61 7 3272 4111",
+    "website": "https://www.isoa.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=The%20Islamic%20Society%20of%20Algester&query_place_id=ChIJY_gEEp9FkWsRzT1BIPP_bJM",
+    "placeId": "ChIJY_gEEp9FkWsRzT1BIPP_bJM",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "48 Learoyd Rd"
+  },
+  {
+    "title": "Moorooka Islamic Society",
+    "address": "51 Mayfield Rd, Moorooka QLD 4105, Australia",
+    "location": {
+      "lat": -27.5334272,
+      "lng": 153.0276082
+    },
+    "phone": "+61 402 593 265",
+    "url": "https://www.google.com/maps/search/?api=1&query=Moorooka%20Islamic%20Society&query_place_id=ChIJ5amPuLxakWsRBp_djhqZWsU",
+    "placeId": "ChIJ5amPuLxakWsRBp_djhqZWsU",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "51 Mayfield Rd"
+  },
+  {
+    "title": "QUT Muslim Prayer Room",
+    "address": "G-H Block Link, Gardens Point, 209, QLD 4000, Australia",
+    "location": {
+      "lat": -27.4766846,
+      "lng": 153.0278225
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=QUT%20Muslim%20Prayer%20Room&query_place_id=ChIJNcf0ahBakWsRgBhhLu0Q4ek",
+    "placeId": "ChIJNcf0ahBakWsRgBhhLu0Q4ek",
+    "categories": [
+      "Mosque",
+      "Place of worship"
+    ],
+    "state": "QLD",
+    "suburb": "209"
+  },
+  {
+    "title": "Camira Mosque",
+    "address": "89 Old Logan Rd, Camira QLD 4300, Australia",
+    "location": {
+      "lat": -27.6134664,
+      "lng": 152.9157819
+    },
+    "website": "https://www.facebook.com/camiramosque/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Camira%20Mosque&query_place_id=ChIJE0eCuwBMkWsRIVsi8Ydqhko",
+    "placeId": "ChIJE0eCuwBMkWsRIVsi8Ydqhko",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "89 Old Logan Rd"
+  },
+  {
+    "title": "Darul Uloom Brisbane",
+    "address": "6 Agnes St, Woolloongabba QLD 4102, Australia",
+    "location": {
+      "lat": -27.4954332,
+      "lng": 153.035491
+    },
+    "phone": "+61 7 3392 1310",
+    "url": "https://www.google.com/maps/search/?api=1&query=Darul%20Uloom%20Brisbane&query_place_id=ChIJZZROWEJakWsR156ZjumiiFA",
+    "placeId": "ChIJZZROWEJakWsR156ZjumiiFA",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "6 Agnes St"
+  },
+  {
+    "title": "Mubarak Mosque",
+    "address": "456 Old Cleveland Rd, Camp Hill QLD 4152, Australia",
+    "location": {
+      "lat": -27.4915738,
+      "lng": 153.0666835
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Mubarak%20Mosque&query_place_id=ChIJsU6RM8pbkWsRBLPmGLJ76wI",
+    "placeId": "ChIJsU6RM8pbkWsRBLPmGLJ76wI",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "456 Old Cleveland Rd"
+  },
+  {
+    "title": "Zainabya islamic centre Brisbane",
+    "address": "Unit 6/250 Kingston Rd, Slacks Creek QLD 4114, Australia",
+    "location": {
+      "lat": -27.6297234,
+      "lng": 153.1195737
+    },
+    "phone": "+61 432 118 786",
+    "url": "https://www.google.com/maps/search/?api=1&query=Zainabya%20islamic%20centre%20Brisbane&query_place_id=ChIJy4sVXNxDkWsRPs4OkHdB0MY",
+    "placeId": "ChIJy4sVXNxDkWsRPs4OkHdB0MY",
+    "categories": [
+      "Community center"
+    ],
+    "state": "QLD",
+    "suburb": "Unit 6/250 Kingston Rd"
+  },
+  {
+    "title": "Community Youth Centre Redbank",
+    "address": "132 Eagle St, Redbank Plains QLD 4301, Australia",
+    "location": {
+      "lat": -27.6260873,
+      "lng": 152.8710779
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Community%20Youth%20Centre%20Redbank&query_place_id=ChIJU-ccL3VLkWsRG_WiiAl8pJs",
+    "placeId": "ChIJU-ccL3VLkWsRG_WiiAl8pJs",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "132 Eagle St"
+  },
+  {
+    "title": "Brisbane Islamic Centre",
+    "address": null,
+    "location": {
+      "lat": -32.205415,
+      "lng": 136.1073692
+    },
+    "phone": "+61 468 825 786",
+    "website": "http://bic.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Brisbane%20Islamic%20Centre&query_place_id=ChIJH0C9cxM0bAIRZf9-HB2Qi10",
+    "placeId": "ChIJH0C9cxM0bAIRZf9-HB2Qi10",
+    "categories": [
+      "Religious school",
+      "Service establishment"
+    ]
+  },
+  {
+    "title": "The Islamic Centre of Western Australia",
+    "address": "238 Guildford Rd, Maylands WA 6051, Australia",
+    "location": {
+      "lat": -31.9299032,
+      "lng": 115.8964833
+    },
+    "phone": "+61 8 9271 3332",
+    "website": "http://www.icentrewa.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=The%20Islamic%20Centre%20of%20Western%20Australia&query_place_id=ChIJxUxATvS6MioRXz0k41OOCMs",
+    "placeId": "ChIJxUxATvS6MioRXz0k41OOCMs",
+    "categories": [
+      "Mosque",
+      "Non-profit organization"
+    ],
+    "state": "WA",
+    "suburb": "238 Guildford Rd"
+  },
+  {
+    "title": "Perth Mosque",
+    "address": "427 William St, Perth WA 6000, Australia",
+    "location": {
+      "lat": -31.9436243,
+      "lng": 115.8624045
+    },
+    "phone": "+61 8 9328 8535",
+    "website": "http://www.islamiccouncilwa.com.au/mosque/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Perth%20Mosque&query_place_id=ChIJ_zmiws-6MioReDckbxW88z4",
+    "placeId": "ChIJ_zmiws-6MioReDckbxW88z4",
+    "categories": [
+      "Mosque",
+      "Tourist attraction"
+    ],
+    "state": "WA",
+    "suburb": "427 William St"
+  },
+  {
+    "title": "Masjid Ibrahim Perth",
+    "address": "2 Leslie St, Southern River WA 6110, Australia",
+    "location": {
+      "lat": -32.0930947,
+      "lng": 115.9738967
+    },
+    "phone": "+61 412 785 919",
+    "website": "http://www.masjidibrahim.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Ibrahim%20Perth&query_place_id=ChIJy_sx1cyVMioRTJVqP6cvMME",
+    "placeId": "ChIJy_sx1cyVMioRTJVqP6cvMME",
+    "categories": [
+      "Mosque",
+      "Place of worship",
+      "Tourist attraction"
+    ],
+    "state": "WA",
+    "suburb": "2 Leslie St"
+  },
+  {
+    "title": "Suleymaniye Mosque",
+    "address": "243 Welshpool Rd, Queens Park WA 6107, Australia",
+    "location": {
+      "lat": -31.9973849,
+      "lng": 115.9474474
+    },
+    "website": "https://m.facebook.com/CanningMosque/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Suleymaniye%20Mosque&query_place_id=ChIJrwwXYqC-MioRt-yIV-vR3ms",
+    "placeId": "ChIJrwwXYqC-MioRt-yIV-vR3ms",
+    "categories": [
+      "Mosque",
+      "Tourist attraction"
+    ],
+    "state": "WA",
+    "suburb": "243 Welshpool Rd"
+  },
+  {
+    "title": "Nasir Mosque",
+    "address": "239 Barrington St, Bibra Lake WA 6163, Australia",
+    "location": {
+      "lat": -32.1149545,
+      "lng": 115.8142251
+    },
+    "phone": "+61 8 9494 2206",
+    "website": "https://www.nasirmosque.org/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Nasir%20Mosque&query_place_id=ChIJ16Ehy4qYMioRP0L9mDhlrNI",
+    "placeId": "ChIJ16Ehy4qYMioRP0L9mDhlrNI",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "239 Barrington St"
+  },
+  {
+    "title": "Rivervale Masjid مسجد",
+    "address": "9 Rowe Ave, Rivervale WA 6103, Australia",
+    "location": {
+      "lat": -31.9567509,
+      "lng": 115.9026804
+    },
+    "phone": "+61 8 9362 2210",
+    "website": "http://www.islamiccouncilwa.com.au/rivervale-mosque/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Rivervale%20Masjid%20%D9%85%D8%B3%D8%AC%D8%AF&query_place_id=ChIJ_fdbhKi7MioRKvKP1TW6yK8",
+    "placeId": "ChIJ_fdbhKi7MioRKvKP1TW6yK8",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "9 Rowe Ave"
+  },
+  {
+    "title": "Maylands Mosque",
+    "address": "238 Guildford Rd, Maylands WA 6051, Australia",
+    "location": {
+      "lat": -31.9299096,
+      "lng": 115.8963401
+    },
+    "phone": "+61 8 9271 3332",
+    "website": "http://www.icentrewa.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Maylands%20Mosque&query_place_id=ChIJ1erRTvS6MioRJc8b8tMZZV4",
+    "placeId": "ChIJ1erRTvS6MioRJc8b8tMZZV4",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "238 Guildford Rd"
+  },
+  {
+    "title": "Al Majid Mosque",
+    "address": "64 Walter Padbury Blvd, Padbury WA 6025, Australia",
+    "location": {
+      "lat": -31.8150859,
+      "lng": 115.7765254
+    },
+    "phone": "+61 434 122 237",
+    "website": "https://al-majid-mosque.webflow.io/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Al%20Majid%20Mosque&query_place_id=ChIJywg5o2isMioR6aqP4sQay34",
+    "placeId": "ChIJywg5o2isMioR6aqP4sQay34",
+    "categories": [
+      "Mosque",
+      "Tourist attraction"
+    ],
+    "state": "WA",
+    "suburb": "64 Walter Padbury Blvd"
+  },
+  {
+    "title": "UWA Mosque/ UWA Musalla",
+    "address": "Saw Promenade, Crawley WA 6009, Australia",
+    "location": {
+      "lat": -31.9769655,
+      "lng": 115.8181433
+    },
+    "website": "http://www.uwamsa.org/",
+    "url": "https://www.google.com/maps/search/?api=1&query=UWA%20Mosque%2F%20UWA%20Musalla&query_place_id=ChIJU-AcI_CkMioRlmQ7vrRTIBw",
+    "placeId": "ChIJU-AcI_CkMioRlmQ7vrRTIBw",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "Saw Promenade"
+  },
+  {
+    "title": "Armadale Masjid And Islamic Center (AMIC)",
+    "address": "7 Albany Hwy, Armadale WA 6112, Australia",
+    "location": {
+      "lat": -32.1507166,
+      "lng": 116.0237052
+    },
+    "phone": "+61 8 6594 1997",
+    "website": "http://www.armadalemasjid.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Armadale%20Masjid%20And%20Islamic%20Center%20(AMIC)&query_place_id=ChIJI-4yzUCTMioR4vWa8AUP2Hs",
+    "placeId": "ChIJI-4yzUCTMioR4vWa8AUP2Hs",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "7 Albany Hwy"
+  },
+  {
+    "title": "Masjid Al Latief (Daarut Tauhiid Australia)",
+    "address": "214 Nicholson Rd, Langford WA 6147, Australia",
+    "location": {
+      "lat": -32.044226,
+      "lng": 115.9337259
+    },
+    "phone": "+61 2 2200 3238",
+    "website": "http://daaruttauhiid.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Al%20Latief%20(Daarut%20Tauhiid%20Australia)&query_place_id=ChIJD1qmEta9MioR2klbdu6N15U",
+    "placeId": "ChIJD1qmEta9MioR2klbdu6N15U",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "214 Nicholson Rd"
+  },
+  {
+    "title": "Swan Valley Mosque and Islamic Centre",
+    "address": "2 Smallbrook Retreat, Caversham WA 6055, Australia",
+    "location": {
+      "lat": -31.8762204,
+      "lng": 115.9608115
+    },
+    "phone": "+61 435 173 942",
+    "url": "https://www.google.com/maps/search/?api=1&query=Swan%20Valley%20Mosque%20and%20Islamic%20Centre&query_place_id=ChIJWYtST0S3MioRmE_wXOg_SQg",
+    "placeId": "ChIJWYtST0S3MioRmE_wXOg_SQg",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "2 Smallbrook Retreat"
+  },
+  {
+    "title": "IQRO Centre Perth",
+    "address": "Shop 2/45 Kent St, Cannington WA 6107, Australia",
+    "location": {
+      "lat": -32.016271,
+      "lng": 115.9266275
+    },
+    "phone": "+61 479 141 414",
+    "website": "http://www.iqro.org.au/perth",
+    "url": "https://www.google.com/maps/search/?api=1&query=IQRO%20Centre%20Perth&query_place_id=ChIJ34I5DTe8MioRn5MrjQqZlJU",
+    "placeId": "ChIJ34I5DTe8MioRn5MrjQqZlJU",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "Shop 2/45 Kent St"
+  },
+  {
+    "title": "Masjid Al-Taqwa, Mirrabooka",
+    "address": "135 Boyare Ave, Mirrabooka WA 6061, Australia",
+    "location": {
+      "lat": -31.8556959,
+      "lng": 115.8684254
+    },
+    "phone": "+61 8 9248 8559",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Al-Taqwa%2C%20Mirrabooka&query_place_id=ChIJ88zXtcWxMioR5Yz8iKGZ-Mg",
+    "placeId": "ChIJ88zXtcWxMioR5Yz8iKGZ-Mg",
+    "categories": [
+      "Mosque",
+      "Tourist attraction"
+    ],
+    "state": "WA",
+    "suburb": "135 Boyare Ave"
+  },
+  {
+    "title": "Ahlulbayt Community of Western Australia",
+    "address": "32 Dulwich St, Bennett Springs WA 6063, Australia",
+    "location": {
+      "lat": -31.8526794,
+      "lng": 115.9577476
+    },
+    "phone": "+61 423 959 758",
+    "website": "https://ahlulbaytcommunity.org/contact/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Ahlulbayt%20Community%20of%20Western%20Australia&query_place_id=ChIJ__8vkCi3MioR6u1PzfijIJY",
+    "placeId": "ChIJ__8vkCi3MioR6u1PzfijIJY",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "32 Dulwich St"
+  },
+  {
+    "title": "Masjid Al Rahman Gosnells",
+    "address": "45 Mills Rd W, Gosnells WA 6110, Australia",
+    "location": {
+      "lat": -32.0670611,
+      "lng": 116.0026528
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Al%20Rahman%20Gosnells&query_place_id=ChIJIUolIXKVMioRaZDpCrqDrkU",
+    "placeId": "ChIJIUolIXKVMioRaZDpCrqDrkU",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "45 Mills Rd W"
+  },
+  {
+    "title": "Masjid Al Khalil Malaga",
+    "address": "1 Hunt St, Malaga WA 6090, Australia",
+    "location": {
+      "lat": -31.8583642,
+      "lng": 115.8854776
+    },
+    "phone": "+61 413 473 034",
+    "website": "https://gopray.com.au/place/furqan-islamic-association-westren-australia/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Al%20Khalil%20Malaga&query_place_id=ChIJX_9QpiqxMioR7MECLdlmmVI",
+    "placeId": "ChIJX_9QpiqxMioR7MECLdlmmVI",
+    "categories": [
+      "Mosque",
+      "Place of worship"
+    ],
+    "state": "WA",
+    "suburb": "1 Hunt St"
+  },
+  {
+    "title": "Thornlie Masjid",
+    "address": "26 Clancy Way, Thornlie WA 6108, Australia",
+    "location": {
+      "lat": -32.0537599,
+      "lng": 115.9609451
+    },
+    "phone": "+61 8 9452 3531",
+    "url": "https://www.google.com/maps/search/?api=1&query=Thornlie%20Masjid&query_place_id=ChIJl-xKEhu-MioRNzImaHoo-9I",
+    "placeId": "ChIJl-xKEhu-MioRNzImaHoo-9I",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "26 Clancy Way"
+  },
+  {
+    "title": "Perth City Musallah",
+    "address": "101 Murray St, Perth WA 6000, Australia",
+    "location": {
+      "lat": -31.9540389,
+      "lng": 115.8619823
+    },
+    "phone": "+61 8 6249 6826",
+    "website": "http://www.perthcitymusallah.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Perth%20City%20Musallah&query_place_id=ChIJC8CWE9a6MioRhMYxRaR6B-I",
+    "placeId": "ChIJC8CWE9a6MioRhMYxRaR6B-I",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "101 Murray St"
+  },
+  {
+    "title": "Masjid Alsalaam",
+    "address": "32 Morgan St, Cannington WA 6107, Australia",
+    "location": {
+      "lat": -32.0210564,
+      "lng": 115.9486335
+    },
+    "website": "http://alsalaam.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Alsalaam&query_place_id=ChIJpQq_o4q_MioR9GbvdJInm0A",
+    "placeId": "ChIJpQq_o4q_MioR9GbvdJInm0A",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "32 Morgan St"
+  },
+  {
+    "title": "Alhidayah Centre",
+    "address": "29 Berriman Dr, Wangara WA 6065, Australia",
+    "location": {
+      "lat": -31.7933723,
+      "lng": 115.8215206
+    },
+    "phone": "+61 426 262 645",
+    "website": "http://www.alhidayahcentre.org/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Alhidayah%20Centre&query_place_id=ChIJnc_z5QmtMioRi0d7sBhO2JM",
+    "placeId": "ChIJnc_z5QmtMioRi0d7sBhO2JM",
+    "categories": [
+      "Mosque",
+      "Community center",
+      "Youth center"
+    ],
+    "state": "WA",
+    "suburb": "29 Berriman Dr"
+  },
+  {
+    "title": "Islamic Centre of WA",
+    "address": "Cnr Sheoak &, Radiata St, Maddington WA 6109, Australia",
+    "location": {
+      "lat": -32.053431,
+      "lng": 116.0021118
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Islamic%20Centre%20of%20WA&query_place_id=ChIJGZO4xiWVMioRWZ369PNDL1w",
+    "placeId": "ChIJGZO4xiWVMioRWZ369PNDL1w",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "Radiata St"
+  },
+  {
+    "title": "Furqan Islamic Association",
+    "address": "91 Robinson Ave, Belmont WA 6104, Australia",
+    "location": {
+      "lat": -31.9577409,
+      "lng": 115.9282698
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Furqan%20Islamic%20Association&query_place_id=ChIJwwSyyay7MioRKasMm_86WkM",
+    "placeId": "ChIJwwSyyay7MioRKasMm_86WkM",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "91 Robinson Ave"
+  },
+  {
+    "title": "Curtin Musallah",
+    "address": "510, Bentley WA 6102, Australia",
+    "location": {
+      "lat": -32.009722,
+      "lng": 115.893861
+    },
+    "phone": "+61 8 9266 9266",
+    "url": "https://www.google.com/maps/search/?api=1&query=Curtin%20Musallah&query_place_id=ChIJwxMMkIy8MioR2c4ZphAfhWw",
+    "placeId": "ChIJwxMMkIy8MioR2c4ZphAfhWw",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "510"
+  },
+  {
+    "title": "ECU Musalla",
+    "address": "16b, 2 Bradford St, Mount Lawley WA 6050, Australia",
+    "location": {
+      "lat": -31.9192014,
+      "lng": 115.8698262
+    },
+    "phone": "+61 8 9370 6111",
+    "website": "http://www.ecu.edu.au/about-ecu/our-campuses/mount-lawley-campus",
+    "url": "https://www.google.com/maps/search/?api=1&query=ECU%20Musalla&query_place_id=ChIJjYddYqS6MioR0E7eXKuRYUE",
+    "placeId": "ChIJjYddYqS6MioR0E7eXKuRYUE",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "2 Bradford St"
+  },
+  {
+    "title": "Perth Ummah Centre",
+    "address": "56 Whitlock Rd, Queens Park WA 6107, Australia",
+    "location": {
+      "lat": -32.0026043,
+      "lng": 115.9553671
+    },
+    "phone": "+61 444 577 484",
+    "website": "http://www.icentrewa.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Perth%20Ummah%20Centre&query_place_id=ChIJd9RrfkW_MioRFUz0BhT8FDU",
+    "placeId": "ChIJd9RrfkW_MioRFUz0BhT8FDU",
+    "categories": [
+      "Mosque",
+      "Religious institution"
+    ],
+    "state": "WA",
+    "suburb": "56 Whitlock Rd"
+  },
+  {
+    "title": "Masjid Al-Falah",
+    "address": "29 Lewis Rd, Wattle Grove WA 6107, Australia",
+    "location": {
+      "lat": -32.00132,
+      "lng": 116.00974
+    },
+    "phone": "+61 401 686 712",
+    "website": "https://masjidalfalah.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Al-Falah&query_place_id=ChIJU4PvxA6_MioRj2ojmqPlE7o",
+    "placeId": "ChIJU4PvxA6_MioRj2ojmqPlE7o",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "29 Lewis Rd"
+  },
+  {
+    "title": "Friday Prayer (Jummah)",
+    "address": "12 Pier St, Perth WA 6000, Australia",
+    "location": {
+      "lat": -31.9557648,
+      "lng": 115.8622769
+    },
+    "phone": "+61 450 394 521",
+    "website": "https://www.perthcitymusallah.org.au/prayer-update/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Friday%20Prayer%20(Jummah)&query_place_id=ChIJg240G6y7MioRxnw22AWEVV4",
+    "placeId": "ChIJg240G6y7MioRxnw22AWEVV4",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "12 Pier St"
+  },
+  {
+    "title": "King Edward Memorial Hospital Mosque",
+    "address": "A/Block 374 Bagot Rd, Subiaco WA 6008, Australia",
+    "location": {
+      "lat": -31.9501253,
+      "lng": 115.8184511
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=King%20Edward%20Memorial%20Hospital%20Mosque&query_place_id=ChIJ8bNNCHmlMioR1ZlDei3icRE",
+    "placeId": "ChIJ8bNNCHmlMioR1ZlDei3icRE",
+    "categories": [
+      "Hospital"
+    ],
+    "state": "WA",
+    "suburb": "A/Block 374 Bagot Rd"
+  },
+  {
+    "title": "Sakinah Islamic Centre",
+    "address": "840 N Lake Rd, Cockburn Central WA 6164, Australia",
+    "location": {
+      "lat": -32.1209864,
+      "lng": 115.8486875
+    },
+    "website": "https://sakinahislamiccentre.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Sakinah%20Islamic%20Centre&query_place_id=ChIJBYAwnkiZMioRWjeWykmjKu0",
+    "placeId": "ChIJBYAwnkiZMioRWjeWykmjKu0",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "840 N Lake Rd"
+  },
+  {
+    "title": "Fremantle Mosque",
+    "address": "10 Blamey Pl, O'Connor WA 6163, Australia",
+    "location": {
+      "lat": -32.0573509,
+      "lng": 115.7889284
+    },
+    "phone": "+61 429 926 629",
+    "website": "http://www.fremantlemosque.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Fremantle%20Mosque&query_place_id=ChIJzfFtg3-jMioR-sZJFQNpPHA",
+    "placeId": "ChIJzfFtg3-jMioR-sZJFQNpPHA",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "10 Blamey Pl"
+  },
+  {
+    "title": "Iqra Mosque",
+    "address": "Unit 4/41A Tulloch Way, Canning Vale WA 6155, Australia",
+    "location": {
+      "lat": -32.0632859,
+      "lng": 115.9338292
+    },
+    "phone": "+61 439 522 860",
+    "website": "https://gopray.com.au/place/iqra-academy-centre/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Iqra%20Mosque&query_place_id=ChIJD7NzPte9MioROpZcvT7-Gb0",
+    "placeId": "ChIJD7NzPte9MioROpZcvT7-Gb0",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "Unit 4/41A Tulloch Way"
+  },
+  {
+    "title": "Dianella Musallah",
+    "address": "1 Light St, Dianella WA 6059, Australia",
+    "location": {
+      "lat": -31.8853498,
+      "lng": 115.875317
+    },
+    "phone": "+61 415 411 707",
+    "website": "http://www.alhamd.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Dianella%20Musallah&query_place_id=ChIJ_y2oez-wMioRGa92Jv-SO9I",
+    "placeId": "ChIJ_y2oez-wMioRGa92Jv-SO9I",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "1 Light St"
+  },
+  {
+    "title": "Masjid bosnia (Mosque)",
+    "address": "2 Smallbrook Retreat, Caversham WA 6055, Australia",
+    "location": {
+      "lat": -31.8761618,
+      "lng": 115.9608561
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20bosnia%20(Mosque)&query_place_id=ChIJ7cuMP9-3MioRbYKgUUzp_Wc",
+    "placeId": "ChIJ7cuMP9-3MioRbYKgUUzp_Wc",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "2 Smallbrook Retreat"
+  },
+  {
+    "title": "Aussie Muslims",
+    "address": "164 Hampton Rd, Beaconsfield WA 6162, Australia",
+    "location": {
+      "lat": -32.0645983,
+      "lng": 115.7578915
+    },
+    "phone": "+61 428 888 273",
+    "website": "https://www.aussiemuslims.net/directory/fremantle-st-pauls-anglican-church-friday/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Aussie%20Muslims&query_place_id=ChIJXZyDUMShMioRotAI9kP_JlM",
+    "placeId": "ChIJXZyDUMShMioRotAI9kP_JlM",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "164 Hampton Rd"
+  },
+  {
+    "title": "UAIA Perth",
+    "address": "Maddington WA 6109, Australia",
+    "location": {
+      "lat": -32.052751,
+      "lng": 115.9792707
+    },
+    "phone": "+61 412 033 225",
+    "url": "https://www.google.com/maps/search/?api=1&query=UAIA%20Perth&query_place_id=ChIJEdP_Z9m_MioRGzRoZRB7VgU",
+    "placeId": "ChIJEdP_Z9m_MioRGzRoZRB7VgU",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA"
+  },
+  {
+    "title": "Murdoch University Musalla",
+    "address": "Room EH1 .009. Education and humanities building, Broadwalk, Murdoch WA 6150, Australia",
+    "location": {
+      "lat": -32.0670008,
+      "lng": 115.8316384
+    },
+    "phone": "+61 421 249 422",
+    "website": "https://www.facebook.com/MurdochUniMSA/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Murdoch%20University%20Musalla&query_place_id=ChIJtavyW3yjMioRhLLSDIHXq88",
+    "placeId": "ChIJtavyW3yjMioRhLLSDIHXq88",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "Broadwalk"
+  },
+  {
+    "title": "Scarborough Musallah",
+    "address": "Building 2/173 Gildercliffe St, Scarborough WA 6019, Australia",
+    "location": {
+      "lat": -31.8950081,
+      "lng": 115.77443
+    },
+    "website": "https://m.facebook.com/groups/1039786556997193/?ref=share&mibextid=S66gvF",
+    "url": "https://www.google.com/maps/search/?api=1&query=Scarborough%20Musallah&query_place_id=ChIJ52_tYsmvMioRoDvalz0PTvA",
+    "placeId": "ChIJ52_tYsmvMioRoDvalz0PTvA",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "Building 2/173 Gildercliffe St"
+  },
+  {
+    "title": "GGA Mosque",
+    "address": "Unit 2/185 High Rd, Willetton WA 6155, Australia",
+    "location": {
+      "lat": -32.0391739,
+      "lng": 115.8865375
+    },
+    "phone": "+61 422 160 425",
+    "url": "https://www.google.com/maps/search/?api=1&query=GGA%20Mosque&query_place_id=ChIJX9oLFJq9MioR0tuMLLbIaQ0",
+    "placeId": "ChIJX9oLFJq9MioR0tuMLLbIaQ0",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "Unit 2/185 High Rd"
+  },
+  {
+    "title": "Bosnian-Herzegovinian Cultural and Recreational Centre",
+    "address": "587 Beechboro Rd N, Beechboro WA 6063, Australia",
+    "location": {
+      "lat": -31.8604104,
+      "lng": 115.9239714
+    },
+    "phone": "+61 419 939 961",
+    "url": "https://www.google.com/maps/search/?api=1&query=Bosnian-Herzegovinian%20Cultural%20and%20Recreational%20Centre&query_place_id=ChIJNWAtut2wMioRRXTj4iUf1Ik",
+    "placeId": "ChIJNWAtut2wMioRRXTj4iUf1Ik",
+    "categories": [
+      "Mosque",
+      "Function room facility"
+    ],
+    "state": "WA",
+    "suburb": "587 Beechboro Rd N"
+  },
+  {
+    "title": "Beaufort Park Musallah",
+    "address": "Beaufort Park, 12 Drummond St, Bedford WA 6052, Australia",
+    "location": {
+      "lat": -31.9151134,
+      "lng": 115.8961597
+    },
+    "phone": "+61 406 196 640",
+    "website": "https://www.facebook.com/AUSLAMWAINC/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Beaufort%20Park%20Musallah&query_place_id=ChIJGTMPA_u7MioR02OzVNPdooU",
+    "placeId": "ChIJGTMPA_u7MioR02OzVNPdooU",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "12 Drummond St"
+  },
+  {
+    "title": "Indonesian Ukhuwah Centre",
+    "address": "20 Swallow Dr, Yangebup WA 6164, Australia",
+    "location": {
+      "lat": -32.1187011,
+      "lng": 115.8184602
+    },
+    "phone": "+61 433 731 973",
+    "url": "https://www.google.com/maps/search/?api=1&query=Indonesian%20Ukhuwah%20Centre&query_place_id=ChIJ8d45ZN-ZMioRhat_q-_7Evw",
+    "placeId": "ChIJ8d45ZN-ZMioRhat_q-_7Evw",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "20 Swallow Dr"
+  },
+  {
+    "title": "Masjid Ibrahim Madrasah for Akhwaat.",
+    "address": "Entrance to masjid Ibrahim, Southern River WA 6110, Australia",
+    "location": {
+      "lat": -32.0931444,
+      "lng": 115.973943
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Ibrahim%20Madrasah%20for%20Akhwaat.&query_place_id=ChIJtz8QZRqVMioREHaUi--Silo",
+    "placeId": "ChIJtz8QZRqVMioREHaUi--Silo",
+    "categories": [
+      "Educational institution"
+    ],
+    "state": "WA",
+    "suburb": "Entrance to masjid Ibrahim"
+  },
+  {
+    "title": "Kelmscott Masjid",
+    "address": "20 Church St, Kelmscott WA 6111, Australia",
+    "location": {
+      "lat": -32.1190973,
+      "lng": 116.019525
+    },
+    "website": "http://kelmscottmasjid.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Kelmscott%20Masjid&query_place_id=ChIJ40inoL2UMioRy9u-S5jNQlg",
+    "placeId": "ChIJ40inoL2UMioRy9u-S5jNQlg",
+    "categories": [
+      "Youth center"
+    ],
+    "state": "WA",
+    "suburb": "20 Church St"
+  },
+  {
+    "title": "Faizan e Madinah Musallah",
+    "address": "33 Morgan Rd, Redcliffe WA 6104, Australia",
+    "location": {
+      "lat": -31.9470931,
+      "lng": 115.9477311
+    },
+    "phone": "+61 1300 004 786",
+    "website": "https://www.dawateislami.net.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Faizan%20e%20Madinah%20Musallah&query_place_id=ChIJQ0QCOAC5MioRIJC86BcAvX0",
+    "placeId": "ChIJQ0QCOAC5MioRIJC86BcAvX0",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "33 Morgan Rd"
+  },
+  {
+    "title": "Al Ameen Mosque Inc",
+    "address": "7 Mercantile Way, Malaga WA 6090, Australia",
+    "location": {
+      "lat": -31.8590078,
+      "lng": 115.9002179
+    },
+    "phone": "+61 414 155 366",
+    "url": "https://www.google.com/maps/search/?api=1&query=Al%20Ameen%20Mosque%20Inc&query_place_id=ChIJ_SIhhgCxMioRX5WF1cp9eUo",
+    "placeId": "ChIJ_SIhhgCxMioRX5WF1cp9eUo",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "7 Mercantile Way"
+  },
+  {
+    "title": "Mosque",
+    "address": "45 Mills Rd W, Gosnells WA 6110, Australia",
+    "location": {
+      "lat": -32.067042,
+      "lng": 116.0025477
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Mosque&query_place_id=ChIJ19T2OACVMioRUb4e7xsfpIo",
+    "placeId": "ChIJ19T2OACVMioRUb4e7xsfpIo",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "45 Mills Rd W"
+  },
+  {
+    "title": "Kenwick Musallah",
+    "address": "84 Kenwick Rd, Kenwick WA 6107, Australia",
+    "location": {
+      "lat": -32.0337613,
+      "lng": 115.978817
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Kenwick%20Musallah&query_place_id=ChIJ22RuzSa_MioR1AGZ_-IxOjo",
+    "placeId": "ChIJ22RuzSa_MioR1AGZ_-IxOjo",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "WA",
+    "suburb": "84 Kenwick Rd"
+  },
+  {
+    "title": "Adelaide Mosque",
+    "address": "30 Little Gilbert St, Adelaide SA 5000, Australia",
+    "location": {
+      "lat": -34.9342495,
+      "lng": 138.5919164
+    },
+    "phone": "+61 8 8231 6443",
+    "website": "http://www.adelaidecitymosque.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Adelaide%20Mosque&query_place_id=ChIJj5818BjPsGoRTGueVaLJ1l4",
+    "placeId": "ChIJj5818BjPsGoRTGueVaLJ1l4",
+    "categories": [
+      "Mosque",
+      "Tourist attraction"
+    ],
+    "state": "SA",
+    "suburb": "30 Little Gilbert St"
+  },
+  {
+    "title": "Islamic Arabic Centre & Masjid Al Khalil",
+    "address": "596 Torrens Rd, Woodville North SA 5012, Australia",
+    "location": {
+      "lat": -34.8675868,
+      "lng": 138.537577
+    },
+    "phone": "+61 8 8268 1944",
+    "website": "https://m.facebook.com/AlKhalilMasjid/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Islamic%20Arabic%20Centre%20%26%20Masjid%20Al%20Khalil&query_place_id=ChIJu7A7U0fGsGoRJWudl-6-ip8",
+    "placeId": "ChIJu7A7U0fGsGoRJWudl-6-ip8",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "SA",
+    "suburb": "596 Torrens Rd"
+  },
+  {
+    "title": "Adelaide Muslim Community",
+    "address": "124a Henley Beach Rd, Torrensville SA 5031, Australia",
+    "location": {
+      "lat": -34.9236883,
+      "lng": 138.5673261
+    },
+    "phone": "+61 413 665 355",
+    "website": "https://gopray.com.au/place/torrensville-adelaide-muslim-community/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Adelaide%20Muslim%20Community&query_place_id=ChIJARAhlWfPsGoR4V-1lvKEYJg",
+    "placeId": "ChIJARAhlWfPsGoR4V-1lvKEYJg",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "SA",
+    "suburb": "124a Henley Beach Rd"
+  },
+  {
+    "title": "Masjid Abu Bakr As-Siddiq",
+    "address": "52 Wandana Ave, Gilles Plains SA 5086, Australia",
+    "location": {
+      "lat": -34.8480843,
+      "lng": 138.6606199
+    },
+    "website": "http://iicsa.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Abu%20Bakr%20As-Siddiq&query_place_id=ChIJ9TclDr-1sGoRklavVBKdJ_g",
+    "placeId": "ChIJ9TclDr-1sGoRklavVBKdJ_g",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "SA",
+    "suburb": "52 Wandana Ave"
+  },
+  {
+    "title": "The Centre",
+    "address": "416 Churchill Rd, Kilburn SA 5084, Australia",
+    "location": {
+      "lat": -34.8615526,
+      "lng": 138.5828576
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=The%20Centre&query_place_id=ChIJDxsywf_JsGoRHvdqdECOcHM",
+    "placeId": "ChIJDxsywf_JsGoRHvdqdECOcHM",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "SA",
+    "suburb": "416 Churchill Rd"
+  },
+  {
+    "title": "Association of Islamic Da'wah in South Australia (AIDSA Inc.)",
+    "address": "51 Peachey Rd, Davoren Park SA 5113, Australia",
+    "location": {
+      "lat": -34.695648,
+      "lng": 138.666096
+    },
+    "phone": "+61 426 904 262",
+    "url": "https://www.google.com/maps/search/?api=1&query=Association%20of%20Islamic%20Da'wah%20in%20South%20Australia%20(AIDSA%20Inc.)&query_place_id=ChIJByGpirCtsGoRKN9w6LAZbyQ",
+    "placeId": "ChIJByGpirCtsGoRKN9w6LAZbyQ",
+    "categories": [
+      "Mosque",
+      "Place of worship"
+    ],
+    "state": "SA",
+    "suburb": "51 Peachey Rd"
+  },
+  {
+    "title": "Islamic Information Centre of SA",
+    "address": "Unit 1/53 Henley Beach Rd, Mile End SA 5031, Australia",
+    "location": {
+      "lat": -34.9237524,
+      "lng": 138.5738927
+    },
+    "phone": "+61 8 7226 6268",
+    "website": "http://www.iicsa.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Islamic%20Information%20Centre%20of%20SA&query_place_id=ChIJR1Ns7hjPsGoR3tzeVEVITfQ",
+    "placeId": "ChIJR1Ns7hjPsGoR3tzeVEVITfQ",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "SA",
+    "suburb": "Unit 1/53 Henley Beach Rd"
+  },
+  {
+    "title": "Wandana Mosque",
+    "address": "52/56 Wandana Ave, Gilles Plains SA 5086, Australia",
+    "location": {
+      "lat": -34.8480879,
+      "lng": 138.6605643
+    },
+    "phone": "+61 8 8374 2280",
+    "url": "https://www.google.com/maps/search/?api=1&query=Wandana%20Mosque&query_place_id=ChIJkRBka7-1sGoRNI2vUfT1RsE",
+    "placeId": "ChIJkRBka7-1sGoRNI2vUfT1RsE",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "SA",
+    "suburb": "52/56 Wandana Ave"
+  },
+  {
+    "title": "Islamic Society of South Australia",
+    "address": "658 Marion Rd, Park Holme SA 5043, Australia",
+    "location": {
+      "lat": -34.9888283,
+      "lng": 138.5563445
+    },
+    "phone": "+61 8 8374 2280",
+    "website": "http://www.islamicsocietysa.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Islamic%20Society%20of%20South%20Australia&query_place_id=ChIJuxC9c7-1sGoRS-afu9QB10I",
+    "placeId": "ChIJuxC9c7-1sGoRS-afu9QB10I",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "SA",
+    "suburb": "658 Marion Rd"
+  },
+  {
+    "title": "Masjid Omar Bin Alkhattab - Marion Mosque",
+    "address": "658 Marion Rd, Park Holme SA 5043, Australia",
+    "location": {
+      "lat": -34.9888468,
+      "lng": 138.5562893
+    },
+    "phone": "+61 8 8277 8725",
+    "website": "http://www.islamicsocietysa.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Omar%20Bin%20Alkhattab%20-%20Marion%20Mosque&query_place_id=ChIJ4w3GVKDasGoRPhDnBq5BAas",
+    "placeId": "ChIJ4w3GVKDasGoRPhDnBq5BAas",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "SA",
+    "suburb": "658 Marion Rd"
+  },
+  {
+    "title": "Mahmood Mosque",
+    "address": "6-8 Toogood Ave, Beverley SA 5009, Australia",
+    "location": {
+      "lat": -34.8988935,
+      "lng": 138.5440671
+    },
+    "phone": "+61 8 8318 6090",
+    "website": "https://www.mahmoodmosque.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Mahmood%20Mosque&query_place_id=ChIJIf-t-OPFsGoRcePNX51T2g4",
+    "placeId": "ChIJIf-t-OPFsGoRcePNX51T2g4",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "SA",
+    "suburb": "6-8 Toogood Ave"
+  },
+  {
+    "title": "Virginia Masjid & SA Multicultural Centre",
+    "address": "37 Phineas St, Virginia SA 5120, Australia",
+    "location": {
+      "lat": -34.6671523,
+      "lng": 138.5618572
+    },
+    "website": "http://ipdc.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Virginia%20Masjid%20%26%20SA%20Multicultural%20Centre&query_place_id=ChIJyVreWQqvsGoR8bJCbnyn_G4",
+    "placeId": "ChIJyVreWQqvsGoR8bJCbnyn_G4",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "SA",
+    "suburb": "37 Phineas St"
+  },
+  {
+    "title": "Othman Bin Affan Mosque",
+    "address": "141 Hogarth Rd, Elizabeth Grove SA 5112, Australia",
+    "location": {
+      "lat": -34.7395898,
+      "lng": 138.6630165
+    },
+    "phone": "+61 406 238 536",
+    "url": "https://www.google.com/maps/search/?api=1&query=Othman%20Bin%20Affan%20Mosque&query_place_id=ChIJ0z5cM2qysGoRdIGK1JQsJ3k",
+    "placeId": "ChIJ0z5cM2qysGoRdIGK1JQsJ3k",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "SA",
+    "suburb": "141 Hogarth Rd"
+  },
+  {
+    "title": "Wali-e-Asr Centre",
+    "address": "12 Barfield Cres, Edinburgh North SA 5113, Australia",
+    "location": {
+      "lat": -34.7098879,
+      "lng": 138.6664429
+    },
+    "phone": "+61 438 858 375",
+    "url": "https://www.google.com/maps/search/?api=1&query=Wali-e-Asr%20Centre&query_place_id=ChIJHd4kIJetsGoRBx-VOvlDrPA",
+    "placeId": "ChIJHd4kIJetsGoRBx-VOvlDrPA",
+    "categories": [
+      "Mosque",
+      "Wedding venue"
+    ],
+    "state": "SA",
+    "suburb": "12 Barfield Cres"
+  },
+  {
+    "title": "Green Fields Mosque",
+    "address": "138-142 Ryans Rd, Green Fields SA 5107, Australia",
+    "location": {
+      "lat": -34.7898465,
+      "lng": 138.5986661
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Green%20Fields%20Mosque&query_place_id=ChIJ6dbN3x-3sGoRwxJqUMWDMs4",
+    "placeId": "ChIJ6dbN3x-3sGoRwxJqUMWDMs4",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "SA",
+    "suburb": "138-142 Ryans Rd"
+  },
+  {
+    "title": "Imam Ali Mosque",
+    "address": "27 Langford St, Pooraka SA 5095, Australia",
+    "location": {
+      "lat": -34.8186233,
+      "lng": 138.634179
+    },
+    "phone": "+61 468 923 440",
+    "url": "https://www.google.com/maps/search/?api=1&query=Imam%20Ali%20Mosque&query_place_id=ChIJPRoRMoG2sGoRwuoQlYtJfq8",
+    "placeId": "ChIJPRoRMoG2sGoRwuoQlYtJfq8",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "SA",
+    "suburb": "27 Langford St"
+  },
+  {
+    "title": "Fatima Zahra Mosque and Hussainia",
+    "address": "138 Ryans Rd, Green Fields SA 5107, Australia",
+    "location": {
+      "lat": -34.7898554,
+      "lng": 138.5987583
+    },
+    "website": "http://fatimazahramosque.com/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Fatima%20Zahra%20Mosque%20and%20Hussainia&query_place_id=ChIJ9R1m0_63sGoRS7rB08_aN0M",
+    "placeId": "ChIJ9R1m0_63sGoRS7rB08_aN0M",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "SA",
+    "suburb": "138 Ryans Rd"
+  },
+  {
+    "title": "Al-Ansaar Community Center AMICSA.Inc",
+    "address": "240 Peachey Rd, Smithfield Plains SA 5114, Australia",
+    "location": {
+      "lat": -34.6764085,
+      "lng": 138.6776147
+    },
+    "website": "http://amicsa.org/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Al-Ansaar%20Community%20Center%20AMICSA.Inc&query_place_id=ChIJLbSWC-qtsGoRVcQU6ZSGQfo",
+    "placeId": "ChIJLbSWC-qtsGoRVcQU6ZSGQfo",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "SA",
+    "suburb": "240 Peachey Rd"
+  },
+  {
+    "title": "Maryam Masjid",
+    "address": "26 Clark St, Wayville SA 5034, Australia",
+    "location": {
+      "lat": -34.9449742,
+      "lng": 138.596216
+    },
+    "website": "https://maryammasjid.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Maryam%20Masjid&query_place_id=ChIJYeG2z5nPsGoRF1wmqI6cbjI",
+    "placeId": "ChIJYeG2z5nPsGoRF1wmqI6cbjI",
+    "categories": [
+      "Place of worship"
+    ],
+    "state": "SA",
+    "suburb": "26 Clark St"
+  },
+  {
+    "title": "Islamic Society UniSA - Musallah City West",
+    "address": "Building GK, City West Campus, University of, SA, Australia",
+    "location": {
+      "lat": -34.9222223,
+      "lng": 138.5900859
+    },
+    "website": "http://www.isunisa.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Islamic%20Society%20UniSA%20-%20Musallah%20City%20West&query_place_id=ChIJFyzq9tjPsGoRynsv_4Df5co",
+    "placeId": "ChIJFyzq9tjPsGoRynsv_4Df5co",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "SA",
+    "suburb": "University of"
+  },
+  {
+    "title": "Masjid & Hussainiya Ahl al-Bayt",
+    "address": "88 Le Hunte St, Kilburn SA 5084, Australia",
+    "location": {
+      "lat": -34.8614967,
+      "lng": 138.5917649
+    },
+    "phone": "+61 427 516 284",
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20%26%20Hussainiya%20Ahl%20al-Bayt&query_place_id=ChIJb-xzB0nIsGoRF-auOpucZGs",
+    "placeId": "ChIJb-xzB0nIsGoRF-auOpucZGs",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "SA",
+    "suburb": "88 Le Hunte St"
+  },
+  {
+    "title": "MCSA Islamic Center",
+    "address": "14 Bayer Rd, Elizabeth South SA 5112, Australia",
+    "location": {
+      "lat": -34.7387883,
+      "lng": 138.6544635
+    },
+    "phone": "+61 448 363 725",
+    "website": "https://muslimcommunitysa.org/",
+    "url": "https://www.google.com/maps/search/?api=1&query=MCSA%20Islamic%20Center&query_place_id=ChIJcVRDPn6zsGoR0AD36tvU_PE",
+    "placeId": "ChIJcVRDPn6zsGoR0AD36tvU_PE",
+    "categories": [
+      "Religious institution"
+    ],
+    "state": "SA",
+    "suburb": "14 Bayer Rd"
+  },
+  {
+    "title": "Nexus Prayer Room",
+    "address": "12/10 Pulteney St, Adelaide SA 5005, Australia",
+    "location": {
+      "lat": -34.9217866,
+      "lng": 138.6059035
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Nexus%20Prayer%20Room&query_place_id=ChIJ2fUuPf3PsGoRsAfEcjX598w",
+    "placeId": "ChIJ2fUuPf3PsGoRsAfEcjX598w",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "SA",
+    "suburb": "12/10 Pulteney St"
+  },
+  {
+    "title": "Al Hidayah Islamic Centre",
+    "address": "475 Prospect Rd, Blair Athol SA 5084, Australia",
+    "location": {
+      "lat": -34.8515358,
+      "lng": 138.5920398
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Al%20Hidayah%20Islamic%20Centre&query_place_id=ChIJW8NJRtjJsGoREx0l_73l0eQ",
+    "placeId": "ChIJW8NJRtjJsGoREx0l_73l0eQ",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "SA",
+    "suburb": "475 Prospect Rd"
+  },
+  {
+    "title": "Canberra Islamic Centre (CIC)",
+    "address": "221 Clive Steele Ave, Monash ACT 2904, Australia",
+    "location": {
+      "lat": -35.422313,
+      "lng": 149.090141
+    },
+    "phone": "+61 1800 885 786",
+    "website": "https://cicact.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Canberra%20Islamic%20Centre%20(CIC)&query_place_id=ChIJY_8ZyqXKF2sRDQ6fy32BH6g",
+    "placeId": "ChIJY_8ZyqXKF2sRDQ6fy32BH6g",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "ACT",
+    "suburb": "221 Clive Steele Ave"
+  },
+  {
+    "title": "Canberra Mosque (Yarralumla) - Ahlus Sunnah Wal Jamaah",
+    "address": "130 Empire Cct, Yarralumla ACT 2600, Australia",
+    "location": {
+      "lat": -35.3046029,
+      "lng": 149.1122496
+    },
+    "website": "https://isact.org.au/mosque/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Canberra%20Mosque%20(Yarralumla)%20-%20Ahlus%20Sunnah%20Wal%20Jamaah&query_place_id=ChIJKb5sUdZMFmsRpUWKpEVDoJ8",
+    "placeId": "ChIJKb5sUdZMFmsRpUWKpEVDoJ8",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "ACT",
+    "suburb": "130 Empire Cct"
+  },
+  {
+    "title": "ANU Musallah",
+    "address": "The Australian National University, Level 4 Building/156 Joplin Ln, Acton ACT 2601, Australia",
+    "location": {
+      "lat": -35.2774543,
+      "lng": 149.1200172
+    },
+    "website": "http://www.anumsa.com/",
+    "url": "https://www.google.com/maps/search/?api=1&query=ANU%20Musallah&query_place_id=ChIJDyxe9kZNFmsRGZjKYGgByzk",
+    "placeId": "ChIJDyxe9kZNFmsRGZjKYGgByzk",
+    "categories": [
+      "Mosque",
+      "Student union"
+    ],
+    "state": "ACT",
+    "suburb": "Level 4 Building/156 Joplin Ln"
+  },
+  {
+    "title": "Islamic Society of Belconnen - Taqwa Masjid (Ahlus Sunnah Wal Jamaah)",
+    "address": "4/55 Crofts Cres, Spence ACT 2615, Australia",
+    "location": {
+      "lat": -35.1980578,
+      "lng": 149.065173
+    },
+    "phone": "+61 408 412 138",
+    "website": "http://www.isb.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Islamic%20Society%20of%20Belconnen%20-%20Taqwa%20Masjid%20(Ahlus%20Sunnah%20Wal%20Jamaah)&query_place_id=ChIJHx1KIPGsF2sRpHyereJbC48",
+    "placeId": "ChIJHx1KIPGsF2sRpHyereJbC48",
+    "categories": [
+      "Mosque",
+      "Religious organization"
+    ],
+    "state": "ACT",
+    "suburb": "4/55 Crofts Cres"
+  },
+  {
+    "title": "Gungahlin Mosque",
+    "address": "140 The Valley Ave, Gungahlin ACT 2912, Australia",
+    "location": {
+      "lat": -35.1883536,
+      "lng": 149.137514
+    },
+    "phone": "+61 439 797 192",
+    "website": "https://www.gungahlinmosque.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Gungahlin%20Mosque&query_place_id=ChIJ70FA3pxUFmsRtJjR1A3jpnI",
+    "placeId": "ChIJ70FA3pxUFmsRtJjR1A3jpnI",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "ACT",
+    "suburb": "140 The Valley Ave"
+  },
+  {
+    "title": "Imam Hasan Centre Canberra",
+    "address": "56 Mannheim St, Kambah ACT 2902, Australia",
+    "location": {
+      "lat": -35.3848485,
+      "lng": 149.072017
+    },
+    "phone": "+61 450 331 419",
+    "website": "http://ihcc.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Imam%20Hasan%20Centre%20Canberra&query_place_id=ChIJJ_xVJJW0F2sRG6UlobUGrPQ",
+    "placeId": "ChIJJ_xVJJW0F2sRG6UlobUGrPQ",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "ACT",
+    "suburb": "56 Mannheim St"
+  },
+  {
+    "title": "Islamic Society of Gold Coast",
+    "address": "144 Allied Dr, Arundel QLD 4214, Australia",
+    "location": {
+      "lat": -27.9392406,
+      "lng": 153.3867752
+    },
+    "phone": "+61 7 5594 9097",
+    "website": "http://www.goldcoastmasjid.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Islamic%20Society%20of%20Gold%20Coast&query_place_id=ChIJoVedvCgQkWsRAoHYGEHHCcU",
+    "placeId": "ChIJoVedvCgQkWsRAoHYGEHHCcU",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "144 Allied Dr"
+  },
+  {
+    "title": "Gold Coast Southport Mosque",
+    "address": "116 Ridgeway Ave, Southport QLD 4215, Australia",
+    "location": {
+      "lat": -27.9874819,
+      "lng": 153.4019413
+    },
+    "phone": "+61 419 797 862",
+    "website": "https://www.southportmosque.com.au/prayer-times",
+    "url": "https://www.google.com/maps/search/?api=1&query=Gold%20Coast%20Southport%20Mosque&query_place_id=ChIJ630IpqEFkWsRmWpcYqALVfc",
+    "placeId": "ChIJ630IpqEFkWsRmWpcYqALVfc",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "116 Ridgeway Ave"
+  },
+  {
+    "title": "Prayer Place Ground Floor",
+    "address": "42 Surf Parade, Broadbeach QLD 4218, Australia",
+    "location": {
+      "lat": -28.0328909,
+      "lng": 153.431436
+    },
+    "phone": "+61 417 964 403",
+    "url": "https://www.google.com/maps/search/?api=1&query=Prayer%20Place%20Ground%20Floor&query_place_id=ChIJu-wHrAkFkWsRigdNS89bTgY",
+    "placeId": "ChIJu-wHrAkFkWsRigdNS89bTgY",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "42 Surf Parade"
+  },
+  {
+    "title": "Worongary mosque",
+    "address": "419 Hinkler Dr, Worongary QLD 4213, Australia",
+    "location": {
+      "lat": -28.041689,
+      "lng": 153.3525238
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Worongary%20mosque&query_place_id=ChIJWZCjVQAbkWsRVuO9j3HtwUU",
+    "placeId": "ChIJWZCjVQAbkWsRVuO9j3HtwUU",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "419 Hinkler Dr"
+  },
+  {
+    "title": "Trustee for Gold Coast Mosque Trust",
+    "address": "144 Allied Dr, Labrador QLD 4215, Australia",
+    "location": {
+      "lat": -27.9392757,
+      "lng": 153.3867465
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Trustee%20for%20Gold%20Coast%20Mosque%20Trust&query_place_id=ChIJtdc6sigQkWsRJ21KDBQn00k",
+    "placeId": "ChIJtdc6sigQkWsRJ21KDBQn00k",
+    "categories": [
+      "Charity"
+    ],
+    "state": "QLD",
+    "suburb": "144 Allied Dr"
+  },
+  {
+    "title": ".المسجد الكبير في قولد كوست",
+    "address": "144 Allied Dr, Arundel QLD 4214, Australia",
+    "location": {
+      "lat": -27.939055,
+      "lng": 153.3868663
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=.%D8%A7%D9%84%D9%85%D8%B3%D8%AC%D8%AF%20%D8%A7%D9%84%D9%83%D8%A8%D9%8A%D8%B1%20%D9%81%D9%8A%20%D9%82%D9%88%D9%84%D8%AF%20%D9%83%D9%88%D8%B3%D8%AA&query_place_id=ChIJ3e67uSgQkWsRuqtYe96knpw",
+    "placeId": "ChIJ3e67uSgQkWsRuqtYe96knpw",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "QLD",
+    "suburb": "144 Allied Dr"
+  },
+  {
+    "title": "Newcastle Mosque",
+    "address": "6 Metcalfe St, Wallsend NSW 2287, Australia",
+    "location": {
+      "lat": -32.903884,
+      "lng": 151.669819
+    },
+    "phone": "+61 2 4950 0099",
+    "website": "https://www.facebook.com/profile.php?id=100064583146750&mibextid=ZbWKwL",
+    "url": "https://www.google.com/maps/search/?api=1&query=Newcastle%20Mosque&query_place_id=ChIJdfKq7EU-c2sRxnYQOI94iqg",
+    "placeId": "ChIJdfKq7EU-c2sRxnYQOI94iqg",
+    "categories": [
+      "Mosque",
+      "Place of worship"
+    ],
+    "state": "NSW",
+    "suburb": "6 Metcalfe St"
+  },
+  {
+    "title": "Islamic Centre of Newcastle Mayfield",
+    "address": "3/5 Victoria St, Mayfield NSW 2304, Australia",
+    "location": {
+      "lat": -32.8981822,
+      "lng": 151.738833
+    },
+    "phone": "+61 2 4049 5244",
+    "url": "https://www.google.com/maps/search/?api=1&query=Islamic%20Centre%20of%20Newcastle%20Mayfield&query_place_id=ChIJXcTIJhsVc2sRjPNzBIHa0u4",
+    "placeId": "ChIJXcTIJhsVc2sRjPNzBIHa0u4",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "3/5 Victoria St"
+  },
+  {
+    "title": "Sultan Fatih Mosque",
+    "address": "5 Victoria St, Mayfield NSW 2304, Australia",
+    "location": {
+      "lat": -32.8979802,
+      "lng": 151.7386764
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Sultan%20Fatih%20Mosque&query_place_id=ChIJuy_pIBsVc2sRARnE4i30kzo",
+    "placeId": "ChIJuy_pIBsVc2sRARnE4i30kzo",
+    "categories": [
+      "Mosque",
+      "Tourist attraction"
+    ],
+    "state": "NSW",
+    "suburb": "5 Victoria St"
+  },
+  {
+    "title": "Hobart Mosque",
+    "address": "166 Warwick St, West Hobart TAS 7000, Australia",
+    "location": {
+      "lat": -42.8817985,
+      "lng": 147.3153898
+    },
+    "phone": "+61 3 6234 6998",
+    "website": "https://westhobart.wordpress.com/the-hobart-mosque/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Hobart%20Mosque&query_place_id=ChIJcwiqZZd1bqoRW_jBoyCAEXc",
+    "placeId": "ChIJcwiqZZd1bqoRW_jBoyCAEXc",
+    "categories": [
+      "Mosque",
+      "Tourist attraction"
+    ],
+    "state": "TAS",
+    "suburb": "166 Warwick St"
+  },
+  {
+    "title": "Islamic Society of Darwin",
+    "address": "53 Vanderlin Dr, Wanguri NT 0810, Australia",
+    "location": {
+      "lat": -12.3768203,
+      "lng": 130.8886745
+    },
+    "phone": "+61 8 8945 0390",
+    "website": "https://isodnt.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Islamic%20Society%20of%20Darwin&query_place_id=ChIJNfbKRJeUwCwRUSrWFJZE65c",
+    "placeId": "ChIJNfbKRJeUwCwRUSrWFJZE65c",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NT",
+    "suburb": "53 Vanderlin Dr"
+  },
+  {
+    "title": "City Musallah Darwin (CMD)",
+    "address": "5/8B Gardiner St, Darwin City NT 0800, Australia",
+    "location": {
+      "lat": -12.4598452,
+      "lng": 130.8442556
+    },
+    "website": "https://www.facebook.com/profile.php?id=61577675597000",
+    "url": "https://www.google.com/maps/search/?api=1&query=City%20Musallah%20Darwin%20(CMD)&query_place_id=ChIJSWNmOwCRwCwRAsWLI6SkgPg",
+    "placeId": "ChIJSWNmOwCRwCwRAsWLI6SkgPg",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NT",
+    "suburb": "5/8B Gardiner St"
+  },
+  {
+    "title": "Palmerston Mosque",
+    "address": "104 Bonson Terrace, Moulden NT 0830, Australia",
+    "location": {
+      "lat": -12.5061611,
+      "lng": 130.9696212
+    },
+    "phone": "+61 421 653 436",
+    "website": "http://isp.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Palmerston%20Mosque&query_place_id=ChIJufz44ZeiwCwRTc6lW70Kssg",
+    "placeId": "ChIJufz44ZeiwCwRTc6lW70Kssg",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NT",
+    "suburb": "104 Bonson Terrace"
+  },
+  {
+    "title": "Islamic Centre",
+    "address": "2/180 Haldon St, Lakemba NSW 2195, Australia",
+    "location": {
+      "lat": -33.9233707,
+      "lng": 151.0789199
+    },
+    "phone": "+61 414 612 222",
+    "url": "https://www.google.com/maps/search/?api=1&query=Islamic%20Centre&query_place_id=ChIJD-i9NsS7EmsRTKWaKgoWG5M",
+    "placeId": "ChIJD-i9NsS7EmsRTKWaKgoWG5M",
+    "categories": [
+      "Association / Organization"
+    ],
+    "state": "NSW",
+    "suburb": "2/180 Haldon St"
+  },
+  {
+    "title": "Keysborough Turkish Islamic & Cultural Centre",
+    "address": "396 Greens Rd, Keysborough VIC 3173, Australia",
+    "location": {
+      "lat": -38.0120088,
+      "lng": 145.1777611
+    },
+    "phone": "+61 488 444 578",
+    "website": "https://www.facebook.com/KeysboroughMosque",
+    "url": "https://www.google.com/maps/search/?api=1&query=Keysborough%20Turkish%20Islamic%20%26%20Cultural%20Centre&query_place_id=ChIJEWe1hAET1moRzMTWrSsf_RA",
+    "placeId": "ChIJEWe1hAET1moRzMTWrSsf_RA",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "396 Greens Rd"
+  },
+  {
+    "title": "Prayer Room (with Jumu'ah Prayer)",
+    "address": "Departure Plaza, Mascot NSW 2020, Australia",
+    "location": {
+      "lat": -33.9362789,
+      "lng": 151.1661423
+    },
+    "website": "https://gopray.com.au/place/international-airport-t1-sydney-musallah/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Prayer%20Room%20(with%20Jumu'ah%20Prayer)&query_place_id=ChIJd5XKtcKxEmsRFV78z2_ffPM",
+    "placeId": "ChIJd5XKtcKxEmsRFV78z2_ffPM",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "Departure Plaza"
+  },
+  {
+    "title": "Muslim Prayer Room (with congregational prayers) Level 3",
+    "address": "Parking lot, 68 Eldridge Rd, Bankstown NSW 2200, Australia",
+    "location": {
+      "lat": -33.933112,
+      "lng": 151.0208482
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Muslim%20Prayer%20Room%20(with%20congregational%20prayers)%20Level%203&query_place_id=ChIJw_Pozuu_EmsRlLjsWdJ_Ozs",
+    "placeId": "ChIJw_Pozuu_EmsRlLjsWdJ_Ozs",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "68 Eldridge Rd"
+  },
+  {
+    "title": "Friday Prayer (Jumu'ah)",
+    "address": "15A Argyle Pl, Millers Point NSW 2000, Australia",
+    "location": {
+      "lat": -33.8589597,
+      "lng": 151.2041605
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Friday%20Prayer%20(Jumu'ah)&query_place_id=ChIJc7o9aACvEmsR0VoHG4isfiU",
+    "placeId": "ChIJc7o9aACvEmsR0VoHG4isfiU",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "15A Argyle Pl"
+  },
+  {
+    "title": "Musallah",
+    "address": "8 Westbourne St, St Leonards NSW 2064, Australia",
+    "location": {
+      "lat": -33.8209199,
+      "lng": 151.1902579
+    },
+    "phone": "+61 470 556 836",
+    "website": "https://gopray.com.au/place/royal-north-shore-hospital-chapel/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Musallah&query_place_id=ChIJP-qUg8KvEmsRwHttqESBTPw",
+    "placeId": "ChIJP-qUg8KvEmsRwHttqESBTPw",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "8 Westbourne St"
+  },
+  {
+    "title": "UMA Incorporated & Mosque",
+    "address": "19 Enterprise Ave, Padstow NSW 2211, Australia",
+    "location": {
+      "lat": -33.9440396,
+      "lng": 151.032638
+    },
+    "phone": "+61 1300 730 693",
+    "website": "http://www.uma.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=UMA%20Incorporated%20%26%20Mosque&query_place_id=ChIJH8QhBUm5EmsRmtR1qRqrcRk",
+    "placeId": "ChIJH8QhBUm5EmsRmtR1qRqrcRk",
+    "categories": [
+      "Community center"
+    ],
+    "state": "NSW",
+    "suburb": "19 Enterprise Ave"
+  },
+  {
+    "title": "Friday Prayer (Jumu'ah)",
+    "address": "Marsfield NSW 2122, Australia",
+    "location": {
+      "lat": -33.7873852,
+      "lng": 151.1123805
+    },
+    "phone": "+61 2 9878 2223",
+    "website": "https://gopray.com.au/place/ryde-community-sports-centre/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Friday%20Prayer%20(Jumu'ah)&query_place_id=ChIJBaZxs6alEmsRlAblmVAIjKI",
+    "placeId": "ChIJBaZxs6alEmsRlAblmVAIjKI",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW"
+  },
+  {
+    "title": "Carlingford Musallah",
+    "address": "1A Jenkins Rd, Carlingford NSW 2118, Australia",
+    "location": {
+      "lat": -33.782722,
+      "lng": 151.0459756
+    },
+    "phone": "+61 432 279 101",
+    "website": "https://carlingfordmusallah.com/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Carlingford%20Musallah&query_place_id=ChIJR36OC9ilEmsRrjqWeZD_0TA",
+    "placeId": "ChIJR36OC9ilEmsRrjqWeZD_0TA",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "1A Jenkins Rd"
+  },
+  {
+    "title": "Friday Prayer (Jumu'ah)",
+    "address": "103 Carwar Ave, Carss Park NSW 2221, Australia",
+    "location": {
+      "lat": -33.9895585,
+      "lng": 151.1191044
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Friday%20Prayer%20(Jumu'ah)&query_place_id=ChIJrwtMbau5EmsRK9cPYHcblfg",
+    "placeId": "ChIJrwtMbau5EmsRK9cPYHcblfg",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "103 Carwar Ave"
+  },
+  {
+    "title": "Friday Prayer (Jumu'ah) Level 3",
+    "address": "462 Chapel Rd, Bankstown NSW 2200, Australia",
+    "location": {
+      "lat": -33.9136041,
+      "lng": 151.0346172
+    },
+    "phone": "+61 430 329 224",
+    "website": "https://www.uma.org.au/centres/friday/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Friday%20Prayer%20(Jumu'ah)%20Level%203&query_place_id=ChIJga2sV6S9EmsR2kmWcDAe0eE",
+    "placeId": "ChIJga2sV6S9EmsR2kmWcDAe0eE",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "462 Chapel Rd"
+  },
+  {
+    "title": "Riverwood Schofield St Musalla",
+    "address": "6/2 Schofield St, Riverwood NSW 2210, Australia",
+    "location": {
+      "lat": -33.9403389,
+      "lng": 151.0490463
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Riverwood%20Schofield%20St%20Musalla&query_place_id=ChIJDSc8k0i5EmsRT7-Qf6G6eos",
+    "placeId": "ChIJDSc8k0i5EmsRT7-Qf6G6eos",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "6/2 Schofield St"
+  },
+  {
+    "title": "Friday Prayer (Jummah)",
+    "address": "7 Victor St, Chatswood NSW 2067, Australia",
+    "location": {
+      "lat": -33.7990183,
+      "lng": 151.1831712
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Friday%20Prayer%20(Jummah)&query_place_id=ChIJUaFLg4upEmsRHsSoa6gS-_4",
+    "placeId": "ChIJUaFLg4upEmsRHsSoa6gS-_4",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "7 Victor St"
+  },
+  {
+    "title": "Friday Prayer (Jumu'ah) Rooms 3 & 4",
+    "address": "Rouse Hill NSW 2155, Australia",
+    "location": {
+      "lat": -33.6799825,
+      "lng": 150.9206528
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Friday%20Prayer%20(Jumu'ah)%20Rooms%203%20%26%204&query_place_id=ChIJNWw8t-efEmsRtKXmZuvzv9E",
+    "placeId": "ChIJNWw8t-efEmsRtKXmZuvzv9E",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW"
+  },
+  {
+    "title": "Granville Youth Association - The Ave Masjid",
+    "address": "20 The Avenue, Granville NSW 2142, Australia",
+    "location": {
+      "lat": -33.8320364,
+      "lng": 151.0068699
+    },
+    "phone": "+61 493 970 100",
+    "url": "https://www.google.com/maps/search/?api=1&query=Granville%20Youth%20Association%20-%20The%20Ave%20Masjid&query_place_id=ChIJ9Tvpri6jEmsRZ2y5m4lNEg8",
+    "placeId": "ChIJ9Tvpri6jEmsRZ2y5m4lNEg8",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "20 The Avenue"
+  },
+  {
+    "title": "Harris Park Musallah",
+    "address": "20A Marion St, Parramatta NSW 2150, Australia",
+    "location": {
+      "lat": -33.8217701,
+      "lng": 151.0059326
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Harris%20Park%20Musallah&query_place_id=ChIJCzvf-5qjEmsR-4CA4JZ5Y7w",
+    "placeId": "ChIJCzvf-5qjEmsR-4CA4JZ5Y7w",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "20A Marion St"
+  },
+  {
+    "title": "Baseer Mosque",
+    "address": "46 Restwell St, Bankstown NSW 2200, Australia",
+    "location": {
+      "lat": -33.9203314,
+      "lng": 151.0351128
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Baseer%20Mosque&query_place_id=ChIJ590MBli9EmsRfzmAWHncpXg",
+    "placeId": "ChIJ590MBli9EmsRfzmAWHncpXg",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "46 Restwell St"
+  },
+  {
+    "title": "Friday Prayer (Jumu'ah)",
+    "address": "3/33A Fairwater Dr, Harrington Park NSW 2567, Australia",
+    "location": {
+      "lat": -34.0290654,
+      "lng": 150.7350019
+    },
+    "phone": "+61 412 036 249",
+    "website": "https://gopray.com.au/place/harrington-park-community-centre-jumuah/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Friday%20Prayer%20(Jumu'ah)&query_place_id=ChIJ4XvMGi7xEmsRAGJx-_3ExFs",
+    "placeId": "ChIJ4XvMGi7xEmsRAGJx-_3ExFs",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "3/33A Fairwater Dr"
+  },
+  {
+    "title": "Masjid Alsalam Guildford",
+    "address": "1 Marian St, Guildford NSW 2161, Australia",
+    "location": {
+      "lat": -33.8483748,
+      "lng": 150.9910086
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Masjid%20Alsalam%20Guildford&query_place_id=ChIJ5VDIhCS9EmsRkM-TI_SDe7E",
+    "placeId": "ChIJ5VDIhCS9EmsRkM-TI_SDe7E",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "1 Marian St"
+  },
+  {
+    "title": "Surau Sydney",
+    "address": "1 Gartmore Ave, Bankstown NSW 2200, Australia",
+    "location": {
+      "lat": -33.927993,
+      "lng": 151.0366014
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Surau%20Sydney&query_place_id=ChIJUxFpDQC_EmsRfCngLoH3cZY",
+    "placeId": "ChIJUxFpDQC_EmsRfCngLoH3cZY",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "1 Gartmore Ave"
+  },
+  {
+    "title": "Royal Melbourne Hospital Prayer Room (With Jummah)",
+    "address": "300 Grattan St, Parkville VIC 3050, Australia",
+    "location": {
+      "lat": -37.7991917,
+      "lng": 144.9557462
+    },
+    "url": "https://www.google.com/maps/search/?api=1&query=Royal%20Melbourne%20Hospital%20Prayer%20Room%20(With%20Jummah)&query_place_id=ChIJTTRvE3Jd1moRIRjCkYjdWws",
+    "placeId": "ChIJTTRvE3Jd1moRIRjCkYjdWws",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "300 Grattan St"
+  },
+  {
+    "title": "Tullamarine Public Hall (Jumua’h only)",
+    "address": "60 Spring St, Tullamarine VIC 3043, Australia",
+    "location": {
+      "lat": -37.7020811,
+      "lng": 144.8742983
+    },
+    "phone": "+61 403 399 477",
+    "url": "https://www.google.com/maps/search/?api=1&query=Tullamarine%20Public%20Hall%20(Jumua%E2%80%99h%20only)&query_place_id=ChIJV_Usudhb1moRUOq3m14sOxs",
+    "placeId": "ChIJV_Usudhb1moRUOq3m14sOxs",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "60 Spring St"
+  },
+  {
+    "title": "Sydney Northwest Muslim Community",
+    "address": "589 Withers Rd, Rouse Hill NSW 2155, Australia",
+    "location": {
+      "lat": -33.6747558,
+      "lng": 150.9212576
+    },
+    "phone": "+61 422 346 263",
+    "website": "http://snwmc.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Sydney%20Northwest%20Muslim%20Community&query_place_id=ChIJAQCMTbifEmsRB6pr8VsILBI",
+    "placeId": "ChIJAQCMTbifEmsRB6pr8VsILBI",
+    "categories": [
+      "Community center"
+    ],
+    "state": "NSW",
+    "suburb": "589 Withers Rd"
+  },
+  {
+    "title": "Campbelltown Youth Centre & Mosque",
+    "address": "4/167 Airds Rd, Minto NSW 2566, Australia",
+    "location": {
+      "lat": -34.0449218,
+      "lng": 150.8308258
+    },
+    "phone": "+61 406 008 080",
+    "website": "http://www.cycaswj.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Campbelltown%20Youth%20Centre%20%26%20Mosque&query_place_id=ChIJqTwML1zuEmsRXMEZrf-ySZ0",
+    "placeId": "ChIJqTwML1zuEmsRXMEZrf-ySZ0",
+    "categories": [
+      "Youth organization"
+    ],
+    "state": "NSW",
+    "suburb": "4/167 Airds Rd"
+  },
+  {
+    "title": "CYC Mosque",
+    "address": "167 Airds Rd, Minto NSW 2566, Australia",
+    "location": {
+      "lat": -34.0450765,
+      "lng": 150.8308172
+    },
+    "phone": "+61 406 008 080",
+    "website": "https://www.facebook.com/cycaswj",
+    "url": "https://www.google.com/maps/search/?api=1&query=CYC%20Mosque&query_place_id=ChIJX8XSeWLvEmsRlf_YCOybUyA",
+    "placeId": "ChIJX8XSeWLvEmsRlf_YCOybUyA",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "167 Airds Rd"
+  },
+  {
+    "title": "Ahmadiyya Muslim Community Australia",
+    "address": "45 Hollinsworth Rd, Marsden Park NSW 2765, Australia",
+    "location": {
+      "lat": -33.7264294,
+      "lng": 150.843127
+    },
+    "phone": "+61 2 9627 4521",
+    "website": "https://www.ahmadiyya.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Ahmadiyya%20Muslim%20Community%20Australia&query_place_id=ChIJURBK3-2bEmsRf1a6UpyBIXQ",
+    "placeId": "ChIJURBK3-2bEmsRf1a6UpyBIXQ",
+    "categories": [
+      "Religious organization"
+    ],
+    "state": "NSW",
+    "suburb": "45 Hollinsworth Rd"
+  },
+  {
+    "title": "Granville Youth Association - Clyde Centre",
+    "address": "288 Clyde St, South Granville NSW 2142, Australia",
+    "location": {
+      "lat": -33.858182,
+      "lng": 151.0103361
+    },
+    "phone": "+61 493 970 100",
+    "url": "https://www.google.com/maps/search/?api=1&query=Granville%20Youth%20Association%20-%20Clyde%20Centre&query_place_id=ChIJo8dHb928EmsRwLWOjvJ1Lic",
+    "placeId": "ChIJo8dHb928EmsRwLWOjvJ1Lic",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "288 Clyde St"
+  },
+  {
+    "title": "Park road musallah",
+    "address": "131 Park Rd, Auburn NSW 2144, Australia",
+    "location": {
+      "lat": -33.8606911,
+      "lng": 151.0275548
+    },
+    "phone": "+61 401 802 166",
+    "url": "https://www.google.com/maps/search/?api=1&query=Park%20road%20musallah&query_place_id=ChIJ___r9768EmsR09F7KAvQtNA",
+    "placeId": "ChIJ___r9768EmsR09F7KAvQtNA",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "131 Park Rd"
+  },
+  {
+    "title": "Indian Muslim Association of Australia",
+    "address": "220 Lakemba St, Lakemba NSW 2195, Australia",
+    "location": {
+      "lat": -33.9193226,
+      "lng": 151.0732023
+    },
+    "phone": "+61 403 484 556",
+    "website": "https://imaa.org.au/?fbclid=IwAR2aq4u870Z8ROh7az09JFtAiSTveigiFws4cmRvJdgT5y-D2wIG4KtOI7Y#",
+    "url": "https://www.google.com/maps/search/?api=1&query=Indian%20Muslim%20Association%20of%20Australia&query_place_id=ChIJVVVJ4MS7EmsRoT5tQiOE4Fs",
+    "placeId": "ChIJVVVJ4MS7EmsRoT5tQiOE4Fs",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "NSW",
+    "suburb": "220 Lakemba St"
+  },
+  {
+    "title": "Muslim Community Fund",
+    "address": "Level 2, Building 3/20 Worth St, Chullora NSW 2190, Australia",
+    "location": {
+      "lat": -33.8908753,
+      "lng": 151.0503663
+    },
+    "phone": "+61 1300 573 937",
+    "website": "https://muslimfund.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Muslim%20Community%20Fund&query_place_id=ChIJPSdTAYu7EmsRf4VkKb2x-90",
+    "placeId": "ChIJPSdTAYu7EmsRf4VkKb2x-90",
+    "categories": [
+      "Non-profit organization"
+    ],
+    "state": "NSW",
+    "suburb": "Building 3/20 Worth St"
+  },
+  {
+    "title": "Bait us Salam - House of Peace Mosque - Ahmadiyya Muslim Community Victoria",
+    "address": "6 Leisureland Dr, Langwarrin VIC 3910, Australia",
+    "location": {
+      "lat": -38.1715546,
+      "lng": 145.2129938
+    },
+    "phone": "+61 1800 247 526",
+    "website": "https://www.salammosque.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Bait%20us%20Salam%20-%20House%20of%20Peace%20Mosque%20-%20Ahmadiyya%20Muslim%20Community%20Victoria&query_place_id=ChIJv4-u5c4L1moRfTorcziWEY4",
+    "placeId": "ChIJv4-u5c4L1moRfTorcziWEY4",
+    "categories": [
+      "Community center",
+      "Charity",
+      "Mosque",
+      "Religious destination",
+      "Religious institution",
+      "Religious organization"
+    ],
+    "state": "VIC",
+    "suburb": "6 Leisureland Dr"
+  },
+  {
+    "title": "Markazul Huda Melton Jaame Masjid",
+    "address": "122 Brooklyn Rd, Brookfield VIC 3338, Australia",
+    "location": {
+      "lat": -37.7010731,
+      "lng": 144.5631241
+    },
+    "website": "http://mmhm.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Markazul%20Huda%20Melton%20Jaame%20Masjid&query_place_id=ChIJER6KvcqT1moR3X9RFDFR_9s",
+    "placeId": "ChIJER6KvcqT1moR3X9RFDFR_9s",
+    "categories": [
+      "Community center"
+    ],
+    "state": "VIC",
+    "suburb": "122 Brooklyn Rd"
+  },
+  {
+    "title": "Alawi Islamic Social Centre",
+    "address": "125/133 Keon Parade, Reservoir VIC 3073, Australia",
+    "location": {
+      "lat": -37.6954115,
+      "lng": 145.0136215
+    },
+    "phone": "+61 3 9462 1617",
+    "website": "https://www.alawiislamicsocialcentre.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Alawi%20Islamic%20Social%20Centre&query_place_id=ChIJEZGx9HxP1moRBarhNVbKj20",
+    "placeId": "ChIJEZGx9HxP1moRBarhNVbKj20",
+    "categories": [
+      "Mosque",
+      "Non-profit organization"
+    ],
+    "state": "VIC",
+    "suburb": "125/133 Keon Parade"
+  },
+  {
+    "title": "Cranbourne Masjid-IEACA Education Hub",
+    "address": "22-24 Brunt St, Cranbourne VIC 3977, Australia",
+    "location": {
+      "lat": -38.1073645,
+      "lng": 145.2856134
+    },
+    "phone": "+61 469 294 182",
+    "website": "https://www.facebook.com/IeacaInc",
+    "url": "https://www.google.com/maps/search/?api=1&query=Cranbourne%20Masjid-IEACA%20Education%20Hub&query_place_id=ChIJebPLZTgP1moRLO79_XCJyms",
+    "placeId": "ChIJebPLZTgP1moRLO79_XCJyms",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "22-24 Brunt St"
+  },
+  {
+    "title": "Rabita Centre Australia",
+    "address": "160 Greigs Rd, Rockbank VIC 3029, Australia",
+    "location": {
+      "lat": -37.7454904,
+      "lng": 144.6770188
+    },
+    "phone": "+61 491 180 544",
+    "website": "https://rabitacentre.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Rabita%20Centre%20Australia&query_place_id=ChIJ9Zg644SN1moRP33gdr_-1Hg",
+    "placeId": "ChIJ9Zg644SN1moRP33gdr_-1Hg",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "160 Greigs Rd"
+  },
+  {
+    "title": "Indonesian Muslim Community of Victoria",
+    "address": "Unit 12/9 Dawson St, Coburg North VIC 3058, Australia",
+    "location": {
+      "lat": -37.7313813,
+      "lng": 144.9577802
+    },
+    "phone": "+61 405 373 165",
+    "website": "http://amcu.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Indonesian%20Muslim%20Community%20of%20Victoria&query_place_id=ChIJBRc9eDRb1moRLnrf2-jVoXk",
+    "placeId": "ChIJBRc9eDRb1moRLnrf2-jVoXk",
+    "categories": [
+      "Religious organization"
+    ],
+    "state": "VIC",
+    "suburb": "Unit 12/9 Dawson St"
+  },
+  {
+    "title": "Beytol Abbas Islamic Centre",
+    "address": "19 Malcolm Pl, Campbellfield VIC 3061, Australia",
+    "location": {
+      "lat": -37.6728407,
+      "lng": 144.9724196
+    },
+    "website": "https://beytolabbas.org/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Beytol%20Abbas%20Islamic%20Centre&query_place_id=ChIJJ1WUUV9P1moRyEqjH1dSzlY",
+    "placeId": "ChIJJ1WUUV9P1moRyEqjH1dSzlY",
+    "categories": [
+      "Place of worship"
+    ],
+    "state": "VIC",
+    "suburb": "19 Malcolm Pl"
+  },
+  {
+    "title": "Islamic Society of Geelong (Geelong Mosque)",
+    "address": "45-47 Bostock Ave, Manifold Heights VIC 3218, Australia",
+    "location": {
+      "lat": -38.1338062,
+      "lng": 144.3340938
+    },
+    "phone": "+61 413 219 161",
+    "website": "http://www.geelongmosque.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Islamic%20Society%20of%20Geelong%20(Geelong%20Mosque)&query_place_id=ChIJweHiRFgR1GoRqumF1nTk6xM",
+    "placeId": "ChIJweHiRFgR1GoRqumF1nTk6xM",
+    "categories": [
+      "Mosque",
+      "School"
+    ],
+    "state": "VIC",
+    "suburb": "45-47 Bostock Ave"
+  },
+  {
+    "title": "Markaz Ar-Raziyayn - Kids & Adult Islamic Classes",
+    "address": "81 Somerset Rd, Campbellfield VIC 3061, Australia",
+    "location": {
+      "lat": -37.6792298,
+      "lng": 144.9655559
+    },
+    "phone": "+61 425 568 939",
+    "website": "https://markazraziyayn.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Markaz%20Ar-Raziyayn%20-%20Kids%20%26%20Adult%20Islamic%20Classes&query_place_id=ChIJXye6dlVP1moRVlo1KwUDjlY",
+    "placeId": "ChIJXye6dlVP1moRVlo1KwUDjlY",
+    "categories": [
+      "Community center",
+      "Religious institution",
+      "Learning center",
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "81 Somerset Rd"
+  },
+  {
+    "title": "Oromo Resource Center, Melbourne",
+    "address": "664-678 Downing St, Mount Cottrell VIC 3024, Australia",
+    "location": {
+      "lat": -37.79155,
+      "lng": 144.642389
+    },
+    "phone": "+61 482 611 298",
+    "url": "https://www.google.com/maps/search/?api=1&query=Oromo%20Resource%20Center%2C%20Melbourne&query_place_id=ChIJwdGTkzeN1moRK3G59cq5xoo",
+    "placeId": "ChIJwdGTkzeN1moRK3G59cq5xoo",
+    "categories": [
+      "Community center",
+      "Mosque",
+      "Indoor playground",
+      "Musalla",
+      "School"
+    ],
+    "state": "VIC",
+    "suburb": "664-678 Downing St"
+  },
+  {
+    "title": "Minhaj-ul-Quran Victoria Inc",
+    "address": "167-177 Faulkners Rd, Mount Cottrell VIC 3024, Australia",
+    "location": {
+      "lat": -37.757469,
+      "lng": 144.6250316
+    },
+    "phone": "+61 430 409 632",
+    "url": "https://www.google.com/maps/search/?api=1&query=Minhaj-ul-Quran%20Victoria%20Inc&query_place_id=ChIJrwwzCZyN1moR45GLIyIB8Ns",
+    "placeId": "ChIJrwwzCZyN1moR45GLIyIB8Ns",
+    "categories": [
+      "Mosque",
+      "Social services organization"
+    ],
+    "state": "VIC",
+    "suburb": "167-177 Faulkners Rd"
+  },
+  {
+    "title": "indonesia community",
+    "address": "indonesia community, 130 Rosebank Ave, Clayton South VIC 3169, Australia",
+    "location": {
+      "lat": -37.940503,
+      "lng": 145.137969
+    },
+    "website": "http://imcv.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=indonesia%20community&query_place_id=ChIJX_tlycwU1moRf8ksOhahNaU",
+    "placeId": "ChIJX_tlycwU1moRf8ksOhahNaU",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "130 Rosebank Ave"
+  },
+  {
+    "title": "Daarul Arqam Australia",
+    "address": "Unit 3/2/6 Melverton Dr, Hallam VIC 3803, Australia",
+    "location": {
+      "lat": -38.008719,
+      "lng": 145.273555
+    },
+    "phone": "+61 499 559 199",
+    "url": "https://www.google.com/maps/search/?api=1&query=Daarul%20Arqam%20Australia&query_place_id=ChIJXZNqE4UX1moRKtb35-DMgEw",
+    "placeId": "ChIJXZNqE4UX1moRKtb35-DMgEw",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "Unit 3/2/6 Melverton Dr"
+  },
+  {
+    "title": "GICC Geelong Mosque",
+    "address": "24-26 Almana St, Bell Park VIC 3215, Australia",
+    "location": {
+      "lat": -38.1074909,
+      "lng": 144.3398347
+    },
+    "phone": "+61 470 399 756",
+    "website": "http://gicc.org.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=GICC%20Geelong%20Mosque&query_place_id=ChIJM-DCXy4R1GoRPTOcsBKB-mE",
+    "placeId": "ChIJM-DCXy4R1GoRPTOcsBKB-mE",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "24-26 Almana St"
+  },
+  {
+    "title": "Fiji Islamic & Cultural Society of Victoria",
+    "address": "38-40 Hutton St, Dandenong VIC 3175, Australia",
+    "location": {
+      "lat": -37.986605,
+      "lng": 145.206834
+    },
+    "phone": "+61 402 456 730",
+    "website": "http://fijiislamic.com.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Fiji%20Islamic%20%26%20Cultural%20Society%20of%20Victoria&query_place_id=ChIJG-0WVwoU1moRquxAhWn-Qk8",
+    "placeId": "ChIJG-0WVwoU1moRquxAhWn-Qk8",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "38-40 Hutton St"
+  },
+  {
+    "title": "1881 Mickleham Musalla",
+    "address": "1881 Mickleham Rd, Mickleham VIC 3064, Australia",
+    "location": {
+      "lat": -37.563173,
+      "lng": 144.8759316
+    },
+    "phone": "+61 468 475 855",
+    "url": "https://www.google.com/maps/search/?api=1&query=1881%20Mickleham%20Musalla&query_place_id=ChIJz9_5f_ZT1moRjKUWgPY9pYI",
+    "placeId": "ChIJz9_5f_ZT1moRjKUWgPY9pYI",
+    "categories": [
+      "Mosque"
+    ],
+    "state": "VIC",
+    "suburb": "1881 Mickleham Rd"
+  },
+  {
+    "title": "Australian Islamic Centre College",
+    "address": "23-27 Blenheim Rd, Newport VIC 3015, Australia",
+    "location": {
+      "lat": -37.8466014,
+      "lng": 144.8631684
+    },
+    "phone": "+61 3 9000 0177",
+    "website": "http://aicc.vic.edu.au/",
+    "url": "https://www.google.com/maps/search/?api=1&query=Australian%20Islamic%20Centre%20College&query_place_id=ChIJvUoDjDBh1moRqsUzCpxHMOs",
+    "placeId": "ChIJvUoDjDBh1moRqsUzCpxHMOs",
+    "categories": [
+      "Educational institution"
+    ],
+    "state": "VIC",
+    "suburb": "23-27 Blenheim Rd"
+  }
+]
