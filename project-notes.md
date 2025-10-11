@@ -58,6 +58,23 @@ NSW: 126 | VIC: 101 | WA: 48 | QLD: 34 | SA: 23 | ACT: 6 | NT: 3 | TAS: 1
 
 **Status:** 🟢 342 mosques live, SEO optimized, ready for Phase 3 (city landing pages)
 
+### ✅ State Pages Fix - Browse by State Now Shows All 342 Mosques
+
+**Issue Fixed:** State landing pages were using old hardcoded/JSON data showing only 16-20 mosques instead of fetching from the database with 342 mosques.
+
+**Changes:**
+- Updated all 6 state pages to fetch from `mosques_cache` table dynamically
+- NSW: 16 → **126 mosques** | VIC: ~20 → **101** | QLD: ~15 → **34**
+- WA: ~18 → **48** | SA: ~15 → **23** | TAS: **1** (unchanged)
+- Removed 870 lines of hardcoded data
+- Added loading states, dynamic counts, and proper TypeScript interfaces
+
+**Files Modified:**
+- `src/pages/SydneyMosques.tsx`, `MelbourneMosques.tsx`, `BrisbaneMosques.tsx`
+- `src/pages/PerthMosques.tsx`, `AdelaideMosques.tsx`, `TasmaniaMosques.tsx`
+
+**Deployed:** Commit e6a539f - Live at findmymosque.org
+
 ### Earlier (Days 7-8): Cache & Automation ✅
 - Cache scaled to 100% rollout
 - Weekly auto-refresh deployed (Sundays 2 AM)
