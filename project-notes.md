@@ -9,7 +9,7 @@
 
 **Project:** Australian mosque directory (findmymosque.org)
 **Tech Stack:** React + TypeScript, Vite, TailwindCSS, Supabase, Google Places API
-**Status:** Live with 83 verified mosques, 100% cache system, weekly automation
+**Status:** Live with 342 verified mosques, 100% cache system, weekly automation
 
 **Key Features:** Mosque finder, state landing pages, Halal Supermarket Finder, feedback form, SEO sitemap
 
@@ -22,51 +22,47 @@
 
 ## 📅 October 12, 2025
 
-### ✅ Day 7 & 8 Complete - Cache at 100% + Weekly Automation LIVE
+### ✅ Major Update: 342 Verified Mosques + Phase 1 SEO Complete
 
-**Major Achievement:** Production-ready automated system saving $66/month!
+**Achievements:** Migrated 259 new mosques (83→342), validated all with Google API, completed Phase 1 SEO optimization
 
-#### Day 7: Cache Scaled to 100% ✅
-- Updated `featureFlags.ts`: 50% → 100% rollout
-- Tested locally: 20 mosques in 2.7s from cache
-- Deployed to production (commit 88ab357)
-- **All users** now get cache-first system
+#### Mosque Migration & Validation ✅
+- **Validated** 337 mosques with Google Places API (99.1% success rate: 334 valid, 3 invalid)
+- **Migrated** 259 new mosques from `marketing_prospects` → `mosques_cache`
+- **Fixed** 83 mosques with unknown states (extracted from addresses)
+- **Result:** 342 total mosques, all with proper state tags
 
-#### Day 8: Weekly Auto-Refresh Deployed ✅
-- Built `refresh-cached-mosques` Edge Function
-- Deployed to Supabase and tested successfully
-- Set up PostgreSQL cron job (Sundays 2 AM)
-- Includes differential sync (only updates changed data)
-- **First run:** Next Sunday
+**State Breakdown:**
+NSW: 126 | VIC: 101 | WA: 48 | QLD: 34 | SA: 23 | ACT: 6 | NT: 3 | TAS: 1
 
-**Files Created:**
-- `supabase/functions/refresh-cached-mosques/index.ts`
-- `supabase/migrations/20251012_setup_weekly_cache_refresh.sql`
-- `setup-cron-job.sql` - Ready-to-run automation
-- `monitoring-queries.sql` - 8 monitoring queries
-- `docs/weekly-cache-refresh-setup.md` - Full guide
-- `docs/day8-quick-start.md` - Quick reference
-- `DAY8-DEPLOYMENT-STEPS.md` - Deployment guide
+#### SEO Phase 1 Complete ✅
+- Updated meta tags: "83+" → "340+ verified mosques"
+- Removed "prayer times" claims (feature not available yet)
+- Enhanced Schema.org markup (5 types: WebSite, Organization, Service, FAQPage, BreadcrumbList)
+- Added ACT & NT to Schema FAQ answers
 
-**Cost Impact:**
-| Before | After | Savings |
-|--------|-------|---------|
-| $100/month | $34/month | **$66/month (66%)** |
+#### Scripts & Tools Added ✅
+- `validate-google-places.ts` - Google API validation
+- `migrate-validated-mosques.ts` - Migration with duplicate checking
+- `fix-unknown-states.ts` - State extraction from addresses
+- `validation-results.json` - Full validation report
 
-**Performance:**
-- Cache hits: 700ms (58% faster)
-- Data freshness: < 7 days guaranteed
-- Maintenance: Zero (fully automated)
+#### Google Business Profile Discovery ❌
+- Researched GBP eligibility → **Not eligible** (online-only businesses excluded)
+- Created correct SEO plan: `docs/seo-action-plan.md` (6-phase strategy)
+- Completed Phase 2: Google Search Console setup & sitemap submission
 
-#### Production Data Cleanup ✅
-- Removed "Test Mosque Sydney" from cache
-- Created `cleanup-test-data.sql` script
-- Verified: 83 legitimate mosques remain
-- All search results now clean
+**Files:**
+- SEO plan: `docs/seo-action-plan.md`
+- Marketing scripts: `scripts/marketing/` (7 new scripts)
 
-**Status:** 🟢 System fully operational and automated
+**Status:** 🟢 342 mosques live, SEO optimized, ready for Phase 3 (city landing pages)
 
-**Monitoring:** See `monitoring-queries.sql` for health checks
+### Earlier (Days 7-8): Cache & Automation ✅
+- Cache scaled to 100% rollout
+- Weekly auto-refresh deployed (Sundays 2 AM)
+- Cost savings: $66/month (66% reduction)
+- Performance: 700ms cache hits (58% faster)
 
 ---
 
@@ -212,7 +208,7 @@
 ## 🗂️ Database Schema (12 Tables)
 
 ### Public Tables
-- `mosques_cache` (83) - Main cache with verified mosques
+- `mosques_cache` (342) - Main cache with verified, state-tagged mosques
 - `search_cache` - Query results cache (7-day expiry)
 - `supermarkets` (3) - Halal finder
 - `feedback` - User submissions
@@ -220,7 +216,7 @@
 
 ### Private Tables (Marketing & Analytics)
 - `mosques_emails` - Email addresses
-- `marketing_prospects` (337) - Full mosque data with tracking
+- `marketing_prospects` (337) - Source data for mosque migration
 - `google_api_logs` - Cost tracking & refresh history
 - `scraping_logs` - Automation logs
 
@@ -231,22 +227,23 @@
 ## 🎯 Roadmap
 
 ### Completed ✅
-- ✅ Cache system at 100% rollout (Day 7)
-- ✅ Weekly auto-refresh automation (Day 8)
-- ✅ Production data cleanup
-- ✅ Marketing prospects collected (337 mosques)
-- ✅ Free email scraper built
+- ✅ Cache system at 100% rollout
+- ✅ Weekly auto-refresh automation
+- ✅ 342 mosques validated & migrated (Google API verified)
+- ✅ SEO Phase 1 & 2 complete (meta tags, Schema, Google Search Console)
+- ✅ All mosques have proper state tags
 
-### Next Steps
-1. **Monitor:** Weekly refresh on Sunday (first run)
-2. **Marketing:** Email campaign creation & launch
-3. **Optimize:** Review cost savings after 1 month
+### Current Focus (Phase 3 - SEO)
+1. **City Landing Pages** - Sydney, Melbourne, Brisbane, Perth, Adelaide, Canberra
+2. **Backlink Strategy** - Contact 340 mosques, Islamic organizations
+3. **Content Marketing** - Blog posts, guides
 
-### Medium-term (1-3 months)
+**See:** `docs/seo-action-plan.md` for full 6-phase strategy
+
+### Medium-term (2-4 months)
+- Complete SEO Phases 4-6 (social media, content, local optimization)
+- Marketing email campaign
 - Halal Supermarket automation
-- User authentication
-- Prayer times integration
-- Mobile app consideration
 
 ---
 
@@ -290,10 +287,14 @@ npm run dev                 # Dev server (localhost:8080)
 npm run build               # Production build + sitemap
 npm run lint                # TypeScript check
 
+# Mosque Management
+npm run validate-mosques    # Validate place IDs with Google Places API
+npm run migrate-mosques     # Migrate validated mosques to cache
+npm run fix-states          # Fix unknown state values
+
 # Marketing Commands
 npm run import-prospects    # Import 337 mosques to database
-npm run test-scraper        # Test email scraper on 5 websites
-npm run scrape-emails       # Full extraction (211 websites, 2-3h)
+npm run scrape-emails       # Email scraper (Puppeteer-based)
 ```
 
 ---
