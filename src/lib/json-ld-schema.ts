@@ -157,17 +157,18 @@ export const generateMosqueSchema = (mosque: Mosque, currentUrl: string) => {
 
 export const generateLandingPageSchema = () => {
   const baseUrl = window.location.origin;
-  
+
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "WebSite",
         "@id": `${baseUrl}#website`,
-        "name": "Mosque Finder Australia",
-        "alternateName": "Find Mosques Near You",
-        "description": "Find mosques near you across Australia. Search by location and radius to discover prayer times, directions, and mosque information.",
+        "name": "Find My Mosque Australia",
+        "alternateName": ["Find Mosques Near Me", "Australian Mosque Directory", "Masjid Finder Australia"],
+        "description": "Find mosques and masjids near you across Australia. Search 83+ verified mosques with prayer times, directions, and contact details.",
         "url": baseUrl,
+        "inLanguage": "en-AU",
         "potentialAction": {
           "@type": "SearchAction",
           "target": {
@@ -180,11 +181,35 @@ export const generateLandingPageSchema = () => {
       {
         "@type": "Organization",
         "@id": `${baseUrl}#organization`,
-        "name": "Mosque Finder Australia",
-        "description": "Australia's comprehensive mosque directory helping Muslims find nearby mosques and prayer facilities.",
+        "name": "Find My Mosque Australia",
+        "description": "Australia's most comprehensive verified mosque directory helping Muslims find nearby mosques, masjids, and prayer facilities across all states and territories.",
         "url": baseUrl,
         "logo": `${baseUrl}/src/assets/mosque-hero.png`,
+        "foundingDate": "2024",
+        "areaServed": {
+          "@type": "Country",
+          "name": "Australia"
+        },
+        "knowsAbout": ["Mosques", "Masjids", "Islamic Centers", "Prayer Times", "Islamic Worship"],
         "sameAs": []
+      },
+      {
+        "@type": "Service",
+        "@id": `${baseUrl}#service`,
+        "serviceType": "Mosque Directory",
+        "name": "Australian Mosque & Masjid Directory",
+        "description": "Free directory service helping users find verified mosques and masjids across Australia with contact details, directions, and prayer time information.",
+        "provider": {
+          "@id": `${baseUrl}#organization`
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Australia"
+        },
+        "audience": {
+          "@type": "Audience",
+          "name": "Muslims in Australia"
+        }
       },
       {
         "@type": "BreadcrumbList",
@@ -193,7 +218,7 @@ export const generateLandingPageSchema = () => {
           {
             "@type": "ListItem",
             "position": 1,
-            "name": "Mosque Finder Australia",
+            "name": "Find My Mosque Australia",
             "item": baseUrl
           }
         ]
@@ -204,18 +229,34 @@ export const generateLandingPageSchema = () => {
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "How do I find mosques near me?",
+            "name": "How do I find mosques near me in Australia?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "You can use our location-based search to find mosques near your current location or enter a specific postcode. Select your preferred search radius to customize your results."
+              "text": "Use our location-based search to find mosques near your current location or enter a specific postcode or suburb. We have 83+ verified mosques across all Australian states. Select your preferred search radius (5km-50km) to customize your results and get instant directions."
             }
           },
           {
             "@type": "Question",
-            "name": "Is the mosque information up to date?",
+            "name": "How many mosques are listed in Australia?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "We regularly update our mosque directory with current information including contact details, addresses, and facilities. If you notice outdated information, please use our feedback form."
+              "text": "We currently have 83+ verified mosques and masjids listed across Australia, covering all states and territories including NSW, VIC, QLD, WA, SA, and TAS. Our directory is regularly updated with new mosques."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I find prayer times for mosques?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, many mosques in our directory include prayer time information. You can contact mosques directly via phone or visit their websites for current daily prayer schedules which change based on sunrise and sunset."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is the mosque directory free to use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, Find My Mosque is completely free to use with no ads or paid listings. Our mission is to help Muslims across Australia easily find nearby mosques and prayer facilities."
             }
           },
           {
@@ -223,7 +264,7 @@ export const generateLandingPageSchema = () => {
             "name": "Can I get directions to mosques?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, click the 'Get Directions' button on any mosque listing to open turn-by-turn directions in your preferred maps application."
+              "text": "Yes, click the 'Get Directions' button on any mosque listing to open turn-by-turn directions in Google Maps or your preferred navigation app."
             }
           }
         ]
