@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { HelpCircle, MessageSquare, User, MapPin, ChevronDown, Home, Menu, X, Store } from "lucide-react";
+import { HelpCircle, MessageSquare, User, MapPin, ChevronDown, Home, Menu, X, Store, Star } from "lucide-react";
 
 const TransparentNavbar: React.FC = () => {
   const navigate = useNavigate();
   const [isCityMenuOpen, setIsCityMenuOpen] = useState(false);
+  const [isFeaturedMenuOpen, setIsFeaturedMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const featuredDropdownRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -14,19 +16,22 @@ const TransparentNavbar: React.FC = () => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsCityMenuOpen(false);
       }
+      if (featuredDropdownRef.current && !featuredDropdownRef.current.contains(event.target as Node)) {
+        setIsFeaturedMenuOpen(false);
+      }
       if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
         setIsMobileMenuOpen(false);
       }
     };
 
-    if (isCityMenuOpen || isMobileMenuOpen) {
+    if (isCityMenuOpen || isFeaturedMenuOpen || isMobileMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isCityMenuOpen, isMobileMenuOpen]);
+  }, [isCityMenuOpen, isFeaturedMenuOpen, isMobileMenuOpen]);
 
   const cities = [
     { name: "New South Wales", path: "/mosques-sydney" },
@@ -67,6 +72,38 @@ const TransparentNavbar: React.FC = () => {
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-islamic-green transition-all duration-300 ease-out group-hover:w-full"></span>
           </span>
         </button>
+
+        {/* Featured Mosques Dropdown */}
+        <div className="relative" ref={featuredDropdownRef}>
+          <button
+            onClick={() => setIsFeaturedMenuOpen(!isFeaturedMenuOpen)}
+            className="group relative flex items-center gap-2 px-4 py-2 rounded-lg bg-transparent hover:bg-islamic-green/20 transition-all duration-300 ease-out"
+            aria-label="Featured Mosques"
+          >
+            <Star className="w-5 h-5 text-warm-ivory/80 group-hover:text-islamic-green transition-colors duration-300" />
+            <span className="font-body text-sm font-medium text-warm-ivory/80 group-hover:text-islamic-green transition-colors duration-300 relative">
+              Featured Mosques
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-islamic-green transition-all duration-300 ease-out group-hover:w-full"></span>
+            </span>
+            <ChevronDown className={`w-4 h-4 text-warm-ivory/80 group-hover:text-islamic-green transition-all duration-300 ${isFeaturedMenuOpen ? 'rotate-180' : ''}`} />
+          </button>
+
+          {/* Dropdown Menu */}
+          {isFeaturedMenuOpen && (
+            <div className="absolute top-full right-0 mt-2 w-56 bg-warm-ivory/95 backdrop-blur-md rounded-lg shadow-2xl border border-golden-beige/40 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200 z-50">
+              <button
+                onClick={() => {
+                  navigate("/featured/holland-park-mosque");
+                  setIsFeaturedMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="w-full text-left px-4 py-3 text-architectural-shadow hover:bg-golden-amber/20 transition-colors duration-200"
+              >
+                <span className="font-body text-sm font-medium">Holland Park Mosque</span>
+              </button>
+            </div>
+          )}
+        </div>
 
         {/* Browse by State Dropdown */}
         <div className="relative" ref={dropdownRef}>
@@ -174,6 +211,39 @@ const TransparentNavbar: React.FC = () => {
               <Home className="w-5 h-5 text-islamic-green" />
               <span className="font-body text-sm font-medium">Home</span>
             </button>
+
+            {/* Featured Mosques in Mobile Menu */}
+            <div className="border-b border-golden-beige/30">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsFeaturedMenuOpen(!isFeaturedMenuOpen);
+                }}
+                className="w-full flex items-center justify-between gap-3 px-4 py-3 text-architectural-shadow hover:bg-islamic-green/10 transition-colors"
+              >
+                <div className="flex items-center gap-3">
+                  <Star className="w-5 h-5 text-islamic-green" />
+                  <span className="font-body text-sm font-medium">Featured Mosques</span>
+                </div>
+                <ChevronDown className={`w-4 h-4 transition-transform ${isFeaturedMenuOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {isFeaturedMenuOpen && (
+                <div className="bg-gray-50">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate("/featured/holland-park-mosque");
+                      setIsFeaturedMenuOpen(false);
+                      setIsMobileMenuOpen(false);
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
+                    className="w-full text-left px-4 py-2.5 pl-12 text-architectural-shadow hover:bg-islamic-green/10 transition-colors text-sm"
+                  >
+                    Holland Park Mosque
+                  </button>
+                </div>
+              )}
+            </div>
 
             {/* Browse by State in Mobile Menu */}
             <div className="border-b border-golden-beige/30">
