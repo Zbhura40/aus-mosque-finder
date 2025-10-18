@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { HelpCircle, MessageSquare, User, MapPin, ChevronDown, Home, Menu, X, Store } from "lucide-react";
 
 const TransparentNavbar: React.FC = () => {
@@ -191,21 +191,21 @@ const TransparentNavbar: React.FC = () => {
                 <ChevronDown className={`w-4 h-4 transition-transform ${isCityMenuOpen ? 'rotate-180' : ''}`} />
               </button>
               {isCityMenuOpen && (
-                <div className="bg-gray-50">
+                <div className="bg-gray-50" onClick={(e) => e.stopPropagation()}>
                   {cities.map((city) => (
-                    <button
+                    <Link
                       key={city.path}
+                      to={city.path}
                       onClick={(e) => {
                         e.stopPropagation();
-                        navigate(city.path);
                         setIsCityMenuOpen(false);
                         setIsMobileMenuOpen(false);
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
-                      className="w-full text-left px-4 py-2.5 pl-12 text-architectural-shadow hover:bg-islamic-green/10 transition-colors text-sm"
+                      className="block w-full text-left px-4 py-2.5 pl-12 text-architectural-shadow hover:bg-islamic-green/10 transition-colors text-sm"
                     >
                       {city.name}
-                    </button>
+                    </Link>
                   ))}
                 </div>
               )}
