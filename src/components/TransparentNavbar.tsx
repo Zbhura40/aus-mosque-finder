@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { HelpCircle, MessageSquare, User, MapPin, ChevronDown, Home, Menu, X, Store, Star } from "lucide-react";
 
 const TransparentNavbar: React.FC = () => {
@@ -10,6 +10,18 @@ const TransparentNavbar: React.FC = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const featuredDropdownRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+  const handleMobileNavigation = useCallback((path: string) => {
+    // Navigate first
+    navigate(path);
+    // Close menus after a tiny delay to ensure navigation completes
+    setTimeout(() => {
+      setIsCityMenuOpen(false);
+      setIsFeaturedMenuOpen(false);
+      setIsMobileMenuOpen(false);
+    }, 50);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [navigate]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -202,10 +214,7 @@ const TransparentNavbar: React.FC = () => {
             className="md:hidden absolute top-full left-0 right-0 mt-2 mx-4 bg-warm-ivory/95 backdrop-blur-md rounded-lg shadow-2xl border border-golden-beige/40 overflow-hidden"
           >
             <button
-              onClick={() => {
-                navigate("/");
-                setIsMobileMenuOpen(false);
-              }}
+              onClick={() => handleMobileNavigation("/")}
               className="w-full flex items-center gap-3 px-4 py-3 text-architectural-shadow hover:bg-islamic-green/10 transition-colors border-b border-golden-beige/30"
             >
               <Home className="w-5 h-5 text-islamic-green" />
@@ -228,19 +237,20 @@ const TransparentNavbar: React.FC = () => {
                 <ChevronDown className={`w-4 h-4 transition-transform ${isFeaturedMenuOpen ? 'rotate-180' : ''}`} />
               </button>
               {isFeaturedMenuOpen && (
-                <div className="bg-gray-50">
-                  <button
+                <div className="bg-gray-50" onClick={(e) => e.stopPropagation()}>
+                  <Link
+                    to="/featured/holland-park-mosque"
                     onClick={(e) => {
                       e.stopPropagation();
-                      navigate("/featured/holland-park-mosque");
+                      setIsCityMenuOpen(false);
                       setIsFeaturedMenuOpen(false);
                       setIsMobileMenuOpen(false);
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
-                    className="w-full text-left px-4 py-2.5 pl-12 text-architectural-shadow hover:bg-islamic-green/10 transition-colors text-sm"
+                    className="block w-full text-left px-4 py-2.5 pl-12 text-architectural-shadow hover:bg-islamic-green/10 transition-colors text-sm"
                   >
                     Holland Park Mosque
-                  </button>
+                  </Link>
                 </div>
               )}
             </div>
@@ -261,31 +271,29 @@ const TransparentNavbar: React.FC = () => {
                 <ChevronDown className={`w-4 h-4 transition-transform ${isCityMenuOpen ? 'rotate-180' : ''}`} />
               </button>
               {isCityMenuOpen && (
-                <div className="bg-gray-50">
+                <div className="bg-gray-50" onClick={(e) => e.stopPropagation()}>
                   {cities.map((city) => (
-                    <button
+                    <Link
                       key={city.path}
+                      to={city.path}
                       onClick={(e) => {
                         e.stopPropagation();
-                        navigate(city.path);
                         setIsCityMenuOpen(false);
+                        setIsFeaturedMenuOpen(false);
                         setIsMobileMenuOpen(false);
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
-                      className="w-full text-left px-4 py-2.5 pl-12 text-architectural-shadow hover:bg-islamic-green/10 transition-colors text-sm"
+                      className="block w-full text-left px-4 py-2.5 pl-12 text-architectural-shadow hover:bg-islamic-green/10 transition-colors text-sm"
                     >
                       {city.name}
-                    </button>
+                    </Link>
                   ))}
                 </div>
               )}
             </div>
 
             <button
-              onClick={() => {
-                navigate("/halal-supermarkets");
-                setIsMobileMenuOpen(false);
-              }}
+              onClick={() => handleMobileNavigation("/halal-supermarkets")}
               className="w-full flex items-center gap-3 px-4 py-3 text-architectural-shadow hover:bg-islamic-green/10 transition-colors border-b border-golden-beige/30"
             >
               <Store className="w-5 h-5 text-islamic-green" />
@@ -293,10 +301,7 @@ const TransparentNavbar: React.FC = () => {
             </button>
 
             <button
-              onClick={() => {
-                navigate("/faq");
-                setIsMobileMenuOpen(false);
-              }}
+              onClick={() => handleMobileNavigation("/faq")}
               className="w-full flex items-center gap-3 px-4 py-3 text-architectural-shadow hover:bg-islamic-green/10 transition-colors border-b border-golden-beige/30"
             >
               <HelpCircle className="w-5 h-5 text-islamic-green" />
@@ -304,10 +309,7 @@ const TransparentNavbar: React.FC = () => {
             </button>
 
             <button
-              onClick={() => {
-                navigate("/imam-profiles");
-                setIsMobileMenuOpen(false);
-              }}
+              onClick={() => handleMobileNavigation("/imam-profiles")}
               className="w-full flex items-center gap-3 px-4 py-3 text-architectural-shadow hover:bg-islamic-green/10 transition-colors border-b border-golden-beige/30"
             >
               <User className="w-5 h-5 text-islamic-green" />
@@ -315,10 +317,7 @@ const TransparentNavbar: React.FC = () => {
             </button>
 
             <button
-              onClick={() => {
-                navigate("/feedback");
-                setIsMobileMenuOpen(false);
-              }}
+              onClick={() => handleMobileNavigation("/feedback")}
               className="w-full flex items-center gap-3 px-4 py-3 text-architectural-shadow hover:bg-islamic-green/10 transition-colors"
             >
               <MessageSquare className="w-5 h-5 text-islamic-green" />
