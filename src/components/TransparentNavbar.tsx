@@ -6,8 +6,10 @@ const TransparentNavbar: React.FC = () => {
   const navigate = useNavigate();
   const [isCityMenuOpen, setIsCityMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileCityMenuOpen, setIsMobileCityMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const mobileCityButtonRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -17,16 +19,19 @@ const TransparentNavbar: React.FC = () => {
       if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
         setIsMobileMenuOpen(false);
       }
+      if (mobileCityButtonRef.current && !mobileCityButtonRef.current.contains(event.target as Node)) {
+        setIsMobileCityMenuOpen(false);
+      }
     };
 
-    if (isCityMenuOpen || isMobileMenuOpen) {
+    if (isCityMenuOpen || isMobileMenuOpen || isMobileCityMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isCityMenuOpen, isMobileMenuOpen]);
+  }, [isCityMenuOpen, isMobileMenuOpen, isMobileCityMenuOpen]);
 
   const cities = [
     { name: "New South Wales", path: "/mosques-sydney" },
@@ -52,6 +57,51 @@ const TransparentNavbar: React.FC = () => {
             <Menu className="w-6 h-6 text-warm-ivory" />
           )}
         </button>
+
+        {/* Mobile "Browse by State" Button - Only visible on mobile */}
+        <div ref={mobileCityButtonRef} className="md:hidden relative">
+          <button
+            onClick={() => {
+              console.log('Button clicked! Current state:', isMobileCityMenuOpen);
+              setIsMobileCityMenuOpen(!isMobileCityMenuOpen);
+            }}
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-teal-600 hover:bg-teal-700 text-white shadow-lg transition-all duration-300"
+            aria-label="Browse by State"
+          >
+            <MapPin className="w-5 h-5 text-white" />
+            <span className="text-sm font-medium text-white">Browse by State</span>
+            <ChevronDown className={`w-4 h-4 text-white transition-transform ${isMobileCityMenuOpen ? 'rotate-180' : ''}`} />
+          </button>
+
+          {/* Dropdown menu below button */}
+          {isMobileCityMenuOpen && (
+            <div
+              className="absolute top-full right-0 mt-2 w-80 bg-white rounded-xl shadow-2xl border-4 border-teal-800 overflow-hidden"
+              style={{zIndex: 999999}}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="bg-teal-600 text-white px-6 py-3 font-serif font-medium text-lg">
+                Select a State
+              </div>
+              <div className="overflow-y-auto max-h-[60vh]">
+                {cities.map((city, index) => (
+                  <a
+                    key={city.path}
+                    href={city.path}
+                    onClick={() => {
+                      setIsMobileCityMenuOpen(false);
+                    }}
+                    className={`block w-full text-left px-6 py-4 text-gray-900 hover:bg-teal-600 hover:text-white transition-colors font-medium text-base ${
+                      index !== cities.length - 1 ? 'border-b border-gray-200' : ''
+                    }`}
+                  >
+                    {city.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
 
         {/* Desktop Navigation - Hidden on mobile */}
         <div className="hidden md:flex items-center gap-6">
@@ -174,40 +224,6 @@ const TransparentNavbar: React.FC = () => {
               <Home className="w-5 h-5 text-islamic-green" />
               <span className="font-body text-sm font-medium">Home</span>
             </button>
-
-            {/* Browse by State in Mobile Menu */}
-            <div className="border-b border-golden-beige/30">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsCityMenuOpen(!isCityMenuOpen);
-                }}
-                className="w-full flex items-center justify-between gap-3 px-4 py-3 text-architectural-shadow hover:bg-islamic-green/10 transition-colors"
-              >
-                <div className="flex items-center gap-3">
-                  <MapPin className="w-5 h-5 text-islamic-green" />
-                  <span className="font-body text-sm font-medium">Browse by State</span>
-                </div>
-                <ChevronDown className={`w-4 h-4 transition-transform ${isCityMenuOpen ? 'rotate-180' : ''}`} />
-              </button>
-              {isCityMenuOpen && (
-                <div className="bg-gray-50">
-                  {cities.map((city) => (
-                    <button
-                      key={city.path}
-                      onClick={() => {
-                        setIsCityMenuOpen(false);
-                        setIsMobileMenuOpen(false);
-                        setTimeout(() => navigate(city.path), 0);
-                      }}
-                      className="block w-full text-left px-4 py-2.5 pl-12 text-architectural-shadow hover:bg-islamic-green/10 transition-colors text-sm"
-                    >
-                      {city.name}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
 
             <button
               onClick={() => {
