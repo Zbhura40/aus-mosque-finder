@@ -1,49 +1,37 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { HelpCircle, MessageSquare, User, MapPin, ChevronDown, Home, Menu, X, Store, Star } from "lucide-react";
+import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { HelpCircle, MessageSquare, User, MapPin, ChevronDown, Home, Menu, X, Store } from "lucide-react";
 
 const TransparentNavbar: React.FC = () => {
   const navigate = useNavigate();
   const [isCityMenuOpen, setIsCityMenuOpen] = useState(false);
-  const [isFeaturedMenuOpen, setIsFeaturedMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileCityMenuOpen, setIsMobileCityMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const featuredDropdownRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
-
-  const handleMobileNavigation = useCallback((path: string) => {
-    // Navigate first
-    navigate(path);
-    // Close menus after a tiny delay to ensure navigation completes
-    setTimeout(() => {
-      setIsCityMenuOpen(false);
-      setIsFeaturedMenuOpen(false);
-      setIsMobileMenuOpen(false);
-    }, 50);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [navigate]);
+  const mobileCityButtonRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsCityMenuOpen(false);
       }
-      if (featuredDropdownRef.current && !featuredDropdownRef.current.contains(event.target as Node)) {
-        setIsFeaturedMenuOpen(false);
-      }
       if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
         setIsMobileMenuOpen(false);
       }
+      if (mobileCityButtonRef.current && !mobileCityButtonRef.current.contains(event.target as Node)) {
+        setIsMobileCityMenuOpen(false);
+      }
     };
 
-    if (isCityMenuOpen || isFeaturedMenuOpen || isMobileMenuOpen) {
+    if (isCityMenuOpen || isMobileMenuOpen || isMobileCityMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isCityMenuOpen, isFeaturedMenuOpen, isMobileMenuOpen]);
+  }, [isCityMenuOpen, isMobileMenuOpen, isMobileCityMenuOpen]);
 
   const cities = [
     { name: "New South Wales", path: "/mosques-sydney" },
@@ -70,6 +58,51 @@ const TransparentNavbar: React.FC = () => {
           )}
         </button>
 
+        {/* Mobile "Browse by State" Button - Only visible on mobile */}
+        <div ref={mobileCityButtonRef} className="md:hidden relative">
+          <button
+            onClick={() => {
+              console.log('Button clicked! Current state:', isMobileCityMenuOpen);
+              setIsMobileCityMenuOpen(!isMobileCityMenuOpen);
+            }}
+            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-teal-600 hover:bg-teal-700 text-white shadow-lg transition-all duration-300"
+            aria-label="Browse by State"
+          >
+            <MapPin className="w-5 h-5 text-white" />
+            <span className="text-sm font-medium text-white">Browse by State</span>
+            <ChevronDown className={`w-4 h-4 text-white transition-transform ${isMobileCityMenuOpen ? 'rotate-180' : ''}`} />
+          </button>
+
+          {/* Dropdown menu below button */}
+          {isMobileCityMenuOpen && (
+            <div
+              className="absolute top-full right-0 mt-2 w-80 bg-white rounded-xl shadow-2xl border-4 border-teal-800 overflow-hidden"
+              style={{zIndex: 999999}}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="bg-teal-600 text-white px-6 py-3 font-serif font-medium text-lg">
+                Select a State
+              </div>
+              <div className="overflow-y-auto max-h-[60vh]">
+                {cities.map((city, index) => (
+                  <a
+                    key={city.path}
+                    href={city.path}
+                    onClick={() => {
+                      setIsMobileCityMenuOpen(false);
+                    }}
+                    className={`block w-full text-left px-6 py-4 text-gray-900 hover:bg-teal-600 hover:text-white transition-colors font-medium text-base ${
+                      index !== cities.length - 1 ? 'border-b border-gray-200' : ''
+                    }`}
+                  >
+                    {city.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
         {/* Desktop Navigation - Hidden on mobile */}
         <div className="hidden md:flex items-center gap-6">
         {/* Home Button */}
@@ -84,38 +117,6 @@ const TransparentNavbar: React.FC = () => {
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-islamic-green transition-all duration-300 ease-out group-hover:w-full"></span>
           </span>
         </button>
-
-        {/* Featured Mosques Dropdown */}
-        <div className="relative" ref={featuredDropdownRef}>
-          <button
-            onClick={() => setIsFeaturedMenuOpen(!isFeaturedMenuOpen)}
-            className="group relative flex items-center gap-2 px-4 py-2 rounded-lg bg-transparent hover:bg-islamic-green/20 transition-all duration-300 ease-out"
-            aria-label="Featured Mosques"
-          >
-            <Star className="w-5 h-5 text-warm-ivory/80 group-hover:text-islamic-green transition-colors duration-300" />
-            <span className="font-body text-sm font-medium text-warm-ivory/80 group-hover:text-islamic-green transition-colors duration-300 relative">
-              Featured Mosques
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-islamic-green transition-all duration-300 ease-out group-hover:w-full"></span>
-            </span>
-            <ChevronDown className={`w-4 h-4 text-warm-ivory/80 group-hover:text-islamic-green transition-all duration-300 ${isFeaturedMenuOpen ? 'rotate-180' : ''}`} />
-          </button>
-
-          {/* Dropdown Menu */}
-          {isFeaturedMenuOpen && (
-            <div className="absolute top-full right-0 mt-2 w-56 bg-warm-ivory/95 backdrop-blur-md rounded-lg shadow-2xl border border-golden-beige/40 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200 z-50">
-              <button
-                onClick={() => {
-                  navigate("/featured/holland-park-mosque");
-                  setIsFeaturedMenuOpen(false);
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                }}
-                className="w-full text-left px-4 py-3 text-architectural-shadow hover:bg-golden-amber/20 transition-colors duration-200"
-              >
-                <span className="font-body text-sm font-medium">Holland Park Mosque</span>
-              </button>
-            </div>
-          )}
-        </div>
 
         {/* Browse by State Dropdown */}
         <div className="relative" ref={dropdownRef}>
@@ -214,86 +215,21 @@ const TransparentNavbar: React.FC = () => {
             className="md:hidden absolute top-full left-0 right-0 mt-2 mx-4 bg-warm-ivory/95 backdrop-blur-md rounded-lg shadow-2xl border border-golden-beige/40 overflow-hidden"
           >
             <button
-              onClick={() => handleMobileNavigation("/")}
+              onClick={() => {
+                navigate("/");
+                setIsMobileMenuOpen(false);
+              }}
               className="w-full flex items-center gap-3 px-4 py-3 text-architectural-shadow hover:bg-islamic-green/10 transition-colors border-b border-golden-beige/30"
             >
               <Home className="w-5 h-5 text-islamic-green" />
               <span className="font-body text-sm font-medium">Home</span>
             </button>
 
-            {/* Featured Mosques in Mobile Menu */}
-            <div className="border-b border-golden-beige/30">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsFeaturedMenuOpen(!isFeaturedMenuOpen);
-                }}
-                className="w-full flex items-center justify-between gap-3 px-4 py-3 text-architectural-shadow hover:bg-islamic-green/10 transition-colors"
-              >
-                <div className="flex items-center gap-3">
-                  <Star className="w-5 h-5 text-islamic-green" />
-                  <span className="font-body text-sm font-medium">Featured Mosques</span>
-                </div>
-                <ChevronDown className={`w-4 h-4 transition-transform ${isFeaturedMenuOpen ? 'rotate-180' : ''}`} />
-              </button>
-              {isFeaturedMenuOpen && (
-                <div className="bg-gray-50" onClick={(e) => e.stopPropagation()}>
-                  <Link
-                    to="/featured/holland-park-mosque"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setIsCityMenuOpen(false);
-                      setIsFeaturedMenuOpen(false);
-                      setIsMobileMenuOpen(false);
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }}
-                    className="block w-full text-left px-4 py-2.5 pl-12 text-architectural-shadow hover:bg-islamic-green/10 transition-colors text-sm"
-                  >
-                    Holland Park Mosque
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            {/* Browse by State in Mobile Menu */}
-            <div className="border-b border-golden-beige/30">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setIsCityMenuOpen(!isCityMenuOpen);
-                }}
-                className="w-full flex items-center justify-between gap-3 px-4 py-3 text-architectural-shadow hover:bg-islamic-green/10 transition-colors"
-              >
-                <div className="flex items-center gap-3">
-                  <MapPin className="w-5 h-5 text-islamic-green" />
-                  <span className="font-body text-sm font-medium">Browse by State</span>
-                </div>
-                <ChevronDown className={`w-4 h-4 transition-transform ${isCityMenuOpen ? 'rotate-180' : ''}`} />
-              </button>
-              {isCityMenuOpen && (
-                <div className="bg-gray-50" onClick={(e) => e.stopPropagation()}>
-                  {cities.map((city) => (
-                    <Link
-                      key={city.path}
-                      to={city.path}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setIsCityMenuOpen(false);
-                        setIsFeaturedMenuOpen(false);
-                        setIsMobileMenuOpen(false);
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                      }}
-                      className="block w-full text-left px-4 py-2.5 pl-12 text-architectural-shadow hover:bg-islamic-green/10 transition-colors text-sm"
-                    >
-                      {city.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
             <button
-              onClick={() => handleMobileNavigation("/halal-supermarkets")}
+              onClick={() => {
+                navigate("/halal-supermarkets");
+                setIsMobileMenuOpen(false);
+              }}
               className="w-full flex items-center gap-3 px-4 py-3 text-architectural-shadow hover:bg-islamic-green/10 transition-colors border-b border-golden-beige/30"
             >
               <Store className="w-5 h-5 text-islamic-green" />
@@ -301,7 +237,10 @@ const TransparentNavbar: React.FC = () => {
             </button>
 
             <button
-              onClick={() => handleMobileNavigation("/faq")}
+              onClick={() => {
+                navigate("/faq");
+                setIsMobileMenuOpen(false);
+              }}
               className="w-full flex items-center gap-3 px-4 py-3 text-architectural-shadow hover:bg-islamic-green/10 transition-colors border-b border-golden-beige/30"
             >
               <HelpCircle className="w-5 h-5 text-islamic-green" />
@@ -309,7 +248,10 @@ const TransparentNavbar: React.FC = () => {
             </button>
 
             <button
-              onClick={() => handleMobileNavigation("/imam-profiles")}
+              onClick={() => {
+                navigate("/imam-profiles");
+                setIsMobileMenuOpen(false);
+              }}
               className="w-full flex items-center gap-3 px-4 py-3 text-architectural-shadow hover:bg-islamic-green/10 transition-colors border-b border-golden-beige/30"
             >
               <User className="w-5 h-5 text-islamic-green" />
@@ -317,7 +259,10 @@ const TransparentNavbar: React.FC = () => {
             </button>
 
             <button
-              onClick={() => handleMobileNavigation("/feedback")}
+              onClick={() => {
+                navigate("/feedback");
+                setIsMobileMenuOpen(false);
+              }}
               className="w-full flex items-center gap-3 px-4 py-3 text-architectural-shadow hover:bg-islamic-green/10 transition-colors"
             >
               <MessageSquare className="w-5 h-5 text-islamic-green" />
