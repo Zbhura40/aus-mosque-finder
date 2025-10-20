@@ -17,98 +17,52 @@ interface Event {
 
 const HollandParkEvents = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState<'upcoming' | 'past'>('upcoming');
+  const [activeTab, setActiveTab] = useState<'upcoming' | 'past'>('past');
 
-  // Mock events data - In production, this would come from an API or database
+  // Real events data from Holland Park Mosque Facebook page (verified October 20, 2025)
   const events: Event[] = [
     {
       id: 1,
-      title: "Grand Re-Opening Celebration",
-      date: "November 15, 2025",
-      time: "2:00 PM - 6:00 PM",
-      location: "Holland Park Mosque Main Hall",
+      title: "Ramis Ansari | Specialist Sundays",
+      date: "June 1, 2025",
+      time: "11:30 AM - 12:30 PM",
+      location: "Holland Park Mosque",
       category: "Community",
-      description: "Join us for the grand re-opening celebration of the Mother Mosque. A historic moment as we welcome the community back to this beautifully renovated 114-year-old spiritual home.",
-      attendees: 500,
-      isUpcoming: true,
-      image: "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?w=800&h=400&fit=crop"
+      description: "Third session of our Specialist Sundays series, featuring Ramis Ansari, an Australian Social Media Star and Influencer. Come and hear about his journey in the realm of social media and how we can leverage today's digital tools to uplift ourselves and the greater community.",
+      attendees: 11,
+      isUpcoming: false,
     },
     {
       id: 2,
-      title: "Weekly Jummah Prayer",
-      date: "Every Friday",
-      time: "12:30 PM - 2:00 PM",
+      title: "Specialist Sundays: Usman Khawaja's Journey to the Top",
+      date: "April 27, 2025",
+      time: "11:30 AM - 12:30 PM",
       location: "Holland Park Mosque",
-      category: "Prayer",
-      description: "Join over 500 community members for our weekly Jummah (Friday) prayer. Khutbah delivered by Imam Uzair Akbar followed by congregational prayer.",
-      attendees: 500,
-      isUpcoming: true,
-      image: "https://images.unsplash.com/photo-1519817914152-22d216bb9170?w=800&h=400&fit=crop"
+      category: "Community",
+      description: "Second session of our Specialist Sundays series, featuring Usman Khawaja, an Australian International Cricketer. Come and hear about his journey to the top of the sporting world and the lessons we can all learn from his experiences.",
+      attendees: 32,
+      isUpcoming: false,
     },
     {
       id: 3,
-      title: "Islamic Studies Circle",
-      date: "November 20, 2025",
-      time: "7:00 PM - 8:30 PM",
-      location: "Community Hall",
-      category: "Education",
-      description: "Monthly Islamic studies circle covering various topics from Quran, Hadith, and Islamic history. Led by Imam Uzair Akbar. All levels welcome.",
-      attendees: 75,
-      isUpcoming: true,
+      title: "Khatam ul Quran & Dua",
+      date: "March 27, 2025",
+      time: "7:20 PM - 9:30 PM",
+      location: "309 Nursery Road, Holland Park, Brisbane",
+      category: "Ramadan",
+      description: "Capture the night of Power with Khatam ul Quran & Dua by Imam Uzair Akbar at the Holland Park Masjid.",
+      attendees: 24,
+      isUpcoming: false,
     },
     {
       id: 4,
-      title: "Youth Program - Sports Day",
-      date: "November 22, 2025",
-      time: "10:00 AM - 3:00 PM",
-      location: "Holland Park Mosque Grounds",
-      category: "Youth",
-      description: "Fun-filled sports day for youth aged 8-18. Activities include basketball, cricket, and team-building exercises. Lunch provided.",
-      attendees: 60,
-      isUpcoming: true,
-    },
-    {
-      id: 5,
-      title: "Madressa Open Day",
-      date: "December 1, 2025",
-      time: "4:00 PM - 6:00 PM",
-      location: "Madressa Classrooms",
-      category: "Education",
-      description: "Open day for parents interested in enrolling their children in our Madressa programs. Meet the teachers, tour the facilities, and learn about our curriculum.",
-      attendees: 40,
-      isUpcoming: true,
-    },
-    {
-      id: 6,
-      title: "Community Iftar",
-      date: "October 15, 2025",
-      time: "6:00 PM - 8:00 PM",
-      location: "Community Hall",
-      category: "Ramadan",
-      description: "Community gathering for breaking fast together during Ramadan. Brought together over 300 community members from diverse backgrounds.",
-      attendees: 300,
-      isUpcoming: false,
-    },
-    {
-      id: 7,
-      title: "Eid ul-Adha Prayer",
-      date: "October 28, 2025",
-      time: "8:00 AM - 10:00 AM",
+      title: "Model Building Exhibition 2025",
+      date: "March 16, 2025",
+      time: "4:30 PM onwards (Asr till Taraweeh)",
       location: "Holland Park Mosque",
-      category: "Eid",
-      description: "Eid ul-Adha prayer followed by community celebration. Over 600 attendees joined us for this blessed occasion.",
-      attendees: 600,
-      isUpcoming: false,
-    },
-    {
-      id: 8,
-      title: "Interfaith Dialogue",
-      date: "September 10, 2025",
-      time: "6:30 PM - 8:30 PM",
-      location: "Community Hall",
-      category: "Community",
-      description: "Interfaith dialogue bringing together people from different religious backgrounds to promote understanding and unity.",
-      attendees: 85,
+      category: "Youth",
+      description: "Kids and Adults – unleash your creativity! Build a model of any building or structure that inspires you—be it real, historical, futuristic, or entirely imaginary—and showcase your masterpiece to the community! Exhibition featured prizes for the best models.",
+      attendees: 6,
       isUpcoming: false,
     },
   ];
@@ -136,10 +90,10 @@ const HollandParkEvents = () => {
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-6">
             <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">
-              Upcoming Events
+              Community Events
             </h1>
             <p className="text-xl md:text-2xl text-warm-ivory/90">
-              Holland Park Mosque Community Events
+              Holland Park Mosque Past Events
             </p>
           </div>
         </div>
@@ -257,10 +211,12 @@ const HollandParkEvents = () => {
           <div className="text-center py-16">
             <Calendar className="w-16 h-16 text-architectural-shadow/30 mx-auto mb-4" />
             <h3 className="text-2xl font-semibold text-architectural-shadow mb-2">
-              No {activeTab} events
+              No {activeTab} events at this time
             </h3>
-            <p className="text-architectural-shadow/60">
-              Check back later for updates
+            <p className="text-architectural-shadow/60 mb-4">
+              {activeTab === 'upcoming'
+                ? 'New events will be announced soon. Follow our Facebook page for the latest updates.'
+                : 'Check back later for updates'}
             </p>
           </div>
         )}
