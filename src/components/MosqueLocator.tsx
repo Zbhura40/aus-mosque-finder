@@ -3,12 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { MapPin, Search, Navigation, Clock, MessageSquare, User, ExternalLink, Phone, Globe, Star, HeartHandshake, Shield, Gift } from "lucide-react";
+import { MapPin, Search, Navigation, Clock, MessageSquare, User, ExternalLink, Phone, Globe, Star } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 // Hero image will be loaded via CSS background for better performance
 import DirectionsModal from "./DirectionsModal";
 import MosqueDetailsModal from "./MosqueDetailsModal";
-import InteractiveMobileMockup from "./InteractiveMobileMockup";
 import { generateLandingPageSchema } from "@/lib/json-ld-schema";
 import { useJsonLdSchema } from "@/hooks/useJsonLdSchema";
 import { useSEO } from "@/hooks/useSEO";
@@ -347,71 +346,15 @@ const MosqueLocator = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section - Clean and Minimal */}
-      <header className="relative overflow-hidden bg-white pt-20">
-        <div className="relative container mx-auto px-4 py-16 md:py-24 z-10">
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-            {/* Left side - Text content */}
-            <div className="text-left space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-normal text-gray-900 leading-tight">
-                A new, free platform created for the community to easily find mosques in Australia
-              </h1>
-              <p className="text-lg text-gray-600 font-light">
-                findmymosque.org
-              </p>
-            </div>
-
-            {/* Right side - Interactive Mobile Mockup */}
-            <div className="relative">
-              <InteractiveMobileMockup />
-            </div>
-          </div>
-        </div>
-      </header>
-
       {/* Main Content */}
-      <main className="bg-white">
-        {/* Trust Building Section */}
-        <section className="container mx-auto px-4 py-16">
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Free to Use */}
-              <div className="text-center space-y-4 p-8 bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-shadow">
-                <div className="w-16 h-16 mx-auto rounded-full bg-amber-100 flex items-center justify-center">
-                  <Gift className="w-8 h-8 text-amber-600" />
-                </div>
-                <h3 className="text-xl font-serif font-medium text-gray-900">100% Free</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">This platform is completely free to use, with zero ads of any kind.</p>
-              </div>
-
-              {/* Built by Muslims */}
-              <div className="text-center space-y-4 p-8 bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-shadow">
-                <div className="w-16 h-16 mx-auto rounded-full bg-teal-100 flex items-center justify-center">
-                  <HeartHandshake className="w-8 h-8 text-teal-600" />
-                </div>
-                <h3 className="text-xl font-serif font-medium text-gray-900">Community Built</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">Designed and managed by Muslims, with your best interests at heart.</p>
-              </div>
-
-              {/* No Ads Ever */}
-              <div className="text-center space-y-4 p-8 bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-shadow">
-                <div className="w-16 h-16 mx-auto rounded-full bg-blue-100 flex items-center justify-center">
-                  <Shield className="w-8 h-8 text-blue-600" />
-                </div>
-                <h3 className="text-xl font-serif font-medium text-gray-900">No Ads Ever</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">Absolutely no advertisements—ever. Just a clean, focused experience.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
+      <main className="bg-white pt-20">
         {/* Search Section */}
         <section className="container mx-auto px-4 py-16 bg-gray-50">
           <Card className="bg-white border border-gray-200 shadow-lg rounded-2xl overflow-hidden max-w-4xl mx-auto">
             <CardHeader className="text-center pb-6 border-b border-gray-100">
               <h2 className="text-3xl font-serif font-medium text-gray-900 flex items-center justify-center gap-3">
                 <MapPin className="w-7 h-7 text-teal-600" />
-                Find Mosques Near You
+                Find any Mosque in Australia
               </h2>
             </CardHeader>
           <CardContent className="space-y-8 p-8">
@@ -542,7 +485,7 @@ const MosqueLocator = () => {
             </div>
           ) : (
             <div className="grid gap-6 max-w-4xl mx-auto">
-              {mosques.map((mosque, index) => (
+              {mosques.map((mosque) => (
                   <Card key={mosque.id} className="hover:shadow-lg transition-all duration-200 border border-gray-200 rounded-xl overflow-hidden bg-white">
                     <CardContent className="p-6">
                       <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">

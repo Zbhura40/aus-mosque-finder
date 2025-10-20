@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { HelpCircle, Building2 } from "lucide-react";
+import { HelpCircle, Building2, Gift, HeartHandshake, Shield } from "lucide-react";
 import { SEOUtils } from "@/lib/seo-utils";
 
 const FAQ = () => {
@@ -87,6 +87,40 @@ const FAQ = () => {
           </div>
         </div>
       </div>
+
+      {/* Trust Building Section */}
+      <section className="container mx-auto px-4 pt-12 pb-8">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Free to Use */}
+            <div className="text-center space-y-4 p-8 bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 mx-auto rounded-full bg-amber-100 flex items-center justify-center">
+                <Gift className="w-8 h-8 text-amber-600" />
+              </div>
+              <h3 className="text-xl font-serif font-medium text-gray-900">100% Free</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">This platform is completely free to use, with zero ads of any kind.</p>
+            </div>
+
+            {/* Built by Muslims */}
+            <div className="text-center space-y-4 p-8 bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 mx-auto rounded-full bg-teal-100 flex items-center justify-center">
+                <HeartHandshake className="w-8 h-8 text-teal-600" />
+              </div>
+              <h3 className="text-xl font-serif font-medium text-gray-900">Community Built</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">Designed and managed by Muslims, with your best interests at heart.</p>
+            </div>
+
+            {/* No Ads Ever */}
+            <div className="text-center space-y-4 p-8 bg-white rounded-xl border border-gray-200 hover:shadow-lg transition-shadow">
+              <div className="w-16 h-16 mx-auto rounded-full bg-blue-100 flex items-center justify-center">
+                <Shield className="w-8 h-8 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-serif font-medium text-gray-900">No Ads Ever</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">Absolutely no advertisements—ever. Just a clean, focused experience.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-12">

@@ -129,8 +129,8 @@ const HollandParkDonate = () => {
               <div className="text-architectural-shadow/70">Years of Service</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-islamic-green mb-2">100+</div>
-              <div className="text-architectural-shadow/70">Students in Madressa</div>
+              <div className="text-4xl font-bold text-islamic-green mb-2">6</div>
+              <div className="text-architectural-shadow/70">Days of Madressa</div>
             </div>
           </div>
         </section>
