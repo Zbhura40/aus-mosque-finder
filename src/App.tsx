@@ -14,7 +14,6 @@ import BrisbaneMosques from "./pages/BrisbaneMosques";
 import PerthMosques from "./pages/PerthMosques";
 import AdelaideMosques from "./pages/AdelaideMosques";
 import TasmaniaMosques from "./pages/TasmaniaMosques";
-import HalalSupermarkets from "./pages/HalalSupermarkets";
 import HollandParkMosque from "./pages/HollandParkMosque";
 import HollandParkDonate from "./pages/HollandParkDonate";
 import HollandParkEvents from "./pages/HollandParkEvents";
@@ -41,7 +40,6 @@ const App = () => (
           <Route path="/mosques-perth" element={<PerthMosques />} />
           <Route path="/mosques-adelaide" element={<AdelaideMosques />} />
           <Route path="/mosques-tasmania" element={<TasmaniaMosques />} />
-          <Route path="/halal-supermarkets" element={<HalalSupermarkets />} />
           <Route path="/featured/holland-park-mosque" element={<HollandParkMosque />} />
           <Route path="/featured/holland-park-mosque/donate" element={<HollandParkDonate />} />
           <Route path="/featured/holland-park-mosque/events" element={<HollandParkEvents />} />
