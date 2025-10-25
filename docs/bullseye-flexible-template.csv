@@ -1,0 +1,38 @@
+CHANNEL TYPE,SOURCE NAME,TRAFFIC,CTR %,CONVERSION %,TOTAL USERS,COST $,COST PER USER,TIME HRS,STATUS,CONFIRMED?,CONFIRMED USERS,NOTES
+,,,,,,=IF(F2>0,F2/G2,0),,,,,
+REDDIT,Reddit Forum 1,50000,2,15,=C3*D3/100*E3/100,$0,=IF(H3>0,G3/H3,0),2,Friend,No,,"Enter your chosen subreddit"
+REDDIT,Reddit Forum 2,30000,3,20,=C4*D4/100*E4/100,$0,=IF(H4>0,G4/H4,0),1.5,Friend,No,,"Enter your chosen subreddit"
+REDDIT,Reddit Forum 3,25000,3,20,=C5*D5/100*E5/100,$0,=IF(H5>0,G5/H5,0),1.5,Friend,No,,"Enter your chosen subreddit"
+REDDIT,Reddit Forum 4,40000,5,25,=C6*D6/100*E6/100,$0,=IF(H6>0,G6/H6,0),2,Coordinated,No,,"Enter your chosen subreddit"
+,,,,,,,,,,,,
+FACEBOOK,Facebook Group 1,20000,4,18,=C8*D8/100*E8/100,$0,=IF(H8>0,G8/H8,0),4,Coordinated,No,,"Enter group name"
+FACEBOOK,Facebook Group 2,15000,4,18,=C9*D9/100*E9/100,$0,=IF(H9>0,G9/H9,0),4,Coordinated,No,,"Enter group name"
+,,,,,,,,,,,,
+QUORA,Quora Strategy,100000,1,10,=C11*D11/100*E11/100,$0,=IF(H11>0,G11/H11,0),15,Self,No,,"Answer 15-20 questions"
+,,,,,,,,,,,,
+PAID ADS,Google Ads Test,10000,8,30,=C13*D13/100*E13/100,150,=IF(H13>0,G13/H13,0),3,Bought,No,,"Keywords: mosque near me"
+PAID ADS,Facebook Ads Test,30000,3,20,=C14*D14/100*E14/100,100,=IF(H14>0,G14/H14,0),4,Bought,No,,"Target Australian Muslims 20-50"
+,,,,,,,,,,,,
+OUTREACH,Mosque Email Campaign,5000,15,40,=C16*D16/100*E16/100,$0,=IF(H16>0,G16/H16,0),20,Emailing,No,,"50 mosques personalized emails"
+OUTREACH,News Site 1,15000,5,25,=C17*D17/100*E17/100,$0,=IF(H17>0,G17/H17,0),3,Friend,No,,"Enter site name"
+OUTREACH,News Site 2,10000,5,25,=C18*D18/100*E18/100,$0,=IF(H18>0,G18/H18,0),3,Friend,No,,"Enter site name"
+OUTREACH,Blogger 1,8000,10,30,=C19*D19/100*E19/100,$0,=IF(H19>0,G19/H19,0),5,Coordinated,No,,"Enter blogger name"
+OUTREACH,Blogger 2,5000,10,30,=C20*D20/100*E20/100,$0,=IF(H20>0,G20/H20,0),5,Coordinated,No,,"Enter blogger name"
+,,,,,,,,,,,,
+ORGANIC,SEO - City Pages,50000,100,12,=C22*D22/100*E22/100,$0,=IF(H22>0,G22/H22,0),40,Self,Yes,TBD,"Phase 3 landing pages"
+ORGANIC,Google My Business,100000,5,8,=C23*D23/100*E23/100,$0,=IF(H23>0,G23/H23,0),5,Self,No,,"Claim GMB listing"
+,,,,,,,,,,,,
+VIDEO,YouTube Influencer 1,12000,8,22,=C25*D25/100*E25/100,$0,=IF(H25>0,G25/H25,0),6,Friend,No,,"Enter channel name"
+VIDEO,YouTube Influencer 2,8000,8,22,=C26*D26/100*E26/100,$0,=IF(H26>0,G26/H26,0),6,Friend,No,,"Enter channel name"
+,,,,,,,,,,,,
+COMMUNITY,WhatsApp Groups,3000,40,25,=C28*D28/100*E28/100,$0,=IF(H28>0,G28/H28,0),4,Friend,No,,"Share in active groups"
+COMMUNITY,Islamic Events,2000,25,15,=C29*D29/100*E29/100,50,=IF(H29>0,G29/H29,0),6,Bought,No,,"QR code flyers"
+,,,,,,,,,,,,
+PARTNERSHIPS,Mosque Partnership 1,8000,20,50,=C31*D31/100*E31/100,$0,=IF(H31>0,G31/H31,0),15,Coordinated,No,,"Enter mosque name"
+PARTNERSHIPS,Mosque Partnership 2,8000,20,50,=C32*D32/100*E32/100,$0,=IF(H32>0,G32/H32,0),15,Coordinated,No,,"Enter mosque name"
+,,,,,,,,,,,,
+TOOLS,Prayer Time Calculator,20000,15,35,=C34*D34/100*E34/100,500,=IF(H34>0,G34/H34,0),80,Self,No,,"Build free tool"
+TOOLS,Referral Program,15000,10,20,=C35*D35/100*E35/100,$0,=IF(H35>0,G35/H35,0),40,Self,No,,"Share feature with incentives"
+,,,,,,,,,,,,
+,,,,,,,,,,,,
+TOTALS,=COUNTA(B3:B35)-COUNTBLANK(B3:B35),=SUM(C3:C35),,,=SUM(F3:F35),=SUM(G3:G35),=IF(F38>0,G38/F38,0),=SUM(I3:I35),,,,

@@ -1,0 +1,46 @@
+BULLSEYE SPREADSHEET - COLUMN DEFINITIONS
+
+CHANNEL TYPE
+What category of marketing (Reddit, Facebook, Paid Ads, etc.)
+
+SOURCE NAME
+The specific channel you're testing (e.g., "r/australia" or "The Muslim Vibe")
+
+TRAFFIC
+How many people will see your content (e.g., subreddit has 50,000 members)
+
+CTR %
+Click-Through Rate - What percentage of people who see your content will click to visit your site
+Example: If 100 people see your post and 2 click = 2%
+
+CONVERSION %
+Of the people who visit your site, what percentage do something useful (search for mosque, submit feedback)
+Example: 100 visitors, 15 search for mosque = 15%
+
+TOTAL USERS
+Engaged users you get from this channel (auto-calculated: Traffic × CTR × Conversion)
+
+COST $
+How much money you spent on this test (Reddit posts = $0, Google Ads = $150)
+
+COST PER USER
+How much you paid per engaged user (auto-calculated: Cost ÷ Total Users)
+Lower is better!
+
+TIME HRS
+How many hours you spent on this channel
+
+STATUS
+How you got the traffic:
+- Friend = asking favors, free posts
+- Bought = paid ads
+- Self = your own work (SEO, content)
+
+CONFIRMED?
+Did you actually test this yet? (Yes/No)
+
+CONFIRMED USERS
+After testing, write the REAL number of users you got (compare to your projection)
+
+NOTES
+Your observations - what worked, what didn't, any surprises

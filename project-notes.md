@@ -1,6 +1,6 @@
 # Find My Mosque - Project Notes
 
-> **Last Updated:** October 12, 2025
+> **Last Updated:** October 25, 2025
 > **Purpose:** Date-organized progress tracking and quick reference
 
 ---
@@ -9,231 +9,393 @@
 
 **Project:** Australian mosque directory (findmymosque.org)
 **Tech Stack:** React + TypeScript, Vite, TailwindCSS, Supabase, Google Places API
-**Status:** Live with 342 verified mosques, 100% cache system, weekly automation
+**Status:** Live with 347 verified mosques, Holland Park demo complete
 
-**Key Features:** Mosque finder, state landing pages, Halal Supermarket Finder, feedback form, SEO sitemap
+**Key Features:** Mosque finder, state landing pages, featured mosque pages
 
 📖 **References:**
 - Detailed tech docs: [instructions.md](./instructions.md)
-- Simple explanations: `project-notes-for-zbthedummy.txt`
 - Marketing strategy: [marketing-strategy-project.md](./marketing-strategy-project.md)
+- Bullseye framework: [docs/bullseye-marketing-strategy.md](./docs/bullseye-marketing-strategy.md)
+
+---
+
+## 📅 October 25, 2025
+
+### ✅ Email Extraction Production Run + Cold Email Campaign Setup
+
+**Achievement:** Scraped all 211 mosque websites, extracted 21 emails, and built complete cold email campaign system
+
+**Email Extraction Results:**
+- ✅ Ran Apify Website Content Crawler on all 211 websites
+- ✅ Successfully extracted **21 emails** from **20 mosques** (8% success rate, up from 5% in testing)
+- ✅ Cost: $1.52 (under budget of $1.90)
+- ✅ Added Islamic Society of Darra email manually (secretary@isd.org.au)
+- ✅ All emails stored in `marketing_prospects.email_primary/secondary/tertiary`
+
+**Emails by State:**
+- NSW: 10 mosques
+- VIC: 5 mosques
+- WA: 4 mosques
+- ACT: 1 mosque
+- QLD: 1 mosque
+
+**Cold Email Campaign System Built:**
+1. ✅ Export scripts - 3 CSV files created (full list, test batch, email-only list)
+2. ✅ Email templates - 3 templates + 2 follow-up sequences ([docs/campaign-email-templates.md](docs/campaign-email-templates.md))
+3. ✅ Phone outreach guide - Scripts, objection handling, tracking ([docs/phone-outreach-guide.md](docs/phone-outreach-guide.md))
+4. ✅ Campaign tracker - Spreadsheet template ([docs/campaign-tracker-template.csv](docs/campaign-tracker-template.csv))
+5. ✅ Launch checklist - 60-day timeline ([docs/campaign-launch-checklist.md](docs/campaign-launch-checklist.md))
+6. ✅ Phone call logger - Interactive CLI tool (`scripts/log-phone-call.ts`)
+
+**Campaign Activity (User-initiated):**
+- ✅ Sent 3 emails: Al Madinah, Artarmon, Islamic Society of Darra
+- ✅ Database updated with campaign status for contacted mosques
+- ✅ Holland Park & Preston mosques marked for phone outreach (Priority 2)
+- 📞 Plan: Phone calls + emails for next 2 weeks
+
+**Campaign Goals (Next 2 weeks):**
+- Target: 15-20 total contacts (email + phone)
+- Expected: 3-5 positive responses
+- Realistic: 1-2 backlinks earned
+
+**Files Created:**
+- `docs/campaign-emails-ready.csv` - All 21 mosques
+- `docs/campaign-email-list.txt` - Email addresses only
+- `docs/campaign-test-batch.csv` - First 5 mosques
+- `docs/campaign-email-templates.md` - 3 templates + follow-ups
+- `docs/phone-outreach-guide.md` - Complete phone scripts
+- `docs/campaign-launch-checklist.md` - Step-by-step guide
+- `docs/campaign-tracker-template.csv` - Progress tracker
+- `scripts/export-campaign-emails.ts` - Email export tool
+- `scripts/update-campaign-status.ts` - Database updater
+- `scripts/log-phone-call.ts` - Interactive call logger
+
+📖 **Technical details:** See instructions.md for database constraint fixes and Apify integration
+
+---
+
+### ⚠️ Auto-Refresh Cron Job - NOT WORKING
+
+**Issue Discovered:** Weekly cache refresh has NOT run for 14 days (last: Oct 11, 2025)
+
+**Status:** Cron job likely never properly scheduled in Supabase
+- ✅ Edge function exists: `supabase/functions/refresh-cached-mosques/index.ts`
+- ❌ pg_cron job not scheduled
+- 📊 Cache is 14 days stale (should refresh weekly)
+
+**Impact:**
+- Prayer times may be outdated
+- Mosque data not updated in 2 weeks
+- Potential cost increase from cache misses
+
+**Files Created:**
+- `scripts/check-cron-status.ts` - Cron job monitoring
+- `scripts/check-supabase-cron.ts` - Configuration checker
+
+**Action Required:**
+1. Check if cron scheduled: `SELECT * FROM cron.job;` in Supabase SQL Editor
+2. If not scheduled, run cron.schedule() SQL (see instructions.md)
+3. Manually invoke edge function to refresh stale data
+
+📖 **Setup guide:** See instructions.md for cron scheduling steps and troubleshooting
+
+---
+
+## 📅 October 24, 2025
+
+### ✅ Email Extraction Testing - Apify Actor Evaluation
+
+**Achievement:** Comprehensive testing of 4 Apify actors to extract mosque contact information
+
+**Database Audit:**
+- ✅ Verified mosque count: **347 mosques** in `mosques_cache` (updated from 342)
+- ✅ Contact data: 337 mosques in `marketing_prospects` (232 phones, 211 websites, 0 emails extracted)
+- ✅ Email table status: Only 2 mosques in `mosques_emails` (manual entries)
+
+**Apify Testing Results:**
+1. **Google Maps Email Extractor** (`lukaskrivka/google-maps-with-contact-details`)
+   - Test: 50 mosques | Result: 0 emails (0% success)
+   - Finding: Google Maps listings don't contain email addresses
+
+2. **Website Content Crawler** (`apify/website-content-crawler`) ✅ **WINNER**
+   - Test 1: 50 mosques | Result: 2 emails (5% success)
+   - Test 2: 100 mosques | Result: 4 mosques, 7 emails (5% success)
+   - Cost: $0.72 for 100 websites
+   - **Emails found:** PGCC, Australia Light Foundation, Masjid Darul IMAAN, Indonesia Community (4 emails)
+
+3. **Google Maps → Facebook → Email** (2-step process)
+   - Test: 50 mosques | Result: 2 Facebook URLs found (4%), 0 emails extracted
+   - Finding: Most mosques don't link Facebook in Google Maps
+
+4. **Facebook Pages Scraper** (`apify/facebook-pages-scraper`)
+   - Test: General search for Australian mosques | Result: 1 page found, 0 emails
+   - Issue: Requires Facebook login credentials (security risk)
+
+**Key Learnings:**
+- Website scraping is the ONLY viable method for email extraction
+- 5% success rate = ~11 emails expected from 211 total websites
+- Projected cost: $1.90 for all 211 mosques
+- Facebook scraping blocked without login (not recommended for security)
+- Google Maps data lacks email addresses
+
+**Files Created:**
+- `docs/website_emails_test.csv` - 100 mosques tested, 4 with emails
+- `docs/facebook_mosques_test.csv` - Empty (Facebook test failed)
+- `docs/apify-email-extraction-plan.md` - Testing strategy documentation
+
+**Status:** 🟡 Email extraction possible but low yield (5% success). Alternative: Use 232 phone numbers for outreach
+
+📖 **Technical details:** See instructions.md for Apify actor comparisons and regex email extraction methods
+
+---
+
+## 📅 October 21, 2025
+
+### ✅ Removed Halal Supermarkets Feature
+
+**Achievement:** Simplified navigation by removing Halal Markets page and all related links
+
+**Changes:**
+- ✅ Removed `/halal-supermarkets` route from App.tsx
+- ✅ Removed "Halal Markets" button from desktop navbar
+- ✅ Removed "Halal Markets" button from mobile hamburger menu
+- ✅ Removed Store icon import from navbar component
+
+**Deployment:**
+- ✅ Commit b1275a1: "Remove Halal Supermarkets page and navigation links"
+- ✅ 2 files changed: 1 insertion, 27 deletions
+- ✅ Pushed to GitHub main branch, live on production
+
+**Rationale:** Streamlined user experience to focus on core mosque directory functionality
+
+**Status:** 🟢 Navigation simplified - cleaner focus on mosque finder features
+
+---
+
+## 📅 October 20, 2025
+
+### ✅ Navbar Redesign & Homepage Reorganization (Evening)
+
+**Achievement:** Complete UI overhaul - solid white navbar with auto-hide + simplified homepage
+
+**Navbar Changes:**
+- ✅ Converted transparent navbar to solid white with shadow
+- ✅ Added site name "findmymosque.org" (with bold "findmymosque") to navbar left
+- ✅ Auto-hide on scroll down functionality (shows on scroll up or near top)
+- ✅ Swapped FAQ and Imams link positions in nav
+- ✅ Separate desktop/mobile layouts: Desktop = horizontal, Mobile = site name on top, hamburger below
+- ✅ All text changed from warm-ivory to gray-900 (black), hover states to teal-600
+
+**Homepage Changes:**
+- ✅ Removed hero section with interactive mobile animation (saved to `src/components/backup-animations/`)
+- ✅ Removed trust cards section from homepage
+- ✅ Changed main heading from "Find Mosques Near You" → "Find any Mosque in Australia"
+- ✅ Search section moved to top of page (removed 2-inch spacing below)
+
+**FAQ Page:**
+- ✅ Added trust cards (100% Free, Community Built, No Ads Ever) below page title
+
+**Deployment:**
+- ✅ Commit b30bcc1: "Redesign navbar and reorganize homepage layout"
+- ✅ 9 files changed: +892 insertions, -304 deletions
+- ✅ Pushed to GitHub main branch, live on production
+
+**Files Modified:** `TransparentNavbar.tsx`, `MosqueLocator.tsx`, `FAQ.tsx`, `vite-env.d.ts`, `sitemap.xml`
+
+**Status:** 🟢 Major UI refresh complete - cleaner, more professional design
+
+📖 **Technical details:** See instructions.md for navbar structure and mobile layout implementation
+
+---
+
+### ✅ Holland Park Demo - Events & Partnerships Updated (Morning)
+
+**Achievement:** Finalized Holland Park featured pages with 100% verified real data only
+
+**Events Page Updates:**
+- ✅ Replaced 8 mock events with 4 real verified events scraped from Facebook
+- ✅ Real attendee counts: Usman Khawaja session (32), Ramis Ansari (11), Khatam ul Quran (24), Model Building (6)
+- ✅ Changed default tab from 'upcoming' to 'past' (no upcoming events currently)
+- ✅ Updated hero section: "Community Events" instead of "Upcoming Events"
+
+**Partnerships Page Updates:**
+- ✅ Reduced from 8 partnerships to 3 verified partnerships (MVP approach)
+- ✅ Verified partnerships: SBS documentary, ISA Collective (2022 Master Builders Award), Brisbane Heritage (2003)
+- ✅ Removed all placeholder logo images and simplified stats section
+
+**Deployment:**
+- ✅ Created PR #1, merged to main, all changes live on production
+
+**Status:** 🟢 Holland Park demo MVP complete - ready for partnership pitch
+
+📖 **Web scraping details:** See instructions.md for Chrome DevTools MCP usage
+
+---
+
+## 📅 October 19, 2025
+
+### ✅ Holland Park Mosque Demo - Professional Content & Design
+
+**Achievement:** Transformed demo page with 100% verified content and professional imagery
+
+**Key Updates:**
+- ✅ Real Google Reviews (4.9-star, 560 reviews) + live prayer times iframe
+- ✅ Custom Google Maps with site logo as marker pin
+- ✅ Verified contact info, directions, and professional photos (ISA Collective)
+- ✅ Removed all unverified content (mock events, placeholder stats)
+- ✅ Added real Imam Uzair photo to Religious Leadership section
+
+**Verification:** Used Chrome DevTools MCP to scrape hollandparkmosque.org.au and Google Maps
+
+**Status:** 🟢 Demo ready for partnership pitch
+
+📖 **Technical details:** See instructions.md for Google Maps API integration and iframe embedding
+
+---
+
+### ✅ Mobile Navigation Fix - Browse by State
+
+**Problem:** Mobile users couldn't access state pages - dropdown clicks failed
+
+**Solution:** Dedicated teal "Browse by State" button in mobile navbar (separate from hamburger menu)
+
+**Result:** All 6 state pages now accessible on mobile, dropdown positioning fixed
+
+**Deployed:** Commit f66ba00 (~3 hours debugging/testing)
+
+📖 **Full details:** instructions.md#mobile-navigation-bug-fixes
+
+---
+
+## 📅 October 18, 2025
+
+### ✅ Backlink Building Strategy - 2-Month Campaign Plan
+
+**Achievement:** Created 8-week SEO strategy targeting 30-50 quality backlinks ($0 budget, 4-5 hrs/week)
+
+**Timeline:** Week 1-2: Islamic/business directories (15-20 links) → Week 3-4: Content + Holland Park (2-5) → Week 5-6: Featured mosques + universities (8-12) → Week 7-8: Scale mosque outreach (10-15)
+
+**Resources Built:**
+- Target lists: 8 Islamic directories, 50+ business directories, 15 universities, 342 mosques (211 with websites)
+- 5 email templates for different outreach scenarios
+- Weekly progress tracker
+
+**Success Metrics:** 30+ backlinks (min) to 50+ (strong), 20-50% traffic increase, Top 3 ranking "mosque directory Australia"
+
+📖 **Full strategy:** docs/backlink-strategy.md
+
+---
+
+### ✅ Value Exchange Strategy - Service-First Partnerships
+
+**Achievement:** Built framework to earn backlinks through genuine value delivery (30-80% success vs 5-10% traditional)
+
+**Core:** Lead with service (verified profiles, badges, analytics, featured pages) → backlink request comes AFTER
+
+**5 Ideas:** Verified Profile + Badge (30-40% success) | Partner Integration Hub (2-3 links/mosque) | Digital Presence Upgrade (70-80% success) | Featured Showcase (Holland Park model) | Volunteer Campaigns
+
+**Next:** Design badges, create mosque profile template, build analytics reports, email Holland Park with demo
+
+📖 **Full strategy:** docs/value-exchange-strategy.md
+
+---
+
+## 📅 October 17, 2025
+
+### ✅ Bullseye Framework Implementation
+
+**Achievement:** Implemented Traction book's Bullseye framework for systematic channel testing
+
+**Built:** 5 strategy docs, testing spreadsheet, 7 priority channels identified (Reddit/FB, Google Ads, Mosque Emails, etc.)
+
+**Key Insight:** Test cheaply ($1K max), quickly (1 month), find ONE channel that works, then focus 80% effort on it
+
+**Files:** `docs/bullseye-marketing-strategy.md`, `docs/bullseye-flexible-template.csv`
+
+**Status:** 🟢 Framework ready for Week 1 launch
+
+📖 **Full strategy:** [docs/bullseye-marketing-strategy.md](./docs/bullseye-marketing-strategy.md)
+
+---
+
+## 📅 October 16, 2025
+
+### ✅ Supabase Security Audit - 26 of 31 Issues Fixed
+
+**Achievement:** Fixed 5 SECURITY DEFINER views + 21 function search_path warnings
+
+**Fixed:** All views now use `security_invoker=true` (respects RLS), functions have `SET search_path = public, pg_temp` (prevents injection)
+
+**Files:** `supabase/migrations/20251016_fix_security_definer_issues.sql`
+
+**Status:** 🟢 84% of issues resolved, database security hardened
+
+📖 **Technical details:** See [instructions.md#database-security](./instructions.md)
 
 ---
 
 ## 📅 October 12, 2025
 
-### ✅ Major Update: 342 Verified Mosques + Phase 1 SEO Complete
+### ✅ Make.com Automation + Marketing Infrastructure
 
-**Achievements:** Migrated 259 new mosques (83→342), validated all with Google API, completed Phase 1 SEO optimization
+**Achievement:** Built complete tracking system for community engagement campaign
 
-#### Mosque Migration & Validation ✅
-- **Validated** 337 mosques with Google Places API (99.1% success rate: 334 valid, 3 invalid)
-- **Migrated** 259 new mosques from `marketing_prospects` → `mosques_cache`
-- **Fixed** 83 mosques with unknown states (extracted from addresses)
-- **Result:** 342 total mosques, all with proper state tags
+**Built:** Post Logger (form → webhook → Google Sheet in 30s) | Google Sheets template (8 tabs, auto-formulas) | 15 platform-specific scripts | Apps Script auto-setup
 
-**State Breakdown:**
-NSW: 126 | VIC: 101 | WA: 48 | QLD: 34 | SA: 23 | ACT: 6 | NT: 3 | TAS: 1
+**Status:** 🟢 Week 1 campaign ready to launch
 
-#### SEO Phase 1 Complete ✅
-- Updated meta tags: "83+" → "340+ verified mosques"
-- Removed "prayer times" claims (feature not available yet)
-- Enhanced Schema.org markup (5 types: WebSite, Organization, Service, FAQPage, BreadcrumbList)
-- Added ACT & NT to Schema FAQ answers
+📖 **Full strategy:** marketing-strategy-project.md
 
-#### Scripts & Tools Added ✅
-- `validate-google-places.ts` - Google API validation
-- `migrate-validated-mosques.ts` - Migration with duplicate checking
-- `fix-unknown-states.ts` - State extraction from addresses
-- `validation-results.json` - Full validation report
+---
 
-#### Google Business Profile Discovery ❌
-- Researched GBP eligibility → **Not eligible** (online-only businesses excluded)
-- Created correct SEO plan: `docs/seo-action-plan.md` (6-phase strategy)
-- Completed Phase 2: Google Search Console setup & sitemap submission
+### ✅ 342 Verified Mosques + SEO Phase 1
 
-**Files:**
-- SEO plan: `docs/seo-action-plan.md`
-- Marketing scripts: `scripts/marketing/` (7 new scripts)
+**Achievement:** Migrated 259 new mosques (83→342), validated with Google API
 
-**Status:** 🟢 342 mosques live, SEO optimized, ready for Phase 3 (city landing pages)
+**Breakdown:** NSW: 126, VIC: 101, WA: 48, QLD: 34, SA: 23, ACT: 6, NT: 3, TAS: 1 (99.1% validation success)
 
-### ✅ State Pages Fix - Browse by State Now Shows All 342 Mosques
+**SEO:** Updated meta tags "83+" → "340+", enhanced Schema.org (5 types), completed Search Console setup
 
-**Issue Fixed:** State landing pages were using old hardcoded/JSON data showing only 16-20 mosques instead of fetching from the database with 342 mosques.
+**Fix:** All 6 state pages now fetch from database dynamically (removed 870 lines hardcoded data)
 
-**Changes:**
-- Updated all 6 state pages to fetch from `mosques_cache` table dynamically
-- NSW: 16 → **126 mosques** | VIC: ~20 → **101** | QLD: ~15 → **34**
-- WA: ~18 → **48** | SA: ~15 → **23** | TAS: **1** (unchanged)
-- Removed 870 lines of hardcoded data
-- Added loading states, dynamic counts, and proper TypeScript interfaces
-
-**Files Modified:**
-- `src/pages/SydneyMosques.tsx`, `MelbourneMosques.tsx`, `BrisbaneMosques.tsx`
-- `src/pages/PerthMosques.tsx`, `AdelaideMosques.tsx`, `TasmaniaMosques.tsx`
-
-**Deployed:** Commit e6a539f - Live at findmymosque.org
-
-### Earlier (Days 7-8): Cache & Automation ✅
-- Cache scaled to 100% rollout
-- Weekly auto-refresh deployed (Sundays 2 AM)
-- Cost savings: $66/month (66% reduction)
-- Performance: 700ms cache hits (58% faster)
+**Deployed:** Commit e6a539f
 
 ---
 
 ## 📅 October 11, 2025
-
-### ✅ Cache System - Scaled to 50% Rollout
-
-**Achievement:** Successfully scaled cache from 10% → 50% and deployed to production
-
-**Updates:**
-- ✅ Updated `featureFlags.ts`: 10% → 50% rollout
-- ✅ Tested locally: Both cache and legacy systems working
-- ✅ Deployed to production (commit 4bac213)
-- ✅ Verified live: Random assignment working correctly
-
-**Performance Confirmed:**
-- Session 0-49: Fast cache (700ms, $0 cost)
-- Session 50-99: Legacy Google API (1,700ms, $0.032)
-- Expected savings: ~$38/month at 50% rollout
-
-**Status:** 🟢 Live at findmymosque.org, monitoring for 24-48h before 100% rollout
-
-**Next:** Scale to 100% if no issues detected (projected $77/month savings)
-
-### ✅ Free Email Scraper - Day 2b COMPLETE
-
-**Achievement:** Built $0 alternative to Apify, extracted all emails
-
-**What Was Built:**
-- ✅ `marketing_prospects` table (337 mosques with full data)
-- ✅ Puppeteer email scraper (free, open source)
-- ✅ Import script (JSON → Supabase)
-- ✅ Test script (validated on 5 websites)
-- ✅ Full extraction running (211 websites, 2-3 hours)
-
-**Test Results (5 websites):**
-- Success rate: 60% (3/5 accessible)
-- Emails found: 1 verified
-- Expected full results: 40-70 verified emails
-
-**Files Created:**
-- `supabase/migrations/20251011_create_marketing_prospects_table.sql`
-- `scripts/marketing/import-prospects.ts`
-- `scripts/marketing/scrape-emails.ts`
-- `scripts/marketing/test-scraper.ts`
-- Dependencies: puppeteer, puppeteer-extra
-
-**Status:** 🔄 Full extraction running in background
-
-**Cost:** $0 (vs $49/month Apify upgrade)
-
-**Next:** Review results when complete, export campaign-ready emails
-
-📖 **Technical setup:** See [marketing-strategy-project.md](./marketing-strategy-project.md#alternative-approach-free-puppeteer-email-scraper)
-
----
+- ✅ Cache system 100% rollout (700ms, $0 per search, $66/month savings)
+- ✅ Email scraper built (Puppeteer, $0 vs $49/month Apify)
 
 ## 📅 October 10, 2025
-
-### ✅ Marketing System - Day 1 Complete
-
-**Achievement:** Email extraction system built and tested successfully!
-
-**What Was Built:**
-- 7 TypeScript modules for email extraction pipeline
-- Supabase `mosques_emails` table (private, RLS-protected)
-- Google Maps → Website → Facebook scraping chain
-- DNS MX email validation (free, 95% accuracy)
-- Test extraction verified (20 mosques, 1 verified email)
-
-**Files Created:**
-- `supabase/migrations/20251010_create_mosques_emails_table.sql`
-- `scripts/apify/` - 7 modules (validator, scrapers, uploader, orchestrator)
-- `marketing-strategy-project.md` - 5-day execution plan
-- Dependencies: apify-client, tsx
-
-**Test Results:**
-- Duration: 32 seconds
-- Mosques found: 20 (Sydney)
-- Emails found: 1
-- Verified: 100%
-- Cost: ~$0.20
-
-**Status:** ✅ System ready for full extraction (300+ mosques, ~$25-30)
-
-**Next:** Run full extraction when ready (`npm run extract-emails`)
-
-📖 **See:** [instructions.md#mosque-email-extraction-system](./instructions.md)
-
----
+- ✅ Email extraction pipeline (7 modules, `mosques_emails` table)
 
 ## 📅 October 9, 2025
+- ✅ Backend cache deployed (10% rollout, 3 tables, RLS policies)
 
-### Backend Cache System (Days 4-5)
+## 📅 October 7, 2025
+- ✅ Dynamic sitemap automation, Halal Supermarket Finder Phase 1, mobile hamburger menu
 
-**Achievement:** Cache deployed at 10% rollout, saving costs and improving speed
+## 📅 October 6, 2025
+- ✅ 6 state landing pages, 33 mosques, region filtering
 
-**Performance:**
-- Cache hits: 700ms (58% faster)
-- Google API: 1,700ms
-- Cost: $0 (cache) vs $0.032 (Google)
-- 84 mosques cached
-
-**Files:**
-- `src/config/featureFlags.ts` - Rollout control
-- `src/services/mosqueService.ts` - Cache-first routing
-- `src/components/MosqueLocator.tsx` - Frontend integration
-
-**Status:** 10% rollout active, monitoring for 24-48h before scaling to 50%
-
-**Expected Savings:** $77/month at 100% rollout
-
-### Database Tables Added
-
-**`mosques_cache`** - Main cache (public read, 84 records)
-**`search_cache`** - Query results cache (7-day expiry)
-**`google_api_logs`** - Cost tracking
-
-**RLS Fixed:** Anonymous feedback submissions now working
-
----
-
-## 📅 Previous Work Summary
-
-### October 7, 2025
-- ✅ SEO Week 4: Dynamic sitemap automation
-- ✅ Halal Supermarket Finder Phase 1 (3 test records)
-- ✅ Mobile hamburger menu + favicon
-
-### October 6, 2025
-- ✅ 6 state landing pages (NSW, VIC, QLD, WA, SA, TAS)
-- ✅ 33 placeholder mosques added
-- ✅ Region filtering + popular searches
-
-### September 2025
-- ✅ Site deployed to GitHub Pages
-- ✅ Domain configured (findmymosque.org)
-- ✅ Supabase integration
-- ✅ Google Places API setup
+## 📅 September 2025
+- ✅ Site deployed, domain configured, Supabase + Google Places API integrated
 
 ---
 
 ## 🗂️ Database Schema (12 Tables)
 
 ### Public Tables
-- `mosques_cache` (342) - Main cache with verified, state-tagged mosques
+- `mosques_cache` (347) - Main cache with verified, state-tagged mosques
 - `search_cache` - Query results cache (7-day expiry)
-- `supermarkets` (3) - Halal finder
+- `supermarkets` (3) - Halal finder (deprecated, not linked in UI)
 - `feedback` - User submissions
 - `prayer_times` - Scraping data
 
 ### Private Tables (Marketing & Analytics)
-- `mosques_emails` - Email addresses
-- `marketing_prospects` (337) - Source data for mosque migration
+- `mosques_emails` (2) - Email addresses extracted (deprecated - now using marketing_prospects)
+- `marketing_prospects` (337) - Marketing data: 232 phones, 211 websites, **21 emails extracted**
 - `google_api_logs` - Cost tracking & refresh history
 - `scraping_logs` - Automation logs
 
@@ -241,26 +403,33 @@ NSW: 126 | VIC: 101 | WA: 48 | QLD: 34 | SA: 23 | ACT: 6 | NT: 3 | TAS: 1
 
 ---
 
-## 🎯 Roadmap
+## 🎯 Current Status & Roadmap
 
 ### Completed ✅
-- ✅ Cache system at 100% rollout
-- ✅ Weekly auto-refresh automation
-- ✅ 342 mosques validated & migrated (Google API verified)
-- ✅ SEO Phase 1 & 2 complete (meta tags, Schema, Google Search Console)
-- ✅ All mosques have proper state tags
+- ✅ 347 mosques live with Google API validation
+- ✅ 100% cache system ($66/month savings)
+- ✅ SEO Phases 1-2 (meta tags, Schema, Search Console)
+- ✅ Database security hardened (26/31 issues fixed)
+- ✅ Holland Park Mosque demo MVP (4 pages with verified data)
+- ✅ Navbar redesign (solid white, auto-hide, responsive layouts)
+- ✅ Homepage reorganization (search-first, animation backed up)
+- ✅ Removed Halal Supermarkets feature (streamlined navigation)
+- ✅ Email extraction complete - 21 emails from 211 websites ($1.52)
+- ✅ Cold email campaign system built (templates, trackers, scripts)
 
-### Current Focus (Phase 3 - SEO)
-1. **City Landing Pages** - Sydney, Melbourne, Brisbane, Perth, Adelaide, Canberra
-2. **Backlink Strategy** - Contact 340 mosques, Islamic organizations
-3. **Content Marketing** - Blog posts, guides
+### Current Focus (Next 2 Weeks - Oct 25 to Nov 8, 2025)
+1. **Cold Email Campaign** - Send emails + phone calls to 15-20 mosques (goal: 3-5 responses, 1-2 backlinks)
+2. **Fix Auto-Refresh Cron** - Schedule pg_cron job in Supabase, manually refresh 14-day-old cache
+3. **Track Campaign Progress** - Log all outreach in `marketing_prospects` table and campaign tracker CSV
+4. **Build Preview Pages** - Create featured pages for interested mosques
 
-**See:** `docs/seo-action-plan.md` for full 6-phase strategy
+### Action Items (Urgent)
+- ⚠️ **Check cron job status:** Run `SELECT * FROM cron.job;` in Supabase SQL Editor
+- ⚠️ **Schedule cron if missing:** Run cron.schedule() SQL (see instructions.md)
+- 📞 **Call Holland Park & Preston:** Use phone scripts from docs/phone-outreach-guide.md
+- 📧 **Continue email outreach:** 5-7 more mosques this week
 
-### Medium-term (2-4 months)
-- Complete SEO Phases 4-6 (social media, content, local optimization)
-- Marketing email campaign
-- Halal Supermarket automation
+📖 **See:** `docs/seo-action-plan.md` and `marketing-strategy-project.md`
 
 ---
 
@@ -284,16 +453,10 @@ NSW: 126 | VIC: 101 | WA: 48 | QLD: 34 | SA: 23 | ACT: 6 | NT: 3 | TAS: 1
 - API keys in `.env` only (never commit)
 - RLS enabled on all tables
 - `mosques_emails` table: NO public access
-- Service role keys for scripts only
+- All views use `security_invoker=true`
+- All functions have `SET search_path = public, pg_temp`
 
-**Environment Variables:**
-```bash
-VITE_SUPABASE_URL=https://xxx.supabase.co
-VITE_SUPABASE_ANON_KEY=sb_publishable_xxx
-SUPABASE_SECRET_KEY=sb_secret_xxx
-APIFY_TOKEN=apify_api_xxx
-GOOGLE_MAPS_API_KEY=xxx  # In Supabase secrets
-```
+📖 **See:** [instructions.md#security](./instructions.md) for environment variables and setup
 
 ---
 

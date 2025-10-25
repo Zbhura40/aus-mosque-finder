@@ -1,0 +1,68 @@
+FIND MY MOSQUE - FACEBOOK PAGE BIOGRAPHY
+===========================================
+
+FULL BIOGRAPHY (400 WORDS)
+
+Find My Mosque - Australia's Smart Mosque Discovery Platform
+
+Transforming how Australian Muslims discover and connect with their local Islamic community through innovative technology.
+
+WHO WE ARE
+
+Find My Mosque is Australia's leading mosque discovery platform, combining cutting-edge mapping technology with comprehensive community data to help Muslims across the country find their nearest prayer space in seconds. Built with modern web technologies and powered by Google Maps API, our platform delivers real-time location intelligence for 340+ verified mosques nationwide.
+
+WHAT WE DO
+
+We're solving a critical problem: Muslims new to an area, travelers, or families relocating shouldn't struggle to find their local mosque. Our intelligent search technology leverages geolocation and advanced filtering to instantly connect users with verified Islamic centers across all Australian states—from Sydney's western suburbs to Melbourne's diverse communities, Brisbane's growing Muslim population to Perth's established prayer spaces.
+
+OUR TECHNOLOGY
+
+Built on a modern tech stack featuring React, TypeScript, and real-time databases, Find My Mosque delivers enterprise-grade performance with a consumer-friendly interface. Our platform features:
+
+• Real-time mosque search with radius-based filtering
+• Interactive maps powered by Google Maps integration
+• State-specific landing pages optimized for local discovery
+• Mobile-first responsive design for on-the-go access
+• Verified mosque data validated through multiple sources
+• AI-powered halal services directory (launching soon)
+
+OUR IMPACT
+
+Since launching, we've helped Australian Muslims discover 342 verified mosques across eight states and territories. Our platform processes thousands of searches monthly, connecting community members with Islamic centers minutes from their homes—mosques they never knew existed in their own neighborhoods.
+
+WHAT'S NEXT
+
+We're expanding beyond mosque discovery to become the comprehensive digital platform for Australian Muslim community services. Coming soon: verified mosque profiles with detailed information, AI-verified halal supermarket finder, community event listings, and partnership integration showcasing mosque collaborations with charities and local councils.
+
+WHY IT MATTERS
+
+Every Friday, thousands of Australian Muslims search for Jummah prayer locations. New immigrants navigate unfamiliar suburbs. Travelers need reliable prayer information. Students seek campus-area mosques. We built Find My Mosque because finding your community shouldn't be this hard.
+
+Join us in connecting Australian Muslims with their community, one search at a time.
+
+Visit: findmymosque.org
+Contact: contact@findmymosque.org
+
+---
+
+SHORT BIOGRAPHY (155 CHARACTERS)
+
+Australia's smart mosque directory. Find 340+ verified mosques instantly using location-based search. Built with tech, powered by community. 🕌📍
+
+---
+
+FACEBOOK PAGE CATEGORY RECOMMENDATIONS
+
+Primary Category: Technology Company
+Secondary Category: Community Organization
+Tertiary Category: Religious Organization
+
+---
+
+SUGGESTED PAGE TAGS
+
+Mosque Directory, Islamic Community, Australian Muslims, Location Technology, Community Platform, Tech Startup, Faith-Based Technology, Mosque Finder, Halal Services, Muslim Community Australia
+
+---
+
+Last Updated: October 18, 2025

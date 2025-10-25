@@ -1217,6 +1217,69 @@ ANTHROPIC_API_KEY=your-claude-api-key (Phase 3)
 
 ---
 
+### Apify Actor Testing Results (October 24, 2025)
+
+**Comprehensive testing of 4 Apify actors to determine best email extraction method:**
+
+#### Test 1: Google Maps Email Extractor
+- **Actor:** `lukaskrivka/google-maps-with-contact-details`
+- **Test Size:** 50 mosques
+- **Method:** Extract emails from Google Maps Place IDs
+- **Result:** 0 emails (0% success)
+- **Finding:** ❌ Google Maps listings do not contain email addresses
+- **Cost:** ~$0.45
+
+#### Test 2: Website Content Crawler ✅ RECOMMENDED
+- **Actor:** `apify/website-content-crawler`
+- **Test 1:** 50 mosques → 2 emails (5% success)
+- **Test 2:** 100 mosques → 4 mosques with 7 emails (5% success)
+- **Method:** Scrape website text content, extract emails using regex
+- **Regex Pattern:** `/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g`
+- **Email Filtering:** Excludes example.com, sentry.io, google, facebook, wix.com
+- **Result:** ✅ 5% success rate (consistent across tests)
+- **Cost:** $0.72 for 100 websites
+- **Projection:** 211 websites → ~11 emails for $1.90
+- **Settings:** `maxCrawlDepth: 0` (homepage only), `crawlerType: 'cheerio'` (fast)
+
+**Successful Extractions:**
+1. PGCC (VIC) - administration@pgcc.org.au
+2. Australia Light Foundation (VIC) - office@australialightfoundation.com.au
+3. Masjid Darul IMAAN (NSW) - info@imaan.com.au
+4. Indonesia Community (VIC) - 4 emails (masjid.westall@, baitul.makmur@, surau.kita@, info@)
+
+#### Test 3: Google Maps → Facebook → Email (2-Step)
+- **Actors:** `compass/crawler-google-places` + `apify/facebook-page-contact-information`
+- **Test Size:** 50 mosques
+- **Step 1 Result:** 2 Facebook URLs found (4% of mosques link Facebook in Google Maps)
+- **Step 2 Result:** 1 page scraped, 0 emails
+- **Finding:** ❌ Most mosques don't link Facebook in Google Maps listings
+- **Cost:** ~$0.45
+
+#### Test 4: Facebook Pages Scraper
+- **Actor:** `apify/facebook-pages-scraper`
+- **Test Size:** General search for Australian mosques
+- **Search Queries:** "mosque Sydney Australia", "masjid Melbourne", etc.
+- **Result:** 1 result found, 0 Australian mosques identified, 0 emails
+- **Finding:** ❌ Requires Facebook login credentials (security risk)
+- **Cost:** ~$0.01
+
+**Conclusion:**
+- ✅ **Website Content Crawler is the ONLY viable method** (5% success rate)
+- ❌ Google Maps does not contain email data
+- ❌ Facebook scraping requires login (security risk) and low mosque coverage
+- **Recommendation:** Scrape all 211 mosque websites for ~$1.90 to get ~11 emails
+- **Alternative:** Use 232 phone numbers in database for direct outreach
+
+**Files Created:**
+- `docs/website_emails_test.csv` - 100 mosques tested, 4 with emails
+- `scripts/apify-email-test.ts` - Google Maps email extraction test
+- `scripts/apify-website-scraper-test.ts` - Website scraper test (50 mosques)
+- `scripts/apify-website-scraper-100.ts` - Website scraper test (100 mosques)
+- `scripts/apify-gmaps-facebook-test.ts` - 2-step extraction test
+- `scripts/apify-facebook-search-test.ts` - Facebook pages scraper test
+
+---
+
 ### Database Schema
 
 **Table:** `mosques_emails`
@@ -1536,6 +1599,1098 @@ supabase migration up
 ---
 
 **End of Mosque Email Extraction Documentation**
+
+---
+
+---
+
+## Backlink Building Guide
+
+> **Added:** October 18, 2025
+> **Campaign Overview:** See [docs/backlink-strategy.md](./docs/backlink-strategy.md)
+> **Duration:** 2 months (November-December 2025)
+> **Goal:** 30-50 quality backlinks from Australian Islamic & local sources
+
+---
+
+### Business Directories - Complete List
+
+**High Priority (DA 30+):**
+1. Local Search - localsearch.com.au (DA 51)
+2. Pure Local - purelocal.com.au (DA 50)
+3. Yelp Australia - yelp.com.au
+4. True Local - truelocal.com.au
+5. Hotfrog Australia - hotfrog.com.au
+6. Search Frog - searchfrog.com.au (DA 35)
+7. StartLocal Australia - startlocal.com.au
+
+**Medium Priority (DA 15-30):**
+8. Brownbook Australia - brownbook.net
+9. Australian Planet - australianplanet.com
+10. Womo - womo.com.au
+11. Find Open - findopen.com.au
+12. Aussie Web - aussieweb.com.au
+13. Yellow Pages - yellowpages.com.au
+14. White Pages Business - whitepages.com.au/business
+
+**Additional Directories (50+ total):**
+15. Local Business Guide Australia
+16. City Search Australia
+17. Add Your Business Australia
+18. BizExposed Australia
+19. Cylex Australia
+20. Show Me Local
+21. Find Us Here
+22. Finda Australia
+23. Dlook Australia
+24. iBegin Australia
+25. Lacartes Australia
+
+**Submission Best Practices:**
+- Use consistent NAP (Name, Address, Phone): "Find My Mosque", "Online Directory", contact@findmymosque.org
+- Category: "Religious Organizations" or "Community Services" or "Online Directory"
+- Description (150 chars): "Find mosques across Australia with our comprehensive directory. Search 340+ verified mosques by location, view prayer times, and halal services."
+- Website: https://findmymosque.org
+- Logo: Use your site logo (consistent across all directories)
+
+---
+
+### Islamic Directory Outreach Templates
+
+#### Template 1: Islamic Council/Organization Submission
+
+**Subject:** Directory Listing Request - Find My Mosque (Australian Mosque Directory)
+
+**Body:**
+```
+Assalamu Alaikum,
+
+My name is Zubair and I've built Find My Mosque (findmymosque.org), a free online directory helping Australian Muslims discover mosques in their area.
+
+The platform currently features 340+ verified mosques across all Australian states, with features including:
+- Location-based mosque search with interactive maps
+- State-specific landing pages (NSW, VIC, QLD, WA, SA, TAS)
+- Halal supermarket finder (launching soon)
+- Mobile-friendly design for easy access
+
+I noticed that [ORGANIZATION NAME] provides valuable resources for the Australian Muslim community. Would it be possible to have Find My Mosque listed in your community resources or directory section?
+
+This would greatly help Muslims across Australia, especially new immigrants, students, and travelers, find their nearest mosque.
+
+Here are the listing details:
+- Website: https://findmymosque.org
+- Description: Comprehensive Australian mosque directory with 340+ verified locations
+- Category: Community Resources / Islamic Services
+- Contact: contact@findmymosque.org
+
+JazakAllah Khair for considering this request. I'm happy to provide any additional information needed.
+
+Warm regards,
+Zubair
+Find My Mosque
+findmymosque.org
+```
+
+**Organizations to Email (8-12 targets):**
+1. AFIC - Australian Federation of Islamic Councils (afic.com.au)
+2. ANIC - Australian National Imams Council (anic.org.au)
+3. Islamic Council of NSW (icnsw.org.au)
+4. Islamic Council of WA (islamiccouncilwa.com.au)
+5. Darulfatwa Islamic High Council (darulfatwa.org.au)
+6. United Muslims of Australia (uma.org.au)
+7. Alliance of Australian Muslims (australianmuslims.org.au)
+8. AussieMuslims.NET (aussiemuslims.net)
+9. Islamic Forum for Australian Muslims (ifam.org.au)
+10. Islamic Council of Victoria (icv.org.au)
+11. Islamic Council of Queensland (icq.org.au)
+12. Islamic Society of South Australia
+
+---
+
+#### Template 2: University Islamic Society Outreach
+
+**Subject:** Free Resource for Muslim Students - Mosque Finder Tool
+
+**Body:**
+```
+Assalamu Alaikum,
+
+I hope this email finds you well. My name is Zubair, and I've developed a free tool that could be helpful for your Muslim student community.
+
+Find My Mosque (findmymosque.org) is Australia's most comprehensive mosque directory with 340+ verified locations across all states. It's particularly useful for:
+- New international students unfamiliar with Australian mosques
+- Students traveling interstate for holidays/conferences
+- Finding mosques near campus or accommodation
+
+Many university Islamic societies link to helpful resources on their websites. Would you consider adding Find My Mosque to your "Resources" or "Useful Links" page?
+
+It's completely free, mobile-friendly, and we're continuously adding features like halal supermarket finder and prayer times.
+
+Website: https://findmymosque.org
+
+JazakAllah Khair for your time. Feel free to reach out if you'd like any additional information.
+
+Best regards,
+Zubair
+Find My Mosque
+```
+
+**Universities to Target (10-15 Islamic Societies):**
+1. University of Sydney Islamic Society (USYD ISoc)
+2. UNSW Islamic Society
+3. University of Melbourne Islamic Society
+4. Monash University Islamic Society
+5. University of Queensland Muslim Students Association
+6. Griffith University Islamic Society
+7. Macquarie University Islamic Society
+8. UTS Muslim Students Association
+9. RMIT Islamic Society
+10. Deakin University Islamic Society
+11. ANU Muslim Students Association
+12. University of Adelaide Islamic Society
+13. Curtin University Islamic Society
+14. UWA Islamic Society
+15. La Trobe University Islamic Society
+
+**Finding Contacts:**
+- Search "[University name] Islamic society" on Facebook
+- Email addresses usually: [societyname]@[university].edu.au
+- Or use contact forms on student society websites
+
+---
+
+#### Template 3: Mosque Partnership Pitch (Featured Pages)
+
+**Subject:** Partnership Opportunity - Free Featured Mosque Page on Find My Mosque
+
+**Body:**
+```
+Assalamu Alaikum [Mosque Name] Team,
+
+My name is Zubair, founder of Find My Mosque (findmymosque.org), Australia's largest mosque directory with 340+ verified locations.
+
+I'm reaching out to offer [Mosque Name] a **free featured landing page** on our platform. This would include:
+
+✓ Dedicated mosque page with your story, philosophy, and services
+✓ Event calendar and community programs showcase
+✓ Donation integration (if desired)
+✓ Partnership highlights
+✓ Interactive Google Maps integration
+✓ Imam profile section
+✓ FAQ section customized to your community
+
+**Example:** I've created a demo page for Holland Park Mosque to show what this looks like:
+[Include screenshot or link if Holland Park goes live]
+
+**What We'd Appreciate in Return:**
+- A backlink from your official website to your featured page on findmymosque.org
+- Mention in your newsletter/bulletin (if applicable)
+- Social media share introducing the partnership
+
+**Why This Benefits [Mosque Name]:**
+- Increased visibility for Muslims searching for mosques in [City]
+- Professional online presence highlighting your unique programs
+- Easier discovery for new Muslims, travelers, and families relocating
+- SEO boost from being featured on a growing platform
+
+I'd love to schedule a 15-minute call to discuss how we can customize this page to best represent your mosque.
+
+Are you available for a quick chat this week?
+
+JazakAllah Khair,
+Zubair
+Find My Mosque
+contact@findmymosque.org
+findmymosque.org
+```
+
+**Follow-Up Strategy:**
+- Day 7: Send polite follow-up if no response
+- Day 14: Call mosque directly (phone numbers in database)
+- Day 21: Final email offering simplified version (just basic listing enhancement)
+
+---
+
+#### Template 4: General Mosque Backlink Request
+
+**Subject:** Help Australian Muslims Find Your Mosque
+
+**Body:**
+```
+Assalamu Alaikum,
+
+I hope this email finds you in good health and Iman.
+
+My name is Zubair and I've built Find My Mosque (findmymosque.org), a free directory helping Australian Muslims discover mosques across the country.
+
+[Mosque Name] is already listed in our database of 340+ verified mosques. I wanted to reach out personally to let you know about this free resource.
+
+**Request:** If you find this tool beneficial for your community, would you consider adding a link to findmymosque.org on your website's resources page?
+
+This would help Muslims in [City/Area] and travelers passing through discover your mosque more easily.
+
+**Why This Helps:**
+- Makes your mosque discoverable to Muslims relocating to [Area]
+- Helps travelers and students find nearby mosques
+- Supports a community-driven resource (no ads, completely free)
+
+Link to use: https://findmymosque.org
+
+If you'd like us to update any information about your mosque in our directory, please let me know and I'll make the changes immediately.
+
+JazakAllah Khair for your time and service to the community.
+
+Warm regards,
+Zubair
+Find My Mosque
+contact@findmymosque.org
+```
+
+**When to Use:**
+- Mosques with existing websites (211 in database)
+- After completing featured partnership outreach
+- As part of scaled mosque outreach campaign (Week 5-8)
+
+---
+
+### Halal Business Cross-Promotion Template
+
+**Subject:** Partnership Opportunity - Halal Directory Cross-Promotion
+
+**Body:**
+```
+Assalamu Alaikum [Business Name] Team,
+
+I'm Zubair, founder of Find My Mosque (findmymosque.org), Australia's largest mosque directory.
+
+We're launching a **Halal Supermarkets Directory** (similar to our mosque finder) that will help Australian Muslims discover halal food sources across the country.
+
+I'd love to feature [Business Name] in our directory. In exchange, would you be open to:
+- Adding a link to findmymosque.org on your "Resources" or "Community Links" page
+- Or mentioning our mosque directory in your newsletter/social media
+
+**What You Get:**
+- Free listing on our growing platform (5,000+ monthly visitors expected)
+- Increased visibility in the Australian Muslim community
+- Association with a trusted community resource
+
+**What We'd Appreciate:**
+- Simple backlink: "Find mosques across Australia at findmymosque.org"
+
+This is a mutually beneficial partnership supporting the Australian Muslim community.
+
+Would you be interested in discussing this further?
+
+JazakAllah Khair,
+Zubair
+Find My Mosque
+contact@findmymosque.org
+```
+
+**Businesses to Target:**
+- Halal certification bodies (ANIC Halal, WAHA, Halal Australia)
+- Halal restaurants with websites
+- Islamic bookstores
+- Muslim wedding venues
+- Islamic schools with resource pages
+
+---
+
+### Backlink Tracking System
+
+**Tool:** `backlink-progress-tracker.txt` (simple text file)
+
+**Format:**
+```
+BACKLINK PROGRESS TRACKER - Find My Mosque
+Campaign Duration: November 2025 - December 2025
+Target: 30-50 quality backlinks
+
+---
+
+[COMPLETED - Date, Website, DA, Status, Notes]
+2025-11-05 | localsearch.com.au | DA 51 | ✓ Live | Business directory listing approved
+2025-11-07 | afic.com.au | DA 42 | ✓ Live | Added to AFIC community resources page
+2025-11-12 | icnsw.org.au | DA 35 | ✓ Live | Featured in NSW Islamic Council directory
+
+[PENDING - Date, Website, Expected DA, Status, Follow-up Date]
+2025-11-06 | anic.org.au | DA 40 | Awaiting response | Follow-up: 2025-11-13
+2025-11-08 | uma.org.au | DA 30 | Email sent | Follow-up: 2025-11-15
+
+[REJECTED/NO RESPONSE]
+2025-11-10 | example.org.au | DA 25 | No response after 2 follow-ups | Closed
+
+---
+
+MONTHLY SUMMARY:
+November Week 1: 5 backlinks secured, 8 pending
+November Week 2: [To be updated]
+
+TOTAL BACKLINKS SECURED: 3
+TOTAL PENDING: 5
+```
+
+**How to Use:**
+1. Create this text file in your project root
+2. Update after every outreach email sent
+3. Log responses within 24 hours
+4. Review weekly to prioritize follow-ups
+5. Export monthly summary to marketing strategy doc
+
+---
+
+### Monthly Reporting Template
+
+**Check These Metrics (Last Day of Each Month):**
+
+**Google Search Console:**
+1. Navigate to: Links > Top linking sites
+2. Export list of all referring domains
+3. Compare to previous month (count new domains)
+
+**Ahrefs Free Backlink Checker:**
+1. Visit: ahrefs.com/backlink-checker
+2. Enter: findmymosque.org
+3. Note: Total backlinks, Referring domains, Domain Rating (DR)
+
+**Google Analytics:**
+1. Go to: Acquisition > All Traffic > Referrals
+2. Check which backlinks are sending traffic
+3. Note top 5 referring sites
+
+**Monthly Report Format:**
+```
+BACKLINK CAMPAIGN - [Month] 2025 RESULTS
+
+Backlinks Acquired: X new referring domains
+Top Quality Links: [List 3-5 best DA sites]
+Traffic Impact: +X% referral traffic vs last month
+Rankings: [Note any keyword ranking improvements]
+
+Next Month Focus: [List top 3 priorities]
+```
+
+---
+
+### Advanced Tactics (After Month 1)
+
+**Once You Have 20+ Backlinks:**
+
+1. **Resource Page Link Building**
+   - Google search: "Muslim resources Australia" + "inurl:links"
+   - Find Islamic resource pages, request inclusion
+
+2. **Broken Link Building**
+   - Use Ahrefs to find broken links on Islamic websites
+   - Email: "I noticed [broken link], our directory could replace it"
+
+3. **Content Syndication**
+   - Publish mosque statistics report
+   - Reach out to Islamic news sites (IslamicFinder, MuslimVillage.com)
+   - Offer article in exchange for author bio backlink
+
+4. **HARO (Help A Reporter Out)**
+   - Sign up for HARO emails
+   - Respond to queries about Australian Muslim communities
+   - Potential media backlinks (news.com.au, SBS, etc.)
+
+5. **Local News Coverage**
+   - Pitch story: "Australian Creates Free Mosque Finder to Help Muslim Community"
+   - Target: Community newspapers, SBS, multicultural media
+
+---
+
+**End of Backlink Building Guide**
+
+For strategy overview, see [docs/backlink-strategy.md](./docs/backlink-strategy.md)
+
+---
+
+## Value Exchange Implementation Guide
+
+> **Added:** October 18, 2025
+> **Strategy Overview:** See [docs/value-exchange-strategy.md](./docs/value-exchange-strategy.md)
+> **Purpose:** Earn backlinks + social sharing through genuine value delivery to mosques
+> **Core Principle:** Lead with service, not with ask
+
+---
+
+### Implementation 1: Verified Profile + Badge + Analytics
+
+**Step 1: Create Mosque Profile Template (2-3 hours once)**
+
+Design dedicated profile page with these sections:
+- Hero section: Mosque name, photo, "Verified" badge
+- Essential info: Address, phone, email, website, prayer times
+- Interactive map: Google Maps embed with directions button
+- Photo gallery: 4-6 high-quality images
+- Services offered: Jummah, weekend school, halal certification, etc.
+- Community description: 2-3 paragraphs about mosque's history/mission
+
+**Technical Implementation:**
+```typescript
+// Create new page: src/pages/MosqueProfile.tsx
+// URL structure: /mosques/[mosque-slug]
+// Example: /mosques/holland-park-mosque
+
+interface MosqueProfile {
+  name: string;
+  slug: string;
+  address: string;
+  phone: string;
+  email: string;
+  website: string;
+  prayer_times: PrayerTimesSchedule;
+  photos: string[];
+  services: string[];
+  description: string;
+  verified: boolean;
+  partner_organizations: Partner[];
+}
+```
+
+**Step 2: Design "Find Us on Find My Mosque" Badge (1 hour once)**
+
+Create 3 badge variations:
+- Small (120x40px): For footer areas
+- Medium (180x60px): For sidebar widgets
+- Large (240x80px): For prominent page sections
+
+**Badge Design Elements:**
+- Islamic Green background (#059669)
+- White text: "Find Us on Find My Mosque"
+- Small mosque icon (optional)
+- Rounded corners (modern, friendly)
+
+**HTML Embed Code:**
+```html
+<!-- Small Badge -->
+<a href="https://findmymosque.org/mosques/[mosque-slug]"
+   target="_blank" rel="noopener">
+  <img src="https://findmymosque.org/badges/badge-small.png"
+       alt="Find us on Find My Mosque"
+       width="120" height="40" />
+</a>
+
+<!-- Medium Badge -->
+<a href="https://findmymosque.org/mosques/[mosque-slug]"
+   target="_blank" rel="noopener">
+  <img src="https://findmymosque.org/badges/badge-medium.png"
+       alt="Find us on Find My Mosque"
+       width="180" height="60" />
+</a>
+```
+
+**Step 3: Build Monthly Analytics Report (2 hours once)**
+
+**Metrics to Track (via Google Analytics):**
+- Profile page views (monthly total)
+- Unique visitors to profile
+- "Get Directions" clicks
+- "Visit Website" clicks
+- Search queries leading to mosque (top 5)
+
+**Report Format (1-page PDF):**
+```
+[Mosque Name] - Monthly Visibility Report
+Month: [Month Year]
+
+📊 Profile Performance:
+- 342 people viewed your profile
+- 89 clicked "Get Directions"
+- 45 visited your website
+- 23 called your phone number
+
+🔍 How People Found You:
+1. "mosques near [suburb]" - 120 searches
+2. "friday prayer [city]" - 67 searches
+3. "[mosque name]" - 55 searches
+
+💡 Insight: Most visitors search on Friday mornings (9-11am)
+
+Generated by Find My Mosque | findmymosque.org
+```
+
+**Automation:**
+- Google Analytics API → Pull data monthly
+- Google Sheets template → Auto-populate metrics
+- Export as PDF → Email to mosque admin
+
+**Step 4: Outreach Email Template**
+
+**Subject:** Free Verified Profile for [Mosque Name] on Find My Mosque
+
+**Body:**
+```
+Assalamu Alaikum [Mosque Admin Name],
+
+I'm Zubair, founder of Find My Mosque - Australia's largest mosque directory with 340+ locations.
+
+I'd like to offer [Mosque Name] a **free verified profile** on our platform. This includes:
+
+✅ Dedicated profile page with your address, map, prayer times, and photos
+✅ "Find Us on Find My Mosque" badge you can add to your website (drives more visitors)
+✅ Monthly analytics report showing how many people found your mosque online
+
+Here's what your profile would look like: [Include screenshot or demo link]
+
+**What You Get:**
+- Enhanced online presence (professional directory listing)
+- Data insights (finally know how many people search for your mosque)
+- Community visibility badge (shows trust + credibility)
+
+**What I Need from You:**
+- 5-10 minutes to review profile info (I'll pre-fill from Google)
+- 2-3 high-quality photos of your mosque (optional)
+- Approval to mark profile as "Verified"
+
+Once live, I'll send you:
+1. Your unique profile link to share on Facebook/WhatsApp
+2. Badge embed code for your website (optional but recommended)
+3. First monthly report (after 30 days)
+
+Would you be interested? I can have your profile live within 48 hours of your confirmation.
+
+JazakAllah Khair,
+Zubair
+Find My Mosque
+contact@findmymosque.org
+findmymosque.org
+```
+
+---
+
+### Implementation 2: Community Partner Integration Hub
+
+**Step 1: Research Mosque Partners (1-2 hours per mosque)**
+
+**Where to Find Partner Info:**
+- Mosque Facebook page: Look for tagged organizations in posts
+- Mosque website: "Community" or "Partnerships" sections
+- Google search: "[Mosque name] + Islamic Relief" or "+ community projects"
+- Local news: Search "[Mosque name] + charity" or "+ volunteer"
+
+**Common Partner Types:**
+- Charities: Islamic Relief Australia, Red Cross, food banks
+- Educational: Weekend Islamic schools, university ISocs
+- Interfaith: Local interfaith councils, Harmony Day events
+- Government: Local city councils, multicultural centers
+- Youth: Scout groups, sports clubs, mentorship programs
+
+**Step 2: Create Partner Section on Profile (30 mins per mosque)**
+
+**Design Layout:**
+```
+[Mosque Profile Page]
+
+📍 About | 📅 Prayer Times | 🤝 Community Partners
+
+Community Partners
+[Mosque Name] proudly collaborates with these organizations to serve our community:
+
+[Partner Logo 1] [Partner Logo 2] [Partner Logo 3]
+Islamic Relief AU  Red Cross Sydney  Brisbane Council
+
+Active Projects:
+• Winter Food Bank (with Islamic Relief) - Serving 200 families monthly
+• Interfaith Dialogue Series (with Brisbane Council) - Quarterly events
+• Youth Mentorship Program (with Logan Youth Services) - 30 participants
+
+[View All Projects →]
+```
+
+**Step 3: Outreach to Partners (After Mosque Approves)**
+
+**Email to Partner Organizations:**
+
+**Subject:** Featured Partnership: [Mosque Name] + [Partner Org] on Find My Mosque
+
+**Body:**
+```
+Dear [Partner Organization] Team,
+
+I'm Zubair from Find My Mosque, Australia's largest mosque directory.
+
+We're showcasing [Mosque Name]'s community partnerships on their verified profile, and your collaboration is prominently featured:
+
+[Link to mosque profile showing partner section]
+
+**What This Means for You:**
+✓ Free visibility to 5,000+ monthly Muslim community visitors
+✓ Backlink to your website from our platform (SEO benefit)
+✓ Recognition for your interfaith/community work
+
+**Small Request:**
+Would you consider adding a reciprocal link to our directory on your "Community Partners" or "Resources" page?
+
+Suggested link text: "Find mosques across Australia at findmymosque.org"
+
+This helps us continue providing this free service to the Muslim community.
+
+Here's our partner badge if helpful: [Badge embed code]
+
+Thank you for your community work with [Mosque Name]!
+
+Best regards,
+Zubair
+Find My Mosque
+```
+
+**Result:** Mosque links to profile → Partner sees feature → Partner links back (backlink triangle)
+
+---
+
+### Implementation 3: Volunteer & Campaign Integration
+
+**Step 1: Build Volunteer Submission Form (2 hours once)**
+
+**Google Form Fields:**
+- Mosque Name
+- Campaign Title (e.g., "Ramadan Food Bank 2026")
+- Campaign Type (Charity, Education, Youth, Interfaith, Other)
+- Description (150 words max)
+- Dates (Start/End)
+- Contact Email
+- Website Link (if campaign has dedicated page)
+- Photo Upload (optional)
+
+**Form Submission Flow:**
+1. Mosque admin fills form
+2. Auto-email to you for moderation
+3. Approve → Campaign appears on site within 24 hours
+4. Auto-email confirmation to mosque with shareable link
+
+**Step 2: Create "Volunteer with Local Mosques" Page (2 hours once)**
+
+**Page URL:** /volunteer-opportunities
+
+**Content:**
+```
+🤲 Volunteer with Local Mosques
+
+Support your community through mosque-led initiatives across Australia.
+
+[Filter by State] [Filter by Type]
+
+📦 Sydney: Lakemba Mosque Food Drive
+   Islamic Relief collaboration - Dec 1-15, 2025
+   Help pack and distribute 500 food boxes
+   [Learn More →] [Share on Facebook]
+
+🎓 Melbourne: Coburg Youth Mentorship
+   Logan Youth Services partnership - Ongoing
+   Mentor Muslim youth (ages 13-18)
+   [Learn More →] [Share on WhatsApp]
+
+[View All Opportunities →]
+```
+
+**Step 3: Promote to Mosques**
+
+**Email Template:**
+
+**Subject:** Free Volunteer Recruitment Tool for [Mosque Name]
+
+**Body:**
+```
+Assalamu Alaikum,
+
+Struggling to find volunteers for your Ramadan food bank or youth programs?
+
+Find My Mosque now offers a **free volunteer recruitment directory**:
+
+✅ List your charity drives, events, and campaigns
+✅ Reach 5,000+ Muslims actively searching for volunteer opportunities
+✅ Simple 5-minute form submission - we handle the rest
+
+Example listings:
+[Screenshot of 2-3 volunteer campaigns]
+
+**How It Works:**
+1. Fill our quick form: [Google Form link]
+2. We publish within 24 hours
+3. Share the link on your Facebook/WhatsApp: "Volunteer via Find My Mosque"
+
+**What You Get:**
+- Free recruitment tool (normally $50-100/month on volunteer platforms)
+- Broader reach beyond your existing congregation
+- Social media shareable links (boost your campaign visibility)
+
+Ready to list your next campaign?
+
+JazakAllah Khair,
+Zubair
+```
+
+**Backlink Strategy:**
+- Mosque shares campaign link on social media (mentions your site)
+- Mosque website links: "View our volunteer opportunities at findmymosque.org"
+- Volunteers comment/share, creating organic social proof
+
+---
+
+### Implementation 4: Digital Presence Upgrade (Premium)
+
+**Offer:** 30-minute virtual session helping mosques optimize their Google Business Profile
+
+**Why Mosques Need This:**
+- Most mosque admins are volunteers with limited tech skills
+- Google visibility directly impacts Friday prayer attendance + donations
+- Professional help normally costs $200-500 from agencies
+
+**Step 1: Create "Mosque Digital Checklist" PDF (1 hour once)**
+
+**Checklist Contents:**
+```
+🕌 Mosque Digital Presence Checklist
+
+Google Business Profile Optimization:
+□ Verify ownership (if not already claimed)
+□ Add high-quality exterior photo (daytime, clear)
+□ Add interior photos (prayer hall, wudu area, shoe racks)
+□ Update business hours (including Friday Jummah time)
+□ Add services: "Place of Worship", "Community Center"
+□ Write description with keywords: "mosque in [suburb]", "Friday prayer", "Islamic center"
+□ Add phone number + website link
+□ Enable messaging (respond within 24 hours)
+
+Website Quick Fixes:
+□ Add mosque to homepage title: "[Name] - Mosque in [Suburb], [City]"
+□ Include address + phone in footer (every page)
+□ Add Google Maps embed on Contact page
+□ List prayer times prominently (homepage or dedicated page)
+
+Social Media:
+□ Post consistently (2-3x per week minimum)
+□ Use location tags on Facebook/Instagram
+□ Respond to messages within 24 hours
+□ Share community events + volunteer opportunities
+
+Generated by Find My Mosque | findmymosque.org
+```
+
+**Step 2: Schedule 30-Min Sessions (Limit to 5-10 Mosques)**
+
+**Session Agenda:**
+1. Screen share: Review current Google Business Profile (10 mins)
+2. Live edits: Upload photos, rewrite description, add services (15 mins)
+3. Quick wins: Enable messaging, update hours (3 mins)
+4. Give checklist PDF for ongoing maintenance (2 mins)
+
+**Who to Target:**
+- Mosques with featured page partnerships (high-value relationships)
+- Large mosques with poor Google presence (biggest impact)
+- Mosques that responded positively to verified profile offer
+
+**Step 3: Post-Session Follow-Up (Ask for Backlink)**
+
+**Email Template (Send 1 Week After Session):**
+
+**Subject:** Quick Follow-Up: [Mosque Name] Google Optimization
+
+**Body:**
+```
+Assalamu Alaikum [Admin Name],
+
+Hope you're well! Just checking in after our Google optimization session last week.
+
+I noticed [Mosque Name] is now showing up much better in Google searches - great job implementing the checklist! 🎉
+
+**Quick Favor:**
+Since our session helped improve your online visibility, would you consider adding a link to Find My Mosque on your website's "Resources" or "Contact Us" page?
+
+Suggested link: "Find mosques across Australia at findmymosque.org"
+
+This helps us continue offering free digital support to mosques like yours.
+
+Here's a badge you can use (optional): [Badge embed code]
+
+JazakAllah Khair for your time!
+
+Zubair
+Find My Mosque
+```
+
+**Expected Success Rate:** 70-80% (high because you delivered tangible value first)
+
+---
+
+### Implementation 5: Featured Mosque Showcase (Holland Park Model)
+
+**Already Built - Now Scale It**
+
+You've created the Holland Park demo with 4 pages:
+1. Main landing page
+2. Donations page
+3. Events page
+4. Community partnerships page
+
+**Scaling Strategy:**
+
+**Step 1: Test with Holland Park First**
+- Email demo preview to mosque admin
+- Schedule 15-min call to walk through pages
+- Make any requested customizations
+- Get written approval to launch
+
+**Step 2: If Successful, Create Template System**
+
+**Reusable Components:**
+- Hero section (swap mosque name, photo, tagline)
+- About section (swap mosque history, mission)
+- Services section (customizable list)
+- Events section (pull from database or manual entry)
+- Partnerships section (research per mosque)
+- Donation section (integrate mosque's existing payment system or leave as contact form)
+
+**Time Per Mosque:** 4-6 hours (much faster with template)
+
+**Step 3: Outreach Email (Use Template 3 from Backlink Guide)**
+
+Already created in instructions.md under "Mosque Partnership Pitch"
+
+**Step 4: Post-Launch Promotion Request**
+
+**Email Template (Send Day After Launch):**
+
+**Subject:** 🎉 Your Featured Page is Live! [Mosque Name]
+
+**Body:**
+```
+Assalamu Alaikum [Admin Name],
+
+Exciting news - your featured page is now live!
+
+🕌 View Here: https://findmymosque.org/mosques/[mosque-slug]
+
+**Next Steps to Maximize Impact:**
+
+1️⃣ Link from Your Website
+   Add this link to your homepage or navigation menu:
+   "Visit Our Official Page" → [Your profile URL]
+
+2️⃣ Share on Facebook
+   Suggested post:
+   "We're excited to announce our new official page on Find My Mosque!
+   View our story, upcoming events, and community partnerships here: [Link]
+
+   #[MosqueName] #MuslimCommunity #[City]Australia"
+
+3️⃣ Share in WhatsApp Community Groups
+   Copy-paste this message:
+   "Assalamu Alaikum! Check out our new page showcasing our mosque's
+   programs and community work: [Link]"
+
+4️⃣ Newsletter/Bulletin Mention
+   Include in your next bulletin:
+   "Visit our new official page at findmymosque.org/[mosque-slug] to
+   see our story, donate, and register for upcoming events."
+
+I'm happy to help with any updates or changes to the page anytime!
+
+JazakAllah Khair for the partnership.
+
+Zubair
+Find My Mosque
+```
+
+---
+
+### Value Exchange Email Templates - Quick Reference
+
+**Template 1: Verified Profile Offer**
+- Subject: "Free Verified Profile for [Mosque Name]"
+- Use: Initial outreach to any mosque
+- Expected Response Rate: 30-40%
+
+**Template 2: Partner Integration Follow-Up**
+- Subject: "Featured Partnership: [Mosque] + [Partner Org]"
+- Use: After mosque approves profile, reach out to partners
+- Expected Response Rate: 50-60% (partners love free visibility)
+
+**Template 3: Volunteer Campaign Invitation**
+- Subject: "Free Volunteer Recruitment Tool for [Mosque Name]"
+- Use: Mosques with active charity/youth programs
+- Expected Response Rate: 20-30%
+
+**Template 4: Digital Upgrade Offer**
+- Subject: "Free 30-Min Session: Boost Your Mosque's Google Visibility"
+- Use: High-value mosques, post verified profile setup
+- Expected Response Rate: 40-50% (limit to 5-10 offers)
+
+**Template 5: Featured Showcase Pitch**
+- Subject: "Partnership Opportunity - Free Featured Mosque Page"
+- Use: Large mosques with existing online presence
+- Expected Response Rate: 20-30% (use Holland Park demo as proof)
+
+---
+
+### Badge Design Specifications
+
+**Small Badge (120x40px):**
+```
+[Islamic Green background #059669]
+[White text: "Find Us on Find My Mosque"]
+[Small mosque icon on left]
+[Border radius: 4px]
+```
+
+**Medium Badge (180x60px):**
+```
+[Islamic Green background #059669]
+[White text: "Find Us on"]
+[Larger text: "Find My Mosque"]
+[Mosque icon on left]
+[Border radius: 6px]
+```
+
+**Large Badge (240x80px):**
+```
+[Gradient: Light green to Islamic Green]
+[White text: "🕌 Find Us on Find My Mosque"]
+[Subtitle: "Australia's Mosque Directory"]
+[Border radius: 8px]
+[Subtle shadow for depth]
+```
+
+**Design Tools:**
+- Canva (free): Use "Custom Dimensions" → 240x80px
+- Figma (free): Professional designers can refine
+- CSS (if embedding SVG): Fully customizable in code
+
+**Badge Files to Create:**
+- `public/badges/badge-small.png` (120x40px)
+- `public/badges/badge-medium.png` (180x60px)
+- `public/badges/badge-large.png` (240x80px)
+- `public/badges/badge-small.svg` (vector, scalable)
+
+---
+
+### Monthly Analytics Report - Technical Setup
+
+**Option 1: Google Analytics API (Automated)**
+
+```javascript
+// scripts/generate-mosque-reports.js
+// Run monthly via cron job
+
+const { google } = require('googleapis');
+const analytics = google.analytics('v3');
+
+async function generateReport(mosqueSlug) {
+  const response = await analytics.data.ga.get({
+    'ids': 'ga:YOUR_VIEW_ID',
+    'start-date': '30daysAgo',
+    'end-date': 'yesterday',
+    'metrics': 'ga:pageviews,ga:users',
+    'dimensions': 'ga:pagePath',
+    'filters': `ga:pagePath==/mosques/${mosqueSlug}`
+  });
+
+  // Parse data and generate PDF
+  return {
+    pageviews: response.data.totalsForAllResults['ga:pageviews'],
+    users: response.data.totalsForAllResults['ga:users']
+  };
+}
+```
+
+**Option 2: Manual (Simple Start)**
+
+1. Open Google Analytics on last day of month
+2. Navigate to: Behavior > Site Content > All Pages
+3. Filter by: /mosques/[mosque-slug]
+4. Note: Pageviews, Unique Pageviews, Avg Time on Page
+5. Copy into Google Sheets template
+6. Export as PDF
+7. Email to mosque admin
+
+**Time: 5-10 minutes per mosque manually, 0 mins if automated**
+
+---
+
+### Success Tracking Metrics
+
+**Per-Mosque Metrics:**
+- Profile created: Yes/No
+- Badge installed: Yes/No (check mosque website source code)
+- Monthly report sent: Count
+- Backlink secured: Yes/No (check Google Search Console)
+- Social shares: Count (track Facebook/WhatsApp mentions)
+
+**Overall Campaign Metrics:**
+- Mosques with profiles: X / 342
+- Backlinks from badges: X
+- Backlinks from partners: X
+- Social media shares: X
+- Organic traffic from mosque referrals: X visitors/month
+
+**Track in:** `backlink-progress-tracker.txt` under new section "Value Exchange Partnerships"
+
+---
+
+**End of Value Exchange Implementation Guide**
+
+For strategy overview, see [docs/value-exchange-strategy.md](./docs/value-exchange-strategy.md)
+
+---
+
+## Mobile Navigation Bug Fixes
+
+### October 19, 2025 - Browse by State Dropdown Fix
+
+**Problem:** Mobile "Browse by State" dropdown was not working when users clicked on state options. Navigation failed completely on mobile devices.
+
+**Root Causes Identified:**
+1. React Router `navigate()` function not working in mobile hamburger menu
+2. Dropdown positioning issues causing NSW and Victoria to be cut off above viewport
+3. Modal overflow positioning calculations failing on mobile browsers
+
+**Solution Implemented:**
+Created dedicated mobile "Browse by State" button in navbar (separate from hamburger menu) with proper positioning.
+
+**Technical Changes in `src/components/TransparentNavbar.tsx`:**
+
+1. **New Mobile Button in Navbar** (lines 61-104)
+   - Added between hamburger menu and desktop navigation
+   - Only visible on mobile (`md:hidden`)
+   - Uses teal-600 theme matching homepage design
+
+2. **Dropdown Positioning**
+   - Container: `relative` positioning
+   - Dropdown: `absolute top-full right-0` (appears directly below button)
+   - Max height: `60vh` with `overflow-y-auto` for scrolling
+   - Z-index: 999999 to ensure visibility above all content
+
+3. **Click-to-Close Logic**
+   - `stopPropagation()` on dropdown prevents overlay clicks from closing menu
+   - State management with `isMobileCityMenuOpen` boolean
+   - Updated `useEffect` to handle click-outside detection for new button
+
+4. **Removed from Hamburger Menu**
+   - Deleted "Browse by State" from mobile hamburger menu (was causing navigation failures)
+   - Hamburger now only contains: Home, Halal Markets, FAQ, Imam Profiles, Feedback
+
+**Design Specifications:**
+- Button: teal-600 background, white text, rounded-lg, shadow-lg
+- Dropdown header: teal-600 with "Select a State" title
+- Dropdown items: white background, hover:teal-600, text-gray-900
+- Border: 4px solid teal-800 (dark green)
+- Font: font-serif for headers, font-medium for items (matches homepage)
+
+**Testing Results:**
+- ✅ All 6 states visible and clickable (NSW, Victoria, Queensland, WA, SA, Tasmania)
+- ✅ Desktop navigation unchanged and working
+- ✅ Mobile dropdown appears/closes correctly
+- ✅ State navigation works on mobile (confirmed in Chrome DevTools + user testing)
+
+**Files Modified:**
+- `src/components/TransparentNavbar.tsx` (52 insertions, 36 deletions)
+
+**Deployed:** Commit f66ba00, merged to main, deployed to findmymosque.org
+
+**Key Learning:**
+React Router's `navigate()` function in mobile hamburger menus can fail on mobile browsers. Solution: Use dedicated buttons with `<a href>` tags or separate positioning for critical mobile navigation actions.
 
 ---
 

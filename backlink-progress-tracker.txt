@@ -1,0 +1,149 @@
+BACKLINK PROGRESS TRACKER - Find My Mosque
+Campaign Duration: November 2025 - December 2025
+Target: 30-50 quality backlinks
+Last Updated: October 18, 2025
+
+================================================================================
+INSTRUCTIONS:
+- Update this file after EVERY outreach email sent
+- Log responses within 24 hours
+- Review weekly to prioritize follow-ups
+- Monthly: Export summary to marketing-strategy-project.md
+================================================================================
+
+[COMPLETED - Date | Website | DA | Status | Notes]
+---
+(No backlinks secured yet - campaign starts November 2025)
+
+
+[PENDING - Date Sent | Website | Expected DA | Status | Follow-up Date]
+---
+(Outreach to begin Week 1 of November)
+
+
+[REJECTED/NO RESPONSE]
+---
+(Track failed attempts here to avoid repeat outreach)
+
+
+================================================================================
+WEEKLY PROGRESS SUMMARY
+================================================================================
+
+Week 1 (Nov 1-7, 2025):
+- Islamic Directories: [ ] AFIC, [ ] ANIC, [ ] ICNSW, [ ] ICWA
+- Business Directories: [ ] Local Search, [ ] Pure Local, [ ] Yelp
+- Total Outreach: 0
+- Backlinks Secured: 0
+- Pending Responses: 0
+
+Week 2 (Nov 8-14, 2025):
+- Islamic Directories: [ ] UMA, [ ] AAM, [ ] Darulfatwa, [ ] AussieMuslims
+- Business Directories: [ ] True Local, [ ] Hotfrog, [ ] Search Frog
+- Total Outreach: 0
+- Backlinks Secured: 0
+- Pending Responses: 0
+
+Week 3 (Nov 15-21, 2025):
+- University Societies: [ ] USYD ISoc, [ ] UNSW ISoc, [ ] Melb ISoc
+- Featured Mosque Partnerships: [ ] Holland Park pitch sent
+- Total Outreach: 0
+- Backlinks Secured: 0
+- Pending Responses: 0
+
+Week 4 (Nov 22-28, 2025):
+- Featured Mosque Partnerships: [ ] Sydney mosque, [ ] Melbourne mosque
+- Halal Business Outreach: [ ] ANIC Halal, [ ] WAHA
+- Total Outreach: 0
+- Backlinks Secured: 0
+- Pending Responses: 0
+
+Week 5-8 (Dec 2025):
+- Scale mosque outreach (342 database)
+- University societies follow-ups
+- Content promotion (Halal Supermarkets page)
+
+================================================================================
+MONTHLY SUMMARY
+================================================================================
+
+November 2025:
+Total Outreach Emails Sent: 0
+Backlinks Secured: 0
+Average Response Rate: 0%
+Top Quality Links: (None yet)
+Lessons Learned: (Campaign starts Nov 1)
+
+December 2025:
+(To be updated)
+
+================================================================================
+CAMPAIGN TOTALS (Updated Weekly)
+================================================================================
+
+Total Backlinks Secured: 0 / 30-50 target
+Total Pending Responses: 0
+Total Rejected/No Response: 0
+Average DA of Secured Links: N/A
+Estimated Monthly Traffic from Backlinks: 0 visitors
+
+================================================================================
+NOTES & FOLLOW-UP ACTIONS
+================================================================================
+
+Next Week Priorities:
+1. Send 4 Islamic directory submissions (Week 1 targets)
+2. Submit to 3 high-DA business directories
+3. Track responses in Google Sheets or email folder
+
+Questions/Blockers:
+(None currently)
+
+Ideas for Next Month:
+- After securing first 10 backlinks, consider content-driven approach
+- Track which outreach templates get best response rates
+- Consider phone follow-ups for high-priority mosques
+
+================================================================================
+QUICK REFERENCE - TARGET LISTS
+================================================================================
+
+ISLAMIC DIRECTORIES (Priority 1):
+✓ = Submitted | ⏳ = Pending | ✗ = Rejected
+
+[ ] AFIC - afic.com.au (DA ~42)
+[ ] ANIC - anic.org.au (DA ~40)
+[ ] ICNSW - icnsw.org.au (DA ~35)
+[ ] ICWA - islamiccouncilwa.com.au (DA ~30)
+[ ] UMA - uma.org.au (DA ~30)
+[ ] AAM - australianmuslims.org.au (DA ~28)
+[ ] Darulfatwa - darulfatwa.org.au (DA ~25)
+[ ] AussieMuslims - aussiemuslims.net (DA ~20)
+
+BUSINESS DIRECTORIES (Priority 2):
+[ ] Local Search - localsearch.com.au (DA 51)
+[ ] Pure Local - purelocal.com.au (DA 50)
+[ ] Yelp Australia - yelp.com.au (DA 90+)
+[ ] True Local - truelocal.com.au (DA ~45)
+[ ] Hotfrog - hotfrog.com.au (DA ~60)
+[ ] Search Frog - searchfrog.com.au (DA 35)
+[ ] StartLocal - startlocal.com.au (DA ~30)
+[ ] Brownbook - brownbook.net (DA ~50)
+
+UNIVERSITY ISLAMIC SOCIETIES (Priority 3):
+[ ] USYD Islamic Society
+[ ] UNSW Islamic Society
+[ ] UMelb Islamic Society
+[ ] Monash Islamic Society
+[ ] UQ Muslim Students Association
+
+FEATURED MOSQUE PARTNERSHIPS (Priority 4):
+[ ] Holland Park Mosque (demo built, ready to pitch)
+[ ] Large Sydney mosque (TBD based on response)
+[ ] Large Melbourne mosque (TBD)
+[ ] Perth mosque (TBD)
+[ ] Adelaide mosque (TBD)
+
+================================================================================
+End of Tracker - Update After Every Action Taken
+================================================================================

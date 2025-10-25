@@ -1,0 +1,22 @@
+SOURCE,TRAFFIC,CTR,CONVERSION %,TOTAL USERS,COST,COST PER USER,TIME (HRS),STATUS,CONFIRMED,CONFIRMED USERS,NOTES
+r/australia,50000,2%,15%,150,$0,$0.00,2,Friend,No,,"Post feedback request with humble tone"
+r/sydney,30000,3%,20%,180,$0,$0.00,1.5,Friend,No,,"Local angle - Sydney mosques"
+r/melbourne,25000,3%,20%,150,$0,$0.00,1.5,Friend,No,,"Local angle - Melbourne mosques"
+r/islam,40000,5%,25%,500,$0,$0.00,2,Coordinated,No,,"Tech showcase for Muslim community"
+Facebook Groups,20000,4%,18%,144,$0,$0.00,8,Coordinated,No,,"5-7 Australian Muslim community groups"
+Quora Answers,100000,1%,10%,100,$0,$0.00,15,Self,No,,"15-20 answers about mosques in Australia"
+Google Ads (SEM),10000,8%,30%,240,$150,$0.63,3,Bought,No,,"Keywords: mosque near me, prayer times"
+Facebook Ads,30000,3%,20%,180,$100,$0.56,4,Bought,No,,"Target: Australian Muslims 20-50 years"
+Mosque Emails,5000,15%,40%,300,$0,$0.00,20,Emailing,No,,"50 mosques, personalized requests"
+Muslim News Sites,15000,5%,25%,188,$0,$0.00,6,Friend,No,,"The Muslim Vibe, Crescent Times, ISRA"
+Islamic Bloggers,8000,10%,30%,240,$0,$0.00,10,Coordinated,No,,"Australian Muslim lifestyle bloggers"
+SEO (Organic),50000,100%,12%,6000,$0,$0.00,40,Self,Yes,TBD,"Continue Phase 3 - city landing pages"
+Prayer Time Tools,20000,15%,35%,1050,$500,$0.48,80,Self,No,,"Build prayer calculator + qibla finder"
+Google My Business,100000,5%,8%,400,$0,$0.00,5,Self,No,,"Claim and optimize GMB listing"
+YouTube Reviews,12000,8%,22%,211,$0,$0.00,12,Friend,No,,"5 Australian Muslim YouTubers"
+Islamic Event Flyers,2000,25%,15%,75,$50,$0.67,6,Bought,No,,"QR codes at mosques and events"
+WhatsApp Groups,3000,40%,25%,300,$0,$0.00,4,Friend,No,,"Share in active Muslim WhatsApp groups"
+Mosque Partnerships,8000,20%,50%,800,$0,$0.00,30,Coordinated,No,,"Direct partnerships with 20-30 mosques"
+Referral Program,15000,10%,20%,300,$0,$0.00,40,Self,No,,"Build share feature with incentives"
+,,,,,,,,,,,
+TOTALS,543000,,,10508,$800,$0.08,289,,,,

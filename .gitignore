@@ -43,3 +43,10 @@ Mosque photos/
 AUDIT_*.md
 DATABASE_STRUCTURE.md
 SUPABASE_DATABASE_AUDIT_REPORT.md
+
+# Private mosque contact data (emails, phone numbers)
+docs/campaign-emails-ready.csv
+docs/campaign-email-list.txt
+docs/campaign-test-batch.csv
+docs/email-extraction-2025-10-25.csv
+docs/website_emails_test.csv

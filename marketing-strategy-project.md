@@ -1,471 +1,345 @@
 # Find My Mosque - Marketing Strategy & Execution Plan
 
-> **Last Updated:** October 10, 2025
-> **Purpose:** Cold email outreach to mosques across Australia
-> **Goal:** Promote findmymosque.org and drive mosque registrations
-> **Timeline:** 5-day execution plan
+> **Last Updated:** October 18, 2025
+> **Current Focus:** Featured Mosque Partnership Strategy + Bullseye Framework
+> **Goal:** Secure mosque partnerships via demo pages, find core distribution channel
 
 ---
 
-## 🎯 Marketing Objective
+## 📋 Active Campaigns
 
-**Primary Goal:** Contact 300+ mosques across Australia via cold email to:
-- Introduce Find My Mosque platform
-- Encourage mosque profile verification/updates
-- Drive traffic to findmymosque.org
-- Build relationships with mosque administrators
+### 🔗 Backlink Building Campaign (Nov - Dec 2025) **[NEW]**
+**Status:** 🟢 Strategy Ready to Launch
+**Method:** Organic outreach to Australian Islamic & local directories
+**Goal:** Acquire 30-50 quality backlinks in 2 months
+**Budget:** $0
+**Time:** 4-5 hours/week
 
-**Target Audience:** Mosque administrators, imams, and community leaders
+📖 **Full Strategy:** [docs/backlink-strategy.md](./docs/backlink-strategy.md)
+📊 **Tracker:** [backlink-progress-tracker.txt](./backlink-progress-tracker.txt)
+📚 **Templates:** [instructions.md#backlink-building-guide](./instructions.md#backlink-building-guide)
 
-**Success Metrics:**
-- Email delivery rate: >90%
-- Open rate: 25-35%
-- Response rate: 5-10%
-- Website traffic increase: 50-100%
-- Mosque profile updates: 20-30 new submissions
+### 🌟 Featured Mosque Partnership (Oct 18, 2025 - Ongoing)
+**Status:** 🟢 Demo Ready for Pitch
+**Strategy:** Build proof-of-concept pages to pitch partnership value
+**Goal:** Secure 5-10 mosque partnerships for featured listings + backlinks
+
+### 🎯 Bullseye Framework (Oct 17 - Nov 16, 2025)
+**Status:** 🟢 Framework Ready
+**Method:** Traction book's 3-ring approach
+**Goal:** Test 7 channels, identify core channel by Week 5
+
+### 🔴 Week 1: Community Engagement (Oct 13-19, 2025)
+**Status:** ⏸️ Delayed (Focused on mosque partnership demo + backlink strategy)
+**Platforms:** Reddit, Facebook, Quora
+**Goal:** 500-1,000 visitors, 25-50 feedback submissions
+
+📖 **Full Framework:** [docs/bullseye-marketing-strategy.md](./docs/bullseye-marketing-strategy.md)
 
 ---
 
 ## 📅 Daily Progress Tracker
 
-### ✅ Day 2b Complete - October 11, 2025 (Afternoon)
+### ✅ October 18, 2025 (PM) - Backlink Building & Value Exchange Strategies
 
-**Status:** Free Puppeteer Scraper Built & Running!
-**Duration:** 4 hours (build + test + launch)
-**Cost:** $0 (free alternative to Apify)
+**Status:** Comprehensive 2-month backlink campaign strategy completed
+**Duration:** 6 hours
+**Cost:** $0
 
-**Accomplishments:**
-1. ✅ Created `marketing_prospects` database table (337 mosques)
-2. ✅ Built Puppeteer email scraper (free, open source)
-3. ✅ Imported all 337 mosques to Supabase
-4. ✅ Tested on 5 websites (1 verified email, 20% rate)
-5. ✅ Launched full extraction (211 websites, running 2-3 hours)
+**Major Accomplishments:**
+1. ✅ **Backlink Strategy Document** - 8-week execution plan targeting 30-50 quality backlinks
+2. ✅ **Value Exchange Framework** - 5 integration ideas to earn backlinks through service delivery
+3. ✅ **Target Research** - 8 Islamic directories, 50+ business directories, 15 university societies identified
+4. ✅ **Email Templates** - 5 ready-to-use templates with expected response rates
+5. ✅ **Progress Tracker** - Simple text-based tracking system created
 
-**Test Results:**
-- Websites tested: 5
-- Accessible: 3 (60%)
-- Emails found: 1 verified
-- Success rate: 20% (normal for email extraction)
+**Backlink Campaign Overview:**
+- **Goal:** 30-50 backlinks from Australian Islamic & local sources (Nov-Dec 2025)
+- **Budget:** $0 (organic outreach only)
+- **Week 1-2:** Directory submissions (15-20 backlinks expected)
+- **Week 3-4:** Content + partnerships (2-5 backlinks)
+- **Week 5-6:** Scale partnerships (8-12 backlinks)
+- **Week 7-8:** Mosque database outreach (10-15 backlinks)
 
-**Files Created:**
-- `supabase/migrations/20251011_create_marketing_prospects_table.sql`
-- `scripts/marketing/import-prospects.ts`
-- `scripts/marketing/scrape-emails.ts`
-- `scripts/marketing/test-scraper.ts`
-
-**Status:** 🔄 Full extraction running in background (check in 2-3h)
-
-**Expected Results:**
-- 40-70 verified emails (conservative)
-- All in `marketing_prospects` table
-- Ready for campaign export
-
-**Lessons Learned:**
-- Building custom solutions saves money ($0 vs $49/month)
-- 20% email extraction rate is industry standard
-- Phone numbers (232) provide backup contact method
-- Puppeteer gives full control over scraping process
-
-**Ready for Day 3:** ✅ Yes - Will review results and export emails
-
----
-
-### ✅ Day 2 Complete - October 11, 2025 (Morning)
-
-**Status:** Google Maps extraction COMPLETE, Pivoted to free solution
-**Duration:** 10 minutes (extraction) + planning
-**Cost:** ~$2 (Apify Google Maps scraping)
-
-**Accomplishments:**
-1. ✅ Successfully extracted 337 unique mosques from Google Maps
-2. ✅ Collected 211 website URLs (63% of mosques)
-3. ✅ Collected 232 phone numbers (69% of mosques)
-4. ✅ Organized by state: NSW (125), VIC (101), WA (48), QLD (28), SA (24), Others (11)
-5. ✅ Saved to `scripts/apify/data/raw/gmaps-results.json`
-
-**Challenge Encountered:**
-- Apify website scraping hit 8GB memory limit (free tier)
-- Scraping stopped after 6 batches of websites
-- Partial emails extracted but process incomplete
-
-**Solution - New Approach:**
-**Free Puppeteer-based email scraper** (zero additional cost!)
-- Create `marketing_prospects` Supabase table
-- Import all 337 mosques with full data (name, address, phone, website, state)
-- Build custom Puppeteer scraper with existing DNS validator
-- Scrape 211 websites locally (2-3 hours automated)
-- Expected result: 120-150 verified emails
-
-**Benefits of New Approach:**
-- ✅ Zero ongoing cost (vs $49/month Apify)
-- ✅ Full control over scraping process
-- ✅ Uses existing DNS validation
-- ✅ All data in Supabase for easy querying
-- ✅ Can pause/resume anytime
-
-**Next Steps:**
-1. Create `marketing_prospects` table migration
-2. Import 337 mosques to Supabase
-3. Build Puppeteer email scraper
-4. Run automated extraction (2-3 hours)
+**Value Exchange Ideas (Success Rates):**
+1. Verified Profile + Badge + Analytics (30-40% response)
+2. Partner Integration Hub (50-60% - unlocks 2-3 backlinks per mosque)
+3. Volunteer Campaign Integration (20-30%)
+4. Digital Presence Upgrade (70-80% after value delivery)
+5. Featured Showcase - Holland Park Model (20-30% initial, 100% after approval)
 
 **Files Created:**
-- `scripts/apify/data/raw/gmaps-results.json` (337 mosques, 176KB)
+- `docs/backlink-strategy.md` (1,956 tokens)
+- `docs/value-exchange-strategy.md` (998 tokens)
+- `backlink-progress-tracker.txt`
+- Updated `instructions.md` with implementation guides
 
-**Lessons Learned:**
-- Free tiers have limits - always have backup plans
-- 337 mosques is more than expected (200-300 estimate)
-- Phone numbers (232) are valuable alternative to emails
-- Custom solutions often better than paid services for one-time tasks
+**Tech Tools & Research:**
+- **WebSearch API:** Research Australian Islamic directories, business listings, university societies
+- **Ahrefs/Moz data:** Domain Authority ratings for target directories
+- **Google Analytics API:** Code snippets for automated monthly reports
 
-**Ready for Day 2b:** ✅ Yes - Puppeteer scraper implementation ready
+**Next Actions:**
+1. Design 3 badge sizes in Canva (120x40px, 180x60px, 240x80px)
+2. Create mosque profile template (TypeScript/React component)
+3. Build Google Sheets analytics report template
+4. Launch Week 1: Submit to 4 Islamic directories + 3 business directories
+
+**Status:** 🟢 Strategy complete, ready to launch November Week 1
 
 ---
 
-### ✅ Day 1 Complete - October 10, 2025
+### ✅ October 18, 2025 (AM) - Featured Mosque Demo Built (Holland Park)
 
-**Status:** Setup & Preparation COMPLETE
-**Duration:** 3 hours
-**Cost:** ~$0.20 (test extraction)
+**Status:** 4-page demo created for partnership pitch
+**Duration:** 4 hours | **Cost:** $0
+
+**Built:** Main landing, Donations, Events, Community Partnerships pages
+**Research:** 8 verified partnerships (SBS, Screen Australia, ISA Collective, etc.)
+**Design:** Islamic Green theme, inspired by bestdubai.com + The Smith Family
+**Git:** Isolated in `feature/holland-park-mosque-demo` branch
+**Tech:** WebSearch API, Chrome DevTools MCP, Python/Pillow
+
+**Status:** 🟢 Demo ready for Holland Park Mosque pitch
+
+---
+
+### ✅ October 17, 2025 - Bullseye Framework Implemented
+
+**Status:** Strategic marketing overhaul complete
+**Duration:** Full day (research + strategy + tools)
+**Cost:** $0
 
 **Accomplishments:**
-1. ✅ Installed dependencies (apify-client, tsx)
-2. ✅ Added Apify token to `.env` (secured)
-3. ✅ Ran database migration successfully
-4. ✅ Created `mosques_emails` table (RLS-protected, private)
-5. ✅ Tested extraction with 20 Sydney mosques
-6. ✅ Verified all systems working (database, Apify, email validation)
+1. ✅ Studied Traction book materials (5 documents on Bullseye, targeting blogs, testing)
+2. ✅ Created comprehensive Bullseye framework strategy (40+ pages)
+3. ✅ Built flexible testing spreadsheet with auto-formulas (19 channels)
+4. ✅ Identified 7 priority channels for 4-week testing phase
+5. ✅ Integrated Bullseye with existing Week 1/2 marketing plans
+6. ✅ Created 5 supporting documents (quick reference, instructions, definitions)
 
-**Test Results:**
-- Mosques found: 20
-- Websites checked: 5
-- Emails extracted: 1
-- Verification rate: 100%
-- Duration: 32 seconds
-- Issues: None
+**Key Insight from Traction Book:**
+"Most businesses get ZERO distribution channels to work. If you can get even a single distribution channel to work, you have a great business." - Peter Thiel
 
-**Files Created:**
-- 7 TypeScript modules (`scripts/apify/`)
-- Database migration (`supabase/migrations/20251010_create_mosques_emails_table.sql`)
-- Test scripts
+**Strategic Shift:**
+- Week 1/2 plan was already Bullseye testing (didn't know it!)
+- Added quantitative tracking: cost per user, ROI, scalability metrics
+- After 4 weeks of testing, will identify ONE core channel
+- Then focus 80% effort on that channel (not spread across many)
 
-**Lessons Learned:**
-- Email extraction rate ~20% in test (normal, many mosques use contact forms)
-- DNS MX validation works perfectly (100% free)
-- System is robust and production-ready
+**7 Priority Channels to Test:**
+1. Reddit/Facebook/Quora (Week 1) - $0
+2. Mosque Emails (Week 2) - $0
+3. Google Ads (Week 2) - $150
+4. Islamic News Sites (Week 2-3) - $0
+5. Facebook Ads (Week 3) - $100
+6. YouTube Influencers (Week 3-4) - $0-300
+7. Prayer Time Tool (Week 4 - optional) - $0-500
 
-**Ready for Day 2:** ✅ Yes - Full extraction can proceed anytime
+**Most Likely Winner:**
+Based on similar directory businesses: **SEO + Mosque Partnerships**
+- Organic search + backlinks from 342 mosques
+- Low cost, high scale, compounds over time
 
----
+**Tools Created:**
+- Testing spreadsheet (tracks traffic, CTR, conversion, cost per user)
+- Column definitions for easy tracking
+- Weekly update process guide
 
-## 🔄 Alternative Approach: Free Puppeteer Email Scraper
+**Next Actions:**
+- Import spreadsheet to Google Sheets
+- Launch Week 1 with proper tracking
+- Update spreadsheet weekly with real results
+- Week 5: BIG DECISION on core channel
 
-**Added:** October 11, 2025
-
-### Why the Pivot?
-
-Apify's free tier (8GB memory) proved insufficient for large-scale website scraping. Rather than paying $49/month for upgrades, we're building a custom solution using free, open-source tools.
-
-### New Technical Stack
-
-**Tools:**
-- **Puppeteer:** Open-source browser automation (free)
-- **DNS Validator:** Existing MX record validation (free, already built)
-- **Supabase:** Database storage (free tier, already using)
-- **TypeScript:** Custom scraping logic
-
-### Implementation Plan
-
-**Phase 1: Database Setup**
-- Create `marketing_prospects` table
-- Store all 337 mosques with full data
-- Fields: name, address, phone, website, email, state, coordinates
-- RLS-protected (marketing use only)
-
-**Phase 2: Data Import**
-- Import from `gmaps-results.json`
-- Validate data integrity
-- Set `extraction_status = 'pending'` for websites
-
-**Phase 3: Email Scraping**
-- Launch Puppeteer for each website
-- Extract emails using regex: `/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g`
-- Validate with DNS MX records
-- Update database with results
-- Respectful delays (3 seconds between requests)
-
-**Phase 4: Verification & Export**
-- Review extracted emails
-- Export verified list for campaigns
-- Generate statistics report
-
-### Benefits Over Apify
-
-| Feature | Apify Paid | Puppeteer Custom |
-|---------|-----------|------------------|
-| Cost | $49/month | $0 |
-| Control | Limited | Full |
-| Pause/Resume | Limited | Anytime |
-| Customization | Restricted | Unlimited |
-| Data Storage | Separate | Supabase (free) |
-| Integration | API calls | Direct database |
-
-### Expected Results
-
-- **Timeline:** 2-3 hours automated execution
-- **Success Rate:** 60-70% (similar to Apify)
-- **Verified Emails:** 120-150
-- **Phone Numbers:** 232 (bonus alternative contact method)
-- **Total Cost:** $0
-
-### Scripts to Create
-
-1. `scripts/marketing/create-prospects-table.sql` - Database migration
-2. `scripts/marketing/import-prospects.ts` - Import JSON → Supabase
-3. `scripts/marketing/scrape-emails.ts` - Puppeteer scraper
-4. `scripts/marketing/export-results.ts` - Export for campaigns
-
-### Commands
-
-```bash
-# Install dependencies
-npm install puppeteer puppeteer-extra puppeteer-extra-plugin-stealth
-
-# Run migration
-npm run db:migrate
-
-# Import mosque data
-npm run import-prospects
-
-# Scrape emails (automated, 2-3 hours)
-npm run scrape-emails
-
-# Export verified emails
-npm run export-results
-```
+**Status:** 🟢 Ready to launch systematic testing
 
 ---
 
-## 📋 5-Day Execution Plan
+### ✅ October 12, 2025 - Week 1 Marketing Infrastructure
 
-### **Day 1: Setup & Preparation** (2-3 hours)
+**Status:** All tracking systems operational
+**Duration:** 8 hours | **Cost:** $0
 
-**Objective:** Configure all systems and validate setup
+**Built:**
+- Google Sheets (8-tab tracker with auto-formulas)
+- Make.com Post Logger workflow (webhook → Google Sheet)
+- HTML form for quick post logging
+- 15 platform-specific scripts (Reddit/Facebook/Quora)
 
-**Tasks:**
-1. ✅ Install dependencies: `npm install`
-2. ✅ Verify Apify token in `.env`
-3. ✅ Run database migration (create `mosques_emails` table)
-4. ✅ Test Apify connection with small sample (10-20 mosques)
-5. ✅ Set up Make.com/n8n account and email automation workflow
+**Tech:** Make.com webhooks, Google Sheets API, Apps Script
 
-**Deliverables:**
-- Functional extraction system
-- Database ready to receive data
-- Email automation platform configured
-
-**📖 Technical Guide:** [instructions.md#mosque-email-extraction-system](./instructions.md)
+**Status:** 🟢 Week 1 campaign ready (currently delayed)
 
 ---
 
-### **Day 2: Email Extraction** (4-6 hours)
+## 📋 Historical Campaigns Summary
 
-**Objective:** Extract and validate 300+ mosque email addresses
+### Oct 10-11: Email Extraction System
+- Built Puppeteer scraper, 337 mosques, 211 website URLs, 232 phone numbers
+- 📖 Details: [project-notes.md](./project-notes.md)
 
-**Tasks:**
-1. Run full extraction: `npm run extract-emails`
-2. Monitor progress (searches 16 locations across Australia)
-3. Review extraction report in `scripts/apify/data/extraction-report.json`
-4. Verify data in Supabase `mosques_emails` table
-5. Export verified emails (SQL: `SELECT * FROM get_verified_emails_for_export()`)
-
-**Expected Results:**
-- 300+ mosques extracted
-- 150-200 email addresses found
-- 120-160 verified emails (DNS MX validated)
-- Breakdown by state (NSW, VIC, QLD, WA, SA, TAS, ACT, NT)
-
-**Cost:** ~$25-30 (Apify credits)
-
-**📊 Monitoring Query:**
-```sql
-SELECT * FROM get_email_extraction_stats();
-```
+### Oct 17: Bullseye Framework
+- 19 traction channels brainstormed, 7 priority tests identified
+- Most likely winner: SEO + Mosque Partnerships
+- 📖 Full strategy: [docs/bullseye-marketing-strategy.md](./docs/bullseye-marketing-strategy.md)
 
 ---
 
-### **Day 3: Campaign Creation** (3-4 hours)
+## 🚀 Week 1 Community Engagement (Oct 12 - Delayed)
 
-**Objective:** Craft compelling cold email campaign
+**Status:** ⏸️ Delayed (Prioritized backlink building strategy instead)
+**Platforms:** Reddit, Facebook, Quora
+**Goal:** 500-1,000 visitors, 25-50 feedback, credibility before mosque outreach
 
-**Tasks:**
-1. Write email copy (subject line + body)
-2. Create email template in Make.com/n8n
-3. Set up email sequence (3-email series):
-   - Email 1: Introduction (Day 0)
-   - Email 2: Follow-up with value proposition (Day 4)
-   - Email 3: Final reminder with CTA (Day 8)
-4. Design tracking system (UTM parameters, response tracking)
-5. Create landing page for mosque sign-ups (optional)
-
-**Email Template Structure:**
-- **Subject:** Personalized, clear value proposition
-- **Greeting:** Personalized with mosque name
-- **Introduction:** Who you are, why you're reaching out
-- **Value Proposition:** Benefits for the mosque
-- **Call to Action:** Simple, single action
-- **Signature:** Professional, with contact details
-
-**Compliance:**
-- ✅ Include unsubscribe link (CAN-SPAM Act)
-- ✅ Provide physical address
-- ✅ Clear sender identification
-- ✅ Accurate subject line (no deceptive headers)
+**Tools Built:**
+- Google Sheets (8 tabs), Make.com Post Logger, HTML form, 15 platform scripts
+- 📖 Details: [docs/week1-refined-scripts.md](./docs/week1-refined-scripts.md)
 
 ---
 
-### **Day 4: Campaign Execution** (2-3 hours)
+## 🔗 Backlink Building Campaign (NEW - Oct 18, 2025)
 
-**Objective:** Launch cold email campaign to verified contacts
-
-**Tasks:**
-1. Import verified emails to Make.com/n8n (CSV or API)
-2. Segment by state/region for targeted messaging
-3. Configure sending schedule:
-   - Batch size: 50-100 emails per day (avoid spam filters)
-   - Sending time: 9 AM - 11 AM local time (higher open rates)
-   - Days: Tuesday - Thursday (avoid Mondays/Fridays)
-4. Launch Email 1 (Introduction)
-5. Monitor deliverability and bounce rates
-
-**Sending Strategy:**
-- Use professional email service (SendGrid, Mailgun, Postmark)
-- Warm up sender domain (start with 50/day, increase gradually)
-- Personalize each email (mosque name, location)
-- Track opens, clicks, and responses
-
-**Cost:** ~$1-5 (email service provider, based on volume)
+> **Added:** October 18, 2025
+> **Duration:** November - December 2025 (2 months)
+> **Goal:** Acquire 30-50 quality backlinks from Australian Islamic & local community sources
+> **Budget:** $0 (organic outreach only)
+> **Time Commitment:** 4-5 hours/week
+> **Strategy Type:** SEO - Domain Authority Building
 
 ---
 
-### **Day 5: Monitoring & Optimization** (Ongoing)
+### Campaign Overview
 
-**Objective:** Track performance and optimize campaign
+Backlink building is now the **primary SEO focus** for the next 2 months. This campaign runs parallel to other marketing efforts but takes priority due to its long-term SEO impact.
 
-**Tasks:**
-1. Monitor key metrics:
-   - Delivery rate (target: >90%)
-   - Open rate (target: 25-35%)
-   - Click-through rate (target: 5-10%)
-   - Bounce rate (target: <5%)
-   - Unsubscribe rate (target: <2%)
-2. Respond to replies within 24 hours
-3. Update email list (remove bounces, unsubscribes)
-4. A/B test subject lines for Email 2
-5. Adjust sending schedule based on performance
+**Why Backlinks Matter:**
+- Google uses backlinks as the #1 ranking signal for domain authority
+- Quality backlinks = higher search rankings = more organic traffic
+- Each high-quality backlink compounds over time (permanent value)
+- Target: Move from current state (few/spam backlinks) to 30-50 trusted Australian Islamic/community sources
 
-**Week 2-3 Actions:**
-- Send Email 2 (Follow-up) on Day 4
-- Send Email 3 (Final reminder) on Day 8
-- Analyze overall campaign performance
-- Document learnings for future campaigns
+**Campaign Philosophy:**
+- Quality over quantity (one DA 50 link > ten DA 10 links)
+- Relevance is critical (Islamic/Australian sources preferred)
+- Only ethical, white-hat tactics (no buying links, no spam)
+- Sustainable approach (relationships, not transactions)
 
 ---
 
-## 📊 Success Tracking Dashboard
+### 8-Week Execution Plan
 
-**Key Metrics to Monitor:**
+**Week 1-2: Quick Wins (15-20 backlinks expected)**
+- Islamic directory submissions (8-12 targets)
+- Business directory submissions (10-15 targets)
+- Time: 3-4 hours/week
+- Difficulty: Easy (just form submissions)
 
-| Metric | Target | Actual | Status |
-|--------|--------|--------|--------|
-| Emails Sent | 150+ | - | Pending |
-| Delivery Rate | >90% | - | Pending |
-| Open Rate | 25-35% | - | Pending |
-| Response Rate | 5-10% | - | Pending |
-| Website Visits | +50-100 | - | Pending |
-| Mosque Sign-ups | 20-30 | - | Pending |
+**Week 3-4: Content Foundation (2-5 backlinks expected)**
+- Complete Halal Supermarkets page
+- Send Holland Park Mosque featured page pitch
+- Begin university Islamic society outreach
+- Time: 6 hours/week
+- Difficulty: Medium (content creation required)
 
-**Tools:**
-- Make.com/n8n: Email automation
-- Supabase: Email database and tracking
-- Google Analytics: Website traffic monitoring
-- Spreadsheet: Response tracking and follow-ups
+**Week 5-6: Partnership Scale (8-12 backlinks expected)**
+- Featured mosque partnerships (5 mosques pitched)
+- University society follow-ups (10-15 societies)
+- Halal business cross-promotion
+- Time: 4-5 hours/week
+- Difficulty: Medium (personalized outreach)
 
----
-
-## 💰 Budget Summary (UPDATED - Oct 11)
-
-| Item | Cost | Notes |
-|------|------|-------|
-| Google Maps Extraction | $2 | One-time (Apify) |
-| Email Extraction (Puppeteer) | $0 | Free (custom scraper) |
-| Email Service Provider | $1-5/month | SendGrid/Mailgun free tier |
-| Make.com/n8n | $0-9/month | Free tier sufficient |
-| Domain/Email Setup | $0 | Use existing |
-| **Total (Month 1)** | **$3-16** | Extremely cost-effective |
-
-**Savings:** $47 saved by building custom Puppeteer scraper vs paid Apify upgrade
+**Week 7-8: Mosque Outreach Blast (10-15 backlinks expected)**
+- Email 50-100 mosques from database
+- Follow-up calls for high-priority mosques
+- Track and nurture relationships
+- Time: 5 hours/week
+- Difficulty: Medium-Hard (volume + follow-ups)
 
 ---
 
-## 🔒 Privacy & Compliance
+### Target Lists
 
-**Email Data Storage:**
-- ❌ NO public access (RLS-protected Supabase table)
-- ✅ Used ONLY for marketing campaigns
-- ✅ Secure storage with encryption
-- ✅ Delete after campaign (optional)
+**Islamic Directories (8-12 sites):**
+- AFIC (Australian Federation of Islamic Councils) - afic.com.au
+- ANIC (Australian National Imams Council) - anic.org.au
+- Islamic Council of NSW - icnsw.org.au
+- Islamic Council of WA - islamiccouncilwa.com.au
+- United Muslims of Australia - uma.org.au
+- Alliance of Australian Muslims - australianmuslims.org.au
+- Darulfatwa Islamic High Council - darulfatwa.org.au
+- AussieMuslims.NET - aussiemuslims.net
 
-**Email Sending Compliance:**
-- ✅ CAN-SPAM Act compliant
-- ✅ GDPR-friendly (no EU contacts)
-- ✅ Unsubscribe link in every email
-- ✅ Physical address in footer
-- ✅ Accurate sender information
+**Business Directories (10-15 sites):**
+- Local Search (DA 51), Pure Local (DA 50), Yelp Australia
+- True Local, Hotfrog, Search Frog (DA 35)
+- StartLocal, Brownbook, Australian Planet
+- Yellow Pages, White Pages Business
+- (Full list of 50+ directories in instructions.md)
 
----
+**University Islamic Societies (10-15 societies):**
+- USYD, UNSW, UMelb, Monash, UQ
+- Griffith, Macquarie, UTS, RMIT, Deakin
+- ANU, Adelaide, Curtin, UWA, La Trobe
 
-## 📖 Resources & Documentation
+**Featured Mosque Partnerships (5-10 mosques):**
+- Holland Park Mosque (demo ready)
+- Large mosques in Sydney, Melbourne, Perth, Adelaide
+- Target: Mosques with existing websites + active social media
 
-**Technical Details:**
-- **Full Setup Guide:** [instructions.md#mosque-email-extraction-system](./instructions.md)
-- **Database Migration:** `supabase/migrations/20251010_create_mosques_emails_table.sql`
-- **Extraction Scripts:** `scripts/apify/`
-
-**Email Best Practices:**
-- Keep subject line under 50 characters
-- Personalize with mosque name and location
-- Single, clear call-to-action
-- Mobile-friendly formatting
-- Test emails before sending
-
-**Automation Tools:**
-- Make.com: https://www.make.com
-- n8n: https://n8n.io
-- SendGrid: https://sendgrid.com
-- Mailgun: https://www.mailgun.com
+**General Mosque Outreach (342 database):**
+- 211 mosques with website URLs
+- Email + phone follow-up strategy
+- Expected 5-10% success rate (10-20 backlinks)
 
 ---
 
-## 🚀 Next Steps
+### Success Metrics
 
-**Immediate Actions:**
-1. Complete Day 1 setup today
-2. Run extraction on Day 2
-3. Draft email copy on Day 3
-4. Launch campaign on Day 4
-5. Monitor and optimize on Day 5+
+**Monthly Tracking (via Google Search Console + Ahrefs):**
+- Total referring domains (target: +15-25 per month)
+- Average Domain Authority of new backlinks (target: DA 25+)
+- Referral traffic from backlinks (track in Google Analytics)
+- Keyword ranking improvements ("mosque directory Australia", "mosques near me")
 
-**Long-term Strategy:**
-- Quarterly re-validation of email list
-- Seasonal campaigns (Ramadan, Eid)
-- Expansion to phone/SMS outreach
-- Partnership building with responsive mosques
+**3-Month Success Benchmarks:**
+
+**Minimum Success:**
+- 30+ new referring domains
+- 10+ backlinks from DA 30+ sites
+- 5+ backlinks from .edu.au or .org.au domains
+- 20% increase in organic traffic
+
+**Strong Success:**
+- 50+ new referring domains
+- 20+ backlinks from DA 30+ sites
+- Domain Authority increases by 5+ points
+- 50% increase in organic traffic
+- Top 3 Google ranking for "mosque directory Australia"
 
 ---
 
-**Word Count:** ~680 words
+### Tools & Resources
 
-**Status:** Ready to execute ✅
+**Tracking System:**
+- `backlink-progress-tracker.txt` - Daily progress log
+- Google Search Console - Monthly backlink reports
+- Ahrefs Free Backlink Checker - 5 checks/day
+- Moz Link Explorer Free - 10 queries/month
+- Google Analytics - Referral traffic tracking
 
-**Questions?** See [instructions.md](./instructions.md) for comprehensive technical details.
+**Email Templates (in instructions.md):**
+- Template 1: Islamic Council/Organization Submission
+- Template 2: University Islamic Society Outreach
+- Template 3: Mosque Partnership Pitch (Featured Pages)
+- Template 4: General Mosque Backlink Request
+- Template 5: Halal Business Cross-Promotion
+
+**Next Actions (Nov Week 1):**
+1. Send 4 Islamic directory submissions (AFIC, ANIC, ICNSW, ICWA)
+2. Submit to 3 business directories (Local Search, Pure Local, Yelp)
+3. Design 3 mosque badge sizes in Canva
+
+📖 **Full Strategy:** [docs/backlink-strategy.md](./docs/backlink-strategy.md) | [backlink-progress-tracker.txt](./backlink-progress-tracker.txt)
+
+---
