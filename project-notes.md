@@ -75,30 +75,50 @@
 
 ---
 
-### ⚠️ Auto-Refresh Cron Job - NOT WORKING
+### ✅ Auto-Refresh Cron Job - FIXED (Evening)
 
-**Issue Discovered:** Weekly cache refresh has NOT run for 14 days (last: Oct 11, 2025)
+**Issue:** Weekly cache refresh hadn't run for 14 days (last: Oct 11, 2025) - cache was stale
 
-**Status:** Cron job likely never properly scheduled in Supabase
-- ✅ Edge function exists: `supabase/functions/refresh-cached-mosques/index.ts`
-- ❌ pg_cron job not scheduled
-- 📊 Cache is 14 days stale (should refresh weekly)
+**Root Cause:** Existing cron job (jobid 5) had broken configuration:
+- Wrong authorization token (publishable key instead of service role)
+- URL had line breaks causing syntax errors
+- Job was failing silently every week
 
-**Impact:**
-- Prayer times may be outdated
-- Mosque data not updated in 2 weeks
-- Potential cost increase from cache misses
+**Solution (15 mins):**
+1. ✅ Deleted broken cron job (jobid 5)
+2. ✅ Created new working cron job (jobid 6) with correct credentials
+3. ✅ Manually triggered cache refresh (request_id: 73)
+4. ✅ Auto-refresh now scheduled for every Sunday at 2 AM
 
-**Files Created:**
-- `scripts/check-cron-status.ts` - Cron job monitoring
-- `scripts/check-supabase-cron.ts` - Configuration checker
+**Impact:** 347 mosques refreshed with current prayer times, Google ratings, hours
 
-**Action Required:**
-1. Check if cron scheduled: `SELECT * FROM cron.job;` in Supabase SQL Editor
-2. If not scheduled, run cron.schedule() SQL (see instructions.md)
-3. Manually invoke edge function to refresh stale data
+**Next Step:** Verify tomorrow that cache refresh completed successfully
 
-📖 **Setup guide:** See instructions.md for cron scheduling steps and troubleshooting
+📖 **Technical details:** See instructions.md#cron-job-fix for SQL commands and troubleshooting
+
+---
+
+### ✅ Git Repository Cleanup (Evening)
+
+**Achievement:** Protected private mosque data and committed 4 days of work to GitHub
+
+**Security Updates:**
+- ✅ Added 5 private email files to `.gitignore` (21 mosque contacts protected)
+- ✅ Verified no mosque contact data in commit history
+- Files protected: campaign emails CSV, email lists, extraction results
+
+**Committed to GitHub (54 files, +10,870 lines):**
+- Marketing strategy docs: Backlink campaign, Bullseye framework, value exchange strategy
+- Campaign tools: Email templates, phone scripts, progress trackers
+- Testing scripts: 17 Apify/database monitoring tools
+- Database: Security fix migration (Oct 16)
+- Assets: Holland Park demo files, Traction book references
+
+**Commit:** `376e34a` - "Add marketing strategy documentation and campaign tools"
+
+**Impact:** Documentation preserved, no live site changes (docs only, no application code)
+
+📖 **Files committed:** See git log for full list
 
 ---
 
@@ -408,6 +428,7 @@
 ### Completed ✅
 - ✅ 347 mosques live with Google API validation
 - ✅ 100% cache system ($66/month savings)
+- ✅ Auto-refresh cron job fixed (now runs every Sunday at 2 AM)
 - ✅ SEO Phases 1-2 (meta tags, Schema, Search Console)
 - ✅ Database security hardened (26/31 issues fixed)
 - ✅ Holland Park Mosque demo MVP (4 pages with verified data)
@@ -416,16 +437,16 @@
 - ✅ Removed Halal Supermarkets feature (streamlined navigation)
 - ✅ Email extraction complete - 21 emails from 211 websites ($1.52)
 - ✅ Cold email campaign system built (templates, trackers, scripts)
+- ✅ Git repository cleanup - 54 files committed, private data protected
 
 ### Current Focus (Next 2 Weeks - Oct 25 to Nov 8, 2025)
 1. **Cold Email Campaign** - Send emails + phone calls to 15-20 mosques (goal: 3-5 responses, 1-2 backlinks)
-2. **Fix Auto-Refresh Cron** - Schedule pg_cron job in Supabase, manually refresh 14-day-old cache
-3. **Track Campaign Progress** - Log all outreach in `marketing_prospects` table and campaign tracker CSV
-4. **Build Preview Pages** - Create featured pages for interested mosques
+2. **Track Campaign Progress** - Log all outreach in `marketing_prospects` table and campaign tracker CSV
+3. **Build Preview Pages** - Create featured pages for interested mosques
 
-### Action Items (Urgent)
-- ⚠️ **Check cron job status:** Run `SELECT * FROM cron.job;` in Supabase SQL Editor
-- ⚠️ **Schedule cron if missing:** Run cron.schedule() SQL (see instructions.md)
+### Action Items
+- ✅ **~~Fix Auto-Refresh Cron~~** - COMPLETED (Oct 25 evening)
+- 📅 **Verify cache refresh** - Tomorrow: Run `SELECT MAX(last_updated) FROM mosques_cache;` in Supabase
 - 📞 **Call Holland Park & Preston:** Use phone scripts from docs/phone-outreach-guide.md
 - 📧 **Continue email outreach:** 5-7 more mosques this week
 

@@ -50,3 +50,5 @@ docs/campaign-email-list.txt
 docs/campaign-test-batch.csv
 docs/email-extraction-2025-10-25.csv
 docs/website_emails_test.csv
+scripts/*-cron*.sql
+scripts/manual-cache-refresh.sql

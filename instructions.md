@@ -2635,6 +2635,83 @@ For strategy overview, see [docs/value-exchange-strategy.md](./docs/value-exchan
 
 ---
 
+## Cron Job Troubleshooting
+
+### October 25, 2025 - Weekly Cache Refresh Fix
+
+**Problem:** Weekly cache refresh hadn't run for 14 days (last: Oct 11, 2025). Prayer times and mosque data became stale.
+
+**Root Cause:** Cron job (jobid 5) existed but had broken configuration:
+- Using `sb_publishable_*` key instead of service role key
+- URL contained line breaks: `https://mzqyswdfgimymxfhdyzw.supab\n  ase.co/...`
+- Job was failing silently every Sunday
+
+**Diagnosis Steps:**
+
+```sql
+-- Check existing cron jobs
+SELECT * FROM cron.job;
+
+-- Look for: jobname = 'weekly-mosque-cache-refresh'
+-- Verify: schedule, command, active status
+```
+
+**Solution (3 SQL commands):**
+
+```sql
+-- 1. Delete broken cron job
+SELECT cron.unschedule('weekly-mosque-cache-refresh');
+
+-- 2. Create new working cron job (every Sunday at 2 AM)
+SELECT cron.schedule(
+  'weekly-mosque-cache-refresh',
+  '0 2 * * 0',
+  $$
+  SELECT net.http_post(
+    url:='https://YOUR_PROJECT_ID.supabase.co/functions/v1/refresh-cached-mosques',
+    headers:='{"Content-Type": "application/json", "Authorization": "Bearer YOUR_SERVICE_ROLE_KEY"}'::jsonb,
+    body:='{}'::jsonb
+  ) as request_id;
+  $$
+);
+
+-- 3. Manually trigger immediate refresh (fixes stale data)
+SELECT net.http_post(
+  url := 'https://YOUR_PROJECT_ID.supabase.co/functions/v1/refresh-cached-mosques',
+  headers := jsonb_build_object(
+    'Content-Type', 'application/json',
+    'Authorization', 'Bearer YOUR_SERVICE_ROLE_KEY'
+  ),
+  body := '{}'::jsonb
+);
+```
+
+**Important Notes:**
+- Use `jsonb_build_object()` instead of string literals for long tokens (prevents line break errors)
+- Always use service role key, not publishable/anon key
+- Verify job created: `SELECT * FROM cron.job;` should show new jobid
+
+**Verification:**
+
+```sql
+-- Check cache was refreshed (run next day)
+SELECT MAX(last_updated) FROM mosques_cache;
+-- Should show yesterday's date
+
+-- Monitor cron job runs
+SELECT * FROM cron.job_run_details
+WHERE jobid = 6
+ORDER BY start_time DESC
+LIMIT 5;
+```
+
+**Prevention:**
+- Monitor cron jobs monthly via `cron.job_run_details`
+- Check cache freshness: `SELECT MAX(last_updated) FROM mosques_cache;`
+- Set up alerts for stale cache (>10 days old)
+
+---
+
 ## Mobile Navigation Bug Fixes
 
 ### October 19, 2025 - Browse by State Dropdown Fix

@@ -1,0 +1,1460 @@
+{
+  "searchDate": "2025-11-16T10:10:21.865Z",
+  "totalSearched": 75,
+  "approved": [
+    {
+      "name": "Brisbane CBD Musallah",
+      "address": "1/138 Albert St, Brisbane City QLD 4000",
+      "place_id": "ChIJwUkaaw1bkWsRn0soKq2Xjpw",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "phone": "0436 291 269",
+      "website": "https://bcec.org.au/",
+      "rating": 4.9,
+      "user_rating_count": 102,
+      "location": {
+        "latitude": -27.471099,
+        "longitude": 153.0260545
+      }
+    },
+    {
+      "name": "QUT Muslim Prayer Room",
+      "address": "G-H Block Link, Gardens Point, 209, Brisbane City QLD 4000",
+      "place_id": "ChIJNcf0ahBakWsRgBhhLu0Q4ek",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "prayer_room",
+      "confidence": "high",
+      "rating": 4.7,
+      "user_rating_count": 30,
+      "location": {
+        "latitude": -27.4766846,
+        "longitude": 153.02782249999998
+      }
+    },
+    {
+      "name": "North Sydney Musalla",
+      "address": "165 Blues Point Rd, McMahons Point NSW 2060",
+      "place_id": "ChIJd_y2EPSuEmsRGgcZlheW6bw",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "rating": 4.5,
+      "user_rating_count": 72,
+      "location": {
+        "latitude": -33.8430041,
+        "longitude": 151.2051217
+      }
+    },
+    {
+      "name": "Musalla - University of Melbourne Islamic Society",
+      "address": "Pelham St, Carlton VIC 3053",
+      "place_id": "ChIJ1ZPqstJC1moRx8iRGftqsE4",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "website": "https://umsu.unimelb.edu.au/buddy-up/clubs/clubs-listing/join/7029",
+      "rating": 4.9,
+      "user_rating_count": 97,
+      "location": {
+        "latitude": -37.8019599,
+        "longitude": 144.9612737
+      }
+    },
+    {
+      "name": "University Of Melbourne Musalla (Prayer Rooms)",
+      "address": "Parkville VIC 3010, Carlton VIC 3053",
+      "place_id": "ChIJbR_8stJC1moRJdx8IdLrlFI",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "prayer_room",
+      "confidence": "high",
+      "rating": 4.8,
+      "user_rating_count": 15,
+      "location": {
+        "latitude": -37.801927299999996,
+        "longitude": 144.9613333
+      }
+    },
+    {
+      "name": "King Faisal Mosque",
+      "address": "175-177 Commonwealth St, Surry Hills NSW 2010",
+      "place_id": "ChIJGSHufRiuEmsRavr31pUVh5s",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "phone": "(02) 9281 0440",
+      "website": "http://islamicsocietynsw.org.au/",
+      "rating": 4.8,
+      "user_rating_count": 618,
+      "location": {
+        "latitude": -33.8818348,
+        "longitude": 151.2106198
+      }
+    },
+    {
+      "name": "Monash Musallah Krongold",
+      "address": "Krongold Centre, 57 Scenic Blvd, Clayton VIC 3168",
+      "place_id": "ChIJlWBQegBr1moRRckS-rQ55z8",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "website": "https://m.facebook.com/MUISClayton/",
+      "rating": 4.7,
+      "user_rating_count": 3,
+      "location": {
+        "latitude": -37.9137489,
+        "longitude": 145.1343935
+      }
+    },
+    {
+      "name": "UWA Mosque/ UWA Musalla",
+      "address": "Saw Promenade, Crawley WA 6009",
+      "place_id": "ChIJU-AcI_CkMioRlmQ7vrRTIBw",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "website": "http://www.uwamsa.org/",
+      "rating": 4.8,
+      "user_rating_count": 66,
+      "location": {
+        "latitude": -31.976965500000002,
+        "longitude": 115.8181433
+      }
+    },
+    {
+      "name": "QUT Musalla",
+      "address": "Brisbane City QLD 4000",
+      "place_id": "ChIJLbD9PhBakWsRO8Hok0cvIyY",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "location": {
+        "latitude": -27.4766847,
+        "longitude": 153.0278205
+      }
+    },
+    {
+      "name": "Sydney CBD Masjid",
+      "address": "56/56-60 Erskine St, Sydney NSW 2000",
+      "place_id": "ChIJpTpyTkeuEmsRyk375nNkMEI",
+      "types": [
+        "mosque",
+        "tourist_attraction",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "website": "http://www.sydneycitymasjid.org.au/",
+      "rating": 4.8,
+      "user_rating_count": 712,
+      "location": {
+        "latitude": -33.8666203,
+        "longitude": 151.2039743
+      }
+    },
+    {
+      "name": "Queen St Musallah (Mosque)",
+      "address": "Level 5/131 Queen St, Melbourne VIC 3000",
+      "place_id": "ChIJhWXdXzFd1moRxkzrWzOG2iE",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "rating": 4.7,
+      "user_rating_count": 130,
+      "location": {
+        "latitude": -37.8154914,
+        "longitude": 144.9606114
+      }
+    },
+    {
+      "name": "Melbourne Grand Mosque",
+      "address": "70 Wootten Rd, Tarneit VIC 3029",
+      "place_id": "ChIJO5_fFKmP1moRXM8s9aT7ofk",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "phone": "(03) 8087 2323",
+      "website": "http://www.mgm.org.au/",
+      "rating": 4.9,
+      "user_rating_count": 505,
+      "location": {
+        "latitude": -37.8545063,
+        "longitude": 144.66128369999998
+      }
+    },
+    {
+      "name": "Emir Sultan Mosque (ICMG Dandenong)",
+      "address": "139 Cleeland St, Dandenong VIC 3175",
+      "place_id": "ChIJ4VyDNxgU1moRXsNUnaWHMc8",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "phone": "0413 499 444",
+      "website": "http://emirsultanmosque.com/",
+      "rating": 4.9,
+      "user_rating_count": 422,
+      "location": {
+        "latitude": -37.9748469,
+        "longitude": 145.2160691
+      }
+    },
+    {
+      "name": "Deakin Muslim Prayer Hall",
+      "address": "Building EC, Deakin University, Burwood Hwy, Burwood VIC 3125",
+      "place_id": "ChIJ-W4FiuxB1moRbQfY128FDgA",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "prayer_room",
+      "confidence": "high",
+      "website": "http://www.deakin.edu.au/students/health-and-wellbeing/multifaith-chaplain/places-of-worship",
+      "rating": 4.8,
+      "user_rating_count": 78,
+      "location": {
+        "latitude": -37.8457844,
+        "longitude": 145.11093019999998
+      }
+    },
+    {
+      "name": "Australian Bosnian Islamic Centre Deer Park",
+      "address": "285 Station Rd, Albanvale VIC 3021",
+      "place_id": "ChIJXVafHmf11moR3Mwkfrgf8j4",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "islamic_center",
+      "confidence": "high",
+      "phone": "(03) 9310 8811",
+      "website": "http://abicdp.org/",
+      "rating": 4.8,
+      "user_rating_count": 236,
+      "location": {
+        "latitude": -37.7473721,
+        "longitude": 144.77793699999998
+      }
+    },
+    {
+      "name": "MyCentre Mosque",
+      "address": "31 Kraft Ct, Broadmeadows VIC 3047",
+      "place_id": "ChIJYYGN7oVa1moRUXzkO7ut9z8",
+      "types": [
+        "mosque",
+        "community_center",
+        "event_venue",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "islamic_center",
+      "confidence": "high",
+      "phone": "(03) 9309 1515",
+      "website": "https://mycentre.org.au/?utm_source=google-my-business&utm_medium=&utm_term=&utm_content=&utm_campaign=",
+      "rating": 4.9,
+      "user_rating_count": 356,
+      "location": {
+        "latitude": -37.6772929,
+        "longitude": 144.9243316
+      }
+    },
+    {
+      "name": "Albanian Australian Islamic Society",
+      "address": "765 Drummond St, Carlton North VIC 3054",
+      "place_id": "ChIJ1RGMIjBD1moRtqq3d6c57ig",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "phone": "(03) 9347 6505",
+      "website": "http://www.aais.org.au/",
+      "rating": 4.9,
+      "user_rating_count": 302,
+      "location": {
+        "latitude": -37.786684,
+        "longitude": 144.9705656
+      }
+    },
+    {
+      "name": "Maidstone Mosque",
+      "address": "34 Studley St, Maidstone VIC 3012",
+      "place_id": "ChIJBzhct-Zd1moRTon-mcOnwrQ",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "phone": "(03) 8707 1541",
+      "website": "https://www.facebook.com/MaidstoneMosque/",
+      "rating": 4.9,
+      "user_rating_count": 402,
+      "location": {
+        "latitude": -37.7877503,
+        "longitude": 144.8793614
+      }
+    },
+    {
+      "name": "Coburg Islamic Centre (CIC)",
+      "address": "31 Nicholson St, Coburg VIC 3058",
+      "place_id": "ChIJl-kSM6RE1moR82y0Z0sPwvc",
+      "types": [
+        "mosque",
+        "community_center",
+        "event_venue",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "islamic_center",
+      "confidence": "high",
+      "phone": "(03) 9386 5324",
+      "website": "http://cic.org.au/",
+      "rating": 4.9,
+      "user_rating_count": 634,
+      "location": {
+        "latitude": -37.754999999999995,
+        "longitude": 144.9752778
+      }
+    },
+    {
+      "name": "Castlereagh & Park St Musalla",
+      "address": "189 Castlereagh St, Sydney NSW 2000",
+      "place_id": "ChIJFfupdgCvEmsRvTbh0G2xw0Q",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "rating": 4.8,
+      "user_rating_count": 34,
+      "location": {
+        "latitude": -33.8733666,
+        "longitude": 151.2090581
+      }
+    },
+    {
+      "name": "MIA - Liverpool Islamic Centre",
+      "address": "230 Macquarie St, Liverpool NSW 2170",
+      "place_id": "ChIJIQ3KW7mVEmsRhlaSuTRVMIc",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "islamic_center",
+      "confidence": "high",
+      "phone": "(02) 8712 9219",
+      "website": "http://www.mialiverpool.com.au/",
+      "rating": 4.9,
+      "user_rating_count": 244,
+      "location": {
+        "latitude": -33.923083999999996,
+        "longitude": 150.92381699999999
+      }
+    },
+    {
+      "name": "The Australian Islamic House Masjid",
+      "address": "2094 Camden Valley Wy, Edmondson Park NSW 2174",
+      "place_id": "ChIJ-xGi1K6UEmsRzKuHXJU89MQ",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "phone": "0451 508 244",
+      "website": "http://www.taih.org.au/",
+      "rating": 4.8,
+      "user_rating_count": 321,
+      "location": {
+        "latitude": -33.9580459,
+        "longitude": 150.86679049999998
+      }
+    },
+    {
+      "name": "Daar Ibn Abbas Mosque",
+      "address": "131 Eldridge Rd, Condell Park NSW 2200",
+      "place_id": "ChIJN43uGtS_EmsRwHUX3KqpKA0",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "phone": "1300 700 050",
+      "website": "https://www.ibnabbas.org.au/",
+      "rating": 4.9,
+      "user_rating_count": 334,
+      "location": {
+        "latitude": -33.9305281,
+        "longitude": 151.01286919999998
+      }
+    },
+    {
+      "name": "Darul Ulum Sydney Mosque",
+      "address": "58 Quigg St S, Lakemba NSW 2195",
+      "place_id": "ChIJ-SGyXTG7EmsRT3CMD8ZEXGQ",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "phone": "0414 050 075",
+      "website": "http://darululumsydney.org.au/",
+      "rating": 4.8,
+      "user_rating_count": 180,
+      "location": {
+        "latitude": -33.9213477,
+        "longitude": 151.0801166
+      }
+    },
+    {
+      "name": "AICC, Omar Mosque - Auburn . Islamic Services (Shahada, marriage & Funerals)",
+      "address": "43-47 Harrow Rd, Auburn NSW 2144",
+      "place_id": "ChIJ2akzEbq8EmsR2Itc15gCjXs",
+      "types": [
+        "mosque",
+        "community_center",
+        "funeral_home",
+        "place_of_worship",
+        "event_venue",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "phone": "1800 417 779",
+      "website": "http://www.aiccentre.org.au/",
+      "rating": 4.9,
+      "user_rating_count": 223,
+      "location": {
+        "latitude": -33.8548658,
+        "longitude": 151.0303489
+      }
+    },
+    {
+      "name": "Lakemba Mosque",
+      "address": "65-67 Wangee Rd, Lakemba NSW 2195",
+      "place_id": "ChIJ58DB8b67EmsRvaX8zYy47x8",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "phone": "(02) 9750 6833",
+      "website": "https://lma.org.au/mosques/lakemba-mosque/",
+      "rating": 4.8,
+      "user_rating_count": 1131,
+      "location": {
+        "latitude": -33.912607,
+        "longitude": 151.074138
+      }
+    },
+    {
+      "name": "Auburn Islamic Community Centre & Mosque",
+      "address": "12 Harrow Rd, Auburn NSW 2144",
+      "place_id": "ChIJfRWUobC8EmsR_xkFJM0KTC4",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "islamic_center",
+      "confidence": "high",
+      "phone": "(02) 9646 1124",
+      "website": "https://www.aiccauburn.org.au/",
+      "rating": 4.8,
+      "user_rating_count": 108,
+      "location": {
+        "latitude": -33.8526554,
+        "longitude": 151.0314057
+      }
+    },
+    {
+      "name": "Masjid Al Noor",
+      "address": "1-3 Ferndell St, South Granville NSW 2142",
+      "place_id": "ChIJgdAAeOa8EmsR6WGouBgKkJ8",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "phone": "0455 777 557",
+      "website": "https://www.facebook.com/masjidalnoorsydney?mibextid=ZbWKwL",
+      "rating": 4.9,
+      "user_rating_count": 465,
+      "location": {
+        "latitude": -33.863941,
+        "longitude": 151.009986
+      }
+    },
+    {
+      "name": "Zetland Mosque",
+      "address": "932 Bourke St, Zetland NSW 2017",
+      "place_id": "ChIJS8UyQ8GxEmsR2_oD3qg0Oco",
+      "types": [
+        "mosque",
+        "tourist_attraction",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "phone": "(02) 9319 6733",
+      "rating": 4.9,
+      "user_rating_count": 446,
+      "location": {
+        "latitude": -33.904339199999995,
+        "longitude": 151.2055847
+      }
+    },
+    {
+      "name": "Epping Musallah & Quran Academy",
+      "address": "Unit 6/28 Langston Pl, Epping NSW 2121",
+      "place_id": "ChIJZ9ttCeSnEmsRnd97QV8478M",
+      "types": [
+        "community_center",
+        "event_venue",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "phone": "0423 678 795",
+      "website": "https://www.mas.org.au/",
+      "rating": 5,
+      "user_rating_count": 17,
+      "location": {
+        "latitude": -33.773144099999996,
+        "longitude": 151.0827727
+      }
+    },
+    {
+      "name": "Al Hijrah Mosque",
+      "address": "45 Station St, Tempe NSW 2044",
+      "place_id": "ChIJ-avAtY2wEmsRuazetscn-uo",
+      "types": [
+        "mosque",
+        "community_center",
+        "place_of_worship",
+        "event_venue",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "phone": "0484 119 444",
+      "website": "https://www.cide.org.au/",
+      "rating": 4.9,
+      "user_rating_count": 148,
+      "location": {
+        "latitude": -33.925348,
+        "longitude": 151.159367
+      }
+    },
+    {
+      "name": "Harrington Mosque (Mushalla)",
+      "address": "107 Harrington St, The Rocks NSW 2000",
+      "place_id": "ChIJ9YiysvevEmsR8Gtm11g6f84",
+      "types": [
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "rating": 4.9,
+      "user_rating_count": 64,
+      "location": {
+        "latitude": -33.8613919,
+        "longitude": 151.2071417
+      }
+    },
+    {
+      "name": "Australian Islamic Centre",
+      "address": "23-27 Blenheim Rd, Newport VIC 3015",
+      "place_id": "ChIJU34zbLth1moRcn9t8o-SdV4",
+      "types": [
+        "mosque",
+        "community_center",
+        "place_of_worship",
+        "event_venue",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "islamic_center",
+      "confidence": "high",
+      "phone": "(03) 9000 0177",
+      "website": "https://www.australianislamiccentre.org/",
+      "rating": 4.9,
+      "user_rating_count": 464,
+      "location": {
+        "latitude": -37.845987799999996,
+        "longitude": 144.86168179999999
+      }
+    },
+    {
+      "name": "Omar Bin Al Khattab Masjid Preston",
+      "address": "90 Cramer St, Preston VIC 3072",
+      "place_id": "ChIJS1n17e9E1moRNGVtG9J6Dqw",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "mosque",
+      "confidence": "high",
+      "phone": "(03) 9470 2424",
+      "website": "http://isv.org.au/",
+      "rating": 4.9,
+      "user_rating_count": 600,
+      "location": {
+        "latitude": -37.73904960000001,
+        "longitude": 144.9931546
+      }
+    },
+    {
+      "name": "Prayer Room (BNE International Terminal)",
+      "address": "Level 4, International Terminal, International Departures/32 Airport Dr, Brisbane Airport QLD 4008",
+      "place_id": "ChIJwbfZEh9ZkWsRYrbtS_P-iUQ",
+      "types": [
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "prayer_room",
+      "confidence": "medium",
+      "rating": 3.9,
+      "user_rating_count": 14,
+      "location": {
+        "latitude": -27.4033454,
+        "longitude": 153.1090511
+      }
+    },
+    {
+      "name": "Prayer Room",
+      "address": "Melbourne Tullamarine Airport Tullamarine Freeway Terminal 2 International, Departure Dr, Melbourne Airport VIC 3045",
+      "place_id": "ChIJYdQaJABZ1moRdK5WyYJP63s",
+      "types": [
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "prayer_room",
+      "confidence": "medium",
+      "phone": "(03) 9297 1488",
+      "website": "https://www.melbourneairport.com.au/the-chaplaincy",
+      "rating": 4.6,
+      "user_rating_count": 17,
+      "location": {
+        "latitude": -37.669140999999996,
+        "longitude": 144.84729
+      }
+    },
+    {
+      "name": "Multi-faith Chaplaincy (Building 38), UQ",
+      "address": "St Lucia QLD 4067",
+      "place_id": "ChIJnYvBcHhakWsRYi1sZZC-XgQ",
+      "types": [
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "prayer_room",
+      "confidence": "medium",
+      "phone": "(07) 3365 1704",
+      "website": "https://www.uq.edu.au/student-services/faith",
+      "rating": 4.9,
+      "user_rating_count": 24,
+      "location": {
+        "latitude": -27.496116999999998,
+        "longitude": 153.01521119999998
+      }
+    },
+    {
+      "name": "Canterbury Hospital Prayer Room",
+      "address": "575 Canterbury Rd, Campsie NSW 2194",
+      "place_id": "ChIJ32lPqgi7EmsRRjzcSO36iec",
+      "types": [
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "prayer_room",
+      "confidence": "medium",
+      "location": {
+        "latitude": -33.9197427,
+        "longitude": 151.0982732
+      }
+    },
+    {
+      "name": "Royal Melbourne Hospital Prayer Room (With Jummah)",
+      "address": "300 Grattan St, Parkville VIC 3050",
+      "place_id": "ChIJTTRvE3Jd1moRIRjCkYjdWws",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "category": "prayer_room",
+      "confidence": "medium",
+      "rating": 5,
+      "user_rating_count": 1,
+      "location": {
+        "latitude": -37.7991917,
+        "longitude": 144.9557462
+      }
+    }
+  ],
+  "needsReview": [
+    {
+      "name": "Prayer Room (with Jumu'ah Prayer)",
+      "address": "Departure Plaza, Mascot NSW 2020",
+      "place_id": "ChIJd5XKtcKxEmsRFV78z2_ffPM",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Prayer room without clear facility context - needs manual review",
+      "website": "https://gopray.com.au/place/international-airport-t1-sydney-musallah/",
+      "rating": 4.9,
+      "location": {
+        "latitude": -33.9362789,
+        "longitude": 151.1661423
+      }
+    },
+    {
+      "name": "Quiet Room for Prayer and Quiet Contemplation",
+      "address": "ground floor, T1 International, Perth Airport WA 6105",
+      "place_id": "ChIJwZEaDxK5MioRlnM9wvvV_Ow",
+      "types": [
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"Quiet Room for Prayer and Quiet Contemplation\", Types: place_of_worship, point_of_interest, establishment",
+      "phone": "(08) 9478 8888",
+      "website": "https://www.perthairport.com.au/at-the-airport/facilities-and-services",
+      "rating": 5,
+      "location": {
+        "latitude": -31.941307000000002,
+        "longitude": 115.9754918
+      }
+    },
+    {
+      "name": "Adelaide Airport",
+      "address": "Sir Richard Williams Ave, Adelaide Airport SA 5950",
+      "place_id": "ChIJzykeijzFsGoR8PC4RVU2Aw8",
+      "types": [
+        "international_airport",
+        "airport",
+        "parking",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"Adelaide Airport\", Types: international_airport, airport, parking, point_of_interest, establishment",
+      "phone": "(08) 8308 9211",
+      "website": "https://adelaideairport.com.au/?utm_source=Adelaide&utm_medium=james-schofield5950&utm_campaign=google-place-listing",
+      "rating": 4.2,
+      "location": {
+        "latitude": -34.946236999999996,
+        "longitude": 138.5312017
+      }
+    },
+    {
+      "name": "AL-INAYA PRAYER ROOM FOR SISTERS",
+      "address": "Acton ACT 2601",
+      "place_id": "ChIJzyD96yRNFmsRIZjnBgVN3eA",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Prayer room without clear facility context - needs manual review",
+      "rating": 4,
+      "location": {
+        "latitude": -35.281517099999995,
+        "longitude": 149.1197927
+      }
+    },
+    {
+      "name": "Prayer Place Ground Floor",
+      "address": "42 Surf Parade, Broadbeach QLD 4218",
+      "place_id": "ChIJu-wHrAkFkWsRigdNS89bTgY",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"Prayer Place Ground Floor\", Types: mosque, place_of_worship, point_of_interest, establishment",
+      "phone": "0417 964 403",
+      "rating": 4.8,
+      "location": {
+        "latitude": -28.032890899999998,
+        "longitude": 153.431436
+      }
+    },
+    {
+      "name": "Gold Coast Airport",
+      "address": "Eastern Ave, Bilinga QLD 4225",
+      "place_id": "ChIJaaHMXOcBkWsRcHAg11ujAg8",
+      "types": [
+        "airport",
+        "international_airport",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"Gold Coast Airport\", Types: airport, international_airport, point_of_interest, establishment",
+      "phone": "(07) 5589 1100",
+      "website": "https://www.goldcoastairport.com.au/",
+      "rating": 3.8,
+      "location": {
+        "latitude": -28.1631687,
+        "longitude": 153.5068408
+      }
+    },
+    {
+      "name": "Gold Coast House of Prayer",
+      "address": "148 Eastlake St, Carrara QLD 4211",
+      "place_id": "ChIJYxLNWnAbkWsRreMta_-FJY4",
+      "types": [
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"Gold Coast House of Prayer\", Types: place_of_worship, point_of_interest, establishment",
+      "phone": "0488 289 950",
+      "website": "https://oneheartgc.com.au/",
+      "rating": 5,
+      "location": {
+        "latitude": -28.039929599999997,
+        "longitude": 153.35450649999999
+      }
+    },
+    {
+      "name": "Cairns Airport",
+      "address": "Airport Ave, Cairns City QLD 4870",
+      "place_id": "ChIJ8yyxNAhmeGkRILFgYvLuAA8",
+      "types": [
+        "international_airport",
+        "airport",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"Cairns Airport\", Types: international_airport, airport, point_of_interest, establishment",
+      "phone": "(07) 4080 6703",
+      "website": "http://www.cairnsairport.com.au/",
+      "rating": 3.9,
+      "location": {
+        "latitude": -16.8777626,
+        "longitude": 145.74993519999998
+      }
+    },
+    {
+      "name": "The University of Queensland",
+      "address": "St Lucia QLD 4072",
+      "place_id": "ChIJSXzrQYJQkWsR6e4QN22U6Zo",
+      "types": [
+        "university",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"The University of Queensland\", Types: university, point_of_interest, establishment",
+      "phone": "(07) 3365 1111",
+      "website": "https://www.uq.edu.au/",
+      "rating": 4.5,
+      "location": {
+        "latitude": -27.4976696,
+        "longitude": 153.0128661
+      }
+    },
+    {
+      "name": "Institute of Modern Languages (UQ-IML)",
+      "address": "37 Blair Dr, St Lucia QLD 4067",
+      "place_id": "ChIJvbHYBXhakWsRR-l2FDMVNN8",
+      "types": [
+        "school",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"Institute of Modern Languages (UQ-IML)\", Types: school, point_of_interest, establishment",
+      "phone": "(07) 3346 8200",
+      "website": "http://www.iml.uq.edu.au/",
+      "rating": 4.4,
+      "location": {
+        "latitude": -27.494906999999998,
+        "longitude": 153.014705
+      }
+    },
+    {
+      "name": "The University of Queensland-Saint Lucia Campus",
+      "address": "280-284 Sir Fred Schonell Dr, St Lucia QLD 4067",
+      "place_id": "ChIJIV_bMzVRkWsR6pWOygFaVHs",
+      "types": [
+        "university",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"The University of Queensland-Saint Lucia Campus\", Types: university, point_of_interest, establishment",
+      "phone": "(07) 3365 1111",
+      "website": "https://campuses.uq.edu.au/st-lucia",
+      "rating": 4.9,
+      "location": {
+        "latitude": -27.4936631,
+        "longitude": 153.0067317
+      }
+    },
+    {
+      "name": "Storie Dixon University of Sydney",
+      "address": "University of Sydney, Sydney, Storie Dixson Wing, Room 200, Darlington NSW 2008",
+      "place_id": "ChIJeSIV5UuxEmsRJZBS4Kmabss",
+      "types": [
+        "university",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"Storie Dixon University of Sydney\", Types: university, point_of_interest, establishment",
+      "phone": "(02) 8627 1444",
+      "website": "https://www.sydney.edu.au/",
+      "rating": 5,
+      "location": {
+        "latitude": -33.891218099999996,
+        "longitude": 151.1898592
+      }
+    },
+    {
+      "name": "UNSW Sydney",
+      "address": "Sydney NSW 2033",
+      "place_id": "ChIJp8ECA4uxEmsRoAd6A2l9AR0",
+      "types": [
+        "university",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"UNSW Sydney\", Types: university, point_of_interest, establishment",
+      "phone": "(02) 9385 1000",
+      "website": "https://www.unsw.edu.au/",
+      "rating": 4.4,
+      "location": {
+        "latitude": -33.917347,
+        "longitude": 151.2312675
+      }
+    },
+    {
+      "name": "UNSW Randwick Campus",
+      "address": "University of New South Wales, Randwick Campus, 22/32 King St, Randwick NSW 2031",
+      "place_id": "ChIJ15sqRR2yEmsRc1OcszMJI4Y",
+      "types": [
+        "university",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"UNSW Randwick Campus\", Types: university, point_of_interest, establishment",
+      "phone": "(02) 9385 1000",
+      "website": "https://www.unsw.edu.au/",
+      "rating": 3.6,
+      "location": {
+        "latitude": -33.90565850000001,
+        "longitude": 151.2351807
+      }
+    },
+    {
+      "name": "UNSW IT",
+      "address": "Room G06, D26 Biological Sciences building, University of, Kensington NSW 2033",
+      "place_id": "ChIJp8ECA4uxEmsRwN1Xu5__I8c",
+      "types": [
+        "university",
+        "consultant",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"UNSW IT\", Types: university, consultant, point_of_interest, establishment",
+      "phone": "(02) 9385 1333",
+      "website": "https://www.myit.unsw.edu.au/",
+      "rating": 3.7,
+      "location": {
+        "latitude": -33.9174265,
+        "longitude": 151.2353991
+      }
+    },
+    {
+      "name": "UNSW College",
+      "address": "UNSW College, Building L5, 223 Anzac Parade, Kensington NSW 2033",
+      "place_id": "ChIJPSuaJIyxEmsRGxeI7D_F38o",
+      "types": [
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"UNSW College\", Types: point_of_interest, establishment",
+      "phone": "(02) 8936 2222",
+      "website": "http://www.unswcollege.edu.au/",
+      "rating": 4.1,
+      "location": {
+        "latitude": -33.9185648,
+        "longitude": 151.22608119999998
+      }
+    },
+    {
+      "name": "UNSW The Nucleus: Student Hub",
+      "address": "Level 2, Library (F21), Library Rd, UNSW Sydney, Kensington NSW 2033",
+      "place_id": "ChIJoSpwBiCyEmsRHBT8G4KTdCA",
+      "types": [
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"UNSW The Nucleus: Student Hub\", Types: point_of_interest, establishment",
+      "phone": "(02) 9385 8500",
+      "website": "https://nucleus.unsw.edu.au/",
+      "rating": 2.6,
+      "location": {
+        "latitude": -33.9173162,
+        "longitude": 151.2332307
+      }
+    },
+    {
+      "name": "UNSW High Street",
+      "address": "Randwick NSW 2031, Australia",
+      "place_id": "ChIJ98p7JyCyEmsRoDwMWA74okw",
+      "types": [
+        "light_rail_station",
+        "transit_station",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"UNSW High Street\", Types: light_rail_station, transit_station, point_of_interest, establishment",
+      "rating": 4.9,
+      "location": {
+        "latitude": -33.9163215,
+        "longitude": 151.2355546
+      }
+    },
+    {
+      "name": "Multi Faith Centre (N35)",
+      "address": "Griffith University, Building N35/170 Kessels Rd, Nathan QLD 4111",
+      "place_id": "ChIJtfNEJtNakWsR2HR0dxXBwyU",
+      "types": [
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"Multi Faith Centre (N35)\", Types: point_of_interest, establishment",
+      "phone": "(07) 3735 7052",
+      "rating": 4.8,
+      "location": {
+        "latitude": -27.555564999999998,
+        "longitude": 153.053271
+      }
+    },
+    {
+      "name": "Griffith University, Brisbane South (Nathan) Campus",
+      "address": "170 Kessels Rd, Nathan QLD 4111",
+      "place_id": "ChIJ____T35BkWsR3tCdwKBuPbo",
+      "types": [
+        "university",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"Griffith University, Brisbane South (Nathan) Campus\", Types: university, point_of_interest, establishment",
+      "phone": "(07) 3735 7111",
+      "website": "https://www.griffith.edu.au/about-griffith/campuses-facilities/brisbane-south-nathan",
+      "rating": 4.1,
+      "location": {
+        "latitude": -27.5530181,
+        "longitude": 153.05107959999998
+      }
+    },
+    {
+      "name": "Queensland College of Art and Design, Griffith University, Brisbane City (South Bank) Campus",
+      "address": "226 Grey St, South Brisbane QLD 4101",
+      "place_id": "ChIJDbHPgA1akWsRM2nWIytuNpo",
+      "types": [
+        "university",
+        "art_gallery",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"Queensland College of Art and Design, Griffith University, Brisbane City (South Bank) Campus\", Types: university, art_gallery, point_of_interest, establishment",
+      "phone": "(07) 3735 7111",
+      "website": "https://www.griffith.edu.au/about-griffith/campuses-facilities/brisbane-city-south-bank",
+      "rating": 4.4,
+      "location": {
+        "latitude": -27.482132399999998,
+        "longitude": 153.0244128
+      }
+    },
+    {
+      "name": "Royal Brisbane and Women's Hospital",
+      "address": "Butterfield St, Herston QLD 4006",
+      "place_id": "ChIJV06QB-tZkWsRxeZ5sis287s",
+      "types": [
+        "skin_care_clinic",
+        "hospital",
+        "doctor",
+        "point_of_interest",
+        "health",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"Royal Brisbane and Women's Hospital\", Types: skin_care_clinic, hospital, doctor, point_of_interest, health, establishment",
+      "phone": "(07) 3646 8111",
+      "website": "https://metronorth.health.qld.gov.au/rbwh/",
+      "rating": 3.5,
+      "location": {
+        "latitude": -27.4471109,
+        "longitude": 153.0281818
+      }
+    },
+    {
+      "name": "The Royal Melbourne Hospital",
+      "address": "300 Grattan St, Parkville VIC 3050",
+      "place_id": "ChIJcQlUfy5d1moR5yLjdZkri50",
+      "types": [
+        "hospital",
+        "health",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"The Royal Melbourne Hospital\", Types: hospital, health, point_of_interest, establishment",
+      "phone": "(03) 9342 7000",
+      "website": "https://www.thermh.org.au/",
+      "rating": 3.3,
+      "location": {
+        "latitude": -37.7986657,
+        "longitude": 144.955973
+      }
+    },
+    {
+      "name": "The Alfred Spiritual Care",
+      "address": "Alfred Hospital, Melbourne VIC 3004",
+      "place_id": "ChIJI_ADDxho1moRZJA38iQQ9xk",
+      "types": [
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"The Alfred Spiritual Care\", Types: place_of_worship, point_of_interest, establishment",
+      "phone": "(03) 9076 3138",
+      "website": "https://www.alfredhealth.org.au/patients-families-friends/before-you-arrive/facilities-services-at-the-alfred",
+      "rating": 4.6,
+      "location": {
+        "latitude": -37.8465588,
+        "longitude": 144.9827216
+      }
+    },
+    {
+      "name": "MCEC Prayer Room",
+      "address": "Melbourne Exhibition Centre, 1 Convention Centre Pl, South Wharf VIC 3006",
+      "place_id": "ChIJgYmE0g1d1moRcJF_hir3IMc",
+      "types": [
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Prayer room without clear facility context - needs manual review",
+      "rating": 4.8,
+      "location": {
+        "latitude": -37.825544799999996,
+        "longitude": 144.9522081
+      }
+    },
+    {
+      "name": "Prayer Room",
+      "address": "122-Southern Cross Railway Station, Spencer St, Docklands VIC 3008",
+      "place_id": "ChIJ10muOCZd1moRhuFqowBUbF0",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Prayer room without clear facility context - needs manual review",
+      "rating": 5,
+      "location": {
+        "latitude": -37.818965399999996,
+        "longitude": 144.9530289
+      }
+    },
+    {
+      "name": "Islamic Council of Victoria (ICV)",
+      "address": "66-68 Jeffcott St, West Melbourne VIC 3003",
+      "place_id": "ChIJxW6TlEhd1moRWsU2crcvzXQ",
+      "types": [
+        "mosque",
+        "tourist_attraction",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"Islamic Council of Victoria (ICV)\", Types: mosque, tourist_attraction, place_of_worship, point_of_interest, establishment",
+      "phone": "(03) 9328 2067",
+      "website": "http://www.icv.org.au/",
+      "rating": 4.8,
+      "location": {
+        "latitude": -37.811840499999995,
+        "longitude": 144.9514323
+      }
+    },
+    {
+      "name": "Tullamarine Public Hall (Jumua’h only)",
+      "address": "60 Spring St, Tullamarine VIC 3043",
+      "place_id": "ChIJV_Usudhb1moRUOq3m14sOxs",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"Tullamarine Public Hall (Jumua’h only)\", Types: mosque, place_of_worship, point_of_interest, establishment",
+      "phone": "0403 399 477",
+      "rating": 4.9,
+      "location": {
+        "latitude": -37.7020811,
+        "longitude": 144.8742983
+      }
+    },
+    {
+      "name": "PGCC",
+      "address": "9-11 Green St, Doveton VIC 3177",
+      "place_id": "ChIJd-1cIVMR1moRwwoKTwJaQ6Q",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"PGCC\", Types: mosque, place_of_worship, point_of_interest, establishment",
+      "phone": "1800 953 766",
+      "website": "http://www.pgcc.org.au/",
+      "rating": 4.8,
+      "location": {
+        "latitude": -37.9984444,
+        "longitude": 145.2331582
+      }
+    },
+    {
+      "name": "Melbourne Madinah",
+      "address": "359 Exhibition St, Melbourne VIC 3000",
+      "place_id": "ChIJ-_oYIrJC1moRQh_iqGoc-k4",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"Melbourne Madinah\", Types: mosque, place_of_worship, point_of_interest, establishment",
+      "phone": "1300 623 462",
+      "website": "https://www.madinahnext.org/",
+      "rating": 4.7,
+      "location": {
+        "latitude": -37.8074,
+        "longitude": 144.9682305
+      }
+    },
+    {
+      "name": "UMMA Centre",
+      "address": "72 George St, Doncaster East VIC 3109",
+      "place_id": "ChIJ7Zv6gWE41moR_pfsiGAgx34",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"UMMA Centre\", Types: mosque, place_of_worship, point_of_interest, establishment",
+      "phone": "0414 886 421",
+      "website": "http://www.umma.org.au/",
+      "rating": 4.8,
+      "location": {
+        "latitude": -37.7819463,
+        "longitude": 145.1546787
+      }
+    },
+    {
+      "name": "IHIC",
+      "address": "6 Lang Rd, Earlwood NSW 2206",
+      "place_id": "ChIJKVbLIXy6EmsRk7L9DT3K5Es",
+      "types": [
+        "community_center",
+        "event_venue",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"IHIC\", Types: community_center, event_venue, point_of_interest, establishment",
+      "phone": "(02) 9558 1114",
+      "website": "http://www.ihic.org.au/",
+      "rating": 4.9,
+      "location": {
+        "latitude": -33.9147531,
+        "longitude": 151.1342464
+      }
+    },
+    {
+      "name": "UMA CENTRE LIMITED",
+      "address": "19 Enterprise Ave, Padstow NSW 2211",
+      "place_id": "ChIJL4pkVbi-EmsRiO48W9DQqfw",
+      "types": [
+        "community_center",
+        "event_venue",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"UMA CENTRE LIMITED\", Types: community_center, event_venue, point_of_interest, establishment",
+      "phone": "0416 000 862",
+      "website": "http://www.uma.org.au/",
+      "rating": 4.9,
+      "location": {
+        "latitude": -33.943889999999996,
+        "longitude": 151.0326076
+      }
+    },
+    {
+      "name": "Daar ibn Umar",
+      "address": "level 2/116 Queen St, Campbelltown NSW 2560",
+      "place_id": "ChIJkXR7L_juEmsRIXL4vSrw_ZU",
+      "types": [
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"Daar ibn Umar\", Types: point_of_interest, establishment",
+      "phone": "0431 188 780",
+      "website": "https://daaribnumar.ad-din.site/",
+      "rating": 4.9,
+      "location": {
+        "latitude": -34.064614999999996,
+        "longitude": 150.81641829999998
+      }
+    },
+    {
+      "name": "Australian Muslim Welfare Centre Incorporated (AMWC)",
+      "address": "13-17 Eagleview Rd, Minto NSW 2566",
+      "place_id": "ChIJKYkdUHbrEmsRlYBkZ7VdxEU",
+      "types": [
+        "community_center",
+        "event_venue",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"Australian Muslim Welfare Centre Incorporated (AMWC)\", Types: community_center, event_venue, point_of_interest, establishment",
+      "website": "https://amwc.org.au/",
+      "rating": 4.9,
+      "location": {
+        "latitude": -34.019573099999995,
+        "longitude": 150.8674356
+      }
+    },
+    {
+      "name": "Australian Muslim Social Services Agency",
+      "address": "91-101 Boundary Rd, North Melbourne VIC 3051",
+      "place_id": "ChIJRSo6CyJd1moR0lfy0Cdijgs",
+      "types": [
+        "mosque",
+        "place_of_worship",
+        "point_of_interest",
+        "establishment"
+      ],
+      "reason": "Unclear classification - Name: \"Australian Muslim Social Services Agency\", Types: mosque, place_of_worship, point_of_interest, establishment",
+      "phone": "(03) 9329 0285",
+      "website": "http://www.amssa.org.au/",
+      "rating": 4.9,
+      "location": {
+        "latitude": -37.7916069,
+        "longitude": 144.9393433
+      }
+    }
+  ]
+}
