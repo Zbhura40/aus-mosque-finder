@@ -1,6 +1,6 @@
 # Find My Mosque - Project Notes
 
-> **Last Updated:** October 25, 2025
+> **Last Updated:** November 20, 2025
 > **Purpose:** Date-organized progress tracking and quick reference
 
 ---
@@ -9,14 +9,153 @@
 
 **Project:** Australian mosque directory (findmymosque.org)
 **Tech Stack:** React + TypeScript, Vite, TailwindCSS, Supabase, Google Places API
-**Status:** Live with 347 verified mosques, Holland Park demo complete
+**Status:** Live with **394 Islamic locations** (mosques, prayer rooms, musallas)
 
-**Key Features:** Mosque finder, state landing pages, featured mosque pages
+**Key Features:** Mosque finder, prayer room directory, state landing pages, featured mosque pages
 
 📖 **References:**
 - Detailed tech docs: [instructions.md](./instructions.md)
 - Marketing strategy: [marketing-strategy-project.md](./marketing-strategy-project.md)
 - Bullseye framework: [docs/bullseye-marketing-strategy.md](./docs/bullseye-marketing-strategy.md)
+
+---
+
+## 📅 November 20, 2025
+
+### ✅ Holland Park Mosque - Prayer Times Clock Integration
+
+**Achievement:** Completed side-by-side prayer times display with live clock
+
+**What Was Built:**
+- ✅ Integrated my-masjid.com prayer times clock (landscape format)
+- ✅ Clock on left, prayer schedule on right - all visible without scrolling
+- ✅ Shows live countdown to next prayer, analog clock, full prayer schedule
+- ✅ Fixed layout from vertical (800px tall, 672px wide) → horizontal (600px tall, 1400px wide)
+
+**Features Now Live:**
+- Real-time analog clock with prayer time markers
+- Countdown timer: "Maghrib Adhan in X min"
+- Complete prayer schedule: Adhan & Iqamah times for all 5 prayers + Jumu'ah
+- Holland Park Mosque branding (logo + name)
+- Islamic date display
+
+**Technical Implementation:**
+- Changed from `max-w-2xl` to `maxWidth: 1400px` for landscape display
+- Reduced height from 800px to 600px (landscape aspect ratio)
+- URL: `https://time.my-masjid.com/timingscreen/071cf335-19b7-4840-9e74-6bed3087a7e8`
+
+📖 **Technical details:** See instructions.md#holland-park-clock-integration
+
+**Status:** 🟢 Ready for production deployment
+
+---
+
+## 📅 November 16, 2025
+
+### ✅ Place of Worship Search & Validation System
+
+**Achievement:** Built smart validation system to find Islamic prayer facilities beyond traditional mosques
+
+**What We Built:**
+- ✅ 3-layer validation system (name keywords → location context → manual review)
+- ✅ Targeted text search for 25 specific queries (airports, universities, hospitals)
+- ✅ Found **75 places**, validated **57**, approved **45** (39 auto + 6 manual)
+- ✅ Successfully added **16 NEW locations** to database (mosques_cache)
+
+**New Locations Include:**
+- Airport prayer rooms: Brisbane, Sydney, Melbourne, Perth
+- University musallas: QUT, University of Melbourne, Monash, UWA
+- Hospital prayer rooms: Royal Melbourne, Canterbury
+- Railway stations: Southern Cross Station Melbourne
+- Islamic centers and welfare organizations
+
+**Cost:** $0.80 for search
+
+📖 **Technical details:** See instructions.md#place-of-worship-validation for algorithm details
+
+---
+
+### ✅ Cron Job Fix - Permanently Resolved
+
+**Issue:** Cron job created on Oct 25 (jobid 6) had line breaks in JWT token, failing every Sunday
+
+**Solution:**
+1. ✅ Deleted broken cron job (jobid 6)
+2. ✅ Created new cron job (jobid 7) using `jsonb_build_object()` to prevent line breaks
+3. ✅ Verified working in test run
+
+**Result:** Weekly auto-refresh now works correctly (runs every Sunday at 2 AM UTC)
+
+📖 **Technical fix:** See instructions.md#cron-job-troubleshooting for SQL commands
+
+---
+
+### ✅ Full Database Refresh - 391 Mosques Updated
+
+**Challenge:** Edge Function timeout when refreshing 392 mosques at once (stopped at 162/392)
+
+**Solution:** Created batch refresh script (`scripts/refresh-remaining-mosques.ts`)
+- Processes 10 mosques per batch with 2-second delays
+- Refreshed remaining **229 mosques** successfully
+- **1 mosque failed** (invalid Google Place ID - needs removal)
+
+**Results:**
+- ✅ **391 out of 392 mosques** now have fresh Google data
+- ✅ Updated: prayer times, ratings, opening hours, photos, contact info
+- ✅ Data age: <1 hour (previously 36 days old)
+
+**Cost:** $6.64 total ($2.75 first attempt + $3.89 batch refresh)
+
+📖 **Batch refresh details:** See instructions.md#batch-refresh-strategy
+
+---
+
+### ✅ Git Repository Security & Commit
+
+**Achievement:** Committed today's work while protecting sensitive data
+
+**Protected (added to .gitignore):**
+- SQL files with hardcoded service role keys (3 files)
+- Ensures secrets never pushed to public GitHub
+
+**Committed (14 files, +2,878 lines):**
+- Validation system scripts (8 TypeScript files)
+- Search result data (3 JSON/CSV files)
+- Documentation updates
+- Diagnostic tools
+
+**Commit:** `892227e` - "Add place of worship search and validation system"
+
+---
+
+### ✅ Airport Prayer Rooms - Search Fix & Database Cleanup
+
+**Achievement:** Fixed 5 airport prayer rooms not appearing in radius searches + comprehensive database audit
+
+**Prayer Rooms Fixed:**
+- ✅ Perth Airport Prayer Room - Fixed PostGIS location, now searchable
+- ✅ Adelaide Airport Prayer Room - Added missing coordinates + PostGIS
+- ✅ Melbourne Airport Prayer Room - Added coordinates + PostGIS
+- ✅ Brisbane Domestic Airport Prayer Room - Added coordinates + PostGIS
+- ✅ Brisbane International Prayer Room - Updated address
+
+**Root Cause Found:**
+- Search function filters mosques by `last_fetched_from_google > 30 days`
+- Manual entries had NULL timestamp → filtered out
+- **Solution:** Set `last_fetched_from_google = NOW()` for manual entries
+
+**Database Status:** 394 total locations (was 392, added 2 airports, restored 1 railway station)
+
+**Database Audit Results:**
+- ✅ Comprehensive audit completed
+- ⚠️ Found 46 total issues (flagged for future fixes):
+  - 4 duplicate names (22 entries)
+  - 17 duplicate addresses (34 entries)
+  - 1 missing coordinates (Southern Cross Railway Station)
+  - 14 missing PostGIS location points
+  - 10 missing state assignments
+
+📖 **Technical details:** See instructions.md#airport-prayer-room-search-fix for PostGIS setup and search function logic
 
 ---
 
@@ -426,29 +565,31 @@
 ## 🎯 Current Status & Roadmap
 
 ### Completed ✅
-- ✅ 347 mosques live with Google API validation
+- ✅ 394 locations live with Google API validation
 - ✅ 100% cache system ($66/month savings)
-- ✅ Auto-refresh cron job fixed (now runs every Sunday at 2 AM)
+- ✅ Auto-refresh cron job fixed (runs every Sunday at 2 AM)
 - ✅ SEO Phases 1-2 (meta tags, Schema, Search Console)
 - ✅ Database security hardened (26/31 issues fixed)
 - ✅ Holland Park Mosque demo MVP (4 pages with verified data)
+- ✅ Holland Park prayer times clock - landscape format with live countdown (Nov 20)
 - ✅ Navbar redesign (solid white, auto-hide, responsive layouts)
 - ✅ Homepage reorganization (search-first, animation backed up)
 - ✅ Removed Halal Supermarkets feature (streamlined navigation)
 - ✅ Email extraction complete - 21 emails from 211 websites ($1.52)
 - ✅ Cold email campaign system built (templates, trackers, scripts)
-- ✅ Git repository cleanup - 54 files committed, private data protected
+- ✅ Airport prayer rooms searchable (Nov 16)
+- ✅ Database audit complete - 46 issues identified (Nov 16)
 
-### Current Focus (Next 2 Weeks - Oct 25 to Nov 8, 2025)
-1. **Cold Email Campaign** - Send emails + phone calls to 15-20 mosques (goal: 3-5 responses, 1-2 backlinks)
-2. **Track Campaign Progress** - Log all outreach in `marketing_prospects` table and campaign tracker CSV
-3. **Build Preview Pages** - Create featured pages for interested mosques
+### Pending Items (See todo.txt)
+1. **Database Cleanup** - Fix 46 identified issues (duplicates, missing data)
+2. **Cold Email Campaign** - Continue outreach to mosques
+3. **Holland Park Demo** - Deploy to production and send partnership pitch
 
-### Action Items
-- ✅ **~~Fix Auto-Refresh Cron~~** - COMPLETED (Oct 25 evening)
-- 📅 **Verify cache refresh** - Tomorrow: Run `SELECT MAX(last_updated) FROM mosques_cache;` in Supabase
-- 📞 **Call Holland Park & Preston:** Use phone scripts from docs/phone-outreach-guide.md
-- 📧 **Continue email outreach:** 5-7 more mosques this week
+### Next Actions
+- 📋 **Database Cleanup:** Review and fix 46 audit issues (see todo.txt)
+- 🚀 **Holland Park Deploy:** Push clock integration to production
+- 🤝 **Partnership Pitch:** Send Holland Park demo to mosque for backlink partnership
+- 📧 **Campaign Outreach:** Continue mosque contact efforts
 
 📖 **See:** `docs/seo-action-plan.md` and `marketing-strategy-project.md`
 

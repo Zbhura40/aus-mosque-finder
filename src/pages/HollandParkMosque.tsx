@@ -296,7 +296,7 @@ const HollandParkMosque = () => {
             Opening Hours
           </h2>
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="grid grid-cols-1 md:grid-cols-3">
+            <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="p-6 border-b md:border-b-0 md:border-r border-gray-200">
                 <h3 className="font-semibold text-lg mb-4 text-islamic-green">General Hours</h3>
                 <div className="space-y-2 text-sm">
@@ -312,22 +312,6 @@ const HollandParkMosque = () => {
                     <span className="font-medium text-islamic-green">Friday:</span>
                     <span className="text-islamic-green font-medium">11:30 AM - 8:00 PM</span>
                   </div>
-                </div>
-              </div>
-              <div className="p-6 border-b md:border-b-0 md:border-r border-gray-200">
-                <h3 className="font-semibold text-lg mb-4 text-islamic-green">Daily Prayers</h3>
-                <p className="text-architectural-shadow/70 mb-4 text-sm">
-                  The mosque is open for all five daily prayers. Prayer times update daily based on the Islamic calendar.
-                </p>
-                <div className="w-full overflow-hidden" style={{ maxHeight: '310px' }}>
-                  <iframe
-                    src="https://themasjidapp.net/59/prayers"
-                    width="100%"
-                    height="400"
-                    style={{ border: 0 }}
-                    loading="lazy"
-                    title="Daily Prayer Times"
-                  ></iframe>
                 </div>
               </div>
               <div className="p-6">
@@ -349,6 +333,25 @@ const HollandParkMosque = () => {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Prayer Times */}
+        <section className="mb-16">
+          <h2 className="font-display text-3xl font-bold text-architectural-shadow mb-6">
+            Prayer Times
+          </h2>
+          <div className="bg-white rounded-lg shadow-md overflow-hidden p-8 flex justify-center">
+            <div className="w-full overflow-hidden rounded-lg" style={{ height: '600px', maxWidth: '1400px' }}>
+              <iframe
+                src="https://time.my-masjid.com/timingscreen/071cf335-19b7-4840-9e74-6bed3087a7e8"
+                width="100%"
+                height="600"
+                style={{ border: 0 }}
+                loading="lazy"
+                title="Prayer Times & Clock"
+              ></iframe>
             </div>
           </div>
         </section>

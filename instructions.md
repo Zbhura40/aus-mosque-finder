@@ -2771,6 +2771,147 @@ React Router's `navigate()` function in mobile hamburger menus can fail on mobil
 
 ---
 
+## Holland Park Clock Integration
+
+**Date:** November 20, 2025
+
+### Problem
+Prayer times iframe was displaying in vertical/portrait format, requiring users to scroll down to see the prayer schedule. The clock and prayer times should display side-by-side in landscape format.
+
+### Root Cause
+The iframe container had `max-w-2xl` (672px width) constraint, which was too narrow and forced the my-masjid.com timing screen into portrait/vertical mode.
+
+### Solution
+
+**Before:**
+```tsx
+<div className="w-full max-w-2xl overflow-hidden rounded-lg" style={{ height: '800px' }}>
+  <iframe
+    src="https://time.my-masjid.com/timingscreen/071cf335-19b7-4840-9e74-6bed3087a7e8"
+    width="100%"
+    height="800"
+    style={{ border: 0 }}
+    loading="lazy"
+    title="Prayer Times & Clock"
+  ></iframe>
+</div>
+```
+
+**After:**
+```tsx
+<div className="w-full overflow-hidden rounded-lg" style={{ height: '600px', maxWidth: '1400px' }}>
+  <iframe
+    src="https://time.my-masjid.com/timingscreen/071cf335-19b7-4840-9e74-6bed3087a7e8"
+    width="100%"
+    height="600"
+    style={{ border: 0 }}
+    loading="lazy"
+    title="Prayer Times & Clock"
+  ></iframe>
+</div>
+```
+
+**Changes Made:**
+1. Removed `max-w-2xl` class (672px) → Changed to inline `maxWidth: '1400px'` (much wider)
+2. Reduced height from `800px` to `600px` (landscape format is shorter)
+3. Updated both container height and iframe height to match
+
+**Result:**
+- ✅ Clock displays on left side with analog face and prayer markers
+- ✅ Prayer schedule table displays on right side
+- ✅ All prayers visible without scrolling (Fajr, Dhuhr, Asr, Maghrib, Isha, Sunrise, Jumu'ah)
+- ✅ Countdown timer prominently displayed at top: "Maghrib Adhan in X min"
+- ✅ Holland Park branding and Islamic date visible
+
+**Key Learning:**
+iframe content from external sources may have responsive breakpoints. If content displays vertically when it should be horizontal, increase the container width to trigger landscape mode.
+
+**File Modified:**
+- `src/pages/HollandParkMosque.tsx` (lines 340-357)
+
+---
+
+## Airport Prayer Room Search Fix
+
+**Date:** November 16, 2025
+
+### Problem
+5 airport prayer rooms weren't appearing in radius searches despite having correct addresses and coordinates.
+
+### Root Cause
+The search function uses an RPC function `get_mosques_within_radius` which filters results:
+
+```sql
+WHERE mc.last_fetched_from_google > NOW() - INTERVAL '1 day' * max_age_days
+```
+
+Manual entries (Adelaide, Melbourne, Brisbane Domestic airports) had `last_fetched_from_google = NULL`, so they were filtered out even though they had valid PostGIS location points.
+
+### Solution Steps
+
+**1. Add Missing PostGIS Location Points**
+
+Run this SQL to create PostGIS points from latitude/longitude:
+
+```sql
+-- Adelaide Airport
+UPDATE mosques_cache
+SET location = ST_SetSRID(ST_MakePoint(138.5306, -34.945), 4326)
+WHERE id = '<airport_id>';
+
+-- Melbourne Airport
+UPDATE mosques_cache
+SET location = ST_SetSRID(ST_MakePoint(144.8433, -37.6733), 4326)
+WHERE id = '<airport_id>';
+
+-- Brisbane Domestic
+UPDATE mosques_cache
+SET location = ST_SetSRID(ST_MakePoint(153.1218, -27.3942), 4326)
+WHERE id = '<airport_id>';
+
+-- Brisbane International
+UPDATE mosques_cache
+SET location = ST_SetSRID(ST_MakePoint(153.1090511, -27.4033454), 4326)
+WHERE id = '<airport_id>';
+```
+
+**2. Set Timestamp for Manual Entries**
+
+```sql
+UPDATE mosques_cache
+SET last_fetched_from_google = NOW()
+WHERE google_place_id IN (
+  'MANUAL_ADELAIDE_AIRPORT_PRAYER_ROOM',
+  'MANUAL_MELBOURNE_AIRPORT_PRAYER_ROOM',
+  'MANUAL_BNE_DOMESTIC_PRAYER_ROOM'
+);
+```
+
+### Key Technical Notes
+
+**PostGIS Point Format:**
+- `ST_MakePoint(longitude, latitude)` - note the order!
+- `ST_SetSRID(..., 4326)` - sets coordinate system to WGS84 (GPS standard)
+- Stored as `geography` type for distance calculations
+
+**Search Function Logic:**
+- Located in: `supabase/migrations/20251010_create_cache_query_function.sql`
+- Calls: `get_mosques_within_radius(lat, lng, radius, max_age_days)`
+- Filters: Within radius AND fetched within last 30 days
+- Returns: Sorted by distance, limit 20
+
+**Manual Place IDs:**
+- Format: `MANUAL_<NAME>_PRAYER_ROOM`
+- Used when real Google Place ID not available
+- Must have `last_fetched_from_google` set to appear in searches
+
+### Files Created
+- `scripts/check-all-airport-prayer-rooms.ts` - Diagnostic tool
+- `scripts/audit-mosque-database.ts` - Full database audit
+- `mosque-audit-report.json` - Detailed audit results
+
+---
+
 **End of Instructions**
 
 For quick reference, see [project-notes.md](./project-notes.md)
