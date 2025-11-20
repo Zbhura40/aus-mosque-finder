@@ -2912,7 +2912,137 @@ WHERE google_place_id IN (
 
 ---
 
+## Database Cleanup - November 20, 2025 {#database-cleanup-nov-20}
+
+### Overview
+Fixed 25 high-priority database issues identified in Nov 16 audit. All fixes executed via SQL in Supabase SQL Editor.
+
+### Issues Fixed
+
+#### 1. Southern Cross Railway Station - Missing Coordinates
+**Problem:** Entry had no latitude/longitude, couldn't appear in searches
+
+**Solution:**
+```sql
+UPDATE mosques_cache
+SET latitude = -37.81839,
+    longitude = 144.9525,
+    location = ST_SetSRID(ST_MakePoint(144.9525, -37.81839), 4326),
+    last_fetched_from_google = NOW()
+WHERE id = '0d168fd3-ea04-41a8-be3c-d2637fe9408b';
+```
+
+**Method:** Used Google Places API Text Search to find coordinates for "Southern Cross Railway Station Spencer Street Melbourne"
+
+---
+
+#### 2. Fix 14 Mosques Missing PostGIS Location Points
+**Problem:** Had latitude/longitude but missing PostGIS `location` column → couldn't appear in radius searches
+
+**Solution Pattern:**
+```sql
+UPDATE mosques_cache
+SET location = ST_SetSRID(ST_MakePoint(longitude, latitude), 4326),
+    last_fetched_from_google = NOW()
+WHERE id = '<mosque-id>';
+```
+
+**Locations Fixed:**
+- ACT: AL-INAYA Prayer Room
+- NSW: Canterbury Hospital, AMWC, Daar ibn Umar, Epping Musallah, IHIC, UMA Centre
+- VIC: MCEC, Monash Musallah, Alfred Hospital
+- QLD: Griffith Multi Faith Centre, UQ Multi-faith Chaplaincy, QUT Musalla
+
+**Key Learning:** PostGIS uses `ST_MakePoint(longitude, latitude)` - note the order (longitude first, not latitude)
+
+---
+
+#### 3. Fix 10 Mosques Missing State Assignments
+**Problem:** State field was NULL → mosques didn't appear on state landing pages
+
+**Solution:** Extracted state from address field
+```sql
+UPDATE mosques_cache SET state = 'NSW' WHERE id = '<mosque-id>';
+UPDATE mosques_cache SET state = 'QLD' WHERE id = '<mosque-id>';
+```
+
+**Locations Fixed:**
+- NSW (9): Alpha Park, AMIC Musallah, Friday Prayer locations (Gregory Hills, Quakers Hill, Plumpton), Ghausia Masjid, Juma Prayer Narellan, Penrith Masjid, Marijung location
+- QLD (1): Brisbane Airport Musalla
+
+---
+
+#### 4. Delete Duplicate Mosque Entry
+**Problem:** Masjid Al Rahman Gosnells had 2 entries with same name/address, different Google Place IDs
+
+**Investigation:**
+- Both Place IDs valid and operational
+- Both returned identical data (4.9 stars, 314 reviews, same coordinates)
+- Google has duplicate Place IDs for same location
+
+**Solution:** Kept Entry 1 (ChIJIUolIXKVMioRaZDpCrqDrkU), deleted Entry 2
+```sql
+DELETE FROM mosques_cache WHERE id = 'be942660-a683-469c-80df-014acac8a4ec';
+```
+
+---
+
+### Duplicate Names - Review Results
+**Analysis:** Reviewed 4 duplicate name patterns (22 total entries)
+
+**Findings:**
+- **Campbellfield Mosque** (2 entries): Different addresses → Keep both (2 separate mosques)
+- **Friday Prayer (Jummah)** (2 entries): Different cities (Sydney vs Perth) → Keep both
+- **Friday Prayer (Jumu'ah)** (9 entries): Different NSW locations → Keep all (temporary prayer spaces)
+- **Masjid Al Rahman Gosnells** (2 entries): Same address, different Place IDs → Deleted 1 duplicate
+
+**Conclusion:** Only 1 true duplicate found and removed. Others are legitimately different locations with same names.
+
+---
+
+### Verification Queries
+
+**Check PostGIS locations:**
+```sql
+SELECT name, latitude, longitude,
+       CASE WHEN location IS NULL THEN '❌ MISSING' ELSE '✅ SET' END as postgis_status
+FROM mosques_cache
+WHERE location IS NULL;
+-- Should return 0 rows after fixes
+```
+
+**Check state assignments:**
+```sql
+SELECT name, address, state
+FROM mosques_cache
+WHERE state IS NULL;
+-- Should return 0 rows after fixes
+```
+
+**Verify duplicates removed:**
+```sql
+SELECT name, address, COUNT(*) as count
+FROM mosques_cache
+GROUP BY LOWER(name), LOWER(address)
+HAVING COUNT(*) > 1;
+-- Should show only legitimate shared buildings (not duplicates)
+```
+
+---
+
+### Files Created
+- `fix-missing-postgis-locations.sql` - SQL to fix 14 PostGIS issues
+- `fix-missing-states.sql` - SQL to fix 10 state assignments
+- `delete-masjid-al-rahman-duplicate.sql` - SQL to remove duplicate
+- `duplicate-names-review.md` - Analysis of 4 duplicate name patterns
+- `scripts/fix-missing-postgis-locations.ts` - Diagnostic script
+- `scripts/check-masjid-al-rahman.ts` - Google Places API verification
+- `scripts/get-southern-cross-coords.ts` - Coordinate lookup
+
+**Note:** SQL files added to `.gitignore` (one-time fixes, already executed)
+
+---
+
 **End of Instructions**
 
 For quick reference, see [project-notes.md](./project-notes.md)
-For plain-English version, see `project-notes-for-zbthedummy.txt`
