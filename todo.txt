@@ -1,0 +1,31 @@
+# Find My Mosque - Pending Tasks
+# Last Updated: November 20, 2025
+
+## Database Cleanup
+
+### Pending - Lower Priority
+- [ ] Review 17 duplicate addresses (34 total entries)
+      - Determine if they're different organizations sharing buildings or true duplicates
+      - Examples: Islamic Society of Gold Coast + المسجد الكبير في قولد كوست
+      - See `mosque-audit-report.json` for detailed list
+
+---
+
+## Feature Enhancements
+
+- [ ] Integrate Holland Park Mosque clock using information provided by the mosque
+      - Get clock details/requirements from Holland Park
+      - Implement on featured page
+
+---
+
+## Completed (Nov 20, 2025)
+- [x] Fix Southern Cross Railway Station - added coordinates & PostGIS (14 locations total)
+- [x] Fix 14 mosques missing PostGIS location points
+- [x] Fix 10 mosques missing state assignments
+- [x] Review duplicate names - kept all, deleted 1 true duplicate (Masjid Al Rahman Gosnells)
+
+## Completed (Nov 16, 2025)
+- [x] Fix Perth Airport Prayer Room search issue
+- [x] Add Adelaide, Melbourne, Brisbane airport prayer rooms
+- [x] Database audit - identify duplicates and missing data

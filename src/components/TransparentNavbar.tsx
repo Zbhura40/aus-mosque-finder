@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { HelpCircle, MessageSquare, User, MapPin, ChevronDown, Home, Menu, X, Star } from "lucide-react";
+import { HelpCircle, MessageSquare, User, MapPin, ChevronDown, Home, Menu, X, Star, Clock } from "lucide-react";
 
 const TransparentNavbar: React.FC = () => {
   const navigate = useNavigate();
@@ -199,6 +199,19 @@ const TransparentNavbar: React.FC = () => {
           </span>
         </button>
 
+        {/* Prayer Times Button */}
+        <button
+          onClick={() => navigate("/prayer-times")}
+          className="group relative flex items-center gap-2 px-4 py-2 rounded-lg bg-transparent hover:bg-gray-100 transition-all duration-300 ease-out"
+          aria-label="Prayer Times"
+        >
+          <Clock className="w-5 h-5 text-gray-900 group-hover:text-teal-600 transition-colors duration-300" />
+          <span className="font-body text-sm font-medium text-gray-900 group-hover:text-teal-600 transition-colors duration-300 relative">
+            Prayer Times
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-600 transition-all duration-300 ease-out group-hover:w-full"></span>
+          </span>
+        </button>
+
         {/* FAQ Button */}
         <button
           onClick={() => navigate("/faq")}
@@ -360,6 +373,17 @@ const TransparentNavbar: React.FC = () => {
             >
               <User className="w-5 h-5 text-islamic-green" />
               <span className="font-body text-sm font-medium">Imam Profiles</span>
+            </button>
+
+            <button
+              onClick={() => {
+                navigate("/prayer-times");
+                setIsMobileMenuOpen(false);
+              }}
+              className="w-full flex items-center gap-3 px-4 py-3 text-architectural-shadow hover:bg-islamic-green/10 transition-colors border-b border-golden-beige/30"
+            >
+              <Clock className="w-5 h-5 text-islamic-green" />
+              <span className="font-body text-sm font-medium">Prayer Times</span>
             </button>
 
             <button

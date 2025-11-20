@@ -1,0 +1,641 @@
+{
+  "audit_date": "2025-11-16T12:17:40.852Z",
+  "total_mosques": 394,
+  "total_issues": 46,
+  "issue_summary": {
+    "DUPLICATE_NAME": 4,
+    "DUPLICATE_PLACE_ID": 0,
+    "DUPLICATE_ADDRESS": 17,
+    "MISSING_COORDINATES": 1,
+    "MISSING_POSTGIS": 14,
+    "MISSING_STATE": 10
+  },
+  "issues": [
+    {
+      "type": "DUPLICATE_NAME",
+      "name": "campbellfield mosque",
+      "count": 2,
+      "entries": [
+        {
+          "id": "a8e161df-5569-41af-a8fc-dd2ee16c3be2",
+          "address": "95 Horne St, Campbellfield VIC 3061, Australia",
+          "place_id": "ChIJQ2ebl_9P1moRz9KqcW1nksM",
+          "state": "VIC"
+        },
+        {
+          "id": "4a3fb44d-d588-4fc2-be24-fb041a3c5329",
+          "address": "46-48 Mason St, Campbellfield VIC 3061, Australia",
+          "place_id": "ChIJlUm0mORP1moRqlBLwq8DQUU",
+          "state": "VIC"
+        }
+      ]
+    },
+    {
+      "type": "DUPLICATE_NAME",
+      "name": "friday prayer (jummah)",
+      "count": 2,
+      "entries": [
+        {
+          "id": "50f7ffad-0905-4b2f-927d-9d4471bc6472",
+          "address": "7 Victor St, Chatswood NSW 2067, Australia",
+          "place_id": "ChIJUaFLg4upEmsRHsSoa6gS-_4",
+          "state": "NSW"
+        },
+        {
+          "id": "95c32589-fec3-4e86-8909-338a1de0a585",
+          "address": "12 Pier St, Perth WA 6000, Australia",
+          "place_id": "ChIJg240G6y7MioRxnw22AWEVV4",
+          "state": "WA"
+        }
+      ]
+    },
+    {
+      "type": "DUPLICATE_NAME",
+      "name": "friday prayer (jumu'ah)",
+      "count": 9,
+      "entries": [
+        {
+          "id": "4fea361a-aa13-41a8-bfe9-173654626d05",
+          "address": "4 Central Ave, Chipping Norton NSW 2170, Australia",
+          "place_id": "ChIJcWPMrQC_EmsRxHRLSu8aXgE",
+          "state": "NSW"
+        },
+        {
+          "id": "83431645-202c-41b4-91c7-cac29478a0e7",
+          "address": "Gregory Hills NSW 2557, Australia",
+          "place_id": "ChIJK76H9x3vEmsRctSLqkJzSRU",
+          "state": null
+        },
+        {
+          "id": "d363d870-15ab-4ece-a150-9d8d9e129586",
+          "address": "1553-1555 Botany Rd, Botany NSW 2019, Australia",
+          "place_id": "ChIJ2bOWYACxEmsRwa40zeGvDQ0",
+          "state": "NSW"
+        },
+        {
+          "id": "63eedacd-71da-4501-9309-1e60671319b5",
+          "address": "108 Guernsey Ave, Minto NSW 2566, Australia",
+          "place_id": "ChIJQ9VcdIDtEmsR3WnCbSxMWww",
+          "state": "NSW"
+        },
+        {
+          "id": "03f2885c-9965-454f-b8ae-3cd489161556",
+          "address": "15A Argyle Pl, Millers Point NSW 2000, Australia",
+          "place_id": "ChIJc7o9aACvEmsR0VoHG4isfiU",
+          "state": "NSW"
+        },
+        {
+          "id": "a81bc778-cc20-42cb-a528-d97808548f54",
+          "address": "7 Lalor Rd, Quakers Hill NSW 2763",
+          "place_id": "ChIJ9zdIa9iZEmsRNioy5dj78PE",
+          "state": null
+        },
+        {
+          "id": "eeae0333-5dde-44ee-9569-9eb32baeb33d",
+          "address": "103 Carwar Ave, Carss Park NSW 2221, Australia",
+          "place_id": "ChIJrwtMbau5EmsRK9cPYHcblfg",
+          "state": "NSW"
+        },
+        {
+          "id": "9a4fe7ba-1872-4586-86e5-36c58437cb90",
+          "address": "3/33A Fairwater Dr, Harrington Park NSW 2567, Australia",
+          "place_id": "ChIJ4XvMGi7xEmsRAGJx-_3ExFs",
+          "state": "NSW"
+        },
+        {
+          "id": "05985410-2b87-4646-9545-ec916cf828ac",
+          "address": "Marsfield NSW 2122, Australia",
+          "place_id": "ChIJBaZxs6alEmsRlAblmVAIjKI",
+          "state": "NSW"
+        }
+      ]
+    },
+    {
+      "type": "DUPLICATE_NAME",
+      "name": "masjid al rahman gosnells",
+      "count": 2,
+      "entries": [
+        {
+          "id": "9cad4e2a-1055-4a94-b216-f1ca1ed45add",
+          "address": "45 Mills Rd W, Gosnells WA 6110, Australia",
+          "place_id": "ChIJIUolIXKVMioRaZDpCrqDrkU",
+          "state": "WA"
+        },
+        {
+          "id": "be942660-a683-469c-80df-014acac8a4ec",
+          "address": "45 Mills Rd W, Gosnells WA 6110, Australia",
+          "place_id": "ChIJ19T2OACVMioRUb4e7xsfpIo",
+          "state": "WA"
+        }
+      ]
+    },
+    {
+      "type": "DUPLICATE_ADDRESS",
+      "address": "144 allied dr, arundel qld 4214, australia",
+      "count": 2,
+      "entries": [
+        {
+          "id": "5d2e4b15-7707-4b45-87a0-803f51062fb1",
+          "name": ".المسجد الكبير في قولد كوست",
+          "place_id": "ChIJ3e67uSgQkWsRuqtYe96knpw"
+        },
+        {
+          "id": "67bfc68f-ff52-407d-8d59-8e710e06e404",
+          "name": "Islamic Society of Gold Coast",
+          "place_id": "ChIJoVedvCgQkWsRAoHYGEHHCcU"
+        }
+      ]
+    },
+    {
+      "type": "DUPLICATE_ADDRESS",
+      "address": "45 harvest home rd, epping vic 3076, australia",
+      "count": 2,
+      "entries": [
+        {
+          "id": "196ddc43-8c8e-471e-ac4c-45e15b5a4c99",
+          "name": "Alsiraat mosque",
+          "place_id": "ChIJdZroJ-FN1moRVvPP6lK4BCQ"
+        },
+        {
+          "id": "6d59d9f3-ed29-40da-89d9-08a55154a231",
+          "name": "Masjid Salaam",
+          "place_id": "ChIJMWe54zFN1moRoJfbOOKDsd8"
+        }
+      ]
+    },
+    {
+      "type": "DUPLICATE_ADDRESS",
+      "address": "23-27 blenheim rd, newport vic 3015, australia",
+      "count": 2,
+      "entries": [
+        {
+          "id": "27ebc87a-7350-420d-bf7d-568c796e70df",
+          "name": "Australian Islamic Centre",
+          "place_id": "ChIJU34zbLth1moRcn9t8o-SdV4"
+        },
+        {
+          "id": "0f7f1fcc-b852-4684-8f47-8634cf89690c",
+          "name": "Australian Islamic Centre College",
+          "place_id": "ChIJvUoDjDBh1moRqsUzCpxHMOs"
+        }
+      ]
+    },
+    {
+      "type": "DUPLICATE_ADDRESS",
+      "address": "46-48 mason st, campbellfield vic 3061, australia",
+      "count": 2,
+      "entries": [
+        {
+          "id": "f738b030-a3a5-4a52-9cbd-505e7993a963",
+          "name": "Campbellfield Education Centre",
+          "place_id": "ChIJh07bi1BP1moRSF8UwSA2G2g"
+        },
+        {
+          "id": "4a3fb44d-d588-4fc2-be24-fb041a3c5329",
+          "name": "Campbellfield Mosque",
+          "place_id": "ChIJlUm0mORP1moRqlBLwq8DQUU"
+        }
+      ]
+    },
+    {
+      "type": "DUPLICATE_ADDRESS",
+      "address": "618 ballarat rd, ardeer vic 3022, australia",
+      "count": 2,
+      "entries": [
+        {
+          "id": "84f01b61-a145-4646-8e04-f0352e9c4fab",
+          "name": "Cyprus Turkish Islamic Community Of Victoria Inc",
+          "place_id": "ChIJy9u25ONf1moRTPAiIHD46OI"
+        },
+        {
+          "id": "9b822ba6-f26c-4fd1-ab7f-e33af8795eee",
+          "name": "Sunshine Mosque",
+          "place_id": "ChIJ44TcA-Rf1moRlFXYK6_HfK0"
+        }
+      ]
+    },
+    {
+      "type": "DUPLICATE_ADDRESS",
+      "address": "20 the avenue, granville nsw 2142, australia",
+      "count": 2,
+      "entries": [
+        {
+          "id": "1d5c3d8f-f3fb-41a4-bfee-29c0b2859ee1",
+          "name": "Granville Mosque",
+          "place_id": "ChIJo4vEui6jEmsRw5HdInnYbbs"
+        },
+        {
+          "id": "83f4ed71-dbb2-4fad-924f-2236d718c428",
+          "name": "Granville Youth Association - The Ave Masjid",
+          "place_id": "ChIJ9Tvpri6jEmsRZ2y5m4lNEg8"
+        }
+      ]
+    },
+    {
+      "type": "DUPLICATE_ADDRESS",
+      "address": "4 pentland rd, salisbury south sa 5106, australia",
+      "count": 2,
+      "entries": [
+        {
+          "id": "576cac3a-507a-4e27-9242-e0fe2ef0be1e",
+          "name": "Husseiniat Alrasool Alaatham Alkarbalaeia حسينية الرسول الأعظم الكربلائية ادلايد",
+          "place_id": "ChIJsRaxLfXIsGoRtTIi8H_yXrk"
+        },
+        {
+          "id": "1f79f066-79db-45cb-997a-03833aeb6c5c",
+          "name": "Salisbury hussenia",
+          "place_id": "ChIJw1QyXouzsGoR9oMQxSCJ9Tw"
+        }
+      ]
+    },
+    {
+      "type": "DUPLICATE_ADDRESS",
+      "address": "unit 12/9 dawson st, coburg north vic 3058, australia",
+      "count": 2,
+      "entries": [
+        {
+          "id": "5de7c61d-2a3c-4ac2-a90b-68c90daa9151",
+          "name": "Indonesian Muslim Community of Victoria",
+          "place_id": "ChIJBRc9eDRb1moRLnrf2-jVoXk"
+        },
+        {
+          "id": "2950621c-0140-47b6-9bdd-094315a2c24d",
+          "name": "Masjid IMCV - Surau Kita",
+          "place_id": "ChIJRen1dTNb1moReAQr6-CAyvU"
+        }
+      ]
+    },
+    {
+      "type": "DUPLICATE_ADDRESS",
+      "address": "33 fuller st, lutwyche qld 4030, australia",
+      "count": 2,
+      "entries": [
+        {
+          "id": "6b0176e4-20f9-4393-8f4a-21da973f837f",
+          "name": "Islamic Association of Lutwyche",
+          "place_id": "ChIJi6X6Q8xZkWsR4JfBrOUNAJA"
+        },
+        {
+          "id": "77785064-8877-4ce6-aad0-b5de0c457d3a",
+          "name": "Masjid As-Sunnah",
+          "place_id": "ChIJi6X6Q8xZkWsRC3PG7hXowiA"
+        }
+      ]
+    },
+    {
+      "type": "DUPLICATE_ADDRESS",
+      "address": "12 princhester st, west end qld 4101, australia",
+      "count": 2,
+      "entries": [
+        {
+          "id": "872ae782-2e36-46c8-bd97-7a454676f59f",
+          "name": "Islamic Center",
+          "place_id": "ChIJI2DMxqFQkWsRweTmxGR6H4I"
+        },
+        {
+          "id": "705b8b51-2d46-4881-b48c-33fe55d81644",
+          "name": "Masjid Al Madinah - West End",
+          "place_id": "ChIJiUTU40ZRkWsR17pbh3PySBY"
+        }
+      ]
+    },
+    {
+      "type": "DUPLICATE_ADDRESS",
+      "address": "1b melissa st, auburn nsw 2144, australia",
+      "count": 2,
+      "entries": [
+        {
+          "id": "c15d9ba0-b037-4165-b72e-ea3af611576b",
+          "name": "Islamic Dawah Centre of Australia",
+          "place_id": "ChIJ-xDMXQm9EmsRFUpqAeKvL70"
+        },
+        {
+          "id": "e6eb1038-855a-4048-9fdd-27f0920bce53",
+          "name": "Masjid Abu Bakr Al-Siddeeq",
+          "place_id": "ChIJvwwupfe8EmsR_QQEukX1M9s"
+        }
+      ]
+    },
+    {
+      "type": "DUPLICATE_ADDRESS",
+      "address": "658 marion rd, park holme sa 5043, australia",
+      "count": 2,
+      "entries": [
+        {
+          "id": "350fb4ef-77e2-4a5f-96e8-2b7698c68e49",
+          "name": "Islamic Society of South Australia",
+          "place_id": "ChIJuxC9c7-1sGoRS-afu9QB10I"
+        },
+        {
+          "id": "6acd0bee-61c2-4180-8058-f567a3110c26",
+          "name": "Masjid Omar Bin Alkhattab - Marion Mosque",
+          "place_id": "ChIJ4w3GVKDasGoRPhDnBq5BAas"
+        }
+      ]
+    },
+    {
+      "type": "DUPLICATE_ADDRESS",
+      "address": "90 cramer st, preston vic 3072, australia",
+      "count": 2,
+      "entries": [
+        {
+          "id": "4526e8f3-df04-4a44-b709-2ff3f35bc023",
+          "name": "Islamic Society of Victoria.",
+          "place_id": "ChIJeyUh7e9E1moRsa-otjsZpsA"
+        },
+        {
+          "id": "48c5e8db-4925-4791-8ef7-8dcf5fcf4a44",
+          "name": "Omar Bin Al Khattab Masjid Preston",
+          "place_id": "ChIJS1n17e9E1moRNGVtG9J6Dqw"
+        }
+      ]
+    },
+    {
+      "type": "DUPLICATE_ADDRESS",
+      "address": "45 mills rd w, gosnells wa 6110, australia",
+      "count": 2,
+      "entries": [
+        {
+          "id": "9cad4e2a-1055-4a94-b216-f1ca1ed45add",
+          "name": "Masjid Al Rahman Gosnells",
+          "place_id": "ChIJIUolIXKVMioRaZDpCrqDrkU"
+        },
+        {
+          "id": "be942660-a683-469c-80df-014acac8a4ec",
+          "name": "Masjid Al Rahman Gosnells",
+          "place_id": "ChIJ19T2OACVMioRUb4e7xsfpIo"
+        }
+      ]
+    },
+    {
+      "type": "DUPLICATE_ADDRESS",
+      "address": "2 smallbrook retreat, caversham wa 6055, australia",
+      "count": 2,
+      "entries": [
+        {
+          "id": "383164c5-4b75-4f7a-a3df-9afa92a64387",
+          "name": "Masjid bosnia (Mosque)",
+          "place_id": "ChIJ7cuMP9-3MioRbYKgUUzp_Wc"
+        },
+        {
+          "id": "c989f003-c5b2-4032-9247-d93c62219987",
+          "name": "Swan Valley Mosque and Islamic Centre",
+          "place_id": "ChIJWYtST0S3MioRmE_wXOg_SQg"
+        }
+      ]
+    },
+    {
+      "type": "DUPLICATE_ADDRESS",
+      "address": "238 guildford rd, maylands wa 6051, australia",
+      "count": 2,
+      "entries": [
+        {
+          "id": "8c7ad07d-e13e-453a-9d67-1a8e94f08018",
+          "name": "Maylands Mosque",
+          "place_id": "ChIJ1erRTvS6MioRJc8b8tMZZV4"
+        },
+        {
+          "id": "c06a5bca-68fc-41d3-a92c-aa465f583198",
+          "name": "The Islamic Centre of Western Australia",
+          "place_id": "ChIJxUxATvS6MioRXz0k41OOCMs"
+        }
+      ]
+    },
+    {
+      "type": "DUPLICATE_ADDRESS",
+      "address": "44 westmoreland rd, minto nsw 2566, australia",
+      "count": 2,
+      "entries": [
+        {
+          "id": "520f6cbe-487e-4c58-a90a-ff3eca94cd43",
+          "name": "Minto Mosque",
+          "place_id": "ChIJObMX3afuEmsRT_b1xJb0n5Y"
+        },
+        {
+          "id": "d46ae5d8-79f2-4c4f-9cd2-70cfa89ff002",
+          "name": "Suburban Islamic Association",
+          "place_id": "ChIJSbfn87uVEmsRXp2FL1pxkOk"
+        }
+      ]
+    },
+    {
+      "type": "MISSING_COORDINATES",
+      "id": "0d168fd3-ea04-41a8-be3c-d2637fe9408b",
+      "name": "Southern Cross Railway Station Prayer Room",
+      "address": "122-Southern Cross Railway Station, Spencer St, Docklands VIC 3008, Australia",
+      "state": "VIC",
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "type": "MISSING_POSTGIS",
+      "id": "5667c202-aeee-4bca-8c5e-8f400c80c192",
+      "name": "AL-INAYA PRAYER ROOM FOR SISTERS",
+      "address": "Acton ACT 2601",
+      "state": "ACT",
+      "has_coordinates": true,
+      "latitude": -35.2815171,
+      "longitude": 149.1197927
+    },
+    {
+      "type": "MISSING_POSTGIS",
+      "id": "bc1b221a-aa07-40ae-abb3-8de357a7ed51",
+      "name": "Australian Muslim Welfare Centre Incorporated (AMWC)",
+      "address": "13-17 Eagleview Rd, Minto NSW 2566",
+      "state": "NSW",
+      "has_coordinates": true,
+      "latitude": -34.0195731,
+      "longitude": 150.8674356
+    },
+    {
+      "type": "MISSING_POSTGIS",
+      "id": "531b27f4-a473-47e6-b3df-ad1ca3cc4dbd",
+      "name": "Canterbury Hospital Prayer Room",
+      "address": "575 Canterbury Rd, Campsie NSW 2194",
+      "state": "NSW",
+      "has_coordinates": true,
+      "latitude": -33.9197427,
+      "longitude": 151.0982732
+    },
+    {
+      "type": "MISSING_POSTGIS",
+      "id": "60463853-72c8-4d86-a45c-a20684688605",
+      "name": "Daar ibn Umar",
+      "address": "level 2/116 Queen St, Campbelltown NSW 2560",
+      "state": "NSW",
+      "has_coordinates": true,
+      "latitude": -34.064615,
+      "longitude": 150.8164183
+    },
+    {
+      "type": "MISSING_POSTGIS",
+      "id": "a506bb10-99c3-4711-82a5-dede9847756b",
+      "name": "Epping Musallah & Quran Academy",
+      "address": "Unit 6/28 Langston Pl, Epping NSW 2121",
+      "state": "NSW",
+      "has_coordinates": true,
+      "latitude": -33.7731441,
+      "longitude": 151.0827727
+    },
+    {
+      "type": "MISSING_POSTGIS",
+      "id": "cb511485-4a7e-403f-a960-1d215fa89de1",
+      "name": "IHIC",
+      "address": "6 Lang Rd, Earlwood NSW 2206",
+      "state": "NSW",
+      "has_coordinates": true,
+      "latitude": -33.9147531,
+      "longitude": 151.1342464
+    },
+    {
+      "type": "MISSING_POSTGIS",
+      "id": "5ee7797d-a4c5-43ce-b0bb-89eb05464682",
+      "name": "MCEC Prayer Room",
+      "address": "Melbourne Exhibition Centre, 1 Convention Centre Pl, South Wharf VIC 3006",
+      "state": "VIC",
+      "has_coordinates": true,
+      "latitude": -37.8255448,
+      "longitude": 144.9522081
+    },
+    {
+      "type": "MISSING_POSTGIS",
+      "id": "ec4d0b8e-1ff5-44a8-b113-124d8a212c35",
+      "name": "Monash Musallah Krongold",
+      "address": "Krongold Centre, 57 Scenic Blvd, Clayton VIC 3168",
+      "state": "VIC",
+      "has_coordinates": true,
+      "latitude": -37.9137489,
+      "longitude": 145.1343935
+    },
+    {
+      "type": "MISSING_POSTGIS",
+      "id": "3c5a0359-c78b-447d-aea2-e3075f593967",
+      "name": "Multi Faith Centre (N35)",
+      "address": "Griffith University, Building N35/170 Kessels Rd, Nathan QLD 4111",
+      "state": "QLD",
+      "has_coordinates": true,
+      "latitude": -27.555565,
+      "longitude": 153.053271
+    },
+    {
+      "type": "MISSING_POSTGIS",
+      "id": "7cc26b8e-a46e-493c-abd9-e869d8d803a9",
+      "name": "Multi-faith Chaplaincy (Building 38), UQ",
+      "address": "St Lucia QLD 4067",
+      "state": "QLD",
+      "has_coordinates": true,
+      "latitude": -27.496117,
+      "longitude": 153.0152112
+    },
+    {
+      "type": "MISSING_POSTGIS",
+      "id": "aca5c9ab-505a-427f-a282-97b2d4576f91",
+      "name": "QUT Musalla",
+      "address": "Brisbane City QLD 4000",
+      "state": "QLD",
+      "has_coordinates": true,
+      "latitude": -27.4766847,
+      "longitude": 153.0278205
+    },
+    {
+      "type": "MISSING_POSTGIS",
+      "id": "0d168fd3-ea04-41a8-be3c-d2637fe9408b",
+      "name": "Southern Cross Railway Station Prayer Room",
+      "address": "122-Southern Cross Railway Station, Spencer St, Docklands VIC 3008, Australia",
+      "state": "VIC",
+      "has_coordinates": false,
+      "latitude": null,
+      "longitude": null
+    },
+    {
+      "type": "MISSING_POSTGIS",
+      "id": "86e053fe-a40e-4393-9a04-5d0f43c4c9a3",
+      "name": "The Alfred Spiritual Care",
+      "address": "Alfred Hospital, Melbourne VIC 3004",
+      "state": "VIC",
+      "has_coordinates": true,
+      "latitude": -37.8465588,
+      "longitude": 144.9827216
+    },
+    {
+      "type": "MISSING_POSTGIS",
+      "id": "09b90ad6-3ade-4226-973a-5a72b426ebfd",
+      "name": "UMA CENTRE LIMITED",
+      "address": "19 Enterprise Ave, Padstow NSW 2211",
+      "state": "NSW",
+      "has_coordinates": true,
+      "latitude": -33.94389,
+      "longitude": 151.0326076
+    },
+    {
+      "type": "MISSING_STATE",
+      "id": "2fcdc736-70dc-4e39-ab19-7219f30dc7ee",
+      "name": "Alpha Park Centre Jummah Prayer only",
+      "address": "Alpha St, Blacktown NSW 2148",
+      "state": null
+    },
+    {
+      "type": "MISSING_STATE",
+      "id": "faa9c859-16fe-4f3e-86f0-6242722f0051",
+      "name": "AMIC Musallah",
+      "address": "1/82 Main St, Blacktown NSW 2148",
+      "state": null
+    },
+    {
+      "type": "MISSING_STATE",
+      "id": "83431645-202c-41b4-91c7-cac29478a0e7",
+      "name": "Friday Prayer (Jumu'ah)",
+      "address": "Gregory Hills NSW 2557, Australia",
+      "state": null
+    },
+    {
+      "type": "MISSING_STATE",
+      "id": "a81bc778-cc20-42cb-a528-d97808548f54",
+      "name": "Friday Prayer (Jumu'ah)",
+      "address": "7 Lalor Rd, Quakers Hill NSW 2763",
+      "state": null
+    },
+    {
+      "type": "MISSING_STATE",
+      "id": "07abd301-8276-46a7-a396-e98acb955ea5",
+      "name": "Friday Prayer (Jumu'ah) & Isha",
+      "address": "Plumpton NSW 2761",
+      "state": null
+    },
+    {
+      "type": "MISSING_STATE",
+      "id": "589d7a61-f776-4f6f-8596-a8c85f70cc08",
+      "name": "Ghausia Masjid Blacktown",
+      "address": "4A Bessemer St, Blacktown NSW 2148",
+      "state": null
+    },
+    {
+      "type": "MISSING_STATE",
+      "id": "779ed742-4cd1-48e3-a021-7e7ce2dd48bf",
+      "name": "Juma Prayer",
+      "address": "Narellan NSW 2567, Australia",
+      "state": null
+    },
+    {
+      "type": "MISSING_STATE",
+      "id": "b25abe1b-b506-443d-b627-c46c01c78f89",
+      "name": "Marijung paschim Kalbar Haldar Para samsul tree shop",
+      "address": "paschim Kalbar Haldar pada samsul tree shop, Marayong NSW 2148",
+      "state": null
+    },
+    {
+      "type": "MISSING_STATE",
+      "id": "4fed1e0e-ba95-4f15-8643-9f84e4a53186",
+      "name": "Musalla (BNE Ride-share and Limo Waiting Area)",
+      "address": "Nancy Bird Way, Brisbane Airport QLD 4008",
+      "state": null
+    },
+    {
+      "type": "MISSING_STATE",
+      "id": "85e67887-1afd-4b45-b63e-3932a157dcf8",
+      "name": "Penrith Masjid",
+      "address": "143-145 Great Western Hwy, Kingswood NSW 2747",
+      "state": null
+    }
+  ]
+}
