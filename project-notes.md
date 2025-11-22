@@ -1,6 +1,6 @@
 # Find My Mosque - Project Notes
 
-> **Last Updated:** November 20, 2025
+> **Last Updated:** November 22, 2025
 > **Purpose:** Date-organized progress tracking and quick reference
 
 ---
@@ -17,6 +17,49 @@
 - Detailed tech docs: [instructions.md](./instructions.md)
 - Marketing strategy: [marketing-strategy-project.md](./marketing-strategy-project.md)
 - Bullseye framework: [docs/bullseye-marketing-strategy.md](./docs/bullseye-marketing-strategy.md)
+
+---
+
+## 📅 November 22, 2025
+
+### ✅ Melbourne City Landing Page - SEO Strategy Launch
+
+**Achievement:** Built first city-specific landing page targeting "mosque near me Melbourne" keyword
+
+**What We Built:**
+- Route: `/city/melbourne` (feature/city-pages branch - not deployed)
+- 110 mosque directory with suburb filtering
+- Google Maps integration with dynamic centering
+- Geolocation feature ("Find Mosques Near Me" button)
+- Distance calculation and sorting
+- Educational content + FAQ section
+
+**SEO Implementation:**
+- Comprehensive JSON-LD schemas (ItemList, LocalBusiness, FAQ, Breadcrumbs)
+- Optimized title: "Mosques Near Me in Melbourne | 110+ Prayer Locations"
+- Internal linking to other city/state pages
+- Mobile-first responsive design
+
+**Features Working:**
+- ✅ Suburb filter dropdown (auto-generated from database)
+- ✅ Geolocation with distance labels (e.g., "1357.6km away")
+- ✅ Dynamic map centering on suburb selection
+- ✅ Real-time mosque list filtering
+
+**Known Limitation:**
+- Google Maps Embed API doesn't support custom markers for specific mosques
+- Map shows general area; card list shows exact filtered results from database
+- 📖 See instructions.md#city-landing-pages-feature for technical details
+
+**Files Created:**
+- `src/pages/city/MelbourneCity.tsx` (main component)
+- `src/lib/json-ld-schema.ts` (added city page schema function)
+- Diagnostic scripts: check-melbourne-suburbs.ts, check-campbellfield-mosques.ts
+
+**Git Status:**
+- Branch: `feature/city-pages`
+- Commit: `7652189` - "Add Melbourne city landing page - SEO optimized directory"
+- Status: 🟡 Not deployed (testing phase)
 
 ---
 
@@ -612,12 +655,26 @@
 - ✅ Cold email campaign system built (templates, trackers, scripts)
 - ✅ Airport prayer rooms searchable (Nov 16)
 - ✅ Database audit complete - 46 issues identified (Nov 16)
+- ✅ Melbourne city landing page built (Nov 22 - feature/city-pages branch)
 
-### Pending Actions
-- [ ] Review 17 duplicate addresses (34 entries) - determine if same org or different (see mosque-audit-report.json)
+---
+
+## 📋 Pending Actions
+
+### City Pages SEO Strategy (In Progress)
+- [ ] Test geolocation feature on Brisbane city page (user in Brisbane)
+- [ ] Create reusable city page template component
+- [ ] Build remaining city pages: Sydney, Brisbane, Perth, Adelaide
+- [ ] Consider Google Maps JavaScript API upgrade for custom markers
+- [ ] Deploy city pages to production (currently on feature/city-pages branch)
+
+### Marketing & Outreach
+- [ ] Continue cold email campaign to 21 mosques
+- [ ] Send Holland Park demo partnership pitch
+
+### Database & Features
+- [ ] Review 17 duplicate addresses (34 entries) - determine if same org or different
 - [ ] Build Prayer Times feature page (navbar button ready, route pending)
-- [ ] Cold Email Campaign - continue outreach to mosques
-- [ ] Holland Park Demo - send partnership pitch to mosque
 
 📖 **See:** `docs/seo-action-plan.md` and `marketing-strategy-project.md`
 

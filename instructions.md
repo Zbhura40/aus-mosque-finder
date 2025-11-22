@@ -3046,3 +3046,135 @@ HAVING COUNT(*) > 1;
 **End of Instructions**
 
 For quick reference, see [project-notes.md](./project-notes.md)
+
+---
+
+## City Landing Pages Feature
+
+### Melbourne City Page Implementation (Nov 22, 2025)
+
+**Status:** 🟡 In Development (feature/city-pages branch)
+
+Built first city-specific landing page template targeting "mosque near me [city]" keyword strategy.
+
+#### Implementation Details
+
+**File Structure:**
+- `src/pages/city/MelbourneCity.tsx` - Main city page component
+- Route: `/city/melbourne`
+- Data source: `mosques_cache` table (110 VIC mosques)
+
+**Features Built:**
+1. **Hero Section**
+   - "Mosques Near Me" heading
+   - Geolocation button ("Find Mosques Near Me")
+   - Suburb filter dropdown (auto-generated from addresses)
+
+2. **Interactive Map**
+   - Google Maps Embed API (Search mode)
+   - Dynamic centering based on suburb selection
+   - Zoom levels: 10 (all), 14 (suburb filtered)
+
+3. **Mosque Directory**
+   - Numbered cards (#1-#110)
+   - Each card: name, rating, suburb, address, phone, website, directions button
+   - Real-time filtering by suburb
+   - Distance calculation and sorting via geolocation
+
+4. **Educational Content**
+   - Mosque etiquette guide
+   - FAQ section (3 questions)
+   - Internal links to other cities/states
+
+#### SEO Implementation
+
+**Structured Data (JSON-LD):**
+- `ItemList` - First 50 mosques in directory
+- `LocalBusiness` - Top 10 mosques with full details
+- `FAQPage` - All FAQ questions
+- `BreadcrumbList` - Navigation hierarchy
+- `WebPage` - Page metadata
+
+**Meta Tags:**
+- Title: "Mosques Near Me in Melbourne | 110+ Prayer Locations | Find My Mosque"
+- Description: Optimized for local search with key terms
+- Canonical URL: `/city/melbourne`
+
+#### Technical Learnings
+
+**Suburb Extraction:**
+Database stores street address in `suburb` field. Extract actual suburb using regex:
+```typescript
+const extractSuburb = (address: string): string => {
+  const match = address.match(/,\s*([^,]+)\s+VIC\s+\d{4}/);
+  return match ? match[1].trim() : 'Unknown';
+};
+```
+
+**Distance Calculation:**
+Haversine formula for great circle distance:
+```typescript
+const calculateDistance = (lat1, lon1, lat2, lon2): number => {
+  const R = 6371; // Earth radius in km
+  // ... formula implementation
+  return R * c;
+};
+```
+
+**Google Maps Embed API Limitations:**
+- ❌ Cannot add custom markers for specific coordinates
+- ❌ Search mode shows Google's mosque results, not our database
+- ✅ Can center on location and control zoom
+- ✅ Users see approximate area (cards below show accurate filtered results)
+
+#### Known Issues & Fixes
+
+**Issue 1: Dropdown Hidden Behind Map**
+- **Problem:** Select dropdown z-index below iframe
+- **Fix:** Added `z-50 relative` to SelectTrigger, `bg-white border shadow-lg` to SelectContent
+
+**Issue 2: Map Not Showing Specific Mosque Pins**
+- **Problem:** Google Maps Embed API doesn't support custom markers
+- **Solution:** Accepted limitation - map shows area, cards show exact results
+- **Future:** Could upgrade to Google Maps JavaScript API for custom markers
+
+**Issue 3: Geolocation Distance Display**
+- **Status:** ✅ Working correctly
+- **Tested:** Shows accurate distances (e.g., 1357.6km from Brisbane to Melbourne)
+
+#### Files Created
+
+**Components:**
+- `src/pages/city/MelbourneCity.tsx` (432 lines)
+
+**Schema:**
+- `src/lib/json-ld-schema.ts` - Added `generateMelbourneCityPageSchema()`
+
+**Diagnostic Scripts:**
+- `scripts/check-melbourne-suburbs.ts` - Analyze suburb distribution
+- `scripts/check-melbourne-addresses.ts` - Sample address formats
+- `scripts/check-campbellfield-mosques.ts` - Test suburb filtering
+
+**Reference:**
+- `mosque-photos/ChatGPT City Page Mosque SEO.png` - Design reference from ChatGPT
+
+#### Next Steps
+
+1. Test geolocation on Brisbane city page (user located in Brisbane)
+2. Create reusable city page template/component
+3. Build remaining city pages: Sydney, Brisbane, Perth, Adelaide
+4. Consider Google Maps JavaScript API upgrade for custom markers
+5. Add more filters: facilities, open now, prayer times
+
+#### Replication Guide
+
+To create additional city pages:
+1. Copy `MelbourneCity.tsx` to new city file
+2. Update city name, state code, and mosque count
+3. Modify `extractSuburb()` regex for state abbreviation
+4. Update meta tags and schema with city name
+5. Add route in `App.tsx`
+6. Update internal linking section
+
+**Estimated time per city:** 30-45 minutes
+
