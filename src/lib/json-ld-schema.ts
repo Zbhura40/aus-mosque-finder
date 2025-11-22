@@ -333,6 +333,141 @@ export const generateCityPageSchema = (cityName: string, cityUrl: string) => {
   };
 };
 
+export const generateMelbourneCityPageSchema = (mosques: Mosque[], cityUrl: string) => {
+  const baseUrl = window.location.origin;
+  const cityName = "Melbourne";
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      // WebPage Schema
+      {
+        "@type": "WebPage",
+        "@id": `${cityUrl}#webpage`,
+        "url": cityUrl,
+        "name": `Mosques Near Me in ${cityName} | 110+ Prayer Locations | Find My Mosque`,
+        "description": `Find mosques near you in ${cityName} with prayer times, maps, directions, and facilities. Discover 110+ Islamic centers, masjids, and prayer rooms across ${cityName} and Victoria. Free directory, no ads.`,
+        "isPartOf": {
+          "@id": `${baseUrl}#website`
+        }
+      },
+
+      // ItemList Schema for mosque directory
+      {
+        "@type": "ItemList",
+        "@id": `${cityUrl}#mosquelist`,
+        "name": `${cityName} Mosques Directory`,
+        "description": `Complete list of ${mosques.length} mosques in ${cityName} and Victoria`,
+        "numberOfItems": mosques.length,
+        "itemListElement": mosques.slice(0, 50).map((mosque, index) => ({
+          "@type": "ListItem",
+          "position": index + 1,
+          "item": {
+            "@type": "Place",
+            "name": mosque.name,
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": mosque.address,
+              "addressCountry": "AU"
+            },
+            "geo": mosque.latitude && mosque.longitude ? {
+              "@type": "GeoCoordinates",
+              "latitude": mosque.latitude,
+              "longitude": mosque.longitude
+            } : undefined,
+            "telephone": mosque.phone,
+            "url": mosque.website
+          }
+        }))
+      },
+
+      // LocalBusiness schemas for top mosques
+      ...mosques.slice(0, 10).map((mosque, index) => ({
+        "@type": "LocalBusiness",
+        "@id": `${cityUrl}#mosque-${index}`,
+        "name": mosque.name,
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": mosque.address,
+          "addressCountry": "AU"
+        },
+        "geo": mosque.latitude && mosque.longitude ? {
+          "@type": "GeoCoordinates",
+          "latitude": mosque.latitude,
+          "longitude": mosque.longitude
+        } : undefined,
+        "telephone": mosque.phone,
+        "url": mosque.website,
+        "priceRange": "Free",
+        "aggregateRating": mosque.rating ? {
+          "@type": "AggregateRating",
+          "ratingValue": mosque.rating,
+          "bestRating": 5,
+          "worstRating": 1
+        } : undefined
+      })),
+
+      // BreadcrumbList Schema
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${cityUrl}#breadcrumb`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": baseUrl
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "City Pages",
+            "item": `${baseUrl}/city`
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": `${cityName} Mosques`,
+            "item": cityUrl
+          }
+        ]
+      },
+
+      // FAQPage Schema
+      {
+        "@type": "FAQPage",
+        "@id": `${cityUrl}#faq`,
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What should I do when visiting a mosque?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Remove your shoes before entering, dress modestly, and maintain silence during prayers. Most mosques welcome visitors and are happy to answer questions outside of prayer times."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are mosques open 24/7?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Opening hours vary by mosque. Many are open for the five daily prayers, while some remain open throughout the day. Check individual mosque details or call ahead to confirm."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can non-Muslims visit mosques?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, most mosques in Melbourne welcome visitors of all faiths. It's best to visit outside of prayer times or contact the mosque in advance to arrange a guided tour."
+            }
+          }
+        ]
+      }
+    ]
+  };
+};
+
 export const injectJsonLdSchema = (schema: object) => {
   // Remove existing schema if present
   const existingScript = document.querySelector('script[type="application/ld+json"]');

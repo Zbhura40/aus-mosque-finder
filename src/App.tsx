@@ -18,6 +18,7 @@ import HollandParkMosque from "./pages/HollandParkMosque";
 import HollandParkDonate from "./pages/HollandParkDonate";
 import HollandParkEvents from "./pages/HollandParkEvents";
 import HollandParkPartnerships from "./pages/HollandParkPartnerships";
+import MelbourneCity from "./pages/city/MelbourneCity";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -44,6 +45,7 @@ const App = () => (
           <Route path="/featured/holland-park-mosque/donate" element={<HollandParkDonate />} />
           <Route path="/featured/holland-park-mosque/events" element={<HollandParkEvents />} />
           <Route path="/featured/holland-park-mosque/partnerships" element={<HollandParkPartnerships />} />
+          <Route path="/city/melbourne" element={<MelbourneCity />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
