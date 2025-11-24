@@ -82,6 +82,9 @@ serve(async (req) => {
 
       stats.duration = Date.now() - startTime;
 
+      // Log even when no refresh needed
+      await logRefreshOperation(supabase, stats);
+
       return new Response(JSON.stringify({
         message: 'All mosques are up to date',
         stats
@@ -152,6 +155,14 @@ serve(async (req) => {
     console.error('❌ Error in refresh function:', error);
 
     stats.duration = Date.now() - startTime;
+    stats.errors = 1;
+
+    // Log the error
+    try {
+      await logRefreshOperation(supabase, stats);
+    } catch (logError) {
+      console.error('Failed to log error:', logError);
+    }
 
     return new Response(JSON.stringify({
       error: error.message,
