@@ -324,14 +324,16 @@ async function logRefreshOperation(supabase: any, stats: RefreshStats) {
         api_type: 'weekly_cache_refresh',
         cost_estimate: stats.totalCost,
         cache_hit: false,
+        response_status: stats.errors > 0 ? 'error' : 'success',
         response_time_ms: stats.duration,
         error_message: stats.errors > 0 ? `${stats.errors} errors occurred` : null,
-        metadata: {
+        request_params: {
           total_mosques: stats.totalMosques,
           updated: stats.updated,
           unchanged: stats.unchanged,
           errors: stats.errors
         },
+        edge_function_name: 'refresh-cached-mosques',
         created_at: new Date().toISOString()
       });
 
