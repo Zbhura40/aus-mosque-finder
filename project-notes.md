@@ -22,12 +22,62 @@
 
 ## 📅 November 22, 2025
 
-### ✅ Melbourne City Landing Page - SEO Strategy Launch
+### ✅ Melbourne City Page - Photos, Opening Hours, Reviews & Facilities (Afternoon)
+
+**Achievement:** Enhanced Melbourne city page with 4 major features from Google Places API
+
+**Features Added:**
+1. **Mosque Photos** (96% coverage - 106/110 mosques)
+   - High-quality images from Google Places (400x600px)
+   - 192px tall banner at top of each card
+   - Automatic fallback if photo fails to load
+
+2. **Opening Hours** (76% coverage - 84/110 mosques)
+   - Today's hours displayed (e.g., "2:00 – 7:30 PM")
+   - "Open Now" green badge when mosque is currently open
+   - Clock icon for visual consistency
+
+3. **Google Reviews** (98% coverage - 108/110 mosques)
+   - Latest review displayed on each card
+   - Reviewer name, rating, time posted (e.g., "5 months ago")
+   - Scrollable review text (max 4 lines with scroll bar)
+   - Average: 5 reviews per mosque stored
+
+4. **Facilities Detection** (100% coverage - 110/110 mosques)
+   - Hybrid extraction: Google Places API + review text parsing
+   - 254 total facilities detected across all mosques
+   - Average: 2.3 facilities per mosque
+   - Categories: Parking, Wheelchair Access, Wudu Area, Women's Prayer Area
+
+**Hybrid Facility Extraction:**
+- Smart scoring system (positive/negative keyword patterns)
+- Google accessibility data (wheelchairAccessibleParking, entrance, restroom)
+- Text analysis of reviews with >=2 score threshold
+- 📖 See instructions.md#facility-extraction for pattern details
+
+**Database Updates:**
+- Added `reviews` column (JSONB) - stores latest 5 Google reviews
+- Added `facilities` column (TEXT[]) - array of facility names
+- Both indexed for fast queries (GIN index)
+
+**Cost:** ~$11 (110 API calls for accessibility data @ $0.10 per call)
+
+**Files Created:**
+- `scripts/fetch-melbourne-reviews.ts` - Review extraction
+- `scripts/extract-all-facilities.ts` - Facility extraction
+- `scripts/test-facility-extraction.ts` - Testing scripts
+- Test files for validation and debugging
+
+**Status:** 🟢 All features working on local dev, awaiting display instructions for facilities
+
+---
+
+### ✅ Melbourne City Landing Page - SEO Strategy Launch (Morning)
 
 **Achievement:** Built first city-specific landing page targeting "mosque near me Melbourne" keyword
 
-**What We Built:**
-- Route: `/city/melbourne` (feature/city-pages branch - not deployed)
+**Core Features:**
+- Route: `/city/melbourne` (feature/city-pages branch)
 - 110 mosque directory with suburb filtering
 - Google Maps integration with dynamic centering
 - Geolocation feature ("Find Mosques Near Me" button)
@@ -35,31 +85,20 @@
 - Educational content + FAQ section
 
 **SEO Implementation:**
-- Comprehensive JSON-LD schemas (ItemList, LocalBusiness, FAQ, Breadcrumbs)
+- JSON-LD schemas (ItemList, LocalBusiness, FAQ, Breadcrumbs)
 - Optimized title: "Mosques Near Me in Melbourne | 110+ Prayer Locations"
 - Internal linking to other city/state pages
-- Mobile-first responsive design
-
-**Features Working:**
-- ✅ Suburb filter dropdown (auto-generated from database)
-- ✅ Geolocation with distance labels (e.g., "1357.6km away")
-- ✅ Dynamic map centering on suburb selection
-- ✅ Real-time mosque list filtering
-
-**Known Limitation:**
-- Google Maps Embed API doesn't support custom markers for specific mosques
-- Map shows general area; card list shows exact filtered results from database
-- 📖 See instructions.md#city-landing-pages-feature for technical details
 
 **Files Created:**
 - `src/pages/city/MelbourneCity.tsx` (main component)
-- `src/lib/json-ld-schema.ts` (added city page schema function)
-- Diagnostic scripts: check-melbourne-suburbs.ts, check-campbellfield-mosques.ts
+- `src/lib/json-ld-schema.ts` (city page schema function)
 
 **Git Status:**
 - Branch: `feature/city-pages`
 - Commit: `7652189` - "Add Melbourne city landing page - SEO optimized directory"
 - Status: 🟡 Not deployed (testing phase)
+
+📖 **Technical details:** See instructions.md#melbourne-city-page
 
 ---
 
@@ -622,7 +661,8 @@
 ## 🗂️ Database Schema (12 Tables)
 
 ### Public Tables
-- `mosques_cache` (347) - Main cache with verified, state-tagged mosques
+- `mosques_cache` (394) - Main cache with verified, state-tagged mosques
+  - New columns: `reviews` (JSONB), `facilities` (TEXT[])
 - `search_cache` - Query results cache (7-day expiry)
 - `supermarkets` (3) - Halal finder (deprecated, not linked in UI)
 - `feedback` - User submissions
@@ -655,7 +695,7 @@
 - ✅ Cold email campaign system built (templates, trackers, scripts)
 - ✅ Airport prayer rooms searchable (Nov 16)
 - ✅ Database audit complete - 46 issues identified (Nov 16)
-- ✅ Melbourne city landing page built (Nov 22 - feature/city-pages branch)
+- ✅ Melbourne city page - Photos, opening hours, reviews, facilities (Nov 22)
 
 ---
 

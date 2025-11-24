@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { HelpCircle, MessageSquare, User, MapPin, ChevronDown, Home, Menu, X, Star, Clock } from "lucide-react";
+import { HelpCircle, MessageSquare, User, MapPin, ChevronDown, Home, Menu, X, Star } from "lucide-react";
 
 const TransparentNavbar: React.FC = () => {
   const navigate = useNavigate();
@@ -69,12 +69,11 @@ const TransparentNavbar: React.FC = () => {
   }, [lastScrollY]);
 
   const cities = [
-    { name: "New South Wales", path: "/mosques-sydney" },
-    { name: "Victoria", path: "/mosques-melbourne" },
-    { name: "Queensland", path: "/mosques-brisbane" },
-    { name: "Western Australia", path: "/mosques-perth" },
-    { name: "South Australia", path: "/mosques-adelaide" },
-    { name: "Tasmania", path: "/mosques-tasmania" },
+    { name: "Sydney", path: "/city/sydney" },
+    { name: "Melbourne", path: "/city/melbourne" },
+    { name: "Brisbane", path: "/city/brisbane" },
+    { name: "Perth", path: "/city/perth" },
+    { name: "Adelaide", path: "/city/adelaide" },
   ];
 
   const featuredMosques = [
@@ -112,16 +111,16 @@ const TransparentNavbar: React.FC = () => {
           </span>
         </button>
 
-        {/* Browse by State Dropdown */}
+        {/* Browse by City Dropdown */}
         <div className="relative" ref={dropdownRef}>
           <button
             onClick={() => setIsCityMenuOpen(!isCityMenuOpen)}
             className="group relative flex items-center gap-2 px-4 py-2 rounded-lg bg-transparent hover:bg-gray-100 transition-all duration-300 ease-out"
-            aria-label="Browse Mosques by State"
+            aria-label="Browse Mosques by City"
           >
             <MapPin className="w-5 h-5 text-gray-900 group-hover:text-teal-600 transition-colors duration-300" />
             <span className="font-body text-sm font-medium text-gray-900 group-hover:text-teal-600 transition-colors duration-300 relative">
-              Browse by State
+              Browse by City
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-600 transition-all duration-300 ease-out group-hover:w-full"></span>
             </span>
             <ChevronDown className={`w-4 h-4 text-gray-900 group-hover:text-teal-600 transition-all duration-300 ${isCityMenuOpen ? 'rotate-180' : ''}`} />
@@ -199,19 +198,6 @@ const TransparentNavbar: React.FC = () => {
           </span>
         </button>
 
-        {/* Prayer Times Button */}
-        <button
-          onClick={() => navigate("/prayer-times")}
-          className="group relative flex items-center gap-2 px-4 py-2 rounded-lg bg-transparent hover:bg-gray-100 transition-all duration-300 ease-out"
-          aria-label="Prayer Times"
-        >
-          <Clock className="w-5 h-5 text-gray-900 group-hover:text-teal-600 transition-colors duration-300" />
-          <span className="font-body text-sm font-medium text-gray-900 group-hover:text-teal-600 transition-colors duration-300 relative">
-            Prayer Times
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-teal-600 transition-all duration-300 ease-out group-hover:w-full"></span>
-          </span>
-        </button>
-
         {/* FAQ Button */}
         <button
           onClick={() => navigate("/faq")}
@@ -267,7 +253,7 @@ const TransparentNavbar: React.FC = () => {
             )}
           </button>
 
-          {/* Mobile "Browse by State" Button */}
+          {/* Mobile "Browse by City" Button */}
           <div ref={mobileCityButtonRef} className="relative">
             <button
               onClick={() => {
@@ -275,10 +261,10 @@ const TransparentNavbar: React.FC = () => {
                 setIsMobileCityMenuOpen(!isMobileCityMenuOpen);
               }}
               className="flex items-center gap-2 px-4 py-2 rounded-lg bg-teal-600 hover:bg-teal-700 text-white shadow-lg transition-all duration-300"
-              aria-label="Browse by State"
+              aria-label="Browse by City"
             >
               <MapPin className="w-5 h-5 text-white" />
-              <span className="text-sm font-medium text-white">Browse by State</span>
+              <span className="text-sm font-medium text-white">Browse by City</span>
               <ChevronDown className={`w-4 h-4 text-white transition-transform ${isMobileCityMenuOpen ? 'rotate-180' : ''}`} />
             </button>
 
@@ -290,7 +276,7 @@ const TransparentNavbar: React.FC = () => {
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="bg-teal-600 text-white px-6 py-3 font-serif font-medium text-lg">
-                  Select a State
+                  Select a City
                 </div>
                 <div className="overflow-y-auto max-h-[60vh]">
                   {cities.map((city, index) => (
@@ -373,17 +359,6 @@ const TransparentNavbar: React.FC = () => {
             >
               <User className="w-5 h-5 text-islamic-green" />
               <span className="font-body text-sm font-medium">Imam Profiles</span>
-            </button>
-
-            <button
-              onClick={() => {
-                navigate("/prayer-times");
-                setIsMobileMenuOpen(false);
-              }}
-              className="w-full flex items-center gap-3 px-4 py-3 text-architectural-shadow hover:bg-islamic-green/10 transition-colors border-b border-golden-beige/30"
-            >
-              <Clock className="w-5 h-5 text-islamic-green" />
-              <span className="font-body text-sm font-medium">Prayer Times</span>
             </button>
 
             <button

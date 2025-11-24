@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { MapPin, Phone, ExternalLink, Star, Navigation, Filter, Clock, ChevronRight, Check, ParkingCircle, Accessibility, Droplets, Users } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
-import { generateMelbourneCityPageSchema, injectJsonLdSchema } from '@/lib/json-ld-schema';
+import { generatePerthCityPageSchema, injectJsonLdSchema } from '@/lib/json-ld-schema';
 import {
   Select,
   SelectContent,
@@ -31,7 +31,7 @@ interface Mosque {
   longitude?: number;
 }
 
-const MelbourneCity = () => {
+const PerthCity = () => {
   const [mosques, setMosques] = useState<Mosque[]>([]);
   const [filteredMosques, setFilteredMosques] = useState<Mosque[]>([]);
   const [loading, setLoading] = useState(true);
@@ -40,9 +40,9 @@ const MelbourneCity = () => {
   const [sortByDistance, setSortByDistance] = useState(false);
   const [expandedFacilities, setExpandedFacilities] = useState<Set<string>>(new Set());
 
-  // Extract suburb from address (e.g., "123 St, Reservoir VIC 3073" -> "Reservoir")
+  // Extract suburb from address (e.g., "123 St, Perth WA 6000" -> "Holland Park")
   const extractSuburb = (address: string): string => {
-    const match = address.match(/,\s*([^,]+)\s+VIC\s+\d{4}/);
+    const match = address.match(/,\s*([^,]+)\s+WA\s+\d{4}/);
     return match ? match[1].trim() : 'Unknown';
   };
 
@@ -53,7 +53,7 @@ const MelbourneCity = () => {
         const { data, error } = await supabase
           .from('mosques_cache' as any)
           .select('*')
-          .eq('state', 'VIC')
+          .eq('state', 'WA')
           .eq('is_active', true)
           .order('name');
 
@@ -62,7 +62,6 @@ const MelbourneCity = () => {
         } else {
           const mosquesData = (data as any) || [];
           console.log('Fetched mosques:', mosquesData.length);
-          console.log('First mosque reviews:', mosquesData[0]?.reviews);
           setMosques(mosquesData);
           setFilteredMosques(mosquesData);
         }
@@ -225,24 +224,24 @@ const MelbourneCity = () => {
 
   // SEO Meta tags and Structured Data
   useEffect(() => {
-    document.title = "Mosques Near Me in Melbourne | 110+ Prayer Locations | Find My Mosque";
+    document.title = "Mosques Near Me in Perth | 54+ Prayer Locations | Find My Mosque";
 
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content',
-        "Find mosques near you in Melbourne with prayer times, maps, directions, and facilities. Discover 110+ Islamic centers, masjids, and prayer rooms across Melbourne and Victoria. Free directory, no ads."
+        "Find mosques near you in Perth with prayer times, maps, directions, and facilities. Discover 54+ Islamic centers, masjids, and prayer rooms across Perth and Western Australia. Free directory, no ads."
       );
     }
 
     const canonicalLink = document.querySelector('link[rel="canonical"]');
     if (canonicalLink) {
-      canonicalLink.setAttribute('href', `${window.location.origin}/city/melbourne`);
+      canonicalLink.setAttribute('href', `${window.location.origin}/city/brisbane`);
     }
 
     // Inject structured data when mosques are loaded
     if (mosques.length > 0) {
-      const cityUrl = `${window.location.origin}/city/melbourne`;
-      const schema = generateMelbourneCityPageSchema(mosques, cityUrl);
+      const cityUrl = `${window.location.origin}/city/brisbane`;
+      const schema = generatePerthCityPageSchema(mosques, cityUrl);
       injectJsonLdSchema(schema);
     }
   }, [mosques]);
@@ -256,8 +255,8 @@ const MelbourneCity = () => {
     const mosquesToShow = filteredMosques.filter(m => m.latitude && m.longitude);
 
     if (mosquesToShow.length === 0) {
-      // Fallback: show Melbourne mosques
-      return `${baseUrl}?key=${apiKey}&q=mosques+in+Melbourne+VIC&zoom=10`;
+      // Fallback: show Perth mosques
+      return `${baseUrl}?key=${apiKey}&q=mosques+in+Perth+WA&zoom=10`;
     }
 
     // If suburb is selected, search for mosques in that suburb with better query
@@ -271,8 +270,8 @@ const MelbourneCity = () => {
       return `${baseUrl}?key=${apiKey}&q=${query}&center=${avgLat},${avgLng}&zoom=14`;
     }
 
-    // Show all Melbourne mosques
-    return `${baseUrl}?key=${apiKey}&q=mosques+in+Melbourne+VIC&zoom=10`;
+    // Show all Perth mosques
+    return `${baseUrl}?key=${apiKey}&q=mosques+in+Perth+WA&zoom=10`;
   };
 
   return (
@@ -282,7 +281,7 @@ const MelbourneCity = () => {
         {/* Hero Section */}
         <section className="text-center mb-8">
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
-            Mosques Near Me
+            Mosques Near Me in Perth
           </h1>
           <p className="text-lg text-gray-600 mb-6">
             Find mosques near you with prayer times, maps, directions, and facilities
@@ -331,10 +330,10 @@ const MelbourneCity = () => {
           </div>
         </section>
 
-        {/* Mosques in Melbourne Section */}
+        {/* Mosques in Perth Section */}
         <section className="mb-12">
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">
-            Mosques in Melbourne
+            Mosques in Perth
           </h2>
 
           {loading ? (
@@ -549,7 +548,7 @@ const MelbourneCity = () => {
         {/* Educational Content */}
         <section className="mb-12 bg-white rounded-xl p-8 border border-gray-200">
           <h2 className="text-2xl font-serif font-bold text-gray-900 mb-6">
-            How to find the nearest mosque
+            How to find the nearest mosque in Perth
           </h2>
           <div className="prose prose-gray max-w-none">
             <h3 className="text-xl font-semibold text-gray-900 mb-3">Etiquette tips</h3>
@@ -586,7 +585,7 @@ const MelbourneCity = () => {
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                What should I do when visiting a mosque?
+                What should I do when visiting a mosque in Perth?
               </h3>
               <p className="text-gray-700">
                 Remove your shoes before entering, dress modestly, and maintain silence during prayers.
@@ -595,7 +594,7 @@ const MelbourneCity = () => {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                Are mosques open 24/7?
+                Are Perth mosques open 24/7?
               </h3>
               <p className="text-gray-700">
                 Opening hours vary by mosque. Many are open for the five daily prayers, while some remain
@@ -604,10 +603,10 @@ const MelbourneCity = () => {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                Can non-Muslims visit mosques?
+                Can non-Muslims visit mosques in Perth?
               </h3>
               <p className="text-gray-700">
-                Yes, most mosques in Melbourne welcome visitors of all faiths. It's best to visit outside
+                Yes, most mosques in Perth welcome visitors of all faiths. It's best to visit outside
                 of prayer times or contact the mosque in advance to arrange a guided tour.
               </p>
             </div>
@@ -622,12 +621,12 @@ const MelbourneCity = () => {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
             <Link to="/city/sydney" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               <Button variant="outline" size="sm" className="w-full text-sm border-gray-300 hover:bg-gray-50 rounded-lg">
-                Sydney
+                Perth
               </Button>
             </Link>
-            <Link to="/city/brisbane" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <Link to="/city/melbourne" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               <Button variant="outline" size="sm" className="w-full text-sm border-gray-300 hover:bg-gray-50 rounded-lg">
-                Brisbane
+                Melbourne
               </Button>
             </Link>
             <Link to="/city/perth" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
@@ -637,7 +636,7 @@ const MelbourneCity = () => {
             </Link>
             <Link to="/city/adelaide" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
               <Button variant="outline" size="sm" className="w-full text-sm border-gray-300 hover:bg-gray-50 rounded-lg">
-                Adelaide
+                Perth
               </Button>
             </Link>
             <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
@@ -652,4 +651,4 @@ const MelbourneCity = () => {
   );
 };
 
-export default MelbourneCity;
+export default PerthCity;
