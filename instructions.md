@@ -1,6 +1,6 @@
 # Find My Mosque - Detailed Instructions & Technical Reference
 
-> **Last Updated:** October 7, 2025
+> **Last Updated:** November 24, 2025
 > **Purpose:** Comprehensive technical documentation for developers
 > **Quick Reference:** See [project-notes.md](./project-notes.md) for concise summary
 
@@ -3051,18 +3051,24 @@ For quick reference, see [project-notes.md](./project-notes.md)
 
 ## City Landing Pages Feature
 
-### Melbourne City Page Implementation (Nov 22, 2025)
+### 5 City Pages Live (Nov 24, 2025)
 
-**Status:** 🟡 In Development (feature/city-pages branch)
+**Status:** 🟢 Live on Production (merged to main branch)
 
-Built first city-specific landing page template targeting "mosque near me [city]" keyword strategy.
+Built 5 city-specific landing pages targeting "mosque near me [city]" keyword strategy. All pages follow consistent template with city-specific data.
 
 #### Implementation Details
 
-**File Structure:**
-- `src/pages/city/MelbourneCity.tsx` - Main city page component
-- Route: `/city/melbourne`
-- Data source: `mosques_cache` table (110 VIC mosques)
+**City Pages Created:**
+- `src/pages/city/MelbourneCity.tsx` - 110 mosques (VIC) - Route: `/city/melbourne`
+- `src/pages/city/BrisbaneCity.tsx` - 41 mosques (QLD) - Route: `/city/brisbane`
+- `src/pages/city/SydneyCity.tsx` - 149 mosques (NSW) - Route: `/city/sydney`
+- `src/pages/city/AdelaideCity.tsx` - 28 mosques (SA) - Route: `/city/adelaide`
+- `src/pages/city/PerthCity.tsx` - 54 mosques (WA) - Route: `/city/perth`
+
+**Total:** 382 mosques across 5 cities
+
+**Data Source:** `mosques_cache` table with `reviews` (JSONB) and `facilities` (TEXT[]) columns
 
 **Features Built:**
 1. **Hero Section**
@@ -3075,16 +3081,27 @@ Built first city-specific landing page template targeting "mosque near me [city]
    - Dynamic centering based on suburb selection
    - Zoom levels: 10 (all), 14 (suburb filtered)
 
-3. **Mosque Directory**
-   - Numbered cards (#1-#110)
-   - Each card: name, rating, suburb, address, phone, website, directions button
+3. **Mosque Cards** (Enhanced Nov 24)
+   - Photo display (192px tall, gray background for missing photos)
+   - Name, rating, suburb, address
+   - Opening hours + "Open Now" badge
+   - Latest Google review (reviewer, rating, text)
+   - Collapsible facilities section (icons + checkmarks)
+   - Phone, website, directions button
+   - Distance label (when geolocation used)
    - Real-time filtering by suburb
-   - Distance calculation and sorting via geolocation
 
-4. **Educational Content**
+4. **Collapsible Facilities** (Nov 24)
+   - Collapsed by default (click to expand)
+   - Icons: Car (Parking), Wheelchair, Droplet (Wudu), Users (Women's)
+   - Green checkmarks next to each facility
+   - Chevron rotation animation on expand/collapse
+   - State managed with Set data structure
+
+5. **Educational Content**
    - Mosque etiquette guide
-   - FAQ section (3 questions)
-   - Internal links to other cities/states
+   - FAQ section (3 city-specific questions)
+   - Internal links to other city pages and homepage
 
 #### SEO Implementation
 
@@ -3158,23 +3175,140 @@ const calculateDistance = (lat1, lon1, lat2, lon2): number => {
 **Reference:**
 - `mosque-photos/ChatGPT City Page Mosque SEO.png` - Design reference from ChatGPT
 
+#### Bug Fixes (Nov 24)
+
+**Photo Alignment Issue:**
+- **Problem:** Mosque cards without photos had text starting at top (misaligned with photo cards)
+- **Solution:** Always render photo container with gray background, conditionally render image inside
+```typescript
+// Before (caused misalignment):
+{photoUrl && <div><img src={photoUrl} /></div>}
+
+// After (consistent alignment):
+<div className="w-full h-48 bg-gray-100">
+  {photoUrl && <img src={photoUrl} className="w-full h-full object-cover" />}
+</div>
+```
+
+**Collapsible Facilities Implementation:**
+```typescript
+// State management
+const [expandedFacilities, setExpandedFacilities] = useState<Set<string>>(new Set());
+
+// Toggle function
+const toggleFacilities = (mosqueId: string) => {
+  setExpandedFacilities(prev => {
+    const next = new Set(prev);
+    if (next.has(mosqueId)) {
+      next.delete(mosqueId);
+    } else {
+      next.add(mosqueId);
+    }
+    return next;
+  });
+};
+
+// Render facilities
+{mosque.facilities && mosque.facilities.length > 0 && (
+  <div className="pt-2 border-t border-gray-100">
+    <button onClick={() => toggleFacilities(mosque.id)}>
+      <span>Facilities</span>
+      <ChevronRight className={`transition-transform ${
+        expandedFacilities.has(mosque.id) ? 'rotate-90' : ''
+      }`} />
+    </button>
+    {expandedFacilities.has(mosque.id) && (
+      <div className="space-y-2">
+        {mosque.facilities.map((facility, idx) => (
+          <div key={idx} className="flex items-center gap-2">
+            {getFacilityIcon(facility)}
+            <Check className="w-3 h-3 text-green-600" />
+            <span>{facility}</span>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+)}
+```
+
+**Facility Icon Mapping:**
+```typescript
+const getFacilityIcon = (facility: string) => {
+  if (facility.toLowerCase().includes('parking')) return <Car className="w-4 h-4" />;
+  if (facility.toLowerCase().includes('wheelchair')) return <Wheelchair className="w-4 h-4" />;
+  if (facility.toLowerCase().includes('wudu')) return <Droplet className="w-4 h-4" />;
+  if (facility.toLowerCase().includes('women')) return <Users className="w-4 h-4" />;
+  return null;
+};
+```
+
+#### Hybrid Facility Extraction System
+
+**Strategy:** Combine Google Places API accessibility data with review text analysis for higher accuracy.
+
+**Scripts Created:**
+- `scripts/fetch-[city]-reviews.ts` - Fetch reviews from Google Places API
+- `scripts/extract-[city]-facilities.ts` - Hybrid facility extraction
+
+**Extraction Logic:**
+1. **Google Accessibility Data** (via Places API v1):
+   - `wheelchairAccessibleParking` → Parking
+   - `wheelchairAccessibleEntrance` → Wheelchair Access
+   - `wheelchairAccessibleRestroom` → Wudu Area
+
+2. **Review Text Analysis** (pattern matching):
+   - Positive/negative keyword scoring system
+   - Threshold: >=2 positive mentions required
+   - Example patterns:
+     - Parking: "parking available", "ample parking" (positive) vs "no parking" (negative)
+     - Wudu: "wudu facilities", "clean wudu area" (positive) vs "no wudu" (negative)
+
+3. **Combined Results:**
+   - Google data OR review score >=2 → Add facility
+   - Average: 2.0-2.3 facilities per mosque
+   - Total extracted: 527 facilities across 382 mosques
+
+**Results by City:**
+- Brisbane: 81 facilities (2.0 avg)
+- Sydney: 273 facilities (1.8 avg)
+- Adelaide: 53 facilities (1.9 avg)
+- Perth: 120 facilities (2.2 avg)
+- Melbourne: 254 facilities (2.3 avg)
+
+**Cost:** ~$0.10 per mosque for accessibility data ($38 total for all 382 mosques)
+
 #### Next Steps
 
-1. Test geolocation on Brisbane city page (user located in Brisbane)
-2. Create reusable city page template/component
-3. Build remaining city pages: Sydney, Brisbane, Perth, Adelaide
+1. Create suburb pages for each city (Melbourne, Sydney, Brisbane, Perth, Adelaide)
+2. Test geolocation with users in different cities
+3. Create reusable city page template/component (reduce 650-line duplication)
 4. Consider Google Maps JavaScript API upgrade for custom markers
 5. Add more filters: facilities, open now, prayer times
 
 #### Replication Guide
 
-To create additional city pages:
-1. Copy `MelbourneCity.tsx` to new city file
-2. Update city name, state code, and mosque count
-3. Modify `extractSuburb()` regex for state abbreviation
-4. Update meta tags and schema with city name
-5. Add route in `App.tsx`
-6. Update internal linking section
+**Completed Cities:** Melbourne, Brisbane, Sydney, Adelaide, Perth (382 mosques total)
 
-**Estimated time per city:** 30-45 minutes
+**Process Used (Nov 24):**
+1. Copy previous city file: `cp BrisbaneCity.tsx SydneyCity.tsx`
+2. Use sed for bulk replacements:
+   ```bash
+   sed -i '' 's/Brisbane/Sydney/g' SydneyCity.tsx
+   sed -i '' 's/QLD/NSW/g' SydneyCity.tsx
+   sed -i '' 's/Queensland/New South Wales/g' SydneyCity.tsx
+   sed -i '' 's/41+/149+/g' SydneyCity.tsx
+   ```
+3. Add city schema function to `src/lib/json-ld-schema.ts`
+4. Add route to `App.tsx`
+5. Update internal links on all city pages
+6. Run data enrichment scripts (review fetching + facility extraction)
+
+**Actual time per city:** 2-3 hours (including data enrichment)
+
+**For Future Suburb Pages:**
+- Use similar template approach
+- Filter by city AND suburb
+- Smaller mosque counts (5-20 per suburb)
+- More localized SEO targeting
 
