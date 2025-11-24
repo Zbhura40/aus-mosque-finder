@@ -1,6 +1,6 @@
 # Find My Mosque - Project Notes
 
-> **Last Updated:** November 24, 2025
+> **Last Updated:** November 25, 2025
 > **Purpose:** Date-organized progress tracking and quick reference
 
 ---
@@ -9,7 +9,7 @@
 
 **Project:** Australian mosque directory (findmymosque.org)
 **Tech Stack:** React + TypeScript, Vite, TailwindCSS, Supabase, Google Places API
-**Status:** Live with **394 Islamic locations** (mosques, prayer rooms, musallas)
+**Status:** Live with **397 Islamic locations** (mosques, prayer rooms, musallas)
 
 **Key Features:** Mosque finder, prayer room directory, city landing pages, featured mosque pages
 
@@ -17,6 +17,37 @@
 - Detailed tech docs: [instructions.md](./instructions.md)
 - Marketing strategy: [marketing-strategy-project.md](./marketing-strategy-project.md)
 - Bullseye framework: [docs/bullseye-marketing-strategy.md](./docs/bullseye-marketing-strategy.md)
+
+---
+
+## 📅 November 25, 2025
+
+### ✅ City Pages UX Improvements + Cron Job Investigation
+
+**Geolocation Enhancement:**
+- Fixed "Find Mosques Near Me" to filter within 10km radius (not just sort)
+- Added "Near You (X)" dropdown when location active
+- Smart reset: "All Suburbs" option restores full city results
+- Fallback: Shows all mosques sorted by distance if none within 10km
+- Applied to all 5 city pages: Brisbane, Melbourne, Sydney, Adelaide, Perth
+
+**Mobile Navigation Fix:**
+- Fixed navbar z-index issue (z-50 → z-[100])
+- "Browse by City" dropdown now appears above page filters on mobile
+
+**Cron Job Diagnosis:**
+- ✅ Cron runs successfully every Sunday at 2 AM (confirmed via pg_cron logs)
+- ✅ Updates 272 mosques per run (68% of database)
+- ❌ Logging to `google_api_logs` was failing silently
+- Root cause: Edge Function returned early when no refresh needed (all < 7 days old)
+- Fix deployed: Added logging for all scenarios (success, no-op, errors)
+- Added `weekly_cache_refresh` to allowed api_types in database
+
+**Git Status:**
+- Commits: `7283e28`, `fa1dda4`, `68694af`
+- Deployed: Navbar fix, geolocation improvements, cron logging fixes
+
+📖 **Technical details:** See instructions.md#cron-job-logging-fix
 
 ---
 
@@ -247,9 +278,11 @@ Professional demo page with verified content (4.9★ reviews, custom maps, real 
 
 ## 📋 Pending Actions
 
+### Immediate (Nov 25)
+- [ ] **Test cron job logging** - Run 3 SQL queries to verify logging works (instructions in instructions.md#cron-job-logging-fix)
+
 ### City Pages - Next Steps
 - [ ] Create suburb pages for each city (Melbourne, Sydney, Brisbane, Perth, Adelaide)
-- [ ] Test geolocation feature on city pages (verify with users in different cities)
 - [ ] Create reusable city page template component (reduce code duplication)
 - [ ] Consider Google Maps JavaScript API upgrade for custom markers
 

@@ -3312,3 +3312,322 @@ const getFacilityIcon = (facility: string) => {
 - Smaller mosque counts (5-20 per suburb)
 - More localized SEO targeting
 
+
+---
+
+## Cron Job Logging Fix
+
+**Date:** November 25, 2025
+**Issue:** Weekly cron job runs successfully but doesn't log to `google_api_logs` table
+
+### Problem Diagnosis
+
+**What was working:**
+- ✅ Cron job executes every Sunday at 2 AM (verified in `pg_cron.job_run_details`)
+- ✅ Updates 272 mosques (68% of database)
+- ✅ Mosques get fresh data from Google Places API
+
+**What wasn't working:**
+- ❌ No entries in `google_api_logs` table for `weekly_cache_refresh`
+- ❌ Unable to track API costs or monitor refresh operations
+
+### Root Causes Found
+
+1. **Database Constraint Missing Value**
+   - `google_api_logs.api_type` had CHECK constraint with only 6 allowed values
+   - Edge Function tried to insert `'weekly_cache_refresh'` which wasn't allowed
+   - Insert failed silently
+
+2. **Wrong Column Names in Edge Function**
+   - Used `metadata` instead of `request_params`
+   - Missing required `response_status` field
+
+3. **Early Return Without Logging**
+   - When all mosques were < 7 days old, function returned early
+   - Skipped `logRefreshOperation()` call entirely
+   - This was the PRIMARY issue - even after fixing constraints, nothing logged
+
+### Solutions Implemented
+
+#### 1. Database Migration
+```sql
+-- File: supabase/migrations/20251125_fix_weekly_refresh_logging.sql
+ALTER TABLE google_api_logs DROP CONSTRAINT IF EXISTS google_api_logs_api_type_check;
+
+ALTER TABLE google_api_logs ADD CONSTRAINT google_api_logs_api_type_check 
+CHECK (api_type = ANY(ARRAY[
+    'autocomplete'::text,
+    'geocode'::text,
+    'place_details'::text,
+    'place_search'::text,
+    'nearby_search'::text,
+    'text_search'::text,
+    'weekly_cache_refresh'::text  -- ADDED THIS
+]));
+```
+
+#### 2. Edge Function Fixes
+**File:** `supabase/functions/refresh-cached-mosques/index.ts`
+
+**Fix A: Correct Column Names**
+```typescript
+async function logRefreshOperation(supabase: any, stats: RefreshStats) {
+  const { error } = await supabase
+    .from('google_api_logs')
+    .insert({
+      api_type: 'weekly_cache_refresh',
+      request_params: {  // Changed from 'metadata'
+        total_mosques: stats.totalMosques,
+        updated: stats.updated,
+        unchanged: stats.unchanged,
+        errors: stats.errors
+      },
+      response_status: stats.errors > 0 ? 'error' : 'success',  // ADDED
+      cost_estimate: stats.totalCost,
+      cache_hit: false,
+      response_time_ms: stats.duration,
+      edge_function_name: 'refresh-cached-mosques',  // ADDED
+      error_message: stats.errors > 0 ? `${stats.errors} errors occurred` : null
+    });
+}
+```
+
+**Fix B: Log Even When No Refresh Needed**
+```typescript
+if (!mosquesToRefresh || mosquesToRefresh.length === 0) {
+  console.log('✓ All mosques are up to date (< 7 days old)');
+  stats.duration = Date.now() - startTime;
+  
+  // ADDED: Log even when no refresh needed
+  await logRefreshOperation(supabase, stats);
+  
+  return new Response(JSON.stringify({
+    message: 'All mosques are up to date',
+    stats
+  }), {
+    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+  });
+}
+```
+
+**Fix C: Log in Error Handler**
+```typescript
+} catch (error) {
+  stats.duration = Date.now() - startTime;
+  stats.errors = 1;
+  
+  // ADDED: Log the error
+  try {
+    await logRefreshOperation(supabase, stats);
+  } catch (logError) {
+    console.error('Failed to log error:', logError);
+  }
+  
+  return new Response(JSON.stringify({
+    error: error.message,
+    stats
+  }), {
+    status: 500,
+    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+  });
+}
+```
+
+### Testing Instructions
+
+**Step 1: Delete any test entries**
+```sql
+DELETE FROM google_api_logs WHERE api_type = 'weekly_cache_refresh';
+SELECT COUNT(*) FROM google_api_logs WHERE api_type = 'weekly_cache_refresh';
+-- Should return: 0
+```
+
+**Step 2: Manually trigger the refresh**
+```sql
+SELECT net.http_post(
+    url := 'https://mzqyswdfgimymxfhdyzw.supabase.co/functions/v1/refresh-cached-mosques',
+    headers := jsonb_build_object(
+      'Content-Type', 'application/json',
+      'Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im16cXlzd2RmZ2lteW14ZmhkeXp3Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1NDY5NDA1NywiZXhwIjoyMDcwMjcwMDU3fQ.WlycBGspiyk6ha0pGHbaL0g3g6sNLUI8mYDa-u_WF18'
+    ),
+    body := '{}'::jsonb
+) as request_id;
+```
+
+**Step 3: Verify logging worked**
+```sql
+SELECT 
+  created_at,
+  api_type,
+  cost_estimate,
+  response_status,
+  request_params,
+  edge_function_name
+FROM google_api_logs 
+WHERE api_type = 'weekly_cache_refresh' 
+ORDER BY created_at DESC 
+LIMIT 1;
+```
+
+**Expected Result:**
+- Should see 1 row with today's timestamp
+- `response_status`: 'success'
+- `request_params`: JSON with mosque counts
+- `cost_estimate`: 0 (if all mosques up-to-date) or ~$8.70 (if 272 refreshed)
+
+### Deployment Commands
+
+```bash
+# Push code changes
+git add supabase/migrations/20251125_fix_weekly_refresh_logging.sql
+git add supabase/functions/refresh-cached-mosques/index.ts
+git commit -m "Fix cron job logging"
+git push origin main
+
+# Deploy Edge Function
+export SUPABASE_ACCESS_TOKEN="sbp_xxx..."  # From .env
+supabase functions deploy refresh-cached-mosques --project-ref mzqyswdfgimymxfhdyzw
+```
+
+### What Now Logs
+
+**Every Sunday at 2 AM, one of three scenarios logs:**
+
+1. **Successful Refresh** (mosques > 7 days old)
+   - `cost_estimate`: ~$8.70 (272 mosques × $0.032)
+   - `request_params.updated`: count of changed mosques
+   - `request_params.unchanged`: count of unchanged mosques
+
+2. **No Refresh Needed** (all mosques < 7 days old)
+   - `cost_estimate`: 0
+   - `request_params.total_mosques`: 0
+   - `response_status`: 'success'
+
+3. **Error Occurred**
+   - `response_status`: 'error'
+   - `error_message`: Details of what failed
+   - `request_params.errors`: count of failed mosques
+
+---
+
+## City Pages Geolocation Enhancement
+
+**Date:** November 25, 2025
+**Feature:** Improved "Find Mosques Near Me" button with 10km radius filtering
+
+### Before vs After
+
+**Before (Nov 24):**
+- Sorted ALL city mosques by distance
+- No filtering - showed all 149 mosques even if 100km away
+- Dropdown always said "All Suburbs (149)"
+
+**After (Nov 25):**
+- Filters to show ONLY mosques within 10km
+- Shows "Near You (18)" in dropdown when active
+- Can reset by selecting "All Suburbs" from dropdown
+- Fallback: If no mosques within 10km, shows all sorted by distance with alert
+
+### Implementation
+
+**Files Modified:**
+- `src/pages/city/BrisbaneCity.tsx`
+- `src/pages/city/MelbourneCity.tsx`
+- `src/pages/city/SydneyCity.tsx`
+- `src/pages/city/AdelaideCity.tsx`
+- `src/pages/city/PerthCity.tsx`
+
+**Key Changes:**
+
+1. **Filter within 10km radius:**
+```typescript
+const handleFindNearMe = () => {
+  navigator.geolocation.getCurrentPosition((position) => {
+    const userLoc = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    };
+    setUserLocation(userLoc);
+    setSortByDistance(true);
+    setSelectedSuburb('near-you');  // Special value
+
+    // Filter within 10km
+    const nearby = mosques
+      .filter(mosque => {
+        if (!mosque.latitude || !mosque.longitude) return false;
+        const distance = calculateDistance(userLoc.lat, userLoc.lng, mosque.latitude, mosque.longitude);
+        return distance <= 10; // Within 10km
+      })
+      .sort((a, b) => {
+        const distA = calculateDistance(userLoc.lat, userLoc.lng, a.latitude, a.longitude);
+        const distB = calculateDistance(userLoc.lat, userLoc.lng, b.latitude, b.longitude);
+        return distA - distB;
+      });
+
+    if (nearby.length === 0) {
+      alert('No mosques found within 10km. Showing all sorted by distance.');
+      // Fallback: show all sorted by distance
+    } else {
+      setFilteredMosques(nearby);
+    }
+  });
+};
+```
+
+2. **Dynamic dropdown label:**
+```typescript
+<SelectValue placeholder="Filter by Suburb">
+  {selectedSuburb === 'near-you'
+    ? `Near You (${filteredMosques.length})`
+    : selectedSuburb === 'all'
+    ? `All Suburbs (${filteredMosques.length})`
+    : `${selectedSuburb} (${filteredMosques.length})`
+  }
+</SelectValue>
+```
+
+3. **Reset functionality:**
+```typescript
+useEffect(() => {
+  if (selectedSuburb === 'all') {
+    setFilteredMosques(mosques);
+    setSortByDistance(false);
+    setUserLocation(null);  // Clear location
+  } else if (selectedSuburb === 'near-you') {
+    // Keep filtered results
+  } else {
+    // Filter by specific suburb
+  }
+}, [selectedSuburb, mosques]);
+```
+
+### User Experience Flow
+
+1. User clicks "Find Mosques Near Me"
+2. Browser asks for location permission
+3. **If granted:**
+   - Dropdown changes to "Near You (X)"
+   - Map centers on user location
+   - Shows only mosques within 10km
+   - Each card shows distance (e.g., "2.5km away")
+4. **To reset:**
+   - Click dropdown
+   - Select "All Suburbs (41)"
+   - Returns to full city view
+
+### Mobile Navigation Fix
+
+**Issue:** "Browse by City" dropdown appeared behind "All Suburbs" filter on mobile
+
+**Root Cause:** Both elements had `z-50` class, so stacking order depended on DOM position
+
+**Fix:**
+```typescript
+// src/components/TransparentNavbar.tsx
+<nav className="fixed top-0 left-0 right-0 z-[100] ...">  // Changed from z-50
+```
+
+Now navbar (z-100) is always above page content (z-50).
+
+---
+
