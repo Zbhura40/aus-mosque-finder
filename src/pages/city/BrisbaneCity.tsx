@@ -91,6 +91,11 @@ const BrisbaneCity = () => {
   useEffect(() => {
     if (selectedSuburb === 'all') {
       setFilteredMosques(mosques);
+      setSortByDistance(false); // Reset distance sorting when showing all
+      setUserLocation(null); // Clear user location
+    } else if (selectedSuburb === 'near-you') {
+      // Keep the current filtered results (set by handleFindNearMe)
+      // Don't change anything here
     } else {
       const filtered = mosques.filter(mosque =>
         extractSuburb(mosque.address) === selectedSuburb
@@ -114,6 +119,9 @@ const BrisbaneCity = () => {
 
   // Handle geolocation
   const handleFindNearMe = () => {
+    console.log('Find Near Me clicked!');
+    console.log('Total mosques available:', mosques.length);
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
@@ -121,17 +129,41 @@ const BrisbaneCity = () => {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
+          console.log('User location:', userLoc);
           setUserLocation(userLoc);
           setSortByDistance(true);
+          setSelectedSuburb('near-you'); // Set to special "near you" value
 
-          // Sort mosques by distance
-          const sorted = [...filteredMosques].sort((a, b) => {
-            if (!a.latitude || !a.longitude || !b.latitude || !b.longitude) return 0;
-            const distA = calculateDistance(userLoc.lat, userLoc.lng, a.latitude, a.longitude);
-            const distB = calculateDistance(userLoc.lat, userLoc.lng, b.latitude, b.longitude);
-            return distA - distB;
-          });
-          setFilteredMosques(sorted);
+          // Filter mosques within 10km and sort by distance
+          const nearby = mosques
+            .filter(mosque => {
+              if (!mosque.latitude || !mosque.longitude) return false;
+              const distance = calculateDistance(userLoc.lat, userLoc.lng, mosque.latitude, mosque.longitude);
+              console.log(`${mosque.name}: ${distance.toFixed(2)}km away`);
+              return distance <= 10; // Within 10km
+            })
+            .sort((a, b) => {
+              if (!a.latitude || !a.longitude || !b.latitude || !b.longitude) return 0;
+              const distA = calculateDistance(userLoc.lat, userLoc.lng, a.latitude, a.longitude);
+              const distB = calculateDistance(userLoc.lat, userLoc.lng, b.latitude, b.longitude);
+              return distA - distB;
+            });
+
+          console.log('Mosques within 10km:', nearby.length);
+
+          if (nearby.length === 0) {
+            alert('No mosques found within 10km of your location. Showing all Brisbane mosques sorted by distance.');
+            // Show all mosques sorted by distance if none within 10km
+            const sorted = [...mosques].sort((a, b) => {
+              if (!a.latitude || !a.longitude || !b.latitude || !b.longitude) return 0;
+              const distA = calculateDistance(userLoc.lat, userLoc.lng, a.latitude, a.longitude);
+              const distB = calculateDistance(userLoc.lat, userLoc.lng, b.latitude, b.longitude);
+              return distA - distB;
+            });
+            setFilteredMosques(sorted);
+          } else {
+            setFilteredMosques(nearby);
+          }
         },
         (error) => {
           console.error('Error getting location:', error);
@@ -300,10 +332,20 @@ const BrisbaneCity = () => {
             <Select value={selectedSuburb} onValueChange={setSelectedSuburb}>
               <SelectTrigger className="w-[240px] bg-white border-gray-300 z-50 relative">
                 <Filter className="w-4 h-4 mr-2" />
-                <SelectValue placeholder="Filter by Suburb" />
+                <SelectValue placeholder="Filter by Suburb">
+                  {selectedSuburb === 'near-you'
+                    ? `Near You (${filteredMosques.length})`
+                    : selectedSuburb === 'all'
+                    ? `All Suburbs (${filteredMosques.length})`
+                    : `${selectedSuburb} (${filteredMosques.length})`
+                  }
+                </SelectValue>
               </SelectTrigger>
               <SelectContent className="z-50 max-h-[300px] overflow-y-auto bg-white border border-gray-200 shadow-lg">
                 <SelectItem value="all">All Suburbs ({mosques.length})</SelectItem>
+                {selectedSuburb === 'near-you' && (
+                  <SelectItem value="near-you">Near You ({filteredMosques.length})</SelectItem>
+                )}
                 {suburbs.map(suburb => (
                   <SelectItem key={suburb} value={suburb}>
                     {suburb}
